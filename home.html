@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bataan Campus Finder - Discover Your Path to Higher Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #2542ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            color: #2542ff;
+        }
+
+        .logo-text p {
+            font-size: 0.7rem;
+            color: #666;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2542ff;
+            border-bottom-color: #2542ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2542ff 0%, #1a32cc 100%);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Stats Cards */
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-card:nth-child(1) {
+            background: rgba(128,128,128,0.8);
+        }
+
+        .stat-card:nth-child(2) {
+            background: rgba(32,178,170,0.8);
+        }
+
+        .stat-card:nth-child(3) {
+            background: rgba(147,112,219,0.8);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .stat-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 3rem 5%;
+            background: #f8f9fa;
+        }
+
+        .search-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f1f3f5;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            padding: 0.5rem;
+            outline: none;
+        }
+
+        .search-icon {
+            color: #666;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .filter-select {
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-select:hover {
+            border-color: #2542ff;
+        }
+
+        /* Institutions Section */
+        .institutions {
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .institutions h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .institutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .institution-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .institution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .institution-image {
+            width: 100%;
+            height: 180px;
+            background: #e9ecef;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .institution-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .institution-image::before {
+            content: 'Institution Banner Image';
+            position: absolute;
+            color: #adb5bd;
+            font-size: 0.9rem;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .institution-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 2;
+            color: #6c757d;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .institution-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .institution-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #2542ff;
+        }
+
+        .institution-content {
+            padding: 1.5rem;
+        }
+
+        .institution-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .institution-code {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .institution-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .detail-icon {
+            color: #2542ff;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .view-details-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #2542ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .view-details-btn:hover {
+            background: #1a32cc;
+            transform: scale(1.02);
+        }
+
+        /* Start Exploring Button */
+        .explore-btn {
+            display: block;
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 1.2rem;
+            background: #2542ff;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(37,66,255,0.3);
+        }
+
+        .explore-btn:hover {
+            background: #1a32cc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37,66,255,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #2542ff;
+        }
+
+        .designed-by {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .stats-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                grid-template-columns: 1fr;
+            }
+
+            .institutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <!-- Replace src with your logo icon -->
+                <img src="logo-icon.png" alt="Campus Finder Logo">
+            </div>
+            <div class="logo-text">
+                <h1>Bataan Campus Finder</h1>
+                <p>Discover Your Path to Higher Education in Bataan</p>
+            </div>
+        </div>
+        <nav>
+            <a href="home.html" class="active">HOME</a>
+            <a href="campus.html">ALL CAMPUSES</a>
+            <a href="about.html">ABOUT</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Find Your Future Campus</h2>
+        <p>Welcome to Bataan Campus Finder! Explore colleges and universities across Bataan. Discover programs, admission requirements, tuition fees, and more to make the best decision for your future.</p>
+        
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <!-- Replace src with your location icon -->
+                    <img src="icon-location.png" alt="Location Icon">
+                </div>
+                <h3>21 Campuses</h3>
+                <p>Across Bataan Province</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <!-- Replace src with your book icon -->
+                    <img src="icon-book.png" alt="Programs Icon">
+                </div>
+                <h3>100+ Programs</h3>
+                <p>Undergraduate & Graduate</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <!-- Replace src with your graduation cap icon -->
+                    <img src="icon-graduation.png" alt="Education Icon">
+                </div>
+                <h3>Quality Education</h3>
+                <p>Accredited Institutions</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">
+                    <!-- Replace src with your search icon -->
+                    <img src="icon-search.png" alt="Search Icon">
+                </span>
+                <input type="text" id="searchInput" placeholder="Search for colleges, universities, or programs...">
+            </div>
+            <div class="filters">
+                <select class="filter-select" id="typeFilter">
+                    <option>All Types</option>
+                    <option>State University</option>
+                    <option>Polytechnic University</option>
+                    <option>College</option>
+                </select>
+                <select class="filter-select" id="locationFilter">
+                    <option>All Municipalities</option>
+                    <option>Bataan</option>
+                    <option>Mariveles</option>
+                    <option>Limay</option>
+                    <option>Balanga</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="institutions" id="campuses">
+        <h2>Higher Education Institutions</h2>
+        <div class="institutions-grid" id="institutionsGrid">
+            <div class="institution-card">
+                <div class="institution-image">
+                    <!-- Replace src with your banner image -->
+                    <img src="bpsu-banner.jpg" alt="BPSU Banner">
+                    <div class="institution-logo">
+                        <!-- Replace src with your logo image -->
+                        <img src="bpsu-logo.png" alt="BPSU Logo">
+                    </div>
+                    <span class="institution-badge">SUC</span>
+                </div>
+                <div class="institution-content">
+                    <h3>Bataan Peninsula State University</h3>
+                    <p class="institution-code">BPSU</p>
+                    <div class="institution-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your building icon -->
+                                <img src="icon-building.png" alt="Campus Icon">
+                            </span>
+                            <span>6 Campuses</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your location pin icon -->
+                                <img src="icon-pin.png" alt="Location Icon">
+                            </span>
+                            <span>Bataan</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your book/programs icon -->
+                                <img src="icon-programs.png" alt="Programs Icon">
+                            </span>
+                            <span>N Programs Available</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your phone icon -->
+                                <img src="icon-phone.png" alt="Phone Icon">
+                            </span>
+                            <span>(047) 237-4438</span>
+                        </div>
+                    </div>
+                    <button class="view-details-btn" onclick="viewDetails('BPSU')">View Details</button>
+                </div>
+            </div>
+
+            <div class="institution-card">
+                <div class="institution-image">
+                    <!-- Replace src with your banner image -->
+                    <img src="pup-banner.jpg" alt="PUP Banner">
+                    <div class="institution-logo">
+                        <!-- Replace src with your logo image -->
+                        <img src="pup-logo.png" alt="PUP Logo">
+                    </div>
+                    <span class="institution-badge">SUC</span>
+                </div>
+                <div class="institution-content">
+                    <h3>Polytechnic University of the Philippines</h3>
+                    <p class="institution-code">PUP - Bataan</p>
+                    <div class="institution-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your location pin icon -->
+                                <img src="icon-pin.png" alt="Location Icon">
+                            </span>
+                            <span>Mariveles, Bataan</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your book/programs icon -->
+                                <img src="icon-programs.png" alt="Programs Icon">
+                            </span>
+                            <span>N Programs Available</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your phone icon -->
+                                <img src="icon-phone.png" alt="Phone Icon">
+                            </span>
+                            <span>(047) 237-4438</span>
+                        </div>
+                    </div>
+                    <button class="view-details-btn" onclick="viewDetails('PUP')">View Details</button>
+                </div>
+            </div>
+
+            <div class="institution-card">
+                <div class="institution-image">
+                    <!-- Replace src with your banner image -->
+                    <img src="lpc-banner.jpg" alt="LPC Banner">
+                    <div class="institution-logo">
+                        <!-- Replace src with your logo image -->
+                        <img src="lpc-logo.png" alt="LPC Logo">
+                    </div>
+                    <span class="institution-badge">LUC</span>
+                </div>
+                <div class="institution-content">
+                    <h3>Limay Polytechnic College</h3>
+                    <p class="institution-code">LPC</p>
+                    <div class="institution-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your location pin icon -->
+                                <img src="icon-pin.png" alt="Location Icon">
+                            </span>
+                            <span>Limay, Bataan</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your book/programs icon -->
+                                <img src="icon-programs.png" alt="Programs Icon">
+                            </span>
+                            <span>N Programs Available</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">
+                                <!-- Replace src with your phone icon -->
+                                <img src="icon-phone.png" alt="Phone Icon">
+                            </span>
+                            <span>(047) 237-4438</span>
+                        </div>
+                    </div>
+                    <button class="view-details-btn" onclick="viewDetails('LPC')">View Details</button>
+                </div>
+            </div>
+        </div>
+
+        <a href="campus.html" class="explore-btn">Start Exploring</a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#terms">Terms & Support</a>
+            <a href="#privacy">Privacy Policy</a>
+        </div>
+        <div class="designed-by">Designed with ❤️ by Canva</div>
+    </footer>
+
+    <script src="schools-data.js"></script>
+    <script>
+        // Initialize autocomplete on load
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeAutocomplete('searchInput');
+        });
+
+        // Search functionality with redirect to campus page
+        const searchInput = document.getElementById('searchInput');
+        const typeFilter = document.getElementById('typeFilter');
+        const locationFilter = document.getElementById('locationFilter');
+        const institutionsGrid = document.getElementById('institutionsGrid');
+
+        if (typeFilter) typeFilter.addEventListener('change', filterInstitutions);
+        if (locationFilter) locationFilter.addEventListener('change', filterInstitutions);
+
+        // Override explore button to pass search term
+        const exploreBtn = document.querySelector('.explore-btn');
+        if (exploreBtn) {
+            exploreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (searchInput && searchInput.value.trim().length > 0) {
+                    window.location.href = 'campus.html?search=' + encodeURIComponent(searchInput.value);
+                } else {
+                    window.location.href = 'campus.html';
+                }
+            });
+        }
+
+        function viewDetails(institution) {
+            alert(`Viewing details for ${institution}. This would open a detailed page with more information about programs, admission requirements, tuition fees, and contact information.`);
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.institution-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
