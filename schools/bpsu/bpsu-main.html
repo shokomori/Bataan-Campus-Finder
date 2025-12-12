@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPSU Main Campus - Campus Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #2542ff;
+            border-radius: 8px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            color: #2542ff;
+        }
+
+        .logo-text p {
+            font-size: 0.7rem;
+            color: #666;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2542ff;
+        }
+
+        /* Back Button */
+        .back-btn {
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1rem;
+            color: #2542ff;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #f8f9fa;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        /* Campus Header Card */
+        .campus-header {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .campus-logo {
+            width: 120px;
+            height: 120px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #999;
+            text-align: center;
+        }
+
+        .campus-info h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .campus-subtitle {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .info-icon {
+            color: #2542ff;
+            font-size: 1.2rem;
+        }
+
+        .campus-map {
+            width: 300px;
+            height: 200px;
+            background: #e9ecef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: #2542ff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1a32cc;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-outline {
+            background: white;
+            color: #2542ff;
+            border: 2px solid #2542ff;
+        }
+
+        .btn-outline:hover {
+            background: #2542ff;
+            color: white;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Section Card */
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            background: #2542ff;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            margin: -2rem -2rem 1.5rem -2rem;
+            border-radius: 15px 15px 0 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Programs */
+        .programs-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .program-category {
+            border-left: 4px solid #ffc107;
+            padding-left: 1rem;
+        }
+
+        .program-category h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .program-list li {
+            color: #666;
+            font-size: 0.9rem;
+            padding: 0.3rem 0;
+        }
+
+        .program-list li:before {
+            content: "▪";
+            color: #2542ff;
+            margin-right: 0.5rem;
+        }
+
+        /* Requirements */
+        .requirements-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .requirement-item:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 0.1rem;
+        }
+
+        /* Fees Table */
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .fees-table th {
+            background: #f8f9fa;
+            padding: 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .fees-table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .fees-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2542ff;
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: #2542ff;
+        }
+
+        /* Contact Card */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .contact-icon {
+            color: #2542ff;
+            font-size: 1.3rem;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .quick-link {
+            padding: 0.8rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .quick-link:hover {
+            background: #2542ff;
+            color: white;
+        }
+
+        /* Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .highlight-card {
+            background: #2542ff;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .highlight-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 5%;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #2542ff;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #2542ff;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .campus-header {
+                grid-template-columns: 1fr;
+            }
+
+            .campus-map {
+                width: 100%;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <div class="logo-text">
+                <h1>Bataan Campus Finder</h1>
+                <p>Campus Details</p>
+            </div>
+        </div>
+        <nav>
+            <a href="home.html">HOME</a>
+            <a href="campus.html" class="active">ALL CAMPUSES</a>
+            <a href="about.html">ABOUT</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+
+    <button class="back-btn" onclick="window.history.back()">
+        ← Back to All Campuses
+    </button>
+
+    <div class="container">
+        <div class="campus-header">
+            <div class="campus-logo">
+                BPSU Logo
+            </div>
+            <div class="campus-info">
+                <h1>Bataan Peninsula State University</h1>
+                <p class="campus-subtitle">Main Campus</p>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <span>Capitol Compound, Tenejero, Balanga City, Bataan</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🌐</span>
+                        <span>www.bpsu.edu.ph</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">✉️</span>
+                        <span>info@bpsu.edu.ph</span>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-primary">WEBSITE</button>
+                    <button class="btn btn-secondary">FACEBOOK</button>
+                    <button class="btn btn-outline">ADMISSION</button>
+                    <button class="btn btn-outline">DIRECTIONS</button>
+                </div>
+            </div>
+            <div class="campus-map">
+                Google Maps Integration
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="main-content">
+                <!-- Academic Programs -->
+                <div class="section-card">
+                    <div class="section-header">ACADEMIC PROGRAMS</div>
+                    <div class="programs-grid">
+                        <div class="program-category">
+                            <h3>COLLEGE OF ENGINEERING & ARCHITECTURE</h3>
+                            <ul class="program-list">
+                                <li>Bachelor of Science in Civil Engineering</li>
+                                <li>Bachelor of Science in Electrical Engineering</li>
+                                <li>Bachelor of Science in Electronics Engineering</li>
+                                <li>Bachelor of Science in Mechanical Engineering</li>
+                                <li>Bachelor of Science in Architecture</li>
+                            </ul>
+                        </div>
+
+                        <div class="program-category">
+                            <h3>COLLEGE OF EDUCATION</h3>
+                            <ul class="program-list">
+                                <li>Bachelor of Elementary Education (BEEd)</li>
+                                <li>Bachelor of Secondary Education Major in English</li>
+                                <li>Bachelor of Secondary Education Major in Mathematics</li>
+                                <li>Bachelor of Secondary Education Major in Science</li>
+                                <li>Bachelor of Physical Education (BPEd)</li>
+                            </ul>
+                        </div>
+
+                        <div class="program-category">
+                            <h3>COLLEGE OF BUSINESS ADMINISTRATION & ACCOUNTANCY</h3>
+                            <ul class="program-list">
+                                <li>Bachelor of Science in Accountancy (BSA)</li>
+                                <li>Bachelor of Science in Business Administration Major in Financial Management</li>
+                                <li>Bachelor of Science in Business Administration Major in Marketing Management</li>
+                                <li>Bachelor of Science in Entrepreneurship</li>
+                            </ul>
+                        </div>
+
+                        <div class="program-category">
+                            <h3>COLLEGE OF INFORMATION & COMMUNICATION TECHNOLOGY</h3>
+                            <ul class="program-list">
+                                <li>Bachelor of Science in Computer Science</li>
+                                <li>Bachelor of Science in Information Technology</li>
+                                <li>Bachelor of Science in Information Systems</li>
+                            </ul>
+                        </div>
+
+                        <div class="program-category">
+                            <h3>COLLEGE OF HOSPITALITY & TOURISM MANAGEMENT</h3>
+                            <ul class="program-list">
+                                <li>Bachelor of Science in Hospitality Management</li>
+                                <li>Bachelor of Science in Tourism Management</li>
+                            </ul>
+                        </div>
+
+                        <div class="program-category">
+                            <h3>COLLEGE OF ARTS & SCIENCES</h3>
+                            <ul class="program-list">
+                                <li>Bachelor of Science in Biology</li>
+                                <li>Bachelor of Science in Psychology</li>
+                                <li>Bachelor of Arts in Communication</li>
+                                <li>Bachelor of Science in Social Work</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admission Requirements -->
+                <div class="section-card">
+                    <div class="section-header">ADMISSION REQUIREMENTS</div>
+                    <div class="requirements-list">
+                        <div class="requirement-item">Original copy of High School Report Card (Form 138) or its equivalent</div>
+                        <div class="requirement-item">Certificate of Good Moral Character from the previously attended school</div>
+                        <div class="requirement-item">Birth Certificate (NSO/PSA authenticated)</div>
+                        <div class="requirement-item">Marriage Contract (if applicable, NSO/PSA authenticated)</div>
+                        <div class="requirement-item">Four (4) pieces of 2x2 ID pictures (recent, white background)</div>
+                        <div class="requirement-item">Medical Certificate from any government hospital or health center</div>
+                        <div class="requirement-item">Certificate of Transfer Credential/Honorable Dismissal (for transferees)</div>
+                        <div class="requirement-item">Original copy of Transcript of Records (for transferees)</div>
+                    </div>
+                    <div class="info-box" style="margin-top: 1.5rem;">
+                        <strong>Note:</strong> Submission of complete requirements does not guarantee admission. All applicants must pass the BPSU entrance examination and meet the minimum GPA requirements for their chosen program.
+                    </div>
+                </div>
+
+                <!-- Tuition & Fees -->
+                <div class="section-card">
+                    <div class="section-header">TUITION & FEES</div>
+                    <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #666;">
+                        As a State University, BPSU offers free tuition for undergraduate programs under Republic Act No. 10931 (Universal Access to Quality Tertiary Education Act of 2017).
+                    </p>
+                    <table class="fees-table">
+                        <thead>
+                            <tr>
+                                <th>Fee Type</th>
+                                <th>Amount per Semester</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tuition Fee</td>
+                                <td>FREE (covered by RA 10931)</td>
+                            </tr>
+                            <tr>
+                                <td>Miscellaneous Fees</td>
+                                <td>₱3,000 - ₱5,000</td>
+                            </tr>
+                            <tr>
+                                <td>Laboratory Fees (if applicable)</td>
+                                <td>₱500 - ₱2,000</td>
+                            </tr>
+                            <tr>
+                                <td>ID & Registration</td>
+                                <td>₱300 - ₱500</td>
+                            </tr>
+                            <tr>
+                                <td>Development Fee</td>
+                                <td>₱500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="info-box" style="margin-top: 1.5rem;">
+                        <strong>Important:</strong> Only Filipino students who meet the eligibility criteria under RA 10931 qualify for free tuition. Miscellaneous and other fees are still required to be paid by all students.
+                    </div>
+                </div>
+
+                <!-- Scholarships -->
+                <div class="section-card">
+                    <div class="section-header">SCHOLARSHIP & FINANCIAL AID</div>
+                    <div class="requirements-list">
+                        <div class="requirement-item">CHED Scholarship Programs (TES, UNIFAST)</div>
+                        <div class="requirement-item">DOST-SEI Scholarship for Science and Engineering Students</div>
+                        <div class="requirement-item">Provincial Government Scholarship Program</div>
+                        <div class="requirement-item">Municipal/City Scholarship Programs</div>
+                        <div class="requirement-item">Private Organization Scholarships</div>
+                        <div class="requirement-item">Academic Scholarship for Honor Students</div>
+                        <div class="requirement-item">Athletic Scholarship Program</div>
+                        <div class="requirement-item">Cultural Scholarship for Student Artists</div>
+                    </div>
+                    <div class="info-box" style="margin-top: 1.5rem;">
+                        For more information about scholarship requirements and application procedures, please visit the BPSU Scholarship Office or contact them directly.
+                    </div>
+                </div>
+
+                <!-- Application Process -->
+                <div class="section-card">
+                    <div class="section-header">APPLICATION PROCESS</div>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div>
+                            <h3 style="color: #2542ff; margin-bottom: 0.5rem;">1. Online Registration</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                                Visit the BPSU official website and fill out the online application form. Create your student account and provide accurate personal information.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 style="color: #2542ff; margin-bottom: 0.5rem;">2. Submit Requirements</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                                Upload scanned copies of all required documents. Ensure all files are clear and readable. Original documents will be verified upon enrollment.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 style="color: #2542ff; margin-bottom: 0.5rem;">3. Entrance Examination</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                                Take the BPSU College Admission Test (BPSU-CAT). Schedule and venue will be announced through email and the university website.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 style="color: #2542ff; margin-bottom: 0.5rem;">4. Wait for Results</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                                Examination results will be released within 2-3 weeks. Qualified applicants will receive an email notification with further instructions.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 style="color: #2542ff; margin-bottom: 0.5rem;">5. Enrollment</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                                Once accepted, proceed to the enrollment process. Submit original documents, pay necessary fees, and complete registration within the enrollment period.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <!-- Campus Highlights -->
+                <div class="section-card">
+                    <div class="section-header">CAMPUS HIGHLIGHTS</div>
+                    <div class="highlights-grid">
+                        <div class="highlight-card">
+                            <h3>6</h3>
+                            <p>Campus Branches</p>
+                        </div>
+                        <div class="highlight-card">
+                            <h3>50+</h3>
+                            <p>Programs Offered</p>
+                        </div>
+                        <div class="highlight-card">
+                            <h3>15,000+</h3>
+                            <p>Total Students</p>
+                        </div>
+                        <div class="highlight-card">
+                            <h3>500+</h3>
+                            <p>Faculty Members</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="section-card">
+                    <div class="section-header">CONTACT INFORMATION</div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>Phone</strong><br>
+                                (047) 237-4438
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <strong>Email</strong><br>
+                                info@bpsu.edu.ph
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🌐</span>
+                            <div>
+                                <strong>Website</strong><br>
+                                www.bpsu.edu.ph
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Address</strong><br>
+                                Capitol Compound, Tenejero, Balanga City, Bataan
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="section-card">
+                    <div class="section-header">QUICK LINKS</div>
+                    <div class="quick-links">
+                        <a href="#" class="quick-link">
+                            <span>📄 Download Admission Form</span>
+                            <span>→</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <span>📅 Academic Calendar</span>
+                            <span>→</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <span>📚 Student Handbook</span>
+                            <span>→</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <span>🎓 Alumni Portal</span>
+                            <span>→</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <span>💼 Career Services</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Important Dates -->
+                <div class="section-card">
+                    <div class="section-header">IMPORTANT DATES</div>
+                    <div style="font-size: 0.9rem; line-height: 2;">
+                        <p><strong>Application Period:</strong></p>
+                        <p style="color: #666; margin-bottom: 1rem;">March 1 - May 31, 2024</p>
+                        
+                        <p><strong>Entrance Exam:</strong></p>
+                        <p style="color: #666; margin-bottom: 1rem;">June 15, 2024</p>
+                        
+                        <p><strong>Release of Results:</strong></p>
+                        <p style="color: #666; margin-bottom: 1rem;">July 1, 2024</p>
+                        
+                        <p><strong>Enrollment Period:</strong></p>
+                        <p style="color: #666;">July 15 - August 15, 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Bataan Campus Finder</h3>
+                <p>Your comprehensive guide to higher education institutions in Bataan. Discover programs, compare options, and find the perfect campus for your future.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="#">All Campuses</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Need Help?</h3>
+                <p>Contact us for any inquiries about higher education in Bataan.</p>
+                <p style="margin-top: 1rem;">
+                    Email: info@bataancampusfinder.com<br>
+                    Phone: (047) XXX-XXXX
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2024 Bataan Campus Finder. All rights reserved. | Designed with ❤️ for Bataan Students
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
