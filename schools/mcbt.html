@@ -111,14 +111,16 @@
         .campus-logo {
             width: 120px;
             height: 120px;
-            background: #f0f0f0;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #999;
-            text-align: center;
+            overflow: hidden;
+            justify-self: end; /* Moves logo to the right */
+        }
+
+        .campus-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .campus-info h1 {
@@ -353,10 +355,10 @@
     <div class="container">
         <div class="campus-header">
             <div class="campus-logo">
-                Logo
+                <img src="../assets/images/MICROCITY.jfif" alt="MICROCITY Logo">
             </div>
             <div class="campus-info">
-                <h1>Mindanao College of Bataan and Techno</h1>
+                <h1>Microcity College of Business and Technology</h1>
                 <p class="campus-subtitle">Main Campus</p>
                 <div class="info-grid">
                     <div class="info-item">

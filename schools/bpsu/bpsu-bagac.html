@@ -1,58 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BPSU Bagac Campus - Campus Details</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPSU Main Campus - Campus Details</title>
+<style>
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: #2542ff;
+    border-radius: 8px;
+}
+
+.logo-text h1 {
+    font-size: 1.2rem;
+    color: #2542ff;
+}
+
+.logo-text p {
+    font-size: 0.7rem;
+    color: #666;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #2542ff;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 5%;
+}
+
+.campus-header {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* change from grid to flex */
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.campus-logo {
+    flex: 0 0 120px; /* fixed width */
+}
+
+.campus-info {
+    flex: 1; /* take remaining space */
+}
+
+.campus-map {
+    flex: 0 0 400px; /* fixed width for map */
+    height: 250px; /* adjust map height */
+}
+
+.campus-logo img {
+    width: 100px;
+    height: auto; /* keeps the logo proportionate */
+}
+
+.campus-map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: #2542ff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1a32cc;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-outline {
+    background: white;
+    color: #2542ff;
+    border: 2px solid #2542ff;
+}
+
+.btn-outline:hover {
+    background: #2542ff;
+    color: white;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.main-content,
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    background: #2542ff;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    margin: -2rem -2rem 1.5rem -2rem;
+    border-radius: 15px 15px 0 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.programs-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.program-category {
+    border-left: 4px solid #ffc107;
+    padding-left: 1rem;
+}
+
+.program-category h3 {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.program-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.program-list li {
+    color: #666;
+    font-size: 0.9rem;
+    padding: 0.3rem 0;
+}
+
+.program-list li:before {
+    content: "▪";
+    color: #2542ff;
+    margin-right: 0.5rem;
+}
+
+.requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: start;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.requirement-item:before {
+    content: "✓";
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 0.1rem;
+}
+
+.fees-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.fees-table th {
+    background: #f8f9fa;
+    padding: 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.fees-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.fees-table tr:hover {
+    background: #f8f9fa;
+}
+
+.info-box {
+    background: #e7f3ff;
+    border-left: 4px solid #2542ff;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.info-box strong {
+    color: #2542ff;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.contact-item a {
+    color: #2542ff;
+    text-decoration: none;
+}
+
+.contact-icon {
+    color: #2542ff;
+    font-size: 1.3rem;
+}
+
+.quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.quick-link {
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.quick-link:hover {
+    background: #2542ff;
+    color: white;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.highlight-card {
+    background: #2542ff;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.highlight-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 2rem 5%;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: #2542ff;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #2542ff;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    .campus-header {
+        grid-template-columns: 1fr;
+    }
+    .campus-map {
+        height: 300px;
+    }
+    .highlights-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    .action-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
+</style>
 </head>
 <body>
-    <header style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <div style="width: 40px; height: 40px; background: #2542ff; border-radius: 8px;"></div>
-            <div>
-                <h1 style="font-size: 1.2rem; color: #2542ff; margin: 0;">Bataan Campus Finder</h1>
-                <p style="font-size: 0.7rem; color: #666; margin: 0;">Campus Details</p>
+
+<header>
+    <div class="logo">
+        <div class="logo-icon"></div>
+        <div class="logo-text">
+            <h1>Bataan Campus Finder</h1>
+            <p>Campus Details</p>
+        </div>
+    </div>
+    <nav>
+        <a href="../../home.html">HOME</a>
+        <a href="../../campus.html" class="active">ALL CAMPUSES</a>
+        <a href="../../about.html">ABOUT</a>
+        <a href="../../contact.html">CONTACT</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="campus-header">
+        <div class="campus-logo">
+    <img src="../../assets/images/BPSU.jfif" alt="BPSU Logo">
+        </div>
+        <div class="campus-info">
+            <h1>Bataan Peninsula State University</h1>
+            <p class="campus-subtitle">Main Campus</p>
+            <p style="color:#666; margin-top:0.6rem; margin-bottom:0.8rem; line-height:1.5;"><strong>Mission:</strong> To develop native leaders and empowered communities by delivering transformative instruction, research and production through Change Drivers and responsive policies.</p>
+            <p style="color:#666; margin-bottom:1rem; line-height:1.5;"><strong>Vision:</strong> An inclusive and sustainable university recognized for its global academic excellence by 2030.</p>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="window.open('https://www.bpsu.edu.ph/')">WEBSITE</button>
+                <button class="btn btn-secondary" onclick="window.open('https://www.facebook.com/batpenstateu')">FACEBOOK</button>
+                <button class="btn btn-outline" onclick="window.open('https://www.bpsu.edu.ph/index.php/admsfa')">ADMISSION</button>
+                <button class="btn btn-outline" onclick="window.open('mailto:mc_admission@bpsu.edu.ph')">EMAIL ADMISSIONS</button>
+                <button class="btn btn-outline" onclick="window.open('mailto:public_affairs@bpsu.edu.ph')">EMAIL PUBLIC AFFAIRS</button>
+                <button class="btn btn-outline" onclick="alert('Visit: Capitol Compound, Tenejero, City of Balanga, Bataan 2100')">DIRECTIONS</button>
             </div>
         </div>
-        <nav style="display: flex; gap: 2rem;">
-            <a href="../../home.html" style="text-decoration: none; color: #333; font-weight: 500;">HOME</a>
-            <a href="../../campus.html" style="text-decoration: none; color: #333; font-weight: 500;">ALL CAMPUSES</a>
-            <a href="../../about.html" style="text-decoration: none; color: #333; font-weight: 500;">ABOUT</a>
-            <a href="../../contact.html" style="text-decoration: none; color: #333; font-weight: 500;">CONTACT</a>
-        </nav>
-    </header>
-
-    <div style="max-width: 1400px; margin: 0 auto; padding: 2rem 5%;">
-        <div style="background: white; border-radius: 15px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-            <h1 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: #333;">Bataan Peninsula State University</h1>
-            <p style="color: #666; margin-bottom: 1.5rem; font-size: 1rem; font-weight: 600;">Bagac Campus</p>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
-                    <span style="color: #2542ff;">📍</span>
-                    <span>Bagumbayan, Bagac, Bataan</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
-                    <span style="color: #2542ff;">📞</span>
-                    <span>(047) 237-4438</span>
-                </div>
-            </div>
-        </div>
-
-        <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-            <div style="background: #2542ff; color: white; padding: 0.8rem 1.5rem; margin: -2rem -2rem 1.5rem -2rem; border-radius: 15px 15px 0 0; font-size: 1.1rem; font-weight: 600;">OVERVIEW</div>
-            <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">
-                The Bagac Campus serves as a satellite facility for the Bagac community and nearby municipalities. It offers selected undergraduate programs with emphasis on applied sciences, vocational training, and livelihood development to meet local economic needs.
-            </p>
-            <p style="color: #666; line-height: 1.6;">
-                Located in Bagumbayan, Bagac, the campus maintains strong ties with the local government and community organizations to provide relevant education and extension services.
-            </p>
+        <div class="campus-map">
+            <iframe src="https://www.google.com/maps?q=Bataan+Peninsula+State+University+Main,Balanga,Philippines&output=embed" allowfullscreen loading="lazy"></iframe>
         </div>
     </div>
 
-    <footer style="background: #001847; color: white; padding: 2rem 5%; margin-top: 3rem; text-align: center;">
-        © 2024 Bataan Campus Finder. All rights reserved. | Designed with ❤️ for Bataan Students
-    </footer>
+        <div class="content-grid">
+            <div class="main-content">
+                <!-- Academic Programs -->
+                <div class="section-card">
+                    <div class="section-header">ACADEMIC PROGRAMS</div>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Bataan Peninsula State University Main Campus is well-known in the field of engineering and technology. Since its inception in 1953 (formerly Bataan National School of Arts and Trades or BNSAT), the Main Campus has been among the country's top-producers of high-caliber technician-leaders needed by industries both locally and abroad.
+                    </p>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        For detailed information about our comprehensive academic offerings across Engineering, Agriculture, Education, Business, Information Technology, and other fields, please visit:
+                    </p>
+                    <a href="https://www.bpsu.edu.ph/index.php/about-academics" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                        📄 View Academic Programs Brochure →
+                    </a>
+                    <br>
+                    <a href="https://www.canva.com/design/DAG0MjA-Ph4/svHa2Q4J_HOay3BY3Si1BA/edit?utm_content=DAG0MjA-Ph4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 0.5rem;">
+                        📄 View Brochure (Canva — Page 6) →
+                    </a>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #2542ff;">
+                        <p style="color: #666; font-size: 0.9rem;">
+                            <strong>Complete Program List:</strong> Visit the official website for a comprehensive list of all undergraduate and graduate programs offered at the Main Campus.
+                        </p>
+                    </div>
+                </div>
 
-    <script src="../../assets/js/schools-data.js"></script>
-</body>
-</html>
+                <!-- Admission Requirements -->
+                <div class="section-card">
+                    <div class="section-header">ADMISSION REQUIREMENTS</div>

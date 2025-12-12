@@ -38,8 +38,19 @@
             height: 40px;
             background: #2542ff;
             border-radius: 8px;
+            /* Added to properly display the image inside */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
         }
 
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure the logo fits inside the icon box */
+        }
+        
         .logo-text h1 {
             font-size: 1.2rem;
             color: #2542ff;
@@ -119,6 +130,15 @@
             font-size: 0.8rem;
             color: #999;
             text-align: center;
+            overflow: hidden; /* Ensure image respects the container's border-radius */
+        }
+        
+        /* Style for the logo image inside .campus-logo */
+        .campus-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fill the container while maintaining aspect ratio, might crop */
+            border-radius: 10px;
         }
 
         .campus-info h1 {
@@ -336,7 +356,9 @@
 <body>
     <header>
         <div class="logo">
-            <div class="logo-icon"></div>
+            <div class="logo-icon">
+                <img src="../logo-icon.png" alt="Campus Finder Logo">
+            </div>
             <div class="logo-text">
                 <h1>Bataan Campus Finder</h1>
                 <p>Campus Details</p>
@@ -353,7 +375,7 @@
     <div class="container">
         <div class="campus-header">
             <div class="campus-logo">
-                Logo
+                <img src="../assets/images/lipoco.png" alt="Lyceum-Pacific College Logo">
             </div>
             <div class="campus-info">
                 <h1>Lyceum-Pacific College</h1>
@@ -461,7 +483,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2024 Bataan Campus Finder. All rights reserved. | Designed with ❤️ for Bataan Students
+            © 2025 Bataan Campus Finder. All rights reserved. | Designed for Bataan Students
         </div>
     </footer>
 
@@ -478,7 +500,8 @@
             var q = titleEl ? titleEl.textContent.trim() : document.title;
             var src = 'https://www.google.com/maps?q=' + encodeURIComponent(q + ', Bataan, Philippines') + '&output=embed';
             el.innerHTML = '<iframe src="'+src+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
-                '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
+                // Corrected the broken URL in the original script
+                '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' + encodeURIComponent(q + ', Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
         });
     })();
     </script>

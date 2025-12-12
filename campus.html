@@ -372,487 +372,475 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <div class="logo-icon">
-                <img src="logo-icon.png" alt="Campus Finder Logo">
+       <div class="logo">
+    <div class="logo-icon">
+        <img src="logo-icon.png" alt="Campus Finder Logo">
+    </div>
+    <div class="logo-text">
+        <h1>Bataan Campus Finder</h1>
+        <p>Discover Your Path to Higher Education in Bataan</p>
+    </div>
+</div>
+<nav>
+    <a href="home.html">HOME</a>
+    <a href="campus.html" class="active">ALL CAMPUSES</a>
+    <a href="about.html">ABOUT</a>
+    <a href="contact.html">CONTACT</a>
+</nav>
+</header>
+
+<section class="search-section">
+    <div class="search-container">
+        <div class="search-box">
+            <span class="search-icon">
+                <img src="assets/images/search-icon.png" alt="Search Icon">
+            </span>
+            <input type="text" id="searchInput" placeholder="Search for colleges, universities, or programs...">
+        </div>
+        <div class="filters">
+            <select class="filter-select" id="typeFilter">
+                <option value="">All Types</option>
+                <option value="SUC">SUC</option>
+                <option value="LUC">LUC</option>
+                <option value="Private">Private</option>
+            </select>
+            <select class="filter-select" id="locationFilter">
+                <option value="">All Municipalities</option>
+                <option value="Bataan">Bataan</option>
+                <option value="Mariveles">Mariveles</option>
+                <option value="Limay">Limay</option>
+                <option value="Balanga City">Balanga City</option>
+                <option value="Abucay">Abucay</option>
+                <option value="Dinalupihan">Dinalupihan</option>
+            </select>
+        </div>
+    </div>
+</section>
+
+<section class="institutions">
+    <h2>All Higher Education Institutions</h2>
+    <div class="institutions-grid" id="institutionsGrid">
+        <div class="institution-card" data-type="SUC" data-location="Bataan">
+            <div class="institution-image">
+                <img src="assets/images/bannerbpsu.jpg" alt="BPSU Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/BPSU.jfif" alt="BPSU Logo">
+                </div>
+                <span class="institution-badge">SUC</span>
             </div>
-            <div class="logo-text">
-                <h1>Bataan Campus Finder</h1>
-                <p>Discover Your Path to Higher Education in Bataan</p>
+            <div class="institution-content">
+                <h3>Bataan Peninsula State University</h3>
+                <p class="institution-code">BPSU</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/campus.jpg" alt="Campus"></span>
+                        <span>6 Campuses</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>0905 568 3448</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/bpsu/bpsu.html'">View Details</button>
             </div>
         </div>
-        <nav>
-            <a href="home.html">HOME</a>
-            <a href="campus.html" class="active">ALL CAMPUSES</a>
-            <a href="about.html">ABOUT</a>
-            <a href="contact.html">CONTACT</a>
-        </nav>
-    </header>
 
-    <section class="search-section">
-        <div class="search-container">
-            <div class="search-box">
-                <span class="search-icon">
-                    <img src="icon-search.png" alt="Search Icon">
-                </span>
-                <input type="text" id="searchInput" placeholder="Search for colleges, universities, or programs...">
+        <div class="institution-card" data-type="SUC" data-location="Mariveles">
+            <div class="institution-image">
+                <img src="assets/images/bannerpup.jpg" alt="PUP Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/PUP.jpg" alt="PUP Logo">
+                </div>
+                <span class="institution-badge">SUC</span>
             </div>
-            <div class="filters">
-                <select class="filter-select" id="typeFilter">
-                    <option value="">All Types</option>
-                    <option value="SUC">SUC</option>
-                    <option value="LUC">LUC</option>
-                    <option value="Private">Private</option>
-                </select>
-                <select class="filter-select" id="locationFilter">
-                    <option value="">All Municipalities</option>
-                    <option value="Bataan">Bataan</option>
-                    <option value="Mariveles">Mariveles</option>
-                    <option value="Limay">Limay</option>
-                    <option value="Balanga City">Balanga City</option>
-                    <option value="Abucay">Abucay</option>
-                    <option value="Dinalupihan">Dinalupihan</option>
-                </select>
+            <div class="institution-content">
+                <h3>Polytechnic University of the Philippines</h3>
+                <p class="institution-code">PUP - Bataan</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Mariveles, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/pup-bataan.html'">View Details</button>
             </div>
         </div>
-    </section>
 
-    <section class="institutions">
-        <h2>All Higher Education Institutions</h2>
-        <div class="institutions-grid" id="institutionsGrid">
-            <!-- BPSU -->
-            <div class="institution-card" data-type="SUC" data-location="Bataan">
-                <div class="institution-image">
-                    <img src="bpsu-banner.jpg" alt="BPSU Banner">
-                    <div class="institution-logo">
-                        <img src="bpsu-logo.png" alt="BPSU Logo">
-                    </div>
-                    <span class="institution-badge">SUC</span>
+        <div class="institution-card" data-type="LUC" data-location="Limay">
+            <div class="institution-image">
+                <img src="assets/images/bannerlipoco.jpg" alt="LPC Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/LIPOCO.png" alt="LPC Logo">
                 </div>
-                <div class="institution-content">
-                    <h3>Bataan Peninsula State University</h3>
-                    <p class="institution-code">BPSU</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-building.png" alt="Campus"></span>
-                            <span>6 Campuses</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>0905 568 3448</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/bpsu/bpsu.html'">View Details</button>
-                </div>
+                <span class="institution-badge">LUC</span>
             </div>
-
-            <div class="institution-card" data-type="SUC" data-location="Mariveles">
-                <div class="institution-image">
-                    <img src="pup-banner.jpg" alt="PUP Banner">
-                    <div class="institution-logo">
-                        <img src="pup-logo.png" alt="PUP Logo">
+            <div class="institution-content">
+                <h3>Limay Polytechnic College</h3>
+                <p class="institution-code">LPC</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Limay, Bataan</span>
                     </div>
-                    <span class="institution-badge">SUC</span>
-                </div>
-                <div class="institution-content">
-                    <h3>Polytechnic University of the Philippines</h3>
-                    <p class="institution-code">PUP - Bataan</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Mariveles, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
                     </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/pup-bataan.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- LPC -->
-            <div class="institution-card" data-type="LUC" data-location="Limay">
-                <div class="institution-image">
-                    <img src="lpc-banner.jpg" alt="LPC Banner">
-                    <div class="institution-logo">
-                        <img src="lpc-logo.png" alt="LPC Logo">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
                     </div>
-                    <span class="institution-badge">LUC</span>
                 </div>
-                <div class="institution-content">
-                    <h3>Limay Polytechnic College</h3>
-                    <p class="institution-code">LPC</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Limay, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/lpc.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- AMA AKO-ACLC -->
-            <div class="institution-card" data-type="Private" data-location="Balanga City">
-                <div class="institution-image">
-                    <img src="ama-banner.jpg" alt="AMA Banner">
-                    <div class="institution-logo">
-                        <img src="ama-logo.png" alt="AMA Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>AMA AKO - ACLC College of Balanga</h3>
-                    <p class="institution-code">ACLC - Bataan</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Balanga City, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/aclc-bataan.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- APCAS -->
-            <div class="institution-card" data-type="Private" data-location="Balanga City">
-                <div class="institution-image">
-                    <img src="apcas-banner.jpg" alt="APCAS Banner">
-                    <div class="institution-logo">
-                        <img src="apcas-logo.png" alt="APCAS Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>Asia Pacific College of Advanced Studies</h3>
-                    <p class="institution-code">APCAS</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Balanga City, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/apcas.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- HEROES -->
-            <div class="institution-card" data-type="Private" data-location="Balanga City">
-                <div class="institution-image">
-                    <img src="heroes-banner.jpg" alt="HEROES Banner">
-                    <div class="institution-logo">
-                        <img src="heroes-logo.png" alt="HEROES Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>Bataan Heroes Memorial College</h3>
-                    <p class="institution-code">HEROES</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Balanga City, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>0931 916 3061</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/heroes.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- Colegio de San Juan de Letran -->
-            <div class="institution-card" data-type="Private" data-location="Abucay">
-                <div class="institution-image">
-                    <img src="letran-banner.jpg" alt="Letran Banner">
-                    <div class="institution-logo">
-                        <img src="letran-logo.png" alt="Letran Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>Colegio de San Juan de Letran</h3>
-                    <p class="institution-code">Letran - Bataan</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Abucay, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/letran-bataan.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- CSM -->
-            <div class="institution-card" data-type="Private" data-location="Dinalupihan">
-                <div class="institution-image">
-                    <img src="csm-banner.jpg" alt="CSM Banner">
-                    <div class="institution-logo">
-                        <img src="csm-logo.png" alt="CSM Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>College of Subic Montessori - Dinalupihan</h3>
-                    <p class="institution-code">CSM - Dinalupihan</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Dinalupihan, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/csm-dinalupihan.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- Eastwoods -->
-            <div class="institution-card" data-type="Private" data-location="Bataan">
-                <div class="institution-image">
-                    <img src="eastwoods-banner.jpg" alt="Eastwoods Banner">
-                    <div class="institution-logo">
-                        <img src="eastwoods-logo.png" alt="Eastwoods Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>Eastwoods Professional College of Science and Technology</h3>
-                    <p class="institution-code">EASTWOODS</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-building.png" alt="Campus"></span>
-                            <span>2 Campuses</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/eastwoods/eastwoods.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- MAAP -->
-            <div class="institution-card" data-type="Private" data-location="Mariveles">
-                <div class="institution-image">
-                    <img src="maap-banner.jpg" alt="MAAP Banner">
-                    <div class="institution-logo">
-                        <img src="maap-logo.png" alt="MAAP Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>Maritime Academy of Asia and the Pacific</h3>
-                    <p class="institution-code">MAAP</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Mariveles, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/maap.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- MCBT -->
-            <div class="institution-card" data-type="Private" data-location="Balanga City">
-                <div class="institution-image">
-                    <img src="mcbt-banner.jpg" alt="MCBT Banner">
-                    <div class="institution-logo">
-                        <img src="mcbt-logo.png" alt="MCBT Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>Microcity College of Business and Technology</h3>
-                    <p class="institution-code">MCBT</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Balanga City, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/mcbt.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- PWU CDCEC -->
-            <div class="institution-card" data-type="Private" data-location="Balanga City">
-                <div class="institution-image">
-                    <img src="pwu-banner.jpg" alt="PWU Banner">
-                    <div class="institution-logo">
-                        <img src="pwu-logo.png" alt="PWU Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>Philippine Women's University CDCEC - Bataan</h3>
-                    <p class="institution-code">PWU CDCEC</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Balanga City, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn" onclick="window.location.href='schools/pwu-cdcec.html'">View Details</button>
-                </div>
-            </div>
-
-            <!-- UNC -->
-            <div class="institution-card" data-type="Private" data-location="Dinalupihan">
-                <div class="institution-image">
-                    <img src="unc-banner.jpg" alt="UNC Banner">
-                    <div class="institution-logo">
-                        <img src="unc-logo.png" alt="UNC Logo">
-                    </div>
-                    <span class="institution-badge">Private</span>
-                </div>
-                <div class="institution-content">
-                    <h3>University of Nueva Caceres</h3>
-                    <p class="institution-code">UNC</p>
-                    <div class="institution-details">
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-pin.png" alt="Location"></span>
-                            <span>Dinalupihan, Bataan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-programs.png" alt="Programs"></span>
-                            <span>N Programs Available</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon"><img src="icon-phone.png" alt="Phone"></span>
-                            <span>(047) 237-4438</span>
-                        </div>
-                    </div>
-                    <button class="view-details-btn">View Details</button>
-                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/lpc.html'">View Details</button>
             </div>
         </div>
-    </section>
 
-    <footer>
-        <div class="footer-links">
-            <a href="#terms">Terms & Support</a>
-            <a href="#privacy">Privacy Policy</a>
+        <div class="institution-card" data-type="Private" data-location="Balanga City">
+            <div class="institution-image">
+                <img src="assets/images/bannerama.JPG" alt="AMA Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/ACLC.jpg" alt="AMA Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>AMA AKO - ACLC College of Balanga</h3>
+                <p class="institution-code">ACLC - Bataan</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Balanga City, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/aclc-bataan.html'">View Details</button>
+            </div>
         </div>
-        <div class="designed-by">Designed with ❤️ by Canva</div>
-    </footer>
 
-    <script src="assets/js/schools-data.js"></script>
-    <script>
-        // Initialize autocomplete on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            initializeAutocomplete('searchInput');
-            
-            // Check if there's a search parameter from home page
-            const urlParams = new URLSearchParams(window.location.search);
-            const searchTerm = urlParams.get('search');
-            if (searchTerm) {
-                document.getElementById('searchInput').value = searchTerm;
-                filterInstitutions();
-            }
-        });
+        <div class="institution-card" data-type="Private" data-location="Balanga City">
+            <div class="institution-image">
+                <img src="assets/images/bannerapcas.jpg" alt="APCAS Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/APCAS.png" alt="APCAS Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>Asia Pacific College of Advanced Studies</h3>
+                <p class="institution-code">APCAS</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Balanga City, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/apcas.html'">View Details</button>
+            </div>
+        </div>
 
-        // Get references to filter elements
-        const typeFilter = document.getElementById('typeFilter');
-        const locationFilter = document.getElementById('locationFilter');
+        <div class="institution-card" data-type="Private" data-location="Balanga City">
+            <div class="institution-image">
+                <img src="assets/images/bannerheroes.jpg" alt="HEROES Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/HEROES.jfif" alt="HEROES Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>Bataan Heroes Memorial College</h3>
+                <p class="institution-code">HEROES</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Balanga City, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>0931 916 3061</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/heroes.html'">View Details</button>
+            </div>
+        </div>
 
-        // Add event listeners to filters
-        if (typeFilter) typeFilter.addEventListener('change', filterInstitutions);
-        if (locationFilter) locationFilter.addEventListener('change', filterInstitutions);
+        <div class="institution-card" data-type="Private" data-location="Abucay">
+            <div class="institution-image">
+                <img src="assets/images/bannerletran.jpg" alt="Letran Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/LETRAN.webp" alt="Letran Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>Colegio de San Juan de Letran</h3>
+                <p class="institution-code">Letran - Bataan</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Abucay, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/letran-bataan.html'">View Details</button>
+            </div>
+        </div>
 
-        function viewDetails(institution) {
-            alert(`Viewing details for ${institution}. This would open a detailed page with more information about programs, admission requirements, tuition fees, and contact information.`);
+        <div class="institution-card" data-type="Private" data-location="Dinalupihan">
+            <div class="institution-image">
+                <img src="assets/images/bannermontessoru.jpg" alt="CSM Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/MONTESSORI.png" alt="CSM Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>College of Subic Montessori - Dinalupihan</h3>
+                <p class="institution-code">CSM - Dinalupihan</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Dinalupihan, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/csm-dinalupihan.html'">View Details</button>
+            </div>
+        </div>
+
+        <div class="institution-card" data-type="Private" data-location="Bataan">
+            <div class="institution-image">
+                <img src="assets/images/bannereastwoods.jpg" alt="Eastwoods Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/EASTWOODS.png" alt="Eastwoods Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>Eastwoods Professional College of Science and Technology</h3>
+                <p class="institution-code">EASTWOODS</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/campus.jpg" alt="Campus"></span>
+                        <span>2 Campuses</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/eastwoods/eastwoods.html'">View Details</button>
+            </div>
+        </div>
+
+        <div class="institution-card" data-type="Private" data-location="Mariveles">
+            <div class="institution-image">
+                <img src="assets/images/bannermaap.jpg" alt="MAAP Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/MAAP.jpg" alt="MAAP Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>Maritime Academy of Asia and the Pacific</h3>
+                <p class="institution-code">MAAP</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Mariveles, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/maap.html'">View Details</button>
+            </div>
+        </div>
+
+        <div class="institution-card" data-type="Private" data-location="Balanga City">
+            <div class="institution-image">
+                <img src="assets/images/bannermicro.jpg" alt="MCBT Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/MICROCITY.jfif" alt="MCBT Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>Microcity College of Business and Technology</h3>
+                <p class="institution-code">MCBT</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Balanga City, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/mcbt.html'">View Details</button>
+            </div>
+        </div>
+
+        <div class="institution-card" data-type="Private" data-location="Balanga City">
+            <div class="institution-image">
+                <img src="assets/images/bannerpwu.jpg" alt="PWU Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/PWU.png" alt="PWU Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>Philippine Women's University CDCEC - Bataan</h3>
+                <p class="institution-code">PWU CDCEC</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Balanga City, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/pwu-cdcec.html'">View Details</button>
+            </div>
+        </div>
+
+        <div class="institution-card" data-type="Private" data-location="Dinalupihan">
+            <div class="institution-image">
+                <img src="assets/images/bannerunc.png" alt="UNC Banner">
+                <div class="institution-logo">
+                    <img src="assets/images/CACERES.jpg" alt="UNC Logo">
+                </div>
+                <span class="institution-badge">Private</span>
+            </div>
+            <div class="institution-content">
+                <h3>University of Nueva Caceres</h3>
+                <p class="institution-code">UNC</p>
+                <div class="institution-details">
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                        <span>Dinalupihan, Bataan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                        <span>N Programs Available</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                        <span>(047) 237-4438</span>
+                    </div>
+                </div>
+                <button class="view-details-btn" onclick="window.location.href='schools/unc.html'">View Details</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-links">
+        <a href="#terms">Terms & Support</a>
+        <a href="#privacy">Privacy Policy</a>
+    </div>
+    <div class="designed-by">Designed with ❤️ by Canva</div>
+</footer>
+
+<script src="assets/js/schools-data.js"></script>
+<script>
+    // Initialize autocomplete on page load
+    window.addEventListener('DOMContentLoaded', function() {
+        initializeAutocomplete('searchInput');
+        
+        // Check if there's a search parameter from home page
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTerm = urlParams.get('search');
+        if (searchTerm) {
+            document.getElementById('searchInput').value = searchTerm;
+            filterInstitutions();
         }
-    </script>
+    });
+
+    // Get references to filter elements
+    const typeFilter = document.getElementById('typeFilter');
+    const locationFilter = document.getElementById('locationFilter');
+
+    // Add event listeners to filters
+    if (typeFilter) typeFilter.addEventListener('change', filterInstitutions);
+    if (locationFilter) locationFilter.addEventListener('change', filterInstitutions);
+
+    function viewDetails(institution) {
+        alert(`Viewing details for ${institution}. This would open a detailed page with more information about programs, admission requirements, tuition fees, and contact information.`);
+    }
+</script>
 </body>
 </html>
