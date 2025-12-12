@@ -16,6 +16,25 @@
     <div class="section"><h3>Overview</h3><p>The Main Campus offers the primary set of programs and administrative offices for Eastwoods Professional College.</p></div>
     <div class="section"><h3>Contact</h3><p>Phone: (047) 6xx-xxxx<br>Address: Balanga City, Bataan</p></div>
   </main>
+      <script>
+          // some page-specific scripts
+      </script>
+      <script>
+      (function(){
+          document.querySelectorAll('.campus-header').forEach(el=>el.style.position='relative');
+          document.querySelectorAll('.campus-map').forEach(el=>{
+              el.style.overflow='hidden';
+              el.style.display='block';
+              el.style.boxShadow='0 1px 6px rgba(0,0,0,0.08)';
+              if(el.querySelector('iframe')) return;
+              var titleEl = document.querySelector('.school-header-info h1') || document.querySelector('h1');
+              var q = titleEl ? titleEl.textContent.trim() : document.title;
+              var src = 'https://www.google.com/maps?q=' + encodeURIComponent(q + ', Bataan, Philippines') + '&output=embed';
+              el.innerHTML = '<iframe src="'+src+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
+                  '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
+          });
+      })();
+      </script>
   <footer style="background:#001847;color:#fff;padding:1rem 5%;margin-top:1rem">© 2025 Bataan Campus Finder</footer>
 </body>
 </html>

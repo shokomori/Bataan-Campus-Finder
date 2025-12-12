@@ -151,3 +151,24 @@ function searchAndRedirect() {
         window.location.href = 'campus.html?search=' + encodeURIComponent(searchInput.value);
     }
 }
+
+// Auto-inject responsive Google Maps iframe into pages that have a `.campus-map` container.
+(function injectCampusMaps(){
+    try {
+        document.querySelectorAll('.campus-header').forEach(el=>el.style.position='relative');
+        document.querySelectorAll('.campus-map').forEach(el=>{
+            el.style.overflow='hidden';
+            el.style.display='block';
+            el.style.boxShadow='0 1px 6px rgba(0,0,0,0.08)';
+            if(el.querySelector('iframe')) return;
+            var titleEl = document.querySelector('.campus-info h1') || document.querySelector('.school-header-info h1') || document.querySelector('h1');
+            var q = titleEl ? titleEl.textContent.trim() : document.title.replace(/ - Campus Details/i, '');
+            if(!q) return;
+            var src = 'https://www.google.com/maps?q=' + encodeURIComponent(q + ', Bataan, Philippines') + '&output=embed';
+            el.innerHTML = '<iframe src="'+src+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
+                '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
+        });
+    } catch(e) {
+        console.warn('Map injector error', e);
+    }
+})();

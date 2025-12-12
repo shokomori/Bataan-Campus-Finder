@@ -105,6 +105,7 @@
             grid-template-columns: auto 1fr auto;
             gap: 2rem;
             align-items: start;
+            position: relative;
         }
 
         .campus-logo {
@@ -155,11 +156,16 @@
             height: 200px;
             background: #e9ecef;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.9rem;
+            display: block;
+            overflow: hidden;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+        }
+
+        .campus-map iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* Action Buttons */
@@ -515,10 +521,6 @@
         </nav>
     </header>
 
-    <button class="back-btn" onclick="window.history.back()">
-        ← Back to All Campuses
-    </button>
-
     <div class="container">
         <div class="campus-header">
             <div class="campus-logo">
@@ -527,33 +529,44 @@
             <div class="campus-info">
                 <h1>Bataan Peninsula State University</h1>
                 <p class="campus-subtitle">Main Campus</p>
+                <p style="color: #666; margin-top: 0.6rem; margin-bottom: 0.8rem; line-height:1.5;">
+                    <strong>Mission:</strong> To develop native leaders and empowered communities by delivering transformative instruction, research and production through Change Drivers and responsive policies.
+                </p>
+                <p style="color: #666; margin-bottom: 1rem; line-height:1.5;">
+                    <strong>Vision:</strong> An inclusive and sustainable university recognized for its global academic excellence by 2030.
+                </p>
                 <div class="info-grid">
                     <div class="info-item">
                         <span class="info-icon">📍</span>
-                        <span>Capitol Compound, Tenejero, Balanga City, Bataan</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">📞</span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">🌐</span>
-                        <span>www.bpsu.edu.ph</span>
+                        <span>Capitol Compound, Tenejero, City of Balanga, Bataan 2100</span>
                     </div>
                     <div class="info-item">
                         <span class="info-icon">✉️</span>
-                        <span>info@bpsu.edu.ph</span>
+                        <span>mc_admission@bpsu.edu.ph · public_affairs@bpsu.edu.ph</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🌐</span>
+                        <span>https://www.bpsu.edu.ph/</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🔗</span>
+                        <span><a href="https://www.facebook.com/batpenstateu" style="color:#2542ff; text-decoration:none;">facebook.com/batpenstateu</a></span>
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn btn-primary">WEBSITE</button>
-                    <button class="btn btn-secondary">FACEBOOK</button>
-                    <button class="btn btn-outline">ADMISSION</button>
-                    <button class="btn btn-outline">DIRECTIONS</button>
+                    <button class="btn btn-primary" onclick="window.open('https://www.bpsu.edu.ph/')">WEBSITE</button>
+                    <button class="btn btn-secondary" onclick="window.open('https://www.facebook.com/batpenstateu')">FACEBOOK</button>
+                    <button class="btn btn-outline" onclick="window.open('https://www.bpsu.edu.ph/index.php/admsfa')">ADMISSION</button>
+                    <button class="btn btn-outline" onclick="window.open('mailto:mc_admission@bpsu.edu.ph')">EMAIL ADMISSIONS</button>
+                    <button class="btn btn-outline" onclick="window.open('mailto:public_affairs@bpsu.edu.ph')">EMAIL PUBLIC AFFAIRS</button>
+                    <button class="btn btn-outline" onclick="alert('Visit: Capitol Compound, Tenejero, City of Balanga, Bataan 2100')">DIRECTIONS</button>
                 </div>
             </div>
-            <div class="campus-map">
-                Google Maps Integration
+            <div class="campus-map" id="campus-map">
+                <iframe
+                    src="https://www.google.com/maps?q=Bataan+Peninsula+State+University+Main,Balanga,Philippines&output=embed"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query=Bataan+Peninsula+State+University+Main" style="color:#2542ff;">open in Google Maps</a>.</p>
             </div>
         </div>
 
@@ -562,142 +575,143 @@
                 <!-- Academic Programs -->
                 <div class="section-card">
                     <div class="section-header">ACADEMIC PROGRAMS</div>
-                    <div class="programs-grid">
-                        <div class="program-category">
-                            <h3>COLLEGE OF ENGINEERING & ARCHITECTURE</h3>
-                            <ul class="program-list">
-                                <li>Bachelor of Science in Civil Engineering</li>
-                                <li>Bachelor of Science in Electrical Engineering</li>
-                                <li>Bachelor of Science in Electronics Engineering</li>
-                                <li>Bachelor of Science in Mechanical Engineering</li>
-                                <li>Bachelor of Science in Architecture</li>
-                            </ul>
-                        </div>
-
-                        <div class="program-category">
-                            <h3>COLLEGE OF EDUCATION</h3>
-                            <ul class="program-list">
-                                <li>Bachelor of Elementary Education (BEEd)</li>
-                                <li>Bachelor of Secondary Education Major in English</li>
-                                <li>Bachelor of Secondary Education Major in Mathematics</li>
-                                <li>Bachelor of Secondary Education Major in Science</li>
-                                <li>Bachelor of Physical Education (BPEd)</li>
-                            </ul>
-                        </div>
-
-                        <div class="program-category">
-                            <h3>COLLEGE OF BUSINESS ADMINISTRATION & ACCOUNTANCY</h3>
-                            <ul class="program-list">
-                                <li>Bachelor of Science in Accountancy (BSA)</li>
-                                <li>Bachelor of Science in Business Administration Major in Financial Management</li>
-                                <li>Bachelor of Science in Business Administration Major in Marketing Management</li>
-                                <li>Bachelor of Science in Entrepreneurship</li>
-                            </ul>
-                        </div>
-
-                        <div class="program-category">
-                            <h3>COLLEGE OF INFORMATION & COMMUNICATION TECHNOLOGY</h3>
-                            <ul class="program-list">
-                                <li>Bachelor of Science in Computer Science</li>
-                                <li>Bachelor of Science in Information Technology</li>
-                                <li>Bachelor of Science in Information Systems</li>
-                            </ul>
-                        </div>
-
-                        <div class="program-category">
-                            <h3>COLLEGE OF HOSPITALITY & TOURISM MANAGEMENT</h3>
-                            <ul class="program-list">
-                                <li>Bachelor of Science in Hospitality Management</li>
-                                <li>Bachelor of Science in Tourism Management</li>
-                            </ul>
-                        </div>
-
-                        <div class="program-category">
-                            <h3>COLLEGE OF ARTS & SCIENCES</h3>
-                            <ul class="program-list">
-                                <li>Bachelor of Science in Biology</li>
-                                <li>Bachelor of Science in Psychology</li>
-                                <li>Bachelor of Arts in Communication</li>
-                                <li>Bachelor of Science in Social Work</li>
-                            </ul>
-                        </div>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Bataan Peninsula State University Main Campus is well-known in the field of engineering and technology. Since its inception in 1953 (formerly Bataan National School of Arts and Trades or BNSAT), the Main Campus has been among the country's top-producers of high-caliber technician-leaders needed by industries both locally and abroad.
+                    </p>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        For detailed information about our comprehensive academic offerings across Engineering, Agriculture, Education, Business, Information Technology, and other fields, please visit:
+                    </p>
+                    <a href="https://www.bpsu.edu.ph/index.php/about-academics" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                        📄 View Academic Programs Brochure →
+                    </a>
+                    <br>
+                    <a href="https://www.canva.com/design/DAG0MjA-Ph4/svHa2Q4J_HOay3BY3Si1BA/edit?utm_content=DAG0MjA-Ph4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 0.5rem;">
+                        📄 View Brochure (Canva — Page 6) →
+                    </a>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #2542ff;">
+                        <p style="color: #666; font-size: 0.9rem;">
+                            <strong>Complete Program List:</strong> Visit the official website for a comprehensive list of all undergraduate and graduate programs offered at the Main Campus.
+                        </p>
                     </div>
                 </div>
 
                 <!-- Admission Requirements -->
                 <div class="section-card">
                     <div class="section-header">ADMISSION REQUIREMENTS</div>
-                    <div class="requirements-list">
-                        <div class="requirement-item">Original copy of High School Report Card (Form 138) or its equivalent</div>
-                        <div class="requirement-item">Certificate of Good Moral Character from the previously attended school</div>
-                        <div class="requirement-item">Birth Certificate (NSO/PSA authenticated)</div>
-                        <div class="requirement-item">Marriage Contract (if applicable, NSO/PSA authenticated)</div>
-                        <div class="requirement-item">Four (4) pieces of 2x2 ID pictures (recent, white background)</div>
-                        <div class="requirement-item">Medical Certificate from any government hospital or health center</div>
-                        <div class="requirement-item">Certificate of Transfer Credential/Honorable Dismissal (for transferees)</div>
-                        <div class="requirement-item">Original copy of Transcript of Records (for transferees)</div>
-                    </div>
-                    <div class="info-box" style="margin-top: 1.5rem;">
-                        <strong>Note:</strong> Submission of complete requirements does not guarantee admission. All applicants must pass the BPSU entrance examination and meet the minimum GPA requirements for their chosen program.
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Prospective students should visit the official BPSU admission page for complete and updated admission requirements and procedures:
+                    </p>
+                    <a href="https://www.canva.com/design/DAG0MjA-Ph4/svHa2Q4J_HOay3BY3Si1BA/edit?utm_content=DAG0MjA-Ph4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                        📋 View Admission Brochure (Page 6) →
+                    </a>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #2542ff;">
+                        <p style="color: #666; font-size: 0.9rem; line-height: 1.6;">
+                            <strong>Standard Requirements Include:</strong> High School Report Card (Form 138), Certificate of Good Moral Character, Birth Certificate (NSO/PSA), Marriage Contract (if applicable), 2x2 ID pictures, Medical Certificate, and Transfer documents (for transferees).
+                        </p>
                     </div>
                 </div>
 
                 <!-- Tuition & Fees -->
                 <div class="section-card">
                     <div class="section-header">TUITION & FEES</div>
+                    <h3 style="color: #2542ff; margin-bottom: 1rem;">Republic Act No. 10931 - Free Tertiary Education</h3>
                     <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #666;">
-                        As a State University, BPSU offers free tuition for undergraduate programs under Republic Act No. 10931 (Universal Access to Quality Tertiary Education Act of 2017).
+                        Bataan Peninsula State University, as a State University, provides free tuition and school fees under Republic Act No. 10931 (Universal Access to Quality Tertiary Education Act of 2017). This landmark legislation ensures that qualified Filipino students can access higher education without the burden of tuition fees.
                     </p>
-                    <table class="fees-table">
-                        <thead>
-                            <tr>
-                                <th>Fee Type</th>
-                                <th>Amount per Semester</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Tuition Fee</td>
-                                <td>FREE (covered by RA 10931)</td>
-                            </tr>
-                            <tr>
-                                <td>Miscellaneous Fees</td>
-                                <td>₱3,000 - ₱5,000</td>
-                            </tr>
-                            <tr>
-                                <td>Laboratory Fees (if applicable)</td>
-                                <td>₱500 - ₱2,000</td>
-                            </tr>
-                            <tr>
-                                <td>ID & Registration</td>
-                                <td>₱300 - ₱500</td>
-                            </tr>
-                            <tr>
-                                <td>Development Fee</td>
-                                <td>₱500</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="info-box" style="margin-top: 1.5rem;">
-                        <strong>Important:</strong> Only Filipino students who meet the eligibility criteria under RA 10931 qualify for free tuition. Miscellaneous and other fees are still required to be paid by all students.
+                    
+                    <h4 style="color: #333; font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Key Features of RA 10931:</h4>
+                    <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                        <div class="requirement-item"><strong>Free Higher Education:</strong> Undergraduate students in public higher education institutions receive free tuition and school fees</div>
+                        <div class="requirement-item"><strong>Free Tech-Voc Education:</strong> Students in state-run technical-vocational institutions qualify for free programs</div>
+                        <div class="requirement-item"><strong>Tertiary Education Subsidy (TES):</strong> Financial assistance program to support eligible students</div>
+                        <div class="requirement-item"><strong>Student Loan Program:</strong> Available for students needing additional educational financing</div>
+                    </div>
+
+                    <h4 style="color: #333; font-size: 1rem; margin-bottom: 0.8rem;">Exceptions to Free Tuition:</h4>
+                    <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                        <div class="requirement-item">Students who already have a bachelor's degree</div>
+                        <div class="requirement-item">Students who fail to meet admission and retention policies</div>
+                        <div class="requirement-item">Students who fail to complete their degree within the prescribed period</div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Miscellaneous and Other Fees:</strong> While tuition is free, students are required to pay miscellaneous fees and other charges such as laboratory fees, ID registration, and development fees. For specific amounts, please visit the Student Financial Assistance Office (SFAO) or call (047) 237-4438.
                     </div>
                 </div>
 
                 <!-- Scholarships -->
                 <div class="section-card">
                     <div class="section-header">SCHOLARSHIP & FINANCIAL AID</div>
-                    <div class="requirements-list">
-                        <div class="requirement-item">CHED Scholarship Programs (TES, UNIFAST)</div>
-                        <div class="requirement-item">DOST-SEI Scholarship for Science and Engineering Students</div>
-                        <div class="requirement-item">Provincial Government Scholarship Program</div>
-                        <div class="requirement-item">Municipal/City Scholarship Programs</div>
-                        <div class="requirement-item">Private Organization Scholarships</div>
-                        <div class="requirement-item">Academic Scholarship for Honor Students</div>
-                        <div class="requirement-item">Athletic Scholarship Program</div>
-                        <div class="requirement-item">Cultural Scholarship for Student Artists</div>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        BPSU offers a wide variety of scholarship programs to support deserving and qualified students. These include SUC-funded scholarships, private scholarships from partner organizations, and government-sponsored programs.
+                    </p>
+
+                    <h4 style="color: #2542ff; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">A. SUC Funded Scholarships — <a href="https://www.bpsu.edu.ph/index.php/admsfa/762-suc-funded-scholarship" style="color:#2542ff; text-decoration:none; font-weight:600;">SUC Funded Scholarship Details</a></h4>
+                    <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                        <div class="requirement-item">Entrance Scholarship</div>
+                        <div class="requirement-item">Valedictorian & Salutatorian</div>
+                        <div class="requirement-item">Academic Scholarship</div>
+                        <div class="requirement-item">University Scholarship</div>
+                        <div class="requirement-item">College Scholarship</div>
+                        <div class="requirement-item">Sports/Cultural Scholarship</div>
+                        <div class="requirement-item">ROTC 1st & 2nd Class</div>
+                        <div class="requirement-item">Varsity Player</div>
+                        <div class="requirement-item">Brass Band</div>
+                        <div class="requirement-item">Child of Permanent BPSU Employee</div>
+                        <div class="requirement-item">Student Publication (EIC, Associate Editor, Managing Editor)</div>
+                        <div class="requirement-item">Campus Student Council (President, Vice President, Secretary)</div>
+                        <div class="requirement-item">Dance Troupe</div>
+                        <div class="requirement-item">Choir</div>
+                        <div class="requirement-item">Theater Guilds</div>
+                        <div class="requirement-item">Free Tuition Fee for Agriculture and Fisheries Students</div>
                     </div>
-                    <div class="info-box" style="margin-top: 1.5rem;">
-                        For more information about scholarship requirements and application procedures, please visit the BPSU Scholarship Office or contact them directly.
+
+                    <h4 style="color: #2542ff; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">B. Private Scholarships — <a href="https://www.bpsu.edu.ph/index.php/admsfa/136-private-scholarships" style="color:#2542ff; text-decoration:none; font-weight:600;">Private Scholarship Details</a></h4>
+                    <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                        <div class="requirement-item">Oscar-Mila Banzon Scholarship</div>
+                        <div class="requirement-item">Bataan Association of USA</div>
+                        <div class="requirement-item">Bataan Association of Midwest USA</div>
+                        <div class="requirement-item">Medina Lacson-de Leon Foundation</div>
+                        <div class="requirement-item">Roberto Juanchito T. Dispo Scholarship</div>
+                        <div class="requirement-item">Liquigaz Philippines Corp.</div>
+                        <div class="requirement-item">Mario-Celia Vergara Foundation</div>
+                        <div class="requirement-item">Petron Bataan Refinery</div>
+                        <div class="requirement-item">Justice Emilio Gancayco Foundation</div>
+                        <div class="requirement-item">PLDT-Smart Gabay Guro Scholarship Program (2G)</div>
+                        <div class="requirement-item">Smart Wireless Engineering Education Program (SWEEP)</div>
+                        <div class="requirement-item">SAN MIGUEL Global Scholarship Program</div>
+                        <div class="requirement-item">University Town of the Peninsula Foundation Inc.</div>
+                        <div class="requirement-item">BNSAT Batch 82 Alumni Association Scholarship</div>
+                        <div class="requirement-item">Asiawide Land Specialist Development Corporation</div>
+                        <div class="requirement-item">Bataan Youth Foundation Inc. (BCFYI)</div>
+                        <div class="requirement-item">Life Bank Foundation Inc.</div>
+                        <div class="requirement-item">Toshiba Scholarship Program</div>
+                    </div>
+
+                    <h4 style="color: #2542ff; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">C. Government Scholarships — <a href="https://www.bpsu.edu.ph/index.php/admsfa/137-government-scholarships" style="color:#2542ff; text-decoration:none; font-weight:600;">Government Scholarship Details</a></h4>
+                    <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                        <div class="requirement-item">Free Tuition 2017 (RA 10931)</div>
+                        <div class="requirement-item">DOST Scholarship</div>
+                        <div class="requirement-item">DA-ACEF Execom Scholarships</div>
+                        <div class="requirement-item">DA-Rep. Herminia Roman</div>
+                        <div class="requirement-item">DA-Rep. Albert Garcia</div>
+                        <div class="requirement-item">DA-Rep. Gloria Macapagal-Arroyo</div>
+                        <div class="requirement-item">AFP/Veterans</div>
+                        <div class="requirement-item">One Town, One Scholar</div>
+                        <div class="requirement-item">Sulong Dunong Scholarship Program (MSWD)</div>
+                        <div class="requirement-item">Agraryo Scholarship Program</div>
+                        <div class="requirement-item">Philippine Society of Agriculture Engineers (PSAE)</div>
+                        <div class="requirement-item">Iskolar ng Bataan</div>
+                        <div class="requirement-item">CHED Tulong Dunong</div>
+                        <div class="requirement-item">AFP-DND-CHED-PASUC Scholarship Program</div>
+                        <div class="requirement-item">OWWA OFW Dependents Scholarship Program (OSDP)</div>
+                        <div class="requirement-item">OWWA Education and Livelihood Assistance Program (ELAP)</div>
+                        <div class="requirement-item">Expanded Students' Grant-in-Aid Program for Poverty Alleviation (ESGP-PA)</div>
+                        <div class="requirement-item">GSIS Scholarship Program</div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>For More Information:</strong> For complete details about scholarship requirements, eligibility criteria, and application procedures, visit the <a href="https://www.bpsu.edu.ph/index.php/admsfa" style="color: #2542ff; text-decoration: none; font-weight: 600;">Student Financial Assistance Office (SFAO)</a> or their Facebook page: <a href="https://www.facebook.com/BPSU.sfao" style="color: #2542ff; text-decoration: none; font-weight: 600;">BPSU SFAO</a>
                     </div>
                 </div>
 
@@ -778,14 +792,15 @@
                             <span class="contact-icon">✉️</span>
                             <div>
                                 <strong>Email</strong><br>
-                                info@bpsu.edu.ph
+                                mc_admission@bpsu.edu.ph<br>
+                                public_affairs@bpsu.edu.ph
                             </div>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">🌐</span>
                             <div>
                                 <strong>Website</strong><br>
-                                www.bpsu.edu.ph
+                                https://www.bpsu.edu.ph/
                             </div>
                         </div>
                         <div class="contact-item">
@@ -872,7 +887,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2024 Bataan Campus Finder. All rights reserved. | Designed with ❤️ for Bataan Students
+            © 2025 Bataan Campus Finder. All rights reserved. | Designed with ❤️ for Bataan Students
         </div>
     </footer>
 
