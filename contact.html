@@ -256,6 +256,17 @@
             animation: slideDown 0.3s ease-out;
         }
 
+        .error-message {
+            display: none;
+            background: #dc3545;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            animation: slideDown 0.3s ease-out;
+        }
+
         .success-message.show {
             display: block;
         }
@@ -337,7 +348,7 @@
             </div>
         </div>
         <nav>
-            <a href="home.html">HOME</a>
+            <a href="index.html">HOME</a>
             <a href="campus.html">ALL CAMPUSES</a>
             <a href="about.html">ABOUT</a>
             <a href="contact.html" class="active">CONTACT</a>
@@ -397,6 +408,32 @@
                 <div class="success-message" id="successMessage">
                     Thank you! Your message has been sent successfully.
                 </div>
+                <div class="error-message" id="errorMessage">
+                    Sorry — we couldn't send your message. Please try again later.
+                </div>
+                <div style="font-size:0.9rem;color:#555;margin-bottom:1rem;">
+                    Note: This form uses <strong>EmailJS</strong> to send emails directly from the browser. Replace the placeholders in the script with your EmailJS <em>service ID</em>, <em>template ID</em>, and <em>public key</em> (instructions below the form).
+                </div>
+                    <div style="background:#fff7e6;border:1px solid #ffe8a1;padding:0.9rem;border-radius:8px;font-size:0.95rem;color:#444;margin-bottom:1rem;">
+                        <strong>How to test locally</strong>
+                        <ol style="margin:0.5rem 0 0 1.1rem;padding:0;">
+                            <li>Sign up at <a href="https://www.emailjs.com/" target="_blank" style="color:#2542ff">EmailJS</a>, create a service and a template, then copy your <em>Service ID</em>, <em>Template ID</em>, and <em>Public Key</em>.</li>
+                            <li>Open <strong>contact.html</strong> and replace the placeholders: <code>YOUR_SERVICE_ID</code>, <code>YOUR_TEMPLATE_ID</code>, and <code>YOUR_PUBLIC_KEY</code> in the script near the bottom of the file.</li>
+                            <li>Run a simple local HTTP server (recommended; EmailJS may block file:// requests). Example commands:</li>
+                        </ol>
+                        <pre style="background:#f4f6f8;padding:0.6rem;border-radius:6px;margin-top:0.6rem;overflow:auto;"><code>python -m http.server 8000
+    # or (Python 3.11+)
+    python -m http.server
+
+    # or using Node (if installed):
+    # npx http-server . -p 8000
+
+    # Visit: http://localhost:8000/contact.html</code></pre>
+                        <ol start="4" style="margin:0.5rem 0 0 1.1rem;padding:0;">
+                            <li>Open the page in a browser, fill the form and click <strong>Submit</strong>. Watch the page for success or error messages.</li>
+                            <li>If no email arrives, check the browser console (F12) for network errors and verify your EmailJS keys and template fields.</li>
+                        </ol>
+                    </div>
 
                 <form id="contactForm">
                     <div class="form-group">
@@ -423,35 +460,73 @@
         <div class="designed-by">Designed with ❤️ by Canva</div>
     </footer>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
     <script>
+        /*
+        QUICK SETUP (EmailJS):
+        1. Sign up at https://www.emailjs.com/
+        2. Create an Email Service (e.g., Gmail) and note the Service ID.
+        3. Create an Email Template and note the Template ID. Template fields: from_email, message
+        4. Obtain your Public Key (user ID) from EmailJS dashboard.
+        5. Replace the placeholders below: YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, YOUR_PUBLIC_KEY
+        */
+
+        (function(){
+            // replace with your EmailJS public key after setup
+            try { emailjs.init('YOUR_PUBLIC_KEY'); } catch(e) { console.warn('EmailJS init failed', e); }
+        })();
+
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const concern = document.getElementById('concern').value;
 
-            // Show success message
-            successMessage.classList.add('show');
-            
-            // Reset form
-            contactForm.reset();
+            const email = document.getElementById('email').value.trim();
+            const concern = document.getElementById('concern').value.trim();
 
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.classList.remove('show');
-            }, 5000);
+            if(!email || !concern) {
+                errorMessage.textContent = 'Please complete both fields.';
+                errorMessage.classList.add('show');
+                setTimeout(()=> errorMessage.classList.remove('show'), 4000);
+                return;
+            }
 
-            // Here you would typically send the data to your server
-            // For now, we'll just log it to console
-            console.log('Form submitted:', { email, concern });
-            
-            // You can integrate with a backend service like:
-            // - EmailJS
-            // - FormSpree
-            // - Your own backend API
+            // show a temporary sending state
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const oldText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // build the payload for EmailJS template
+            const templateParams = {
+                from_email: email,
+                message: concern
+            };
+
+            // Replace these placeholders with your EmailJS details
+            const SERVICE_ID = 'YOUR_SERVICE_ID';
+            const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
+            // Send using EmailJS
+            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+                .then(() => {
+                    successMessage.classList.add('show');
+                    contactForm.reset();
+                    setTimeout(() => successMessage.classList.remove('show'), 5000);
+                })
+                .catch((err) => {
+                    console.error('Email send error', err);
+                    errorMessage.textContent = 'Sorry — failed to send. Check your EmailJS configuration.';
+                    errorMessage.classList.add('show');
+                    setTimeout(() => errorMessage.classList.remove('show'), 6000);
+                })
+                .finally(() => {
+                    submitBtn.textContent = oldText;
+                    submitBtn.disabled = false;
+                });
         });
     </script>
     <script src="schools-data.js"></script>
