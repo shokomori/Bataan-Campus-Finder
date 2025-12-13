@@ -1,490 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heroes College - Campus Details</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heroes College - Campus Details</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background:#f5f5f5; color:#333; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-        }
+/* Header */
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1rem 5%;
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    position:relative;
+    z-index:1000;
+}
+.logo { display:flex; align-items:center; gap:10px; }
+.logo-icon { width:40px; height:40px; background:#2542ff; border-radius:8px; }
+.logo-text h1 { font-size:1.2rem; color:#2542ff; }
+.logo-text p { font-size:0.7rem; color:#666; }
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+/* Desktop nav */
+nav.desktop-nav { display:flex; gap:2rem; }
+nav.desktop-nav a { text-decoration:none; color:#333; font-weight:500; padding:0.5rem 1rem; transition:all 0.3s; }
+nav.desktop-nav a:hover, nav.desktop-nav a.active { color:#2542ff; }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+/* Hamburger for mobile */
+.hamburger { display:none; flex-direction:column; gap:4px; cursor:pointer; z-index:1001; }
+.hamburger div { width:25px; height:3px; background:#2542ff; }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: #2542ff;
-            border-radius: 8px;
-        }
+/* Mobile nav */
+nav.mobile-nav {
+    display:none;
+    flex-direction:column;
+    gap:1rem;
+    position:absolute;
+    top:100%;
+    right:5%;
+    background:white;
+    padding:1rem 2rem;
+    border-radius:0 0 8px 8px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.2);
+    width:200px;
+}
+nav.mobile-nav.show { display:flex; }
+nav.mobile-nav a { text-decoration:none; color:#333; font-weight:500; }
 
-        .logo-text h1 {
-            font-size: 1.2rem;
-            color: #2542ff;
-        }
+/* Main container */
+.container { max-width:1400px; margin:0 auto; padding:2rem 5%; }
 
-        .logo-text p {
-            font-size: 0.7rem;
-            color: #666;
-        }
+/* Campus Header Card */
+.campus-header {
+    background:white;
+    border-radius:15px;
+    padding:2rem;
+    margin-bottom:2rem;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    gap:2rem;
+    align-items:start;
+}
+.campus-logo { width:120px; height:120px; border-radius:10px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:#f0f0f0; }
+.campus-logo img { width:100%; height:100%; object-fit:cover; }
+.campus-info h1 { font-size:1.8rem; margin-bottom:0.5rem; color:#333; }
+.campus-subtitle { color:#666; margin-bottom:1.5rem; font-size:1rem; }
+.info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+.info-item { display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; }
+.info-icon { color:#2542ff; font-size:1.2rem; }
 
-        nav {
-            display: flex;
-            gap: 2rem;
-        }
+/* Map */
+.campus-map { width:300px; height:200px; background:#e9ecef; border-radius:10px; display:block; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
+.campus-map iframe { width:100%; height:100%; border:0; }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s;
-        }
+/* Buttons */
+.action-buttons { display:flex; gap:1rem; margin-top:1.5rem; }
+.btn { padding:0.8rem 2rem; border-radius:8px; font-weight:600; cursor:pointer; transition:all 0.3s; border:none; font-size:0.95rem; }
+.btn-primary { background:#2542ff; color:white; }
+.btn-primary:hover { background:#1a32cc; }
 
-        nav a:hover, nav a.active {
-            color: #2542ff;
-        }
+/* Content Grid */
+.content-grid { display:grid; grid-template-columns:2fr 1fr; gap:2rem; }
+.main-content { display:flex; flex-direction:column; gap:2rem; }
+.sidebar { display:flex; flex-direction:column; gap:2rem; }
 
-        /* Back Button */
-        .back-btn {
-            background: white;
-            padding: 1rem 5%;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-size: 1rem;
-            color: #2542ff;
-            transition: all 0.3s;
-        }
+/* Section Card */
+.section-card { background:white; border-radius:15px; padding:2rem; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+.section-header { background:#2542ff; color:white; padding:0.8rem 1.5rem; margin:-2rem -2rem 1.5rem -2rem; border-radius:15px 15px 0 0; font-size:1.1rem; font-weight:600; }
 
-        .back-btn:hover {
-            background: #f8f9fa;
-        }
+/* Contact Info */
+.contact-info { display:flex; flex-direction:column; gap:1rem; }
+.contact-item { display:flex; align-items:center; gap:0.8rem; padding:1rem; background:#f8f9fa; border-radius:8px; font-size:0.9rem; }
+.contact-icon { color:#2542ff; font-size:1.3rem; }
 
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 5%;
-        }
+/* Footer */
+footer { background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem; }
+.footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:2rem; }
+.footer-section h3 { margin-bottom:1rem; color:#2542ff; }
+.footer-section p, .footer-section a { color:#ccc; font-size:0.9rem; line-height:1.8; text-decoration:none; }
+.footer-section a:hover { color:#2542ff; }
+.footer-links { display:flex; flex-direction:column; gap:0.5rem; }
+.footer-bottom { text-align:center; margin-top:2rem; padding-top:2rem; border-top:1px solid #333; color:#999; font-size:0.9rem; }
 
-        /* Campus Header Card */
-        .campus-header {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 2rem;
-            align-items: start;
-            position: relative;
-        }
-
-        .campus-logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 10px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f0f0f0;
-        }
-
-        .campus-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .campus-info h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .campus-subtitle {
-            color: #666;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .info-icon {
-            color: #2542ff;
-            font-size: 1.2rem;
-        }
-
-        .campus-map {
-            width: 300px;
-            height: 200px;
-            background: #e9ecef;
-            border-radius: 10px;
-            display: block;
-            overflow: hidden;
-            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-        }
-
-        .campus-map iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            font-size: 0.95rem;
-        }
-
-        .btn-primary {
-            background: #2542ff;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #1a32cc;
-        }
-
-        /* Content Grid */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-        }
-
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        /* Section Card */
-        .section-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .section-header {
-            background: #2542ff;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            margin: -2rem -2rem 1.5rem -2rem;
-            border-radius: 15px 15px 0 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-
-        .contact-icon {
-            color: #2542ff;
-            font-size: 1.3rem;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 2rem 5%;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #2542ff;
-        }
-
-        .footer-section p, .footer-section a {
-            color: #ccc;
-            font-size: 0.9rem;
-            line-height: 1.8;
-            text-decoration: none;
-        }
-
-        .footer-section a:hover {
-            color: #2542ff;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .campus-header {
-                grid-template-columns: 1fr;
-            }
-
-            .campus-map {
-                width: 100%;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-        }
-    </style>
+/* Responsive */
+@media (max-width:1024px) { .content-grid { grid-template-columns:1fr; } .campus-header { grid-template-columns:1fr; } .campus-map { width:100%; } .footer-content { grid-template-columns:1fr; } }
+@media (max-width:768px) { nav.desktop-nav { display:none; } .hamburger { display:flex; } .info-grid { grid-template-columns:1fr; } .action-buttons { flex-direction:column; } }
+</style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <div class="logo-icon"></div>
-            <div class="logo-text">
-                <h1>Bataan Campus Finder</h1>
-                <p>Campus Details</p>
+
+<header>
+    <div class="logo" style="display:flex; align-items:center; gap:10px;">
+    <img src="../assets/images/finderlogo.png" alt="Finder Logo" style="width:35px; height:35px; object-fit:contain;">
+    <div class="logo-text">
+        <h1 style="font-size:1.2rem; color:#2542ff;">Bataan Campus Finder</h1>
+        <p style="font-size:0.7rem; color:#666;">Campus Details</p>
+    </div>
+</div>
+    
+
+    <!-- Hamburger -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+        <a href="../index.html">HOME</a>
+        <a href="../campus.html" class="active">ALL CAMPUSES</a>
+        <a href="../about.html">ABOUT</a>
+        <a href="../contact.html">CONTACT</a>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <a href="../index.html">HOME</a>
+        <a href="../campus.html" class="active">ALL CAMPUSES</a>
+        <a href="../about.html">ABOUT</a>
+        <a href="../contact.html">CONTACT</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="campus-header">
+        <div class="campus-logo">
+            <img src="../assets/images/HEROES.jfif" alt="Heroes College Logo">
+        </div>
+        <div class="campus-info">
+            <h1>Heroes College of the Philippines</h1>
+            <p class="campus-subtitle">Main Campus</p>
+            <div class="info-grid">
+                <div class="info-item"><span class="info-icon">📍</span><span>Bataan, Bataan</span></div>
+                <div class="info-item"><span class="info-icon">📞</span><span>(047) 234-5678</span></div>
+                <div class="info-item"><span class="info-icon">🌐</span><span>www.heroescollege.edu.ph</span></div>
+                <div class="info-item"><span class="info-icon">✉️</span><span>info@heroescollege.edu.ph</span></div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary">LEARN MORE</button>
             </div>
         </div>
-        <nav>
-            <a href="../index.html">HOME</a>
-            <a href="../campus.html" class="active">ALL CAMPUSES</a>
-            <a href="../about.html">ABOUT</a>
-            <a href="../contact.html">CONTACT</a>
-        </nav>
-    </header>
+        <div class="campus-map" id="campusMap">Map Loading...</div>
+    </div>
 
-    <div class="container">
-        <div class="campus-header">
-            <div class="campus-logo">
-                <img src="../assets/images/HEROES.jfif" alt="Heroes College Logo">
+    <div class="content-grid">
+        <div class="main-content">
+            <div class="section-card">
+                <div class="section-header">OVERVIEW</div>
+                <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">
+                    Heroes College is a leading educational institution in Bataan dedicated to providing quality higher education. The institution is committed to fostering academic excellence, student development, and community engagement.
+                </p>
+                <p style="color: #666; line-height: 1.6;">
+                    With experienced faculty, modern facilities, and comprehensive programs, Heroes College offers students an excellent platform for personal and professional growth in today's competitive world.
+                </p>
             </div>
-            <div class="campus-info">
-                <h1>Heroes College of the Philippines</h1>
-                <p class="campus-subtitle">Main Campus</p>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <span class="info-icon">📍</span>
-                        <span>Bataan, Bataan</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">📞</span>
-                        <span>(047) 234-5678</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">🌐</span>
-                        <span>www.heroescollege.edu.ph</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">✉️</span>
-                        <span>info@heroescollege.edu.ph</span>
-                    </div>
-                </div>
-                <div class="action-buttons">
-                    <button class="btn btn-primary">LEARN MORE</button>
-                </div>
-            </div>
-            <div class="campus-map">
-                Map Coming Soon
+
+            <div class="section-card">
+                <div class="section-header">ACADEMIC PROGRAMS</div>
+                <ul style="color:#666; line-height:1.6; margin-left:1.5rem;">
+                    <li>Business Administration</li>
+                    <li>Information Technology</li>
+                    <li>Hospitality Management</li>
+                    <li>Engineering</li>
+                    <li>Multimedia Arts</li>
+                </ul>
             </div>
         </div>
 
-        <div class="content-grid">
-            <div class="main-content">
-                <div class="section-card">
-                    <div class="section-header">OVERVIEW</div>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">
-                        Heroes College is a leading educational institution in Bataan dedicated to providing quality higher education. The institution is committed to fostering academic excellence, student development, and community engagement.
-                    </p>
-                    <p style="color: #666; line-height: 1.6;">
-                        With experienced faculty, modern facilities, and comprehensive programs, Heroes College offers students an excellent platform for personal and professional growth in today's competitive world.
-                    </p>
-                </div>
-            </div>
-
-            <div class="sidebar">
-                <div class="section-card">
-                    <div class="section-header">CONTACT INFORMATION</div>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <span class="contact-icon">📞</span>
-                            <div>
-                                <strong>Phone</strong><br>
-                                (047) 234-5678
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">✉️</span>
-                            <div>
-                                <strong>Email</strong><br>
-                                info@heroescollege.edu.ph
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">🌐</span>
-                            <div>
-                                <strong>Website</strong><br>
-                                www.heroescollege.edu.ph
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">📍</span>
-                            <div>
-                                <strong>Address</strong><br>
-                                Bataan, Bataan
-                            </div>
-                        </div>
-                    </div>
+        <div class="sidebar">
+            <div class="section-card">
+                <div class="section-header">CONTACT INFORMATION</div>
+                <div class="contact-info">
+                    <div class="contact-item"><span class="contact-icon">📞</span><div><strong>Phone</strong><br>(047) 234-5678</div></div>
+                    <div class="contact-item"><span class="contact-icon">✉️</span><div><strong>Email</strong><br>info@heroescollege.edu.ph</div></div>
+                    <div class="contact-item"><span class="contact-icon">🌐</span><div><strong>Website</strong><br>www.heroescollege.edu.ph</div></div>
+                    <div class="contact-item"><span class="contact-icon">📍</span><div><strong>Address</strong><br>Bataan, Bataan</div></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Bataan Campus Finder</h3>
-                <p>Your comprehensive guide to higher education institutions in Bataan. Discover programs, compare options, and find the perfect campus for your future.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <div class="footer-links">
-                    <a href="../index.html">Home</a>
-                    <a href="../campus.html">All Campuses</a>
-                    <a href="../about.html">About Us</a>
-                    <a href="../contact.html">Contact</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Need Help?</h3>
-                <p>Contact us for any inquiries about higher education in Bataan.</p>
-                <p style="margin-top: 1rem;">
-                    Email: info@bataancampusfinder.com<br>
-                    Phone: (047) XXX-XXXX
-                </p>
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Bataan Campus Finder</h3>
+            <p>Your comprehensive guide to higher education institutions in Bataan. Discover programs, compare options, and find the perfect campus for your future.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="../campus.html">All Campuses</a>
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            © 2025 Bataan Campus Finder. All rights reserved. | Designed with ❤️ for Bataan Students
+        <div class="footer-section">
+            <h3>Need Help?</h3>
+            <p>Contact us for any inquiries about higher education in Bataan.</p>
+            <p style="margin-top:1rem;">Email: info@bataancampusfinder.com<br>Phone: (047) XXX-XXXX</p>
         </div>
-    </footer>
+    </div>
+    <div class="footer-bottom">© 2025 Bataan Campus Finder. All rights reserved. | Designed for Bataan Students</div>
+</footer>
 
-    <script src="../assets/js/schools-data.js"></script>
-    <script>
-    (function(){
-        document.querySelectorAll('.campus-header').forEach(el=>el.style.position='relative');
-        document.querySelectorAll('.campus-map').forEach(el=>{
-            el.style.overflow='hidden';
-            el.style.display='block';
-            el.style.boxShadow='0 1px 6px rgba(0,0,0,0.08)';
-            if(el.querySelector('iframe')) return;
-            var titleEl = document.querySelector('.campus-info h1') || document.querySelector('h1');
-            var q = titleEl ? titleEl.textContent.trim() : document.title;
-            var src = 'https://www.google.com/maps?q=' + encodeURIComponent(q + ', Bataan, Philippines') + '&output=embed';
-            el.innerHTML = '<iframe src="'+src+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
-                '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
-        });
-    })();
-    </script>
+<script>
+function toggleMenu() {
+    document.querySelector('.mobile-nav').classList.toggle('show');
+}
+
+// Auto-load Google Map
+(function(){
+    const mapContainer = document.getElementById('campusMap');
+    const campusName = document.querySelector('.campus-info h1').textContent;
+    const src = 'https://www.google.com/maps?q=' + encodeURIComponent(campusName + ', Bataan, Philippines') + '&output=embed';
+    mapContainer.innerHTML = '<iframe src="'+src+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
+        '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(campusName+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
+})();
+</script>
+
 </body>
 </html>

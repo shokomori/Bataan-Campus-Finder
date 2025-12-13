@@ -1,394 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Campuses - Bataan Campus Finder</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Campuses - Bataan Campus Finder</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: #333;
-            background: #f8f9fa;
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        color: #333;
+        background: #f8f9fa;
+    }
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: #2542ff;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: #2542ff;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
 
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+    .logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 
-        .logo-text h1 {
-            font-size: 1.2rem;
-            color: #2542ff;
-        }
+    .logo-text h1 {
+        font-size: 1.2rem;
+        color: #2542ff;
+    }
 
-        .logo-text p {
-            font-size: 0.7rem;
-            color: #666;
-        }
+    .logo-text p {
+        font-size: 0.7rem;
+        color: #666;
+    }
 
+    nav {
+        display: flex;
+        gap: 2rem;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s;
+        border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover, nav a.active {
+        color: #2542ff;
+        border-bottom-color: #2542ff;
+    }
+
+    /* Hamburger */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #333;
+        border-radius: 2px;
+    }
+
+    /* Search Section */
+    .search-section {
+        padding: 2rem 5%;
+        background: #f8f9fa;
+    }
+
+    .search-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        background: #f1f3f5;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+    }
+
+    .search-icon {
+        color: #666;
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .search-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .search-box input {
+        flex: 1;
+        border: none;
+        background: none;
+        font-size: 1rem;
+        padding: 0.5rem;
+        outline: none;
+    }
+
+    .filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .filter-select {
+        padding: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        font-size: 1rem;
+        background: white;
+        cursor: pointer;
+        transition: all 0.3s;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23666' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 3rem;
+    }
+
+    .filter-select:hover {
+        border-color: #2542ff;
+    }
+
+    /* Institutions Section */
+    .institutions {
+        padding: 2rem 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .institutions h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .institutions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .institution-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        transition: all 0.3s;
+        cursor: pointer;
+        display: flex;              /* NEW: Make card a flex column */
+        flex-direction: column;
+    }
+
+    .institution-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    }
+
+    .institution-image {
+        width: 100%;
+        height: 140px;
+        background: #e9ecef;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .institution-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .institution-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        z-index: 2;
+        padding: 5px;
+    }
+
+    .institution-logo img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .institution-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: white;
+        padding: 0.25rem 0.6rem;
+        border-radius: 15px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #2542ff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        z-index: 3;
+    }
+
+    .institution-content {
+        padding: 1.2rem;
+        flex: 1;                      /* Make content fill card */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Push button to bottom */
+    }
+
+    .institution-content h3 {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+        color: #333;
+        font-weight: 600;
+        line-height: 1.3;
+        min-height: 2.6rem;           /* uniform title height */
+    }
+
+    .institution-code {
+        color: #666;
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+    }
+
+    .institution-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        color: #666;
+    }
+
+    .detail-icon {
+        color: #2542ff;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .detail-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .view-details-btn {
+        width: 100%;
+        padding: 0.7rem;
+        background: #2542ff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: auto; /* ensures button stays at bottom */
+    }
+
+    .view-details-btn:hover {
+        background: #1a32cc;
+        transform: scale(1.02);
+    }
+
+    /* Footer */
+    footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 1.5rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 3rem;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+        color: #2542ff;
+    }
+
+    .designed-by {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
         nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s;
-            border-bottom: 2px solid transparent;
-        }
-
-        nav a:hover, nav a.active {
-            color: #2542ff;
-            border-bottom-color: #2542ff;
-        }
-
-        /* Search Section */
-        .search-section {
-            padding: 2rem 5%;
-            background: #f8f9fa;
-        }
-
-        .search-container {
-            max-width: 900px;
-            margin: 0 auto;
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        .search-box {
-            display: flex;
-            align-items: center;
-            background: #f1f3f5;
+            position: absolute;
+            top: 100%;
+            right: 5%;
+            width: 200px;
             padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            border-radius: 8px;
         }
 
-        .search-icon {
-            color: #666;
-            font-size: 1.2rem;
-            margin-right: 0.5rem;
-            width: 24px;
-            height: 24px;
+        nav.show {
             display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .search-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .search-box input {
-            flex: 1;
-            border: none;
-            background: none;
-            font-size: 1rem;
-            padding: 0.5rem;
-            outline: none;
+        .hamburger {
+            display: flex;
         }
 
         .filters {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .filter-select {
-            padding: 1rem;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            font-size: 1rem;
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23666' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            padding-right: 3rem;
-        }
-
-        .filter-select:hover {
-            border-color: #2542ff;
-        }
-
-        /* Institutions Section */
-        .institutions {
-            padding: 2rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .institutions h2 {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #333;
-            font-weight: 600;
+            grid-template-columns: 1fr;
         }
 
         .institutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 1fr;
         }
 
-        .institution-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .institution-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-        }
-
-        .institution-image {
-            width: 100%;
-            height: 140px;
-            background: #e9ecef;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .institution-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .institution-logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-            z-index: 2;
-            padding: 5px;
-        }
-
-        .institution-logo img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .institution-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: white;
-            padding: 0.25rem 0.6rem;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #2542ff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 3;
-        }
-
-        .institution-content {
-            padding: 1.2rem;
-        }
-
-        .institution-content h3 {
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-            color: #333;
-            font-weight: 600;
-            line-height: 1.3;
-            min-height: 2.6rem;
-        }
-
-        .institution-code {
-            color: #666;
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
-            font-weight: 500;
-        }
-
-        .institution-details {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        .detail-icon {
-            color: #2542ff;
-            width: 16px;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .detail-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .view-details-btn {
-            width: 100%;
-            padding: 0.7rem;
-            background: #2542ff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .view-details-btn:hover {
-            background: #1a32cc;
-            transform: scale(1.02);
-        }
-
-        /* Footer */
         footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 3rem;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
         }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: #2542ff;
-        }
-
-        .designed-by {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            .filters {
-                grid-template-columns: 1fr;
-            }
-
-            .institutions-grid {
-                grid-template-columns: 1fr;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <header>
-       <div class="logo">
-    <div class="logo-icon">
-        <img src="logo-icon.png" alt="Campus Finder Logo">
+
+<header>
+    <div class="logo">
+        <div class="logo-icon">
+            <img src="assets/images/finderlogo.png" alt="Campus Finder Logo">
+        </div>
+        <div class="logo-text">
+            <h1>Bataan Campus Finder</h1>
+            <p>Discover Your Path to Higher Education in Bataan</p>
+        </div>
     </div>
-    <div class="logo-text">
-        <h1>Bataan Campus Finder</h1>
-        <p>Discover Your Path to Higher Education in Bataan</p>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-</div>
-<nav>
-    <a href="index.html">HOME</a>
-    <a href="campus.html" class="active">ALL CAMPUSES</a>
-    <a href="about.html">ABOUT</a>
-    <a href="contact.html">CONTACT</a>
-</nav>
+
+    <nav id="navMenu">
+        <a href="index.html">HOME</a>
+        <a href="campus.html" class="active">ALL CAMPUSES</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
 </header>
 
+<!-- Search Section -->
 <section class="search-section">
     <div class="search-container">
         <div class="search-box">
@@ -420,6 +470,8 @@
 <section class="institutions">
     <h2>All Higher Education Institutions</h2>
     <div class="institutions-grid" id="institutionsGrid">
+
+        <!-- Example Card -->
         <div class="institution-card" data-type="SUC" data-location="Bataan">
             <div class="institution-image">
                 <img src="assets/images/bannerbpsu.jpg" alt="BPSU Banner">
@@ -429,381 +481,34 @@
                 <span class="institution-badge">SUC</span>
             </div>
             <div class="institution-content">
-                <h3>Bataan Peninsula State University</h3>
-                <p class="institution-code">BPSU</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/campus.jpg" alt="Campus"></span>
-                        <span>6 Campuses</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>0905 568 3448</span>
+                <div>
+                    <h3>Bataan Peninsula State University</h3>
+                    <p class="institution-code">BPSU</p>
+                    <div class="institution-details">
+                        <div class="detail-item">
+                            <span class="detail-icon"><img src="assets/images/campus.jpg" alt="Campus"></span>
+                            <span>6 Campuses</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
+                            <span>Bataan</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
+                            <span>N Programs Available</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
+                            <span>0905 568 3448</span>
+                        </div>
                     </div>
                 </div>
                 <button class="view-details-btn" onclick="window.location.href='schools/bpsu/bpsu.html'">View Details</button>
             </div>
         </div>
 
-        <div class="institution-card" data-type="SUC" data-location="Mariveles">
-            <div class="institution-image">
-                <img src="assets/images/bannerpup.jpg" alt="PUP Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/PUP.jpg" alt="PUP Logo">
-                </div>
-                <span class="institution-badge">SUC</span>
-            </div>
-            <div class="institution-content">
-                <h3>Polytechnic University of the Philippines</h3>
-                <p class="institution-code">PUP - Bataan</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Mariveles, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/pup-bataan.html'">View Details</button>
-            </div>
-        </div>
+        <div class="institution-card" data-type="SUC" data-location="Mariveles"> <div class="institution-image"> <img src="assets/images/bannerpup.jpg" alt="PUP Banner"> <div class="institution-logo"> <img src="assets/images/PUP.jpg" alt="PUP Logo"> </div> <span class="institution-badge">SUC</span> </div> <div class="institution-content"> <h3>Polytechnic University of the Philippines</h3> <p class="institution-code">PUP - Bataan</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Mariveles, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/pup-bataan.html'">View Details</button> </div> </div> <div class="institution-card" data-type="LUC" data-location="Limay"> <div class="institution-image"> <img src="assets/images/bannerlipoco.jpg" alt="LPC Banner"> <div class="institution-logo"> <img src="assets/images/LIPOCO.png" alt="LPC Logo"> </div> <span class="institution-badge">LUC</span> </div> <div class="institution-content"> <h3>Limay Polytechnic College</h3> <p class="institution-code">LPC</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Limay, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/lpc.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Balanga City"> <div class="institution-image"> <img src="assets/images/bannerama.JPG" alt="AMA Banner"> <div class="institution-logo"> <img src="assets/images/ACLC.jpg" alt="AMA Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>AMA AKO - ACLC College of Balanga</h3> <p class="institution-code">ACLC - Bataan</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Balanga City, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/aclc-bataan.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Balanga City"> <div class="institution-image"> <img src="assets/images/bannerapcas.jpg" alt="APCAS Banner"> <div class="institution-logo"> <img src="assets/images/APCAS.png" alt="APCAS Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>Asia Pacific College of Advanced Studies</h3> <p class="institution-code">APCAS</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Balanga City, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/apcas.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Balanga City"> <div class="institution-image"> <img src="assets/images/bannerheroes.jpg" alt="HEROES Banner"> <div class="institution-logo"> <img src="assets/images/HEROES.jfif" alt="HEROES Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>Bataan Heroes Memorial College</h3> <p class="institution-code">HEROES</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Balanga City, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>0931 916 3061</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/heroes.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Abucay"> <div class="institution-image"> <img src="assets/images/bannerletran.jpg" alt="Letran Banner"> <div class="institution-logo"> <img src="assets/images/LETRAN.webp" alt="Letran Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>Colegio de San Juan de Letran</h3> <p class="institution-code">Letran - Bataan</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Abucay, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/letran-bataan.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Dinalupihan"> <div class="institution-image"> <img src="assets/images/bannermontessoru.jpg" alt="CSM Banner"> <div class="institution-logo"> <img src="assets/images/MONTESSORI.png" alt="CSM Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>College of Subic Montessori - Dinalupihan</h3> <p class="institution-code">CSM - Dinalupihan</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Dinalupihan, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/csm-dinalupihan.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Bataan"> <div class="institution-image"> <img src="assets/images/bannereastwoods.jpg" alt="Eastwoods Banner"> <div class="institution-logo"> <img src="assets/images/EASTWOODS.png" alt="Eastwoods Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>Eastwoods Professional College of Science and Technology</h3> <p class="institution-code">EASTWOODS</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/campus.jpg" alt="Campus"></span> <span>2 Campuses</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/eastwoods/eastwoods.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Mariveles"> <div class="institution-image"> <img src="assets/images/bannermaap.jpg" alt="MAAP Banner"> <div class="institution-logo"> <img src="assets/images/MAAP.jpg" alt="MAAP Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>Maritime Academy of Asia and the Pacific</h3> <p class="institution-code">MAAP</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Mariveles, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/maap.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Balanga City"> <div class="institution-image"> <img src="assets/images/bannermicro.jpg" alt="MCBT Banner"> <div class="institution-logo"> <img src="assets/images/MICROCITY.jfif" alt="MCBT Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>Microcity College of Business and Technology</h3> <p class="institution-code">MCBT</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Balanga City, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/mcbt.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Balanga City"> <div class="institution-image"> <img src="assets/images/bannerpwu.jpg" alt="PWU Banner"> <div class="institution-logo"> <img src="assets/images/PWU.png" alt="PWU Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>Philippine Women's University CDCEC - Bataan</h3> <p class="institution-code">PWU CDCEC</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Balanga City, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/pwu-cdcec.html'">View Details</button> </div> </div> <div class="institution-card" data-type="Private" data-location="Dinalupihan"> <div class="institution-image"> <img src="assets/images/bannerunc.png" alt="UNC Banner"> <div class="institution-logo"> <img src="assets/images/CACERES.jpg" alt="UNC Logo"> </div> <span class="institution-badge">Private</span> </div> <div class="institution-content"> <h3>University of Nueva Caceres</h3> <p class="institution-code">UNC</p> <div class="institution-details"> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span> <span>Dinalupihan, Bataan</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span> <span>N Programs Available</span> </div> <div class="detail-item"> <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span> <span>(047) 237-4438</span> </div> </div> <button class="view-details-btn" onclick="window.location.href='schools/unc.html'">View Details</button> </div> </div> </div>
 
-        <div class="institution-card" data-type="LUC" data-location="Limay">
-            <div class="institution-image">
-                <img src="assets/images/bannerlipoco.jpg" alt="LPC Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/LIPOCO.png" alt="LPC Logo">
-                </div>
-                <span class="institution-badge">LUC</span>
-            </div>
-            <div class="institution-content">
-                <h3>Limay Polytechnic College</h3>
-                <p class="institution-code">LPC</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Limay, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/lpc.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Balanga City">
-            <div class="institution-image">
-                <img src="assets/images/bannerama.JPG" alt="AMA Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/ACLC.jpg" alt="AMA Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>AMA AKO - ACLC College of Balanga</h3>
-                <p class="institution-code">ACLC - Bataan</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Balanga City, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/aclc-bataan.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Balanga City">
-            <div class="institution-image">
-                <img src="assets/images/bannerapcas.jpg" alt="APCAS Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/APCAS.png" alt="APCAS Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>Asia Pacific College of Advanced Studies</h3>
-                <p class="institution-code">APCAS</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Balanga City, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/apcas.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Balanga City">
-            <div class="institution-image">
-                <img src="assets/images/bannerheroes.jpg" alt="HEROES Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/HEROES.jfif" alt="HEROES Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>Bataan Heroes Memorial College</h3>
-                <p class="institution-code">HEROES</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Balanga City, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>0931 916 3061</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/heroes.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Abucay">
-            <div class="institution-image">
-                <img src="assets/images/bannerletran.jpg" alt="Letran Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/LETRAN.webp" alt="Letran Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>Colegio de San Juan de Letran</h3>
-                <p class="institution-code">Letran - Bataan</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Abucay, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/letran-bataan.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Dinalupihan">
-            <div class="institution-image">
-                <img src="assets/images/bannermontessoru.jpg" alt="CSM Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/MONTESSORI.png" alt="CSM Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>College of Subic Montessori - Dinalupihan</h3>
-                <p class="institution-code">CSM - Dinalupihan</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Dinalupihan, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/csm-dinalupihan.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Bataan">
-            <div class="institution-image">
-                <img src="assets/images/bannereastwoods.jpg" alt="Eastwoods Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/EASTWOODS.png" alt="Eastwoods Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>Eastwoods Professional College of Science and Technology</h3>
-                <p class="institution-code">EASTWOODS</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/campus.jpg" alt="Campus"></span>
-                        <span>2 Campuses</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/eastwoods/eastwoods.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Mariveles">
-            <div class="institution-image">
-                <img src="assets/images/bannermaap.jpg" alt="MAAP Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/MAAP.jpg" alt="MAAP Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>Maritime Academy of Asia and the Pacific</h3>
-                <p class="institution-code">MAAP</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Mariveles, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/maap.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Balanga City">
-            <div class="institution-image">
-                <img src="assets/images/bannermicro.jpg" alt="MCBT Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/MICROCITY.jfif" alt="MCBT Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>Microcity College of Business and Technology</h3>
-                <p class="institution-code">MCBT</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Balanga City, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/mcbt.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Balanga City">
-            <div class="institution-image">
-                <img src="assets/images/bannerpwu.jpg" alt="PWU Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/PWU.png" alt="PWU Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>Philippine Women's University CDCEC - Bataan</h3>
-                <p class="institution-code">PWU CDCEC</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Balanga City, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/pwu-cdcec.html'">View Details</button>
-            </div>
-        </div>
-
-        <div class="institution-card" data-type="Private" data-location="Dinalupihan">
-            <div class="institution-image">
-                <img src="assets/images/bannerunc.png" alt="UNC Banner">
-                <div class="institution-logo">
-                    <img src="assets/images/CACERES.jpg" alt="UNC Logo">
-                </div>
-                <span class="institution-badge">Private</span>
-            </div>
-            <div class="institution-content">
-                <h3>University of Nueva Caceres</h3>
-                <p class="institution-code">UNC</p>
-                <div class="institution-details">
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/location.avif" alt="Location"></span>
-                        <span>Dinalupihan, Bataan</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/program.png" alt="Programs"></span>
-                        <span>N Programs Available</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone"></span>
-                        <span>(047) 237-4438</span>
-                    </div>
-                </div>
-                <button class="view-details-btn" onclick="window.location.href='schools/unc.html'">View Details</button>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -812,35 +517,24 @@
         <a href="#terms">Terms & Support</a>
         <a href="#privacy">Privacy Policy</a>
     </div>
-    <div class="designed-by">Designed with ❤️ by Canva</div>
+    <div class="designed-by">Designed with ❤️ for Bataan Students</div>
 </footer>
 
-<script src="assets/js/schools-data.js"></script>
 <script>
-    // Initialize autocomplete on page load
-    window.addEventListener('DOMContentLoaded', function() {
-        initializeAutocomplete('searchInput');
-        
-        // Check if there's a search parameter from home page
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchTerm = urlParams.get('search');
-        if (searchTerm) {
-            document.getElementById('searchInput').value = searchTerm;
-            filterInstitutions();
-        }
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
     });
 
-    // Get references to filter elements
-    const typeFilter = document.getElementById('typeFilter');
-    const locationFilter = document.getElementById('locationFilter');
-
-    // Add event listeners to filters
-    if (typeFilter) typeFilter.addEventListener('change', filterInstitutions);
-    if (locationFilter) locationFilter.addEventListener('change', filterInstitutions);
-
-    function viewDetails(institution) {
-        alert(`Viewing details for ${institution}. This would open a detailed page with more information about programs, admission requirements, tuition fees, and contact information.`);
-    }
+    // Close menu on resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            navMenu.classList.remove('show');
+        }
+    });
 </script>
+
 </body>
 </html>

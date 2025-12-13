@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BPSU Abucay Campus - Campus Details</title>
 <style>
-   * {
+/* GLOBAL */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,13 +18,15 @@ body {
     color: #333;
 }
 
+/* HEADER */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
     background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 .logo {
@@ -32,11 +35,9 @@ header {
     gap: 10px;
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    background: #2542ff;
-    border-radius: 8px;
+.logo img {
+    width: 32px;
+    height: auto;
 }
 
 .logo-text h1 {
@@ -62,35 +63,53 @@ nav a {
     transition: all 0.3s;
 }
 
-nav a:hover,
-nav a.active {
+nav a.active,
+nav a:hover {
     color: #2542ff;
 }
 
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #2542ff;
+}
+
+/* CONTAINER */
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem 5%;
 }
 
+/* CAMPUS HEADER */
 .campus-header {
     background: white;
     border-radius: 15px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     display: flex;
     gap: 2rem;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .campus-logo {
     flex: 0 0 120px;
 }
 
+.campus-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
 .campus-info {
     flex: 1;
+    min-width: 250px;
 }
 
 .campus-map {
@@ -98,24 +117,19 @@ nav a.active {
     height: 250px;
 }
 
-.campus-logo img {
-    width: 100px;
-    height: auto;
-}
-
 .campus-map iframe {
-    display: block;
     width: 100%;
     height: 100%;
-    border: 0;
     border-radius: 10px;
+    border: 0;
 }
 
+/* BUTTONS */
 .action-buttons {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 1rem;
+    flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 .btn {
@@ -126,6 +140,9 @@ nav a.active {
     transition: all 0.3s;
     border: none;
     font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1 1 auto; /* make buttons responsive */
+    text-align: center;
 }
 
 .btn-primary {
@@ -157,6 +174,7 @@ nav a.active {
     color: white;
 }
 
+/* CONTENT GRID */
 .content-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -174,7 +192,7 @@ nav a.active {
     background: white;
     border-radius: 15px;
     padding: 2rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .section-header {
@@ -187,41 +205,7 @@ nav a.active {
     font-weight: 600;
 }
 
-.programs-grid {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.program-category {
-    border-left: 4px solid #ffc107;
-    padding-left: 1rem;
-}
-
-.program-category h3 {
-    color: #333;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-
-.program-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-
-.program-list li {
-    color: #666;
-    font-size: 0.9rem;
-    padding: 0.3rem 0;
-}
-
-.program-list li:before {
-    content: "▪";
-    color: #2542ff;
-    margin-right: 0.5rem;
-}
-
+/* REQUIREMENTS & INFO BOX */
 .requirements-list {
     display: flex;
     flex-direction: column;
@@ -256,6 +240,7 @@ nav a.active {
     color: #2542ff;
 }
 
+/* CONTACT INFO */
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -277,38 +262,10 @@ nav a.active {
     text-decoration: none;
 }
 
-.contact-icon {
-    color: #2542ff;
-    font-size: 1.3rem;
-}
-
-.quick-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.quick-link {
-    padding: 0.8rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.3s;
-    font-size: 0.9rem;
-}
-
-.quick-link:hover {
-    background: #2542ff;
-    color: white;
-}
-
+/* HIGHLIGHTS */
 .highlights-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 1rem;
 }
 
@@ -330,6 +287,7 @@ nav a.active {
     opacity: 0.9;
 }
 
+/* FOOTER */
 footer {
     background: #1a1a1a;
     color: white;
@@ -362,12 +320,6 @@ footer {
     color: #2542ff;
 }
 
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
 .footer-bottom {
     text-align: center;
     margin-top: 2rem;
@@ -377,20 +329,19 @@ footer {
     font-size: 0.9rem;
 }
 
+/* RESPONSIVE */
 @media (max-width: 1024px) {
     .content-grid {
         grid-template-columns: 1fr;
     }
     .campus-header {
         flex-direction: column;
+        align-items: center;
     }
-    .campus-logo,
     .campus-map {
-        flex: 1 1 auto;
         width: 100%;
-    }
-    .campus-map {
         height: 300px;
+        margin-top: 1rem;
     }
     .highlights-grid {
         grid-template-columns: 1fr;
@@ -400,14 +351,42 @@ footer {
     }
 }
 
+@media (min-width: 1025px) {
+    .campus-map {
+        margin-top: 65px; 
+    }
+}
+
 @media (max-width: 768px) {
     nav {
         display: none;
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        background: white;
+        flex-direction: column;
+        width: 200px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        border-radius: 10px;
+        padding: 1rem;
+        z-index: 999;
     }
+    nav.show {
+        display: flex;
+    }
+    .hamburger {
+        display: block;
+    }
+    header {
+        position: relative;
+    }
+
+    /* Responsive buttons in two rows on mobile */
     .action-buttons {
-        flex-direction: row;
         flex-wrap: wrap;
-        gap: 0.5rem;
+    }
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
     }
 }
 </style>
@@ -416,33 +395,37 @@ footer {
 
 <header>
     <div class="logo">
-        <div class="logo-icon"></div>
+        <img src="../../assets/images/finderlogo.png" alt="Finder Logo">
         <div class="logo-text">
             <h1>Bataan Campus Finder</h1>
             <p>Campus Details</p>
         </div>
     </div>
-    <nav>
+
+    <nav id="mobileNav">
         <a href="../../index.html">HOME</a>
         <a href="../../campus.html" class="active">ALL CAMPUSES</a>
         <a href="../../about.html">ABOUT</a>
         <a href="../../contact.html">CONTACT</a>
     </nav>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 </header>
 
 <div class="container">
+    <!-- CAMPUS HEADER -->
     <div class="campus-header">
         <div class="campus-logo">
             <img src="../../assets/images/BPSU.jfif" alt="BPSU Logo">
         </div>
         <div class="campus-info">
             <h1>Bataan Peninsula State University</h1>
-            <p class="campus-subtitle" style="color:#2542ff; font-size:1rem; font-weight:600; margin-bottom:0.8rem;">Abucay Campus</p>
-            <p style="color:#666; margin-bottom:0.8rem; line-height:1.6;">
-                The BPSU Abucay Campus is in its fourth year of operation as a distinct campus of the University, distinct in the sense that all the mandated functions of a university are being carried-out in this campus, from instruction, research, extension, and up to the production mandate.
+            <p style="color:#2542ff; font-weight:600; margin-bottom:0.8rem;">Bagac Campus</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:0.8rem;">
+             The BPSU Bagac Campus is in its fourth year of operation as a distinct campus of the University, with instruction, research, extension, and production mandates.   
             </p>
-            <p style="color:#666; margin-bottom:0.8rem; line-height:1.5;"><strong>Mission:</strong> To develop native leaders and empowered communities by delivering transformative instruction, research and production through Change Drivers and responsive policies.</p>
-            <p style="color:#666; margin-bottom:1rem; line-height:1.5;"><strong>Vision:</strong> An inclusive and sustainable university recognized for its global academic excellence by 2030.</p>
+            <p style="color:#666; line-height:1.5; margin-bottom:1rem;"><strong>Mission:</strong> To develop native leaders and empowered communities through transformative instruction, research, and production.</p>
+            <p style="color:#666; line-height:1.5; margin-bottom:1rem;"><strong>Vision:</strong> An inclusive and sustainable university recognized for its global academic excellence by 2030.</p>
             <div class="action-buttons">
                 <button class="btn btn-primary" onclick="window.open('https://www.bpsu.edu.ph/')">WEBSITE</button>
                 <button class="btn btn-secondary" onclick="window.open('https://www.facebook.com/batpenstateu')">FACEBOOK</button>
@@ -452,226 +435,262 @@ footer {
                 <button class="btn btn-outline" onclick="alert('Visit: Bangkal, Abucay, Bataan, 2114')">DIRECTIONS</button>
             </div>
         </div>
+        
         <div class="campus-map">
-            <iframe src="https://www.google.com/maps?q=Bataan+Peninsula+State+University+Abucay,Bangkal,Abucay,Bataan&output=embed" allowfullscreen loading="lazy"></iframe>
+           <iframe src="https://www.google.com/maps?q=Bataan+Peninsula+State+University+Abucay,Bangkal,Abucay,Bataan&output=embed" allowfullscreen loading="lazy"></iframe>
         </div>
     </div>
+<!-- Main content grid -->
+<div class="content-grid">
+    <div class="main-content">
+        <!-- Academic Programs -->
+        <div class="section-card">
+            <div class="section-header">ACADEMIC PROGRAMS</div>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                The BPSU Abucay Campus operates as a distinct campus carrying out all mandated university functions including instruction, research, extension, and production. The campus offers comprehensive programs designed to develop native leaders and empower communities.
+            </p>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                For detailed information about the academic offerings available at the Abucay Campus, please visit the official BPSU academic programs page:
+            </p>
+            <a href="https://www.bpsu.edu.ph/index.php/about-academics" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                📄 View Academic Programs Brochure →
+            </a>
+            <br>
+            <a href="https://www.canva.com/design/DAG0MjA-Ph4/svHa2Q4J_HOay3BY3Si1BA/edit?utm_content=DAG0MjA-Ph4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 0.5rem;">
+                📄 View Brochure (Canva — Page 6) →
+            </a>
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #2542ff; margin-top: 1.5rem;">
+                <p style="color: #666; font-size: 0.9rem;">
+                    <strong>Complete Program List:</strong> Visit the official BPSU website for a comprehensive list of all undergraduate and graduate programs offered at the Abucay Campus, including Agriculture, Education, and other specialized fields.
+                </p>
+            </div>
+        </div>
 
-    <div class="content-grid">
-        <div class="main-content">
-            <!-- Academic Programs -->
-            <div class="section-card">
-                <div class="section-header">ACADEMIC PROGRAMS</div>
-                <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
-                    The BPSU Abucay Campus operates as a distinct campus carrying out all mandated university functions including instruction, research, extension, and production. The campus offers comprehensive programs designed to develop native leaders and empower communities.
+        <!-- Admission Requirements -->
+        <div class="section-card">
+            <div class="section-header">ADMISSION REQUIREMENTS</div>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                Prospective students should visit the official BPSU admission page for complete and updated admission requirements and procedures:
+            </p>
+            <a href="https://www.canva.com/design/DAG0MjA-Ph4/svHa2Q4J_HOay3BY3Si1BA/edit?utm_content=DAG0MjA-Ph4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                📋 View Admission Brochure (Page 6) →
+            </a>
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #2542ff;">
+                <p style="color: #666; font-size: 0.9rem; line-height: 1.6;">
+                    <strong>Standard Requirements Include:</strong> High School Report Card (Form 138), Certificate of Good Moral Character, Birth Certificate (NSO/PSA), Marriage Contract (if applicable), 2x2 ID pictures, Medical Certificate, and Transfer documents (for transferees).
                 </p>
-                <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
-                    For detailed information about the academic offerings available at the Abucay Campus, please visit the official BPSU academic programs page:
-                </p>
-                <a href="https://www.bpsu.edu.ph/index.php/about-academics" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
-                    📄 View Academic Programs Brochure →
-                </a>
-                <br>
-                <a href="https://www.canva.com/design/DAG0MjA-Ph4/svHa2Q4J_HOay3BY3Si1BA/edit?utm_content=DAG0MjA-Ph4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 0.5rem;">
-                    📄 View Brochure (Canva — Page 6) →
-                </a>
-                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #2542ff; margin-top: 1.5rem;">
-                    <p style="color: #666; font-size: 0.9rem;">
-                        <strong>Complete Program List:</strong> Visit the official BPSU website for a comprehensive list of all undergraduate and graduate programs offered at the Abucay Campus, including Agriculture, Education, and other specialized fields.
+            </div>
+        </div>
+
+        <!-- Tuition & Fees -->
+        <div class="section-card">
+            <div class="section-header">TUITION & FEES</div>
+            <h3 style="color: #2542ff; margin-bottom: 1rem;">Republic Act No. 10931 - Free Tertiary Education</h3>
+            <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #666; line-height: 1.6;">
+                Bataan Peninsula State University Abucay Campus, as part of a State University, provides free tuition and other school fees under Republic Act No. 10931 (Universal Access to Quality Tertiary Education Act of 2017). This landmark legislation ensures that qualified Filipino students can access higher education without the burden of tuition fees.
+            </p>
+            
+            <h4 style="color: #333; font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Key Features of RA 10931:</h4>
+            <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                <div class="requirement-item"><strong>Free Higher Education:</strong> Undergraduate students in public higher education institutions receive free tuition and school fees</div>
+                <div class="requirement-item"><strong>Free Tech-Voc Education and Training:</strong> Students in state-run technical-vocational institutions qualify for free programs</div>
+                <div class="requirement-item"><strong>Tertiary Education Subsidy (TES):</strong> Financial assistance program to support students in higher education</div>
+                <div class="requirement-item"><strong>Student Loan Program:</strong> Establishes a program for students to obtain loans for their education</div>
+            </div>
+
+            <h4 style="color: #333; font-size: 1rem; margin-bottom: 0.8rem;">Exceptions to Free Tuition under RA 10931:</h4>
+            <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                <div class="requirement-item">Students who already have a bachelor's degree</div>
+                <div class="requirement-item">Students who fail to meet admission and retention policies</div>
+                <div class="requirement-item">Students who fail to complete their degree within the prescribed period</div>
+            </div>
+
+            <div class="info-box">
+                <strong>Miscellaneous and Other Fees:</strong> While tuition is free under RA 10931, students are still required to pay miscellaneous fees and other charges. For specific amounts and fee breakdown, please contact the campus administration or visit the Student Financial Assistance Office (SFAO).
+            </div>
+        </div>
+
+        <!-- Scholarships -->
+        <div class="section-card">
+            <div class="section-header">SCHOLARSHIP & FINANCIAL AID</div>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                BPSU Abucay Campus offers a wide variety of scholarship programs to support deserving and qualified students. These include SUC-funded scholarships, private scholarships from partner organizations, and government-sponsored programs.
+            </p>
+
+            <h4 style="color: #2542ff; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">A. SUC Funded Scholarships — <a href="https://www.bpsu.edu.ph/index.php/admsfa/762-suc-funded-scholarship" style="color:#2542ff; text-decoration:none; font-weight:600;">SUC Funded Scholarship Details</a></h4>
+            <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                <div class="requirement-item">Entrance Scholarship</div>
+                <div class="requirement-item">Valedictorian</div>
+                <div class="requirement-item">Salutatorian</div>
+                <div class="requirement-item">Academic Scholarship</div>
+                <div class="requirement-item">University Scholarship</div>
+                <div class="requirement-item">College Scholarship</div>
+                <div class="requirement-item">Sports/Cultural Scholarship</div>
+                <div class="requirement-item">ROTC 1st Class</div>
+                <div class="requirement-item">ROTC 2nd Class</div>
+                <div class="requirement-item">Varsity Player</div>
+                <div class="requirement-item">Brass Band</div>
+                <div class="requirement-item">Child of Permanent BPSU Employee</div>
+                <div class="requirement-item">Student Publication (EIC, Associate Editor, Managing Editor)</div>
+                <div class="requirement-item">Campus Student Council (President, Vice President, Secretary)</div>
+                <div class="requirement-item">Dance Troupe</div>
+                <div class="requirement-item">Choir</div>
+                <div class="requirement-item">Theater Guilds</div>
+                <div class="requirement-item">Free Tuition Fee for Agriculture and Fisheries Students</div>
+            </div>
+
+            <h4 style="color: #2542ff; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">B. Private Scholarships — <a href="https://www.bpsu.edu.ph/index.php/admsfa/136-private-scholarships" style="color:#2542ff; text-decoration:none; font-weight:600;">Private Scholarship Details</a></h4>
+            <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                <div class="requirement-item">Oscar-Mila Banzon Scholarship</div>
+                <div class="requirement-item">Bataan Association of USA</div>
+                <div class="requirement-item">Bataan Association of Midwest USA</div>
+                <div class="requirement-item">Medina Lacson-de Leon Foundation</div>
+                <div class="requirement-item">Roberto Juanchito T. Dispo Scholarship</div>
+                <div class="requirement-item">Liquigaz Philippines Corp.</div>
+                <div class="requirement-item">Mario-Celia Vergara Foundation</div>
+                <div class="requirement-item">Petron Bataan Refinery</div>
+                <div class="requirement-item">Justice Emilio Gancayco Foundation</div>
+                <div class="requirement-item">PLDT-Smart Gabay Guro Scholarship Program (2G)</div>
+                <div class="requirement-item">Smart Wireless Engineering Education Program (SWEEP)</div>
+                <div class="requirement-item">SAN MIGUEL Global Scholarship Program</div>
+                <div class="requirement-item">University Town of the Peninsula Foundation Inc.</div>
+                <div class="requirement-item">BNSAT Batch 82 Alumni Association Scholarship</div>
+                <div class="requirement-item">Asiawide Land Specialist Development Corporation Scholarship Program</div>
+                <div class="requirement-item">Bataan Youth Foundation Inc. (BCFYI)</div>
+                <div class="requirement-item">Life Bank Foundation Inc.</div>
+                <div class="requirement-item">Toshiba Scholarship Program</div>
+            </div>
+
+            <h4 style="color: #2542ff; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">C. Government Scholarships — <a href="https://www.bpsu.edu.ph/index.php/admsfa/137-government-scholarships" style="color:#2542ff; text-decoration:none; font-weight:600;">Government Scholarship Details</a></h4>
+            <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                <div class="requirement-item">Free Tuition 2017</div>
+                <div class="requirement-item">DOST Scholarship</div>
+                <div class="requirement-item">DA-ACEF Execom Scholarships</div>
+                <div class="requirement-item">DA-Rep. Herminia Roman</div>
+                <div class="requirement-item">DA-Rep. Albert Garcia</div>
+                <div class="requirement-item">DA-Rep. Gloria Macapagal-Arroyo</div>
+                <div class="requirement-item">AFP/Veterans</div>
+                <div class="requirement-item">One Town, One Scholar</div>
+                <div class="requirement-item">Sulong Dunong Scholarship Program (MSWD)</div>
+                <div class="requirement-item">Agraryo Scholarship Program</div>
+                <div class="requirement-item">Philippine Society of Agriculture Engineers (PSAE)</div>
+                <div class="requirement-item">Iskolar ng Bataan</div>
+                <div class="requirement-item">CHED Tulong Dunong</div>
+                <div class="requirement-item">AFP-DND-CHED-PASUC Scholarship Program</div>
+                <div class="requirement-item">OWWA OFW Dependents Scholarship Program (OSDP)</div>
+                <div class="requirement-item">OWWA Education and Livelihood Assistance Program (ELAP)</div>
+                <div class="requirement-item">Expanded Students' Grant-in-Aid Program for Poverty Alleviation (ESGP-PA)</div>
+                <div class="requirement-item">GSIS Scholarship Program</div>
+            </div>
+
+            <div class="info-box">
+                <strong>For More Information:</strong> For complete details about scholarship requirements, eligibility criteria, and application procedures, visit the <a href="https://www.bpsu.edu.ph/index.php/admsfa" style="color: #2542ff; text-decoration: none; font-weight: 600;">Student Financial Assistance Office (SFAO)</a> or their Facebook page: <a href="https://www.facebook.com/BPSU.sfao" style="color: #2542ff; text-decoration: none; font-weight: 600;">BPSU SFAO</a>
+            </div>
+        </div>
+
+        <!-- Application Process -->
+        <div class="section-card">
+            <div class="section-header">APPLICATION PROCESS</div>
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <h3 style="color: #2542ff; margin-bottom: 0.5rem;">1. Online Registration</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                        Visit the BPSU official website and fill out the online application form. Create your student account and provide accurate personal information.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: #2542ff; margin-bottom: 0.5rem;">2. Submit Requirements</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                        Upload scanned copies of all required documents. Ensure all files are clear and readable. Original documents will be verified upon enrollment.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: #2542ff; margin-bottom: 0.5rem;">3. Entrance Examination</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                        Take the BPSU College Admission Test (BPSU-CAT). Schedule and venue will be announced through email and the university website.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: #2542ff; margin-bottom: 0.5rem;">4. Wait for Results</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                        Examination results will be released within 2-3 weeks. Qualified applicants will receive an email notification with further instructions.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: #2542ff; margin-bottom: 0.5rem;">5. Enrollment</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                        Once accepted, proceed to the enrollment process. Submit original documents, pay necessary fees, and complete registration within the enrollment period.
                     </p>
                 </div>
             </div>
-
-            <!-- Admission Requirements -->
-            <div class="section-card">
-                <div class="section-header">ADMISSION REQUIREMENTS</div>
-                <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
-                    Prospective students should visit the official BPSU admission page for complete and updated admission requirements and procedures:
-                </p>
-                <a href="https://www.canva.com/design/DAG0MjA-Ph4/svHa2Q4J_HOay3BY3Si1BA/edit?utm_content=DAG0MjA-Ph4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
-                    📋 View Admission Brochure (Page 6) →
-                </a>
-                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #2542ff;">
-                    <p style="color: #666; font-size: 0.9rem; line-height: 1.6;">
-                        <strong>Standard Requirements Include:</strong> High School Report Card (Form 138), Certificate of Good Moral Character, Birth Certificate (NSO/PSA), Marriage Contract (if applicable), 2x2 ID pictures, Medical Certificate, and Transfer documents (for transferees).
-                    </p>
+        </div>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Campus Highlights -->
+        <div class="section-card">
+            <div class="section-header">CAMPUS HIGHLIGHTS</div>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <h3>4th</h3>
+                    <p>Year of Operation</p>
                 </div>
-            </div>
-
-            <!-- Tuition & Fees -->
-            <div class="section-card">
-                <div class="section-header">TUITION & FEES</div>
-                <h3 style="color: #2542ff; margin-bottom: 1rem;">Republic Act No. 10931 - Free Tertiary Education</h3>
-                <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #666; line-height: 1.6;">
-                    Bataan Peninsula State University Abucay Campus, as part of a State University, provides free tuition and other school fees under Republic Act No. 10931 (Universal Access to Quality Tertiary Education Act of 2017). This landmark legislation ensures that qualified Filipino students can access higher education without the burden of tuition fees.
-                </p>
-                
-                <h4 style="color: #333; font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.8rem;">Key Features of RA 10931:</h4>
-                <div class="requirements-list" style="margin-bottom: 1.5rem;">
-                    <div class="requirement-item"><strong>Free Higher Education:</strong> Undergraduate students in public higher education institutions receive free tuition and school fees</div>
-                    <div class="requirement-item"><strong>Free Tech-Voc Education and Training:</strong> Students in state-run technical-vocational institutions qualify for free programs</div>
-                    <div class="requirement-item"><strong>Tertiary Education Subsidy (TES):</strong> Financial assistance program to support students in higher education</div>
-                    <div class="requirement-item"><strong>Student Loan Program:</strong> Establishes a program for students to obtain loans for their education</div>
+                <div class="highlight-card">
+                    <h3>Full</h3>
+                    <p>University Functions</p>
                 </div>
-
-                <h4 style="color: #333; font-size: 1rem; margin-bottom: 0.8rem;">Exceptions to Free Tuition under RA 10931:</h4>
-                <div class="requirements-list" style="margin-bottom: 1.5rem;">
-                    <div class="requirement-item">Students who already have a bachelor's degree</div>
-                    <div class="requirement-item">Students who fail to meet admission and retention policies</div>
-                    <div class="requirement-item">Students who fail to complete their degree within the prescribed period</div>
+                <div class="highlight-card">
+                    <h3>Quality</h3>
+                    <p>Instruction & Research</p>
                 </div>
-
-                <div class="info-box">
-                    <strong>Miscellaneous and Other Fees:</strong> While tuition is free under RA 10931, students are still required to pay miscellaneous fees and other charges. For specific amounts and fee breakdown, please contact the campus administration or visit the Student Financial Assistance Office (SFAO).
-                </div>
-            </div>
-
-            <!-- Scholarships -->
-            <div class="section-card">
-                <div class="section-header">SCHOLARSHIP & FINANCIAL AID</div>
-                <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
-                    BPSU Abucay Campus offers a wide variety of scholarship programs to support deserving and qualified students. These include SUC-funded scholarships, private scholarships from partner organizations, and government-sponsored programs.
-                </p>
-
-                <h4 style="color: #2542ff; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">A. SUC Funded Scholarships — <a href="https://www.bpsu.edu.ph/index.php/admsfa/762-suc-funded-scholarship" style="color:#2542ff; text-decoration:none; font-weight:600;">SUC Funded Scholarship Details</a></h4>
-                <div class="requirements-list" style="margin-bottom: 1.5rem;">
-                    <div class="requirement-item">Entrance Scholarship</div>
-                    <div class="requirement-item">Valedictorian</div>
-                    <div class="requirement-item">Salutatorian</div>
-                    <div class="requirement-item">Academic Scholarship</div>
-                    <div class="requirement-item">University Scholarship</div>
-                    <div class="requirement-item">College Scholarship</div>
-                    <div class="requirement-item">Sports/Cultural Scholarship</div>
-                    <div class="requirement-item">ROTC 1st Class</div>
-                    <div class="requirement-item">ROTC 2nd Class</div>
-                    <div class="requirement-item">Varsity Player</div>
-                    <div class="requirement-item">Brass Band</div>
-                    <div class="requirement-item">Child of Permanent BPSU Employee</div>
-                    <div class="requirement-item">Student Publication (EIC, Associate Editor, Managing Editor)</div>
-                    <div class="requirement-item">Campus Student Council (President, Vice President, Secretary)</div>
-                    <div class="requirement-item">Dance Troupe</div>
-                    <div class="requirement-item">Choir</div>
-                    <div class="requirement-item">Theater Guilds</div>
-                    <div class="requirement-item">Free Tuition Fee for Agriculture and Fisheries Students</div>
-                </div>
-
-                <h4 style="color: #2542ff; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">B. Private Scholarships — <a href="https://www.bpsu.edu.ph/index.php/admsfa/136-private-scholarships" style="color:#2542ff; text-decoration:none; font-weight:600;">Private Scholarship Details</a></h4>
-                <div class="requirements-list" style="margin-bottom: 1.5rem;">
-                    <div class="requirement-item">Oscar-Mila Banzon Scholarship</div>
-                    <div class="requirement-item">Bataan Association of USA</div>
-                    <div class="requirement-item">Bataan Association of Midwest USA</div>
-                    <div class="requirement-item">Medina Lacson-de Leon Foundation</div>
-                    <div class="requirement-item">Roberto Juanchito T. Dispo Scholarship</div>
-                    <div class="requirement-item">Liquigaz Philippines Corp.</div>
-                    <div class="requirement-item">Mario-Celia Vergara Foundation</div>
-                    <div class="requirement-item">Petron Bataan Refinery</div>
-                    <div class="requirement-item">Justice Emilio Gancayco Foundation</div>
-                    <div class="requirement-item">PLDT-Smart Gabay Guro Scholarship Program (2G)</div>
-                    <div class="requirement-item">Smart Wireless Engineering Education Program (SWEEP)</div>
-                    <div class="requirement-item">SAN MIGUEL Global Scholarship Program</div>
-                    <div class="requirement-item">University Town of the Peninsula Foundation Inc.</div>
-                    <div class="requirement-item">BNSAT Batch 82 Alumni Association Scholarship</div>
-                    <div class="requirement-item">Asiawide Land Specialist Development Corporation Scholarship Program</div>
-                    <div class="requirement-item">Bataan Youth Foundation Inc. (BCFYI)</div>
-                    <div class="requirement-item">Life Bank Foundation Inc.</div>
-                    <div class="requirement-item">Toshiba Scholarship Program</div>
-                </div>
-
-                <h4 style="color: #2542ff; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">C. Government Scholarships — <a href="https://www.bpsu.edu.ph/index.php/admsfa/137-government-scholarships" style="color:#2542ff; text-decoration:none; font-weight:600;">Government Scholarship Details</a></h4>
-                <div class="requirements-list" style="margin-bottom: 1.5rem;">
-                    <div class="requirement-item">Free Tuition 2017</div>
-                    <div class="requirement-item">DOST Scholarship</div>
-                    <div class="requirement-item">DA-ACEF Execom Scholarships</div>
-                    <div class="requirement-item">DA-Rep. Herminia Roman</div>
-                    <div class="requirement-item">DA-Rep. Albert Garcia</div>
-                    <div class="requirement-item">DA-Rep. Gloria Macapagal-Arroyo</div>
-                    <div class="requirement-item">AFP/Veterans</div>
-                    <div class="requirement-item">One Town, One Scholar</div>
-                    <div class="requirement-item">Sulong Dunong Scholarship Program (MSWD)</div>
-                    <div class="requirement-item">Agraryo Scholarship Program</div>
-                    <div class="requirement-item">Philippine Society of Agriculture Engineers (PSAE)</div>
-                    <div class="requirement-item">Iskolar ng Bataan</div>
-                    <div class="requirement-item">CHED Tulong Dunong</div>
-                    <div class="requirement-item">AFP-DND-CHED-PASUC Scholarship Program</div>
-                    <div class="requirement-item">OWWA OFW Dependents Scholarship Program (OSDP)</div>
-                    <div class="requirement-item">OWWA Education and Livelihood Assistance Program (ELAP)</div>
-                    <div class="requirement-item">Expanded Students' Grant-in-Aid Program for Poverty Alleviation (ESGP-PA)</div>
-                    <div class="requirement-item">GSIS Scholarship Program</div>
-                </div>
-
-                <div class="info-box">
-                    <strong>For More Information:</strong> For complete details about scholarship requirements, eligibility criteria, and application procedures, visit the <a href="https://www.bpsu.edu.ph/index.php/admsfa" style="color: #2542ff; text-decoration: none; font-weight: 600;">Student Financial Assistance Office (SFAO)</a> or their Facebook page: <a href="https://www.facebook.com/BPSU.sfao" style="color: #2542ff; text-decoration: none; font-weight: 600;">BPSU SFAO</a>
-                </div>
-            </div>
-
-            <!-- Application Process -->
-            <div class="section-card">
-                <div class="section-header">APPLICATION PROCESS</div>
-                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <div>
-                        <h3 style="color: #2542ff; margin-bottom: 0.5rem;">1. Online Registration</h3>
-                        <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
-                            Visit the BPSU official website and fill out the online application form. Create your student account and provide accurate personal information.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 style="color: #2542ff; margin-bottom: 0.5rem;">2. Submit Requirements</h3>
-                        <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
-                            Upload scanned copies of all required documents. Ensure all files are clear and readable. Original documents will be verified upon enrollment.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 style="color: #2542ff; margin-bottom: 0.5rem;">3. Entrance Examination</h3>
-                        <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
-                            Take the BPSU College Admission Test (BPSU-CAT). Schedule and venue will be announced through email and the university website.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 style="color: #2542ff; margin-bottom: 0.5rem;">4. Wait for Results</h3>
-                        <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
-                            Examination results will be released within 2-3 weeks. Qualified applicants will receive an email notification with further instructions.
-                        </p>
-                    </div>
-                    <div>
-                        <h3 style="color: #2542ff; margin-bottom: 0.5rem;">5. Enrollment</h3>
-                        <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
-                            Once accepted, proceed to the enrollment process. Submit original documents, pay necessary fees, and complete registration within the enrollment period.
-                        </p>
-                    </div>
+                <div class="highlight-card">
+                    <h3>Community</h3>
+                    <p>Extension Programs</p>
                 </div>
             </div>
         </div>
 
-        <div class="sidebar">
-            <!-- Campus Highlights -->
-            <div class="section-card">
-                <div class="section-header">CAMPUS HIGHLIGHTS</div>
-                <div class="highlights-grid">
-                    <div class="highlight-card">
-                        <h3>4th</h3>
-                        <p>Year of Operation</p>
+        <!-- Contact Information -->
+        <div class="section-card">
+            <div class="section-header">CONTACT INFORMATION</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <strong>Email - Admissions</strong><br>
+                        <a href="mailto:ac_admission@bpsu.edu.ph">ac_admission@bpsu.edu.ph</a>
                     </div>
-                    <div class="highlight-card">
-                        <h3>Full</h3>
-                        <p>University Functions</p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <strong>Email - Public Affairs</strong><br>
+                        <a href="mailto:public_affairs@bpsu.edu.ph">public_affairs@bpsu.edu.ph</a>
                     </div>
-                    <div class="highlight-card">
-                        <h3>Quality</h3>
-                        <p>Instruction & Research</p>
-                    </div>
-                    <div class="highlight-card">
-                        <h3>Community</h3>
-                        <p>Extension Programs</p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <strong>Address</strong><br>
+                        Bangkal, Abucay, Bataan, 2114
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Contact Information -->
-            <div class="section-card">
-                <div class="section-header">CONTACT INFORMATION</div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-icon">✉️</span>
-                        <div>
-                            <strong>Email - Admissions</strong><br>
-                            <a href="mailto:ac_admission@bpsu.edu.ph">ac_admission
+
+<script>
+function toggleMenu() {
+    document.getElementById("mobileNav").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>
+
+
+        
+

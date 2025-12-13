@@ -1,534 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Bataan Campus Finder</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Bataan Campus Finder</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: #333;
-            background: #f8f9fa;
-        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #333;
+    background: #f8f9fa;
+}
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+}
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: #2542ff;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: #2542ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
 
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
-        .logo-text h1 {
-            font-size: 1.2rem;
-            color: #2542ff;
-        }
+.logo-text h1 {
+    font-size: 1.2rem;
+    color: #2542ff;
+}
 
-        .logo-text p {
-            font-size: 0.7rem;
-            color: #666;
-        }
+.logo-text p {
+    font-size: 0.7rem;
+    color: #666;
+}
 
-        nav {
-            display: flex;
-            gap: 2rem;
-        }
+nav {
+    display: flex;
+    gap: 2rem;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s;
-            border-bottom: 2px solid transparent;
-        }
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent;
+}
 
-        nav a:hover, nav a.active {
-            color: #2542ff;
-            border-bottom-color: #2542ff;
-        }
+nav a:hover, nav a.active {
+    color: #2542ff;
+    border-bottom-color: #2542ff;
+}
 
-        /* Contact Section */
-        .contact-section {
-            background: linear-gradient(135deg, #2542ff 0%, #1a32cc 100%);
-            min-height: calc(100vh - 120px);
-            padding: 3rem 5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
 
-        .contact-container {
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 0 auto;
-        }
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    display: block;
+}
 
-        /* Contact Info Card */
-        .contact-info {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+/* Mobile nav */
+nav.open {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+    background: white;
+    padding: 1rem;
+    position: absolute;
+    top: 70px;
+    right: 5%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 1000;
+}
 
-        .contact-info h2 {
-            font-size: 1.8rem;
-            color: #2542ff;
-            margin-bottom: 1rem;
-        }
+/* Contact Section */
+.contact-section {
+    background: linear-gradient(135deg, #2542ff 0%, #1a32cc 100%);
+    min-height: calc(100vh - 120px);
+    padding: 3rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .contact-info p {
-            color: #666;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
+.contact-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 0 auto;
+    place-items: stretch; /* make children stretch same height */
+}
 
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 12px;
-            transition: all 0.3s;
-        }
+/* Contact Info Card */
+.contact-info, .contact-form-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; /* full height to match sibling */
+}
 
-        .contact-item:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
-        }
+.contact-info h2 {
+    font-size: 1.8rem;
+    color: #2542ff;
+    margin-bottom: 1rem;
+}
 
-        .contact-icon {
-            min-width: 24px;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.contact-info p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
 
-        .contact-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s;
+    min-height: 60px;
+}
 
-        .contact-details {
-            flex: 1;
-        }
+.contact-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
 
-        .contact-details strong {
-            color: #2542ff;
-            display: block;
-            margin-bottom: 0.3rem;
-            font-size: 1.1rem;
-        }
+.contact-icon {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+}
 
-        .contact-details span {
-            color: #555;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
+.contact-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
-        /* Contact Form Card */
-        .contact-form-card {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
+.school-icon img {
+    width: 50px;
+    height: 50px;
+}
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+.contact-details {
+    flex: 1;
+}
 
-        .form-group label {
-            display: block;
-            color: #2542ff;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
+.contact-details strong {
+    color: #2542ff;
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 1.1rem;
+}
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #dee2e6;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s;
-            background: #f8f9fa;
-        }
+.contact-details span {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #2542ff;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(37, 66, 255, 0.1);
-        }
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
+.form-group label {
+    display: block;
+    color: #2542ff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
 
-        .submit-btn {
-            width: 100%;
-            padding: 1.2rem;
-            background: #2542ff;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s;
+    background: #f8f9fa;
+    box-sizing: border-box;
+    min-height: 60px; /* match contact item height */
+}
 
-        .submit-btn:hover {
-            background: #1a32cc;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(37, 66, 255, 0.3);
-        }
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
 
-        .submit-btn:active {
-            transform: translateY(0);
-        }
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2542ff;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(37, 66, 255, 0.1);
+}
 
-        /* Success Message */
-        .success-message {
-            display: none;
-            background: #28a745;
-            color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            text-align: center;
-            animation: slideDown 0.3s ease-out;
-        }
+.submit-btn {
+    width: 100%;
+    padding: 1.2rem;
+    background: #2542ff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .error-message {
-            display: none;
-            background: #dc3545;
-            color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            text-align: center;
-            animation: slideDown 0.3s ease-out;
-        }
+.submit-btn:hover {
+    background: #1a32cc;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(37, 66, 255, 0.3);
+}
 
-        .success-message.show {
-            display: block;
-        }
+.success-message, .error-message {
+    display: none;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.success-message {background:#28a745;color:white;}
+.error-message {background:#dc3545;color:white;}
+.success-message.show, .error-message.show {display:block;}
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* Footer */
+footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
 
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
 
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.9rem;
-        }
+.footer-links a:hover {color: #2542ff;}
+.designed-by {font-size: 0.9rem;opacity: 0.8;}
 
-        .footer-links a:hover {
-            color: #2542ff;
-        }
-
-        .designed-by {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .contact-info,
-            .contact-form-card {
-                padding: 2rem;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
-    </style>
+/* Responsive */
+@media (max-width: 968px) {
+    .contact-container {grid-template-columns: 1fr; justify-items: center;}
+    nav {display: none;}
+    .hamburger {display: flex;}
+    .contact-info, .contact-form-card {padding: 2rem; width: 100%;}
+    footer {flex-direction: column; gap: 1rem; text-align: center;}
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <div class="logo-icon">
-                <img src="logo-icon.png" alt="Campus Finder Logo">
+
+<header>
+    <div class="logo">
+        <div class="logo-icon">
+            <img src="assets/images/finderlogo.png" alt="Campus Finder Logo">
+        </div>
+        <div class="logo-text">
+            <h1>Bataan Campus Finder</h1>
+            <p>Discover Your Path to Higher Education in Bataan</p>
+        </div>
+    </div>
+    <nav id="nav-menu">
+        <a href="index.html">HOME</a>
+        <a href="campus.html">ALL CAMPUSES</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html" class="active">CONTACT</a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+
+<section class="contact-section">
+    <div class="contact-container">
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>If you have questions, suggestions, or feedback, feel free to reach out:</p>
+
+            <div class="contact-item">
+                <div class="contact-icon"><img src="assets/images/email.png" alt="Email"></div>
+                <div class="contact-details"><strong>Email:</strong><span>scsaheisite@gmail.com</span></div>
             </div>
-            <div class="logo-text">
-                <h1>Bataan Campus Finder</h1>
-                <p>Discover Your Path to Higher Education in Bataan</p>
+
+            <div class="contact-item">
+                <div class="contact-icon school-icon">
+                    <img src="assets/images/campus.png" alt="School">
+                </div>
+                <div class="contact-details">
+                    <strong>School:</strong>
+                    <span>Saint Catherine of Siena Academy of Samal, Inc.</span>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon"><img src="assets/images/locations.png" alt="Location"></div>
+                <div class="contact-details"><strong>Address:</strong><span>Samal, Bataan, Philippines</span></div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon"><img src="assets/images/contact.jpg" alt="Phone"></div>
+                <div class="contact-details"><strong>Phone:</strong><span>09491957600</span></div>
             </div>
         </div>
-        <nav>
-            <a href="index.html">HOME</a>
-            <a href="campus.html">ALL CAMPUSES</a>
-            <a href="about.html">ABOUT</a>
-            <a href="contact.html" class="active">CONTACT</a>
-        </nav>
-    </header>
 
-    <section class="contact-section">
-        <div class="contact-container">
-            <!-- Contact Information -->
-            <div class="contact-info">
-                <h2>Get in Touch</h2>
-                <p>If you have questions, suggestions, or feedback about the Higher Education Navigator Website, feel free to reach out to us:</p>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <img src="icon-email.png" alt="Email Icon">
-                    </div>
-                    <div class="contact-details">
-                        <strong>Email:</strong>
-                        <span>scsaheisite@gmail.com</span>
-                    </div>
+        <!-- Contact Form -->
+        <div class="contact-form-card">
+            <div class="success-message" id="successMessage">Thank you! Your message has been sent successfully.</div>
+            <div class="error-message" id="errorMessage">Sorry — we couldn't send your message.</div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
                 </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <img src="icon-school.png" alt="School Icon">
-                    </div>
-                    <div class="contact-details">
-                        <strong>School:</strong>
-                        <span>Saint Catherine of Siena Academy of Samal, Inc.</span>
-                    </div>
+                <div class="form-group">
+                    <label for="concern">Your Concern:</label>
+                    <textarea id="concern" name="concern" required placeholder="Tell us what's on your mind..."></textarea>
                 </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <img src="icon-location.png" alt="Location Icon">
-                    </div>
-                    <div class="contact-details">
-                        <strong>Address:</strong>
-                        <span>Samal, Bataan, Philippines</span>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <img src="icon-phone.png" alt="Phone Icon">
-                    </div>
-                    <div class="contact-details">
-                        <strong>Phone:</strong>
-                        <span>09491957600</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="contact-form-card">
-                <div class="success-message" id="successMessage">
-                    Thank you! Your message has been sent successfully.
-                </div>
-                <div class="error-message" id="errorMessage">
-                    Sorry — we couldn't send your message. Please try again later.
-                </div>
-                <div style="font-size:0.9rem;color:#555;margin-bottom:1rem;">
-                    Note: This form uses <strong>EmailJS</strong> to send emails directly from the browser. Replace the placeholders in the script with your EmailJS <em>service ID</em>, <em>template ID</em>, and <em>public key</em> (instructions below the form).
-                </div>
-                    <div style="background:#fff7e6;border:1px solid #ffe8a1;padding:0.9rem;border-radius:8px;font-size:0.95rem;color:#444;margin-bottom:1rem;">
-                        <strong>How to test locally</strong>
-                        <ol style="margin:0.5rem 0 0 1.1rem;padding:0;">
-                            <li>Sign up at <a href="https://www.emailjs.com/" target="_blank" style="color:#2542ff">EmailJS</a>, create a service and a template, then copy your <em>Service ID</em>, <em>Template ID</em>, and <em>Public Key</em>.</li>
-                            <li>Open <strong>contact.html</strong> and replace the placeholders: <code>YOUR_SERVICE_ID</code>, <code>YOUR_TEMPLATE_ID</code>, and <code>YOUR_PUBLIC_KEY</code> in the script near the bottom of the file.</li>
-                            <li>Run a simple local HTTP server (recommended; EmailJS may block file:// requests). Example commands:</li>
-                        </ol>
-                        <pre style="background:#f4f6f8;padding:0.6rem;border-radius:6px;margin-top:0.6rem;overflow:auto;"><code>python -m http.server 8000
-    # or (Python 3.11+)
-    python -m http.server
-
-    # or using Node (if installed):
-    # npx http-server . -p 8000
-
-    # Visit: http://localhost:8000/contact.html</code></pre>
-                        <ol start="4" style="margin:0.5rem 0 0 1.1rem;padding:0;">
-                            <li>Open the page in a browser, fill the form and click <strong>Submit</strong>. Watch the page for success or error messages.</li>
-                            <li>If no email arrives, check the browser console (F12) for network errors and verify your EmailJS keys and template fields.</li>
-                        </ol>
-                    </div>
-
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="email">Your Email:</label>
-                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="concern">Your Concern:</label>
-                        <textarea id="concern" name="concern" required placeholder="Tell us what's on your mind..."></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Submit</button>
-                </form>
-            </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <div class="footer-links">
-            <a href="#terms">Terms & Support</a>
-            <a href="#privacy">Privacy Policy</a>
-        </div>
-        <div class="designed-by">Designed with ❤️ by Canva</div>
-    </footer>
+<footer>
+    <div class="footer-links">
+        <a href="#terms">Terms & Support</a>
+        <a href="#privacy">Privacy Policy</a>
+    </div>
+    <div class="designed-by">Designed with ❤️ for Bataan Students</div>
+</footer>
 
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
-    <script>
-        /*
-        QUICK SETUP (EmailJS):
-        1. Sign up at https://www.emailjs.com/
-        2. Create an Email Service (e.g., Gmail) and note the Service ID.
-        3. Create an Email Template and note the Template ID. Template fields: from_email, message
-        4. Obtain your Public Key (user ID) from EmailJS dashboard.
-        5. Replace the placeholders below: YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, YOUR_PUBLIC_KEY
-        */
+<script>
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
 
-        (function(){
-            // replace with your EmailJS public key after setup
-            try { emailjs.init('YOUR_PUBLIC_KEY'); } catch(e) { console.warn('EmailJS init failed', e); }
-        })();
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+});
+</script>
 
-        const contactForm = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementById('errorMessage');
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const email = document.getElementById('email').value.trim();
-            const concern = document.getElementById('concern').value.trim();
-
-            if(!email || !concern) {
-                errorMessage.textContent = 'Please complete both fields.';
-                errorMessage.classList.add('show');
-                setTimeout(()=> errorMessage.classList.remove('show'), 4000);
-                return;
-            }
-
-            // show a temporary sending state
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const oldText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            // build the payload for EmailJS template
-            const templateParams = {
-                from_email: email,
-                message: concern
-            };
-
-            // Replace these placeholders with your EmailJS details
-            const SERVICE_ID = 'YOUR_SERVICE_ID';
-            const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-
-            // Send using EmailJS
-            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
-                .then(() => {
-                    successMessage.classList.add('show');
-                    contactForm.reset();
-                    setTimeout(() => successMessage.classList.remove('show'), 5000);
-                })
-                .catch((err) => {
-                    console.error('Email send error', err);
-                    errorMessage.textContent = 'Sorry — failed to send. Check your EmailJS configuration.';
-                    errorMessage.classList.add('show');
-                    setTimeout(() => errorMessage.classList.remove('show'), 6000);
-                })
-                .finally(() => {
-                    submitBtn.textContent = oldText;
-                    submitBtn.disabled = false;
-                });
-        });
-    </script>
-    <script src="schools-data.js"></script>
 </body>
 </html>

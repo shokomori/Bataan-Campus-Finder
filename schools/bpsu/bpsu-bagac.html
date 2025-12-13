@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BPSU Bagac Campus - Campus Details</title>
+<title>BPSU Abucay Campus - Campus Details</title>
 <style>
-   * {
+/* GLOBAL */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,13 +18,15 @@ body {
     color: #333;
 }
 
+/* HEADER */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
     background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 .logo {
@@ -32,11 +35,9 @@ header {
     gap: 10px;
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    background: #2542ff;
-    border-radius: 8px;
+.logo img {
+    width: 32px;
+    height: auto;
 }
 
 .logo-text h1 {
@@ -62,35 +63,53 @@ nav a {
     transition: all 0.3s;
 }
 
-nav a:hover,
-nav a.active {
+nav a.active,
+nav a:hover {
     color: #2542ff;
 }
 
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #2542ff;
+}
+
+/* CONTAINER */
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem 5%;
 }
 
+/* CAMPUS HEADER */
 .campus-header {
     background: white;
     border-radius: 15px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     display: flex;
     gap: 2rem;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .campus-logo {
     flex: 0 0 120px;
 }
 
+.campus-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
 .campus-info {
     flex: 1;
+    min-width: 250px;
 }
 
 .campus-map {
@@ -98,23 +117,19 @@ nav a.active {
     height: 250px;
 }
 
-.campus-logo img {
-    width: 100px;
-    height: auto;
-}
-
 .campus-map iframe {
-    display: block;
     width: 100%;
     height: 100%;
+    border-radius: 10px;
     border: 0;
 }
 
+/* BUTTONS */
 .action-buttons {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 1rem;
+    flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 .btn {
@@ -125,6 +140,9 @@ nav a.active {
     transition: all 0.3s;
     border: none;
     font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1 1 auto; /* make buttons responsive */
+    text-align: center;
 }
 
 .btn-primary {
@@ -156,6 +174,7 @@ nav a.active {
     color: white;
 }
 
+/* CONTENT GRID */
 .content-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -173,7 +192,7 @@ nav a.active {
     background: white;
     border-radius: 15px;
     padding: 2rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .section-header {
@@ -186,41 +205,7 @@ nav a.active {
     font-weight: 600;
 }
 
-.programs-grid {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.program-category {
-    border-left: 4px solid #ffc107;
-    padding-left: 1rem;
-}
-
-.program-category h3 {
-    color: #333;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-
-.program-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-
-.program-list li {
-    color: #666;
-    font-size: 0.9rem;
-    padding: 0.3rem 0;
-}
-
-.program-list li:before {
-    content: "▪";
-    color: #2542ff;
-    margin-right: 0.5rem;
-}
-
+/* REQUIREMENTS & INFO BOX */
 .requirements-list {
     display: flex;
     flex-direction: column;
@@ -242,29 +227,6 @@ nav a.active {
     margin-top: 0.1rem;
 }
 
-.fees-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-}
-
-.fees-table th {
-    background: #f8f9fa;
-    padding: 0.8rem;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid #dee2e6;
-}
-
-.fees-table td {
-    padding: 0.8rem;
-    border-bottom: 1px solid #dee2e6;
-}
-
-.fees-table tr:hover {
-    background: #f8f9fa;
-}
-
 .info-box {
     background: #e7f3ff;
     border-left: 4px solid #2542ff;
@@ -278,6 +240,7 @@ nav a.active {
     color: #2542ff;
 }
 
+/* CONTACT INFO */
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -299,38 +262,10 @@ nav a.active {
     text-decoration: none;
 }
 
-.contact-icon {
-    color: #2542ff;
-    font-size: 1.3rem;
-}
-
-.quick-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.quick-link {
-    padding: 0.8rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.3s;
-    font-size: 0.9rem;
-}
-
-.quick-link:hover {
-    background: #2542ff;
-    color: white;
-}
-
+/* HIGHLIGHTS */
 .highlights-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 1rem;
 }
 
@@ -352,6 +287,7 @@ nav a.active {
     opacity: 0.9;
 }
 
+/* FOOTER */
 footer {
     background: #1a1a1a;
     color: white;
@@ -384,12 +320,6 @@ footer {
     color: #2542ff;
 }
 
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
 .footer-bottom {
     text-align: center;
     margin-top: 2rem;
@@ -399,16 +329,19 @@ footer {
     font-size: 0.9rem;
 }
 
+/* RESPONSIVE */
 @media (max-width: 1024px) {
     .content-grid {
         grid-template-columns: 1fr;
     }
     .campus-header {
         flex-direction: column;
+        align-items: center;
     }
     .campus-map {
         width: 100%;
         height: 300px;
+        margin-top: 1rem;
     }
     .highlights-grid {
         grid-template-columns: 1fr;
@@ -418,17 +351,42 @@ footer {
     }
 }
 
+@media (min-width: 1025px) {
+    .campus-map {
+        margin-top: 65px; 
+    }
+}
+
 @media (max-width: 768px) {
     nav {
         display: none;
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        background: white;
+        flex-direction: column;
+        width: 200px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        border-radius: 10px;
+        padding: 1rem;
+        z-index: 999;
     }
-    .info-grid {
-        grid-template-columns: 1fr;
+    nav.show {
+        display: flex;
     }
+    .hamburger {
+        display: block;
+    }
+    header {
+        position: relative;
+    }
+
+    /* Responsive buttons in two rows on mobile */
     .action-buttons {
-        flex-direction: row;
         flex-wrap: wrap;
-        gap: 0.5rem;
+    }
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
     }
 }
 </style>
@@ -437,46 +395,52 @@ footer {
 
 <header>
     <div class="logo">
-        <div class="logo-icon"></div>
+        <img src="../../assets/images/finderlogo.png" alt="Finder Logo">
         <div class="logo-text">
             <h1>Bataan Campus Finder</h1>
             <p>Campus Details</p>
         </div>
     </div>
-    <nav>
+
+    <nav id="mobileNav">
         <a href="../../index.html">HOME</a>
         <a href="../../campus.html" class="active">ALL CAMPUSES</a>
         <a href="../../about.html">ABOUT</a>
         <a href="../../contact.html">CONTACT</a>
     </nav>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 </header>
 
 <div class="container">
+    <!-- CAMPUS HEADER -->
     <div class="campus-header">
         <div class="campus-logo">
             <img src="../../assets/images/BPSU.jfif" alt="BPSU Logo">
         </div>
         <div class="campus-info">
             <h1>Bataan Peninsula State University</h1>
-            <p class="campus-subtitle">Bagac Campus</p>
-            <p style="color:#666; margin-top:0.6rem; margin-bottom:0.8rem; line-height:1.5;"><strong>Mission:</strong> To develop native leaders and empowered communities by delivering transformative instruction, research and production through Change Drivers and responsive policies.</p>
-            <p style="color:#666; margin-bottom:1rem; line-height:1.5;"><strong>Vision:</strong> An inclusive and sustainable university recognized for its global academic excellence by 2030.</p>
-            <p style="color:#666; margin-bottom:1rem; line-height:1.5; font-style: italic;">Established on June 10, 2008, to make quality but affordable education accessible to the youth of Bataan, located at the heart of historic Bagac town.</p>
+            <p style="color:#2542ff; font-weight:600; margin-bottom:0.8rem;">Bagac Campus</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:0.8rem;">
+             The BPSU Bagac Campus is in its fourth year of operation as a distinct campus of the University, with instruction, research, extension, and production mandates.   
+            </p>
+            <p style="color:#666; line-height:1.5; margin-bottom:1rem;"><strong>Mission:</strong> To develop native leaders and empowered communities through transformative instruction, research, and production.</p>
+            <p style="color:#666; line-height:1.5; margin-bottom:1rem;"><strong>Vision:</strong> An inclusive and sustainable university recognized for its global academic excellence by 2030.</p>
             <div class="action-buttons">
                 <button class="btn btn-primary" onclick="window.open('https://www.bpsu.edu.ph/')">WEBSITE</button>
                 <button class="btn btn-secondary" onclick="window.open('https://www.facebook.com/batpenstateu')">FACEBOOK</button>
                 <button class="btn btn-outline" onclick="window.open('https://www.bpsu.edu.ph/index.php/admsfa')">ADMISSION</button>
-                <button class="btn btn-outline" onclick="window.open('mailto:bagac_admission@bpsu.edu.ph')">EMAIL ADMISSIONS</button>
+                <button class="btn btn-outline" onclick="window.open('mailto:ac_admission@bpsu.edu.ph')">EMAIL ADMISSIONS</button>
                 <button class="btn btn-outline" onclick="window.open('mailto:public_affairs@bpsu.edu.ph')">EMAIL PUBLIC AFFAIRS</button>
-                <button class="btn btn-outline" onclick="alert('Visit: Bagumbayan, Bagac, Bataan 2107')">DIRECTIONS</button>
+                <button class="btn btn-outline" onclick="alert('Visit: Bangkal, Abucay, Bataan, 2114')">DIRECTIONS</button>
             </div>
         </div>
+        
         <div class="campus-map">
             <iframe src="https://www.google.com/maps?q=BPSU+Bagac+Campus,Bagumbayan,Bagac,Bataan&output=embed" allowfullscreen loading="lazy"></iframe>
         </div>
     </div>
-
-        <div class="content-grid">
+<div class="content-grid">
             <div class="main-content">
                 <!-- Academic Programs -->
                 <div class="section-card">
@@ -484,6 +448,7 @@ footer {
                     <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
                         BPSU Bagac Campus offers a variety of academic programs designed to meet the educational needs of the community. The campus focuses on providing accessible, quality education in various fields of study.
                     </p>
+        
                     <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
                         For detailed information about our comprehensive academic offerings, please visit:
                     </p>
@@ -658,37 +623,71 @@ footer {
                     </div>
                 </div>
             </div>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Campus Highlights -->
+        <div class="section-card">
+            <div class="section-header">CAMPUS HIGHLIGHTS</div>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <h3>4th</h3>
+                    <p>Year of Operation</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Full</h3>
+                    <p>University Functions</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Quality</h3>
+                    <p>Instruction & Research</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Community</h3>
+                    <p>Extension Programs</p>
+                </div>
+            </div>
+        </div>
 
-            <div class="sidebar">
-                <!-- Campus Highlights -->
-                <div class="section-card">
-                    <div class="section-header">CAMPUS HIGHLIGHTS</div>
-                    <div class="highlights-grid">
-                        <div class="highlight-card">
-                            <h3>2008</h3>
-                            <p>Year Established</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>Historic</h3>
-                            <p>Bagac Location</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>Quality</h3>
-                            <p>Education</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>Accessible</h3>
-                            <p>To Youth</p>
-                        </div>
+        <!-- Contact Information -->
+        <div class="section-card">
+            <div class="section-header">CONTACT INFORMATION</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <strong>Email - Admissions</strong><br>
+                        <a href="mailto:ac_admission@bpsu.edu.ph">ac_admission@bpsu.edu.ph</a>
                     </div>
                 </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <strong>Email - Public Affairs</strong><br>
+                        <a href="mailto:public_affairs@bpsu.edu.ph">public_affairs@bpsu.edu.ph</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <strong>Address</strong><br>
+                        Bagac, Bataan, 2114
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <!-- Contact Information -->
-                <div class="section-card">
-                    <div class="section-header">CONTACT INFORMATION</div>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <span class="contact-icon">✉️</span>
-                            <div>
-                                <strong>Email</strong><br>
-                                bagac_admission@b
+
+<script>
+function toggleMenu() {
+    document.getElementById("mobileNav").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>
+
+
+        

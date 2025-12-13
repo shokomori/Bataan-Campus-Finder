@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BPSU Main Campus - Campus Details</title>
+<title>BPSU bpsu-main Campus - Campus Details</title>
 <style>
-   * {
+/* GLOBAL */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,13 +18,15 @@ body {
     color: #333;
 }
 
+/* HEADER */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
     background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 .logo {
@@ -32,11 +35,9 @@ header {
     gap: 10px;
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    background: #2542ff;
-    border-radius: 8px;
+.logo img {
+    width: 32px;
+    height: auto;
 }
 
 .logo-text h1 {
@@ -62,59 +63,73 @@ nav a {
     transition: all 0.3s;
 }
 
-nav a:hover,
-nav a.active {
+nav a.active,
+nav a:hover {
     color: #2542ff;
 }
 
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #2542ff;
+}
+
+/* CONTAINER */
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem 5%;
 }
 
+/* CAMPUS HEADER */
 .campus-header {
     background: white;
     border-radius: 15px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex; /* change from grid to flex */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
     gap: 2rem;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .campus-logo {
-    flex: 0 0 120px; /* fixed width */
-}
-
-.campus-info {
-    flex: 1; /* take remaining space */
-}
-
-.campus-map {
-    flex: 0 0 400px; /* fixed width for map */
-    height: 250px; /* adjust map height */
+    flex: 0 0 120px;
 }
 
 .campus-logo img {
-    width: 100px;
-    height: auto; /* keeps the logo proportionate */
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.campus-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.campus-map {
+    flex: 0 0 400px;
+    height: 250px;
 }
 
 .campus-map iframe {
-    display: block;
     width: 100%;
     height: 100%;
+    border-radius: 10px;
     border: 0;
 }
 
+/* BUTTONS */
 .action-buttons {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 1rem;
+    flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 .btn {
@@ -125,6 +140,9 @@ nav a.active {
     transition: all 0.3s;
     border: none;
     font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1 1 auto; /* make buttons responsive */
+    text-align: center;
 }
 
 .btn-primary {
@@ -156,6 +174,7 @@ nav a.active {
     color: white;
 }
 
+/* CONTENT GRID */
 .content-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -173,7 +192,7 @@ nav a.active {
     background: white;
     border-radius: 15px;
     padding: 2rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .section-header {
@@ -186,41 +205,7 @@ nav a.active {
     font-weight: 600;
 }
 
-.programs-grid {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.program-category {
-    border-left: 4px solid #ffc107;
-    padding-left: 1rem;
-}
-
-.program-category h3 {
-    color: #333;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-
-.program-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-
-.program-list li {
-    color: #666;
-    font-size: 0.9rem;
-    padding: 0.3rem 0;
-}
-
-.program-list li:before {
-    content: "▪";
-    color: #2542ff;
-    margin-right: 0.5rem;
-}
-
+/* REQUIREMENTS & INFO BOX */
 .requirements-list {
     display: flex;
     flex-direction: column;
@@ -242,29 +227,6 @@ nav a.active {
     margin-top: 0.1rem;
 }
 
-.fees-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-}
-
-.fees-table th {
-    background: #f8f9fa;
-    padding: 0.8rem;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid #dee2e6;
-}
-
-.fees-table td {
-    padding: 0.8rem;
-    border-bottom: 1px solid #dee2e6;
-}
-
-.fees-table tr:hover {
-    background: #f8f9fa;
-}
-
 .info-box {
     background: #e7f3ff;
     border-left: 4px solid #2542ff;
@@ -278,6 +240,7 @@ nav a.active {
     color: #2542ff;
 }
 
+/* CONTACT INFO */
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -299,38 +262,10 @@ nav a.active {
     text-decoration: none;
 }
 
-.contact-icon {
-    color: #2542ff;
-    font-size: 1.3rem;
-}
-
-.quick-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.quick-link {
-    padding: 0.8rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.3s;
-    font-size: 0.9rem;
-}
-
-.quick-link:hover {
-    background: #2542ff;
-    color: white;
-}
-
+/* HIGHLIGHTS */
 .highlights-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 1rem;
 }
 
@@ -352,6 +287,7 @@ nav a.active {
     opacity: 0.9;
 }
 
+/* FOOTER */
 footer {
     background: #1a1a1a;
     color: white;
@@ -384,12 +320,6 @@ footer {
     color: #2542ff;
 }
 
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
 .footer-bottom {
     text-align: center;
     margin-top: 2rem;
@@ -399,15 +329,19 @@ footer {
     font-size: 0.9rem;
 }
 
+/* RESPONSIVE */
 @media (max-width: 1024px) {
     .content-grid {
         grid-template-columns: 1fr;
     }
     .campus-header {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
     }
     .campus-map {
+        width: 100%;
         height: 300px;
+        margin-top: 1rem;
     }
     .highlights-grid {
         grid-template-columns: 1fr;
@@ -417,17 +351,42 @@ footer {
     }
 }
 
+@media (min-width: 1025px) {
+    .campus-map {
+        margin-top: 65px; 
+    }
+}
+
 @media (max-width: 768px) {
     nav {
         display: none;
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        background: white;
+        flex-direction: column;
+        width: 200px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        border-radius: 10px;
+        padding: 1rem;
+        z-index: 999;
     }
-    .info-grid {
-        grid-template-columns: 1fr;
+    nav.show {
+        display: flex;
     }
+    .hamburger {
+        display: block;
+    }
+    header {
+        position: relative;
+    }
+
+    /* Responsive buttons in two rows on mobile */
     .action-buttons {
-        flex-direction: row;
         flex-wrap: wrap;
-        gap: 0.5rem;
+    }
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
     }
 }
 </style>
@@ -436,54 +395,65 @@ footer {
 
 <header>
     <div class="logo">
-        <div class="logo-icon"></div>
+        <img src="../../assets/images/finderlogo.png" alt="Finder Logo">
         <div class="logo-text">
             <h1>Bataan Campus Finder</h1>
             <p>Campus Details</p>
         </div>
     </div>
-    <nav>
+
+    <nav id="mobileNav">
         <a href="../../index.html">HOME</a>
         <a href="../../campus.html" class="active">ALL CAMPUSES</a>
         <a href="../../about.html">ABOUT</a>
         <a href="../../contact.html">CONTACT</a>
     </nav>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 </header>
 
 <div class="container">
+    <!-- CAMPUS HEADER -->
     <div class="campus-header">
         <div class="campus-logo">
-    <img src="../../assets/images/BPSU.jfif" alt="BPSU Logo">
+            <img src="../../assets/images/BPSU.jfif" alt="BPSU Logo">
         </div>
         <div class="campus-info">
             <h1>Bataan Peninsula State University</h1>
-            <p class="campus-subtitle">Main Campus</p>
-            <p style="color:#666; margin-top:0.6rem; margin-bottom:0.8rem; line-height:1.5;"><strong>Mission:</strong> To develop native leaders and empowered communities by delivering transformative instruction, research and production through Change Drivers and responsive policies.</p>
-            <p style="color:#666; margin-bottom:1rem; line-height:1.5;"><strong>Vision:</strong> An inclusive and sustainable university recognized for its global academic excellence by 2030.</p>
+            <p style="color:#2542ff; font-weight:600; margin-bottom:0.8rem;">Main Campus</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:0.8rem;">
+               
+            </p>
+            <p style="color:#666; line-height:1.5; margin-bottom:1rem;"><strong>Mission:</strong> To develop native leaders and empowered communities through transformative instruction, research, and production.</p>
+            <p style="color:#666; line-height:1.5; margin-bottom:1rem;"><strong>Vision:</strong> An inclusive and sustainable university recognized for its global academic excellence by 2030.</p>
             <div class="action-buttons">
                 <button class="btn btn-primary" onclick="window.open('https://www.bpsu.edu.ph/')">WEBSITE</button>
                 <button class="btn btn-secondary" onclick="window.open('https://www.facebook.com/batpenstateu')">FACEBOOK</button>
                 <button class="btn btn-outline" onclick="window.open('https://www.bpsu.edu.ph/index.php/admsfa')">ADMISSION</button>
-                <button class="btn btn-outline" onclick="window.open('mailto:mc_admission@bpsu.edu.ph')">EMAIL ADMISSIONS</button>
+                <button class="btn btn-outline" onclick="window.open('mailto:ac_admission@bpsu.edu.ph')">EMAIL ADMISSIONS</button>
                 <button class="btn btn-outline" onclick="window.open('mailto:public_affairs@bpsu.edu.ph')">EMAIL PUBLIC AFFAIRS</button>
-                <button class="btn btn-outline" onclick="alert('Visit: Capitol Compound, Tenejero, City of Balanga, Bataan 2100')">DIRECTIONS</button>
+                <button class="btn btn-outline" onclick="alert('Visit: Bangkal, Abucay, Bataan, 2114')">DIRECTIONS</button>
             </div>
         </div>
+        
         <div class="campus-map">
-            <iframe src="https://www.google.com/maps?q=Bataan+Peninsula+State+University+Main,Balanga,Philippines&output=embed" allowfullscreen loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps?q=Bataan+Peninsula+State+University+Main+Campus,Capitol+Compound,Tenejero,Balanga,Bataan+2100&output=embed"></iframe>
         </div>
     </div>
-
-        <div class="content-grid">
+<div class="content-grid">
             <div class="main-content">
                 <!-- Academic Programs -->
                 <div class="section-card">
                     <div class="section-header">ACADEMIC PROGRAMS</div>
                     <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
-                        Bataan Peninsula State University Main Campus is well-known in the field of engineering and technology. Since its inception in 1953 (formerly Bataan National School of Arts and Trades or BNSAT), the Main Campus has been among the country's top-producers of high-caliber technician-leaders needed by industries both locally and abroad.
+                       <strong>Mission:</strong> To develop native leaders and empowered communities by delivering transformative instruction, research and production through Change Drivers and responsive policies.
                     </p>
                     <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
-                        For detailed information about our comprehensive academic offerings across Engineering, Agriculture, Education, Business, Information Technology, and other fields, please visit:
+                       <strong>Vision:</strong> An inclusive and sustainable university recognized for its global academic excellence by 2030. 
+                    </p>
+        
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        For detailed information about our comprehensive academic offerings, please visit:
                     </p>
                     <a href="https://www.bpsu.edu.ph/index.php/about-academics" style="color: #2542ff; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
                         📄 View Academic Programs Brochure →
@@ -494,7 +464,7 @@ footer {
                     </a>
                     <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #2542ff;">
                         <p style="color: #666; font-size: 0.9rem;">
-                            <strong>Complete Program List:</strong> Visit the official website for a comprehensive list of all undergraduate and graduate programs offered at the Main Campus.
+                            <strong>Complete Program List:</strong> Visit the official website for a comprehensive list of all undergraduate and graduate programs offered at Main Campus.
                         </p>
                     </div>
                 </div>
@@ -539,7 +509,7 @@ footer {
                     </div>
 
                     <div class="info-box">
-                        <strong>Miscellaneous and Other Fees:</strong> While tuition is free, students are required to pay miscellaneous fees and other charges such as laboratory fees, ID registration, and development fees. For specific amounts, please visit the Student Financial Assistance Office (SFAO) or call (047) 237-4438.
+                        <strong>Miscellaneous and Other Fees:</strong> While tuition is free, students are required to pay miscellaneous fees and other charges such as laboratory fees, ID registration, and development fees. For specific amounts, please contact the Main Campus administration.
                     </div>
                 </div>
 
@@ -656,155 +626,71 @@ footer {
                     </div>
                 </div>
             </div>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Campus Highlights -->
+        <div class="section-card">
+            <div class="section-header">CAMPUS HIGHLIGHTS</div>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <h3>4th</h3>
+                    <p>Year of Operation</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Full</h3>
+                    <p>University Functions</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Quality</h3>
+                    <p>Instruction & Research</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Community</h3>
+                    <p>Extension Programs</p>
+                </div>
+            </div>
+        </div>
 
-            <div class="sidebar">
-                <!-- Campus Highlights -->
-                <div class="section-card">
-                    <div class="section-header">CAMPUS HIGHLIGHTS</div>
-                    <div class="highlights-grid">
-                        <div class="highlight-card">
-                            <h3>6</h3>
-                            <p>Campus Branches</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>50+</h3>
-                            <p>Programs Offered</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>15,000+</h3>
-                            <p>Total Students</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>500+</h3>
-                            <p>Faculty Members</p>
-                        </div>
+        <!-- Contact Information -->
+        <div class="section-card">
+            <div class="section-header">CONTACT INFORMATION</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <strong>Email - Admissions</strong><br>
+                        <a href="mailto:ac_admission@bpsu.edu.ph">ac_admission@bpsu.edu.ph</a>
                     </div>
                 </div>
-
-                <!-- Contact Information -->
-                <div class="section-card">
-                    <div class="section-header">CONTACT INFORMATION</div>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <span class="contact-icon">📞</span>
-                            <div>
-                                <strong>Phone</strong><br>
-                                (047) 237-4438
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">✉️</span>
-                            <div>
-                                <strong>Email</strong><br>
-                                mc_admission@bpsu.edu.ph<br>
-                                public_affairs@bpsu.edu.ph
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">🌐</span>
-                            <div>
-                                <strong>Website</strong><br>
-                                https://www.bpsu.edu.ph/
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">📍</span>
-                            <div>
-                                <strong>Address</strong><br>
-                                Capitol Compound, Tenejero, Balanga City, Bataan
-                            </div>
-                        </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <strong>Email - Public Affairs</strong><br>
+                        <a href="mailto:public_affairs@bpsu.edu.ph">public_affairs@bpsu.edu.ph</a>
                     </div>
                 </div>
-
-                <!-- Quick Links -->
-                <div class="section-card">
-                    <div class="section-header">QUICK LINKS</div>
-                    <div class="quick-links">
-                        <a href="#" class="quick-link">
-                            <span>📄 Download Admission Form</span>
-                            <span>→</span>
-                        </a>
-                        <a href="#" class="quick-link">
-                            <span>📅 Academic Calendar</span>
-                            <span>→</span>
-                        </a>
-                        <a href="#" class="quick-link">
-                            <span>📚 Student Handbook</span>
-                            <span>→</span>
-                        </a>
-                        <a href="#" class="quick-link">
-                            <span>🎓 Alumni Portal</span>
-                            <span>→</span>
-                        </a>
-                        <a href="#" class="quick-link">
-                            <span>💼 Career Services</span>
-                            <span>→</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Important Dates -->
-                <div class="section-card">
-                    <div class="section-header">IMPORTANT DATES</div>
-                    <div style="font-size: 0.9rem; line-height: 2;">
-                        <p><strong>Application Period:</strong></p>
-                        <p style="color: #666; margin-bottom: 1rem;">March 1 - May 31, 2024</p>
-                        
-                        <p><strong>Entrance Exam:</strong></p>
-                        <p style="color: #666; margin-bottom: 1rem;">June 15, 2024</p>
-                        
-                        <p><strong>Release of Results:</strong></p>
-                        <p style="color: #666; margin-bottom: 1rem;">July 1, 2024</p>
-                        
-                        <p><strong>Enrollment Period:</strong></p>
-                        <p style="color: #666;">July 15 - August 15, 2024</p>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <strong>Address</strong><br>
+                        Balanga, Bataan, 2110
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Bataan Campus Finder</h3>
-                <p>Your comprehensive guide to higher education institutions in Bataan. Discover programs, compare options, and find the perfect campus for your future.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <div class="footer-links">
-                    <a href="#">Home</a>
-                    <a href="#">All Campuses</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Privacy Policy</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Need Help?</h3>
-                <p>Contact us for any inquiries about higher education in Bataan.</p>
-                <p style="margin-top: 1rem;">
-                    Email: info@bataancampusfinder.com<br>
-                    Phone: (047) XXX-XXXX
-                </p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2025 Bataan Campus Finder. All rights reserved. | Designed with ❤️ for Bataan Students
-        </div>
-    </footer>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+<script>
+function toggleMenu() {
+    document.getElementById("mobileNav").classList.toggle("show");
+}
+</script>
+
 </body>
 </html>
+
+
+        
