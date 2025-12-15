@@ -613,12 +613,12 @@ nav.open {
                 <a class="btn btn-outline" href="mailto:lipoco.1997@gmail.com">EMAIL 1</a>
                 <a class="btn btn-outline" href="mailto:lpcrde21@gmail.com">EMAIL 2</a>
                 <a class="btn btn-outline" href="https://www.google.com/maps?q=Brgy.+Reformista,+Limay,+Philippines" target="_blank" rel="noopener">DIRECTIONS</a>
-                <a class="btn btn-outline" href="../../campus.html">ALL CAMPUSES</a>
+                <a class="btn btn-outline" href="../campus.html">ALL CAMPUSES</a>
             </div>
         </div>
         
-        <div class="campus-map">
-            <iframe src="https://www.google.com/maps?q=Brgy.+Reformista,+Limay,+Philippines&output=embed"></iframe>
+            <div class="campus-map">
+            <iframe title="Limay Polytechnic College location" src="https://www.google.com/maps?q=Brgy.+Reformista,+Limay,+Philippines&output=embed"></iframe>
         </div>
     </div>
 
@@ -790,7 +790,7 @@ nav.open {
                 <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
                     <h4 style="color: #667eea; margin-bottom: 1rem;">📱 Phone</h4>
                     <p style="color: #666; line-height: 1.8;">
-                        <a href="tel:09127609628" style="color: #667eea; text-decoration: none; font-weight: 600;">0912-760-9628</a>
+                        <a href="tel:+639127609628" style="color: #667eea; text-decoration: none; font-weight: 600;">0912-760-9628</a>
                     </p>
                 </div>
             </div>
@@ -816,9 +816,11 @@ nav.open {
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('mobileNav');
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('open');
-});
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+    });
+}
 
 // Smooth scrolling for navigation buttons
 document.addEventListener('DOMContentLoaded', function() {

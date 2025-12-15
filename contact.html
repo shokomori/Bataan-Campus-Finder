@@ -524,14 +524,18 @@ footer {
             <h2>Send Us a Message</h2>
             <div class="success-message" id="successMessage">Thank you! Your message has been sent successfully.</div>
             <div class="error-message" id="errorMessage">Sorry — we couldn't send your message.</div>
-            <form id="contactForm">
+            <form id="contactForm" action="https://formspree.io/f/mdkqvazg" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
                 <div class="form-group">
                     <label for="email">Your Email:</label>
                     <input type="email" id="email" name="email" required placeholder="Enter your email address">
                 </div>
                 <div class="form-group">
                     <label for="concern">Your Concern:</label>
-                    <textarea id="concern" name="concern" required placeholder="Tell us what's on your mind..."></textarea>
+                    <textarea id="concern" name="message" required placeholder="Tell us what's on your mind..."></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Submit</button>
             </form>
@@ -606,26 +610,53 @@ function scrollToTop() {
     });
 }
 
-// Form submission handler
+// Form submission handler with Formspree
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
+    const submitBtn = document.querySelector('.submit-btn');
     const successMsg = document.getElementById('successMessage');
     const errorMsg = document.getElementById('errorMessage');
     
-    // Simulate form submission
-    setTimeout(() => {
-        successMsg.classList.add('show');
-        this.reset();
-        
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    successMsg.classList.remove('show');
+    errorMsg.classList.remove('show');
+    
+    const formData = new FormData(this);
+    
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            successMsg.classList.add('show');
+            document.getElementById('contactForm').reset();
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 3000);
+        } else {
+            errorMsg.classList.add('show');
+            setTimeout(() => {
+                errorMsg.classList.remove('show');
+            }, 3000);
+        }
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
+    }).catch(error => {
+        console.log('Error:', error);
+        errorMsg.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
         setTimeout(() => {
-            successMsg.classList.remove('show');
+            errorMsg.classList.remove('show');
         }, 3000);
-    }, 500);
+    });
 });
 </script>
-
-
 
 </body>
 </html>
