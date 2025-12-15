@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Name - Campus Details</title>
+<style>
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 32px;
+    height: auto;
+}
+
+.logo-text h1 {
+    font-size: 1.2rem;
+    color: #2542ff;
+}
+
+.logo-text p {
+    font-size: 0.7rem;
+    color: #666;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+}
+
+nav a.active,
+nav a:hover {
+    color: #2542ff;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #2542ff;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 5%;
+}
+
+/* CAMPUS HEADER */
+.campus-header {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.campus-logo {
+    flex: 0 0 120px;
+}
+
+.campus-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.campus-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.campus-map {
+    flex: 0 0 400px;
+    height: 250px;
+}
+
+.campus-map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 0;
+}
+
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #2542ff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1a32cc;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-outline {
+    background: white;
+    color: #2542ff;
+    border: 2px solid #2542ff;
+}
+
+.btn-outline:hover {
+    background: #2542ff;
+    color: white;
+}
+
+/* CONTENT GRID */
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.main-content,
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.section-header {
+    background: #2542ff;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    margin: -2rem -2rem 1.5rem -2rem;
+    border-radius: 15px 15px 0 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* REQUIREMENTS & INFO BOX */
+.requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: start;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.requirement-item:before {
+    content: "✓";
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 0.1rem;
+}
+
+.info-box {
+    background: #e7f3ff;
+    border-left: 4px solid #2542ff;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.info-box strong {
+    color: #2542ff;
+}
+
+/* CONTACT INFO */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.contact-item a {
+    color: #2542ff;
+    text-decoration: none;
+}
+
+/* HIGHLIGHTS */
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
+}
+
+.highlight-card {
+    background: #2542ff;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.highlight-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* FOOTER */
+footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 2rem 5%;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: #2542ff;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #2542ff;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    .campus-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .campus-map {
+        width: 100%;
+        height: 300px;
+        flex: 1;
+    }
+    .highlights-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    .action-buttons {
+        flex-wrap: wrap;
+    }
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="../assets/images/finderlogo.png" alt="Finder Logo">
+        <div class="logo-text">
+            <h1>Bataan Campus Finder</h1>
+            <p>Campus Details</p>
+        </div>
+    </div>
+    <nav>
+        <a href="../index.html">HOME</a>
+        <a href="../campus.html" class="active">ALL CAMPUSES</a>
+        <a href="../about.html">ABOUT</a>
+        <a href="../contact.html">CONTACT</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="campus-header">
+        <div class="campus-logo">
+            <img src="../assets/images/LOGO.jpg" alt="School Logo">
+        </div>
+        <div class="campus-info">
+            <h1>School Name</h1>
+            <p class="campus-subtitle">Campus Location</p>
+            <p style="color:#666; margin-top:0.6rem; margin-bottom:0.8rem; line-height:1.5;"><strong>Overview:</strong> Add school overview here.</p>
+            <div class="action-buttons">
+                <a class="btn btn-primary" href="https://example.com" target="_blank" rel="noopener">WEBSITE</a>
+                <a class="btn btn-outline" href="https://facebook.com/example" target="_blank" rel="noopener">FACEBOOK</a>
+                <a class="btn btn-outline" href="https://example.com/admission" target="_blank" rel="noopener">ADMISSION</a>
+            </div>
+        </div>
+        <div class="campus-map">
+            <iframe src="https://www.google.com/maps?q=School+Name,Bataan,Philippines&output=embed" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <div class="content-grid">
+        <div class="main-content">
+            <div class="section-card">
+                <div class="section-header">ACADEMIC PROGRAMS</div>
+                <p style="color: #666; line-height: 1.6;">Add academic programs information here.</p>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="section-card">
+                <div class="section-header">CONTACT INFORMATION</div>
+                <div class="contact-info">
+                    <div class="contact-item">📞 <strong>Phone:</strong> (047) XXX-XXXX</div>
+                    <div class="contact-item">✉️ <strong>Email:</strong> info@example.com</div>
+                    <div class="contact-item">🌐 <strong>Website:</strong> www.example.com</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Bataan Campus Finder</h3>
+            <p>Your comprehensive guide to higher education institutions in Bataan.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="../campus.html">All Campuses</a>
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Need Help?</h3>
+            <p>Contact us for inquiries about higher education in Bataan.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2025 Bataan Campus Finder. All rights reserved.</div>
+</footer>
+
+</body>
+
+<script src="assets/js/site-ui.js"></script>
+
+</html>

@@ -14,7 +14,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     color: #333;
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
 }
 
 /* Header */
@@ -22,9 +23,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1.5rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -33,19 +35,24 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    justify-content: flex-end;
+    gap: 12px;
 }
 
 .logo-icon {
     width: 40px;
     height: 40px;
-    background: #2542ff;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: transform 0.3s;
+}
+
+.logo-icon:hover {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .logo-icon img {
@@ -55,13 +62,18 @@ header {
 }
 
 .logo-text h1 {
-    font-size: 1.2rem;
-    color: #2542ff;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
 }
 
 .logo-text p {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: #666;
+    margin-top: 2px;
 }
 
 nav {
@@ -72,15 +84,31 @@ nav {
 nav a {
     text-decoration: none;
     color: #333;
-    font-weight: 500;
+    font-weight: 600;
     padding: 0.5rem 1rem;
     transition: all 0.3s;
-    border-bottom: 2px solid transparent;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+nav a.active::after,
+nav a:hover::after {
+    width: 80%;
 }
 
 nav a:hover, nav a.active {
-    color: #2542ff;
-    border-bottom-color: #2542ff;
+    color: #667eea;
 }
 
 /* Hamburger */
@@ -95,8 +123,14 @@ nav a:hover, nav a.active {
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: #333;
+    background: #667eea;
     display: block;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.hamburger:hover span {
+    background: #764ba2;
 }
 
 /* Mobile nav */
@@ -104,19 +138,20 @@ nav.open {
     display: flex !important;
     flex-direction: column;
     gap: 1rem;
-    background: white;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
     padding: 1rem;
     position: absolute;
-    top: 70px;
+    top: 80px;
     right: 5%;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border-radius: 15px;
     z-index: 1000;
 }
 
 /* Contact Section */
 .contact-section {
-    background: linear-gradient(135deg, #2542ff 0%, #1a32cc 100%);
+    background: transparent;
     min-height: calc(100vh - 120px);
     padding: 3rem 5%;
     display: flex;
@@ -131,25 +166,36 @@ nav.open {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin: 0 auto;
-    place-items: stretch; /* make children stretch same height */
 }
 
 /* Contact Info Card */
 .contact-info, .contact-form-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%; /* full height to match sibling */
+    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-info:hover, .contact-form-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
 }
 
 .contact-info h2 {
-    font-size: 1.8rem;
-    color: #2542ff;
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .contact-info p {
@@ -165,14 +211,14 @@ nav.open {
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background: #f8f9fa;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
     border-radius: 12px;
     transition: all 0.3s;
     min-height: 60px;
 }
 
 .contact-item:hover {
-    background: #e9ecef;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
     transform: translateX(5px);
 }
 
@@ -183,18 +229,27 @@ nav.open {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .contact-icon img {
-    width: 100%;
-    height: 100%;
+    width: 60%;
+    height: 60%;
     object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.school-icon {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
 }
 
 .school-icon img {
-    width: 50px;
-    height: 50px;
+    width: 70% !important;
+    height: 70% !important;
 }
 
 .contact-details {
@@ -202,10 +257,11 @@ nav.open {
 }
 
 .contact-details strong {
-    color: #2542ff;
+    color: #667eea;
     display: block;
     margin-bottom: 0.3rem;
     font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .contact-details span {
@@ -215,35 +271,44 @@ nav.open {
 }
 
 /* Form Styles */
+.contact-form-card h2 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
 .form-group {
     margin-bottom: 1.5rem;
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .form-group label {
     display: block;
-    color: #2542ff;
-    font-weight: 600;
-    font-size: 1.1rem;
+    color: #667eea;
+    font-weight: 700;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
-    font-style: italic;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border: 2px solid #dee2e6;
+    border: 2px solid rgba(102, 126, 234, 0.2);
     border-radius: 12px;
     font-size: 1rem;
     font-family: inherit;
     transition: all 0.3s;
-    background: #f8f9fa;
+    background: rgba(102, 126, 234, 0.05);
     box-sizing: border-box;
-    min-height: 60px; /* match contact item height */
+    min-height: 60px;
+    color: #333;
 }
 
 .form-group textarea {
@@ -254,15 +319,20 @@ nav.open {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #2542ff;
+    border-color: #667eea;
     background: white;
-    box-shadow: 0 0 0 3px rgba(37, 66, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
 }
 
 .submit-btn {
     width: 100%;
     padding: 1.2rem;
-    background: #2542ff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -272,30 +342,72 @@ nav.open {
     transition: all 0.3s;
     text-transform: uppercase;
     letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .submit-btn:hover {
-    background: #1a32cc;
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(37, 66, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
 }
 
 .success-message, .error-message {
     display: none;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 1rem;
     text-align: center;
+    font-weight: 600;
 }
-.success-message {background:#28a745;color:white;}
-.error-message {background:#dc3545;color:white;}
+.success-message {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+.error-message {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
 .success-message.show, .error-message.show {display:block;}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
 
 /* Footer */
 footer {
-    background: #1a1a1a;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(20px);
     color: white;
-    padding: 1.5rem 5%;
+    padding: 2rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -311,18 +423,41 @@ footer {
     text-decoration: none;
     transition: color 0.3s;
     font-size: 0.9rem;
+    font-weight: 500;
 }
 
-.footer-links a:hover {color: #2542ff;}
+.footer-links a:hover {color: #667eea;}
 .designed-by {font-size: 0.9rem;opacity: 0.8;}
 
 /* Responsive */
 @media (max-width: 968px) {
-    .contact-container {grid-template-columns: 1fr; justify-items: center;}
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
     nav {display: none;}
+    nav.open {display: flex !important;}
     .hamburger {display: flex;}
-    .contact-info, .contact-form-card {padding: 2rem; width: 100%;}
-    footer {flex-direction: column; gap: 1rem; text-align: center;}
+    .contact-info, .contact-form-card {
+        padding: 2rem;
+        width: 100%;
+    }
+    footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 2rem 5%;
+    }
 }
 </style>
 </head>
@@ -386,6 +521,7 @@ footer {
 
         <!-- Contact Form -->
         <div class="contact-form-card">
+            <h2>Send Us a Message</h2>
             <div class="success-message" id="successMessage">Thank you! Your message has been sent successfully.</div>
             <div class="error-message" id="errorMessage">Sorry — we couldn't send your message.</div>
             <form id="contactForm">
@@ -403,22 +539,94 @@ footer {
     </div>
 </section>
 
-<footer>
-    <div class="footer-links">
-        <a href="#terms">Terms & Support</a>
-        <a href="#privacy">Privacy Policy</a>
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+<footer style="background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px); color: white; padding: 2rem 5%; margin-top: 3rem;">
+    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+        <p style="color: #999; font-size: 0.9rem;">© 2024 Bataan Campus Finder. All rights reserved.</p>
+        <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">Information provided is for reference purposes. Please verify details with the respective institutions.</p>
     </div>
-    <div class="designed-by">Designed with ❤️ for Bataan Students</div>
 </footer>
-
 <script>
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    if (!hamburger) return;
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('open');
+    hamburger.setAttribute('role', 'button');
+    hamburger.setAttribute('tabindex', '0');
+    hamburger.setAttribute('aria-expanded', 'false');
+
+    const toggleNav = () => {
+        const nav = document.getElementById('mobileNav') || document.getElementById('nav-menu') || document.getElementById('navMobile') || document.querySelector('nav');
+        if (!nav) return;
+
+        if (nav.classList) {
+            nav.classList.toggle('open');
+            const isOpen = nav.classList.contains('open');
+            hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+            // Ensure mobile nav becomes visible even if CSS hasn't applied yet
+            const disp = getComputedStyle(nav).display;
+            if (isOpen && disp === 'none') {
+                nav.style.display = 'flex';
+            } else if (!isOpen) {
+                nav.style.display = 'none';
+            } else {
+                nav.style.removeProperty('display');
+            }
+        } else {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        }
+    };
+
+    hamburger.addEventListener('click', toggleNav);
+    hamburger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleNav();
+        }
+    });
+});
+
+// Back to top button functionality
+window.addEventListener('scroll', function() {
+    const backToTop = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Form submission handler
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const successMsg = document.getElementById('successMessage');
+    const errorMsg = document.getElementById('errorMessage');
+    
+    // Simulate form submission
+    setTimeout(() => {
+        successMsg.classList.add('show');
+        this.reset();
+        
+        setTimeout(() => {
+            successMsg.classList.remove('show');
+        }, 3000);
+    }, 500);
 });
 </script>
 
+<script src="assets/js/site-ui.js"></script>
+
 </body>
+</html>
 </html>

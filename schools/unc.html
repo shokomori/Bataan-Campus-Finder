@@ -73,7 +73,7 @@ footer {background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem;}
 
 /* Responsive */
 @media (max-width:1024px) {.content-grid {grid-template-columns:1fr;} .campus-header {grid-template-columns:1fr;} .campus-map {width:100%;} .footer-content {grid-template-columns:1fr;}}
-@media (max-width:768px) {nav {display:none;} .info-grid {grid-template-columns:1fr;} .action-buttons {flex-direction:column;} .hamburger {display:flex;}}
+@media (max-width:768px) {nav {display:none;} .nav-mobile.open {display:flex !important;} .info-grid {grid-template-columns:1fr;} .action-buttons {flex-direction:column;} .hamburger {display:flex;}}
 </style>
 </head>
 <body>
@@ -209,4 +209,7 @@ document.querySelectorAll('.campus-map').forEach(el=>{
 </script>
 
 </body>
+
+<script src="../assets/js/site-ui.js"></script>
+
 </html>

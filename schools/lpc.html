@@ -3,229 +3,861 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lyceum-Pacific College - Campus Details</title>
+<title>Limay Polytechnic College - Campus Details</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background:#f5f5f5; color:#333; }
-
-/* Header */
-header { display:flex; justify-content:space-between; align-items:center; padding:1rem 5%; background:white; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:relative; }
-.logo { display:flex; align-items:center; gap:10px; }
-.logo-icon { width:40px; height:40px; background:#2542ff; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-.logo-icon img { width:100%; height:100%; object-fit:contain; }
-.logo-text h1 { font-size:1.2rem; color:#2542ff; }
-.logo-text p { font-size:0.7rem; color:#666; }
-
-/* Navigation */
-nav { display:flex; gap:2rem; }
-nav a { text-decoration:none; color:#333; font-weight:500; padding:0.5rem 1rem; transition:all 0.3s; }
-nav a:hover, nav a.active { color:#2542ff; }
-
-/* Hamburger */
-.hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
-.hamburger span { width:25px; height:3px; background:#333; border-radius:2px; transition:all 0.3s; }
-nav.active { display:flex; flex-direction:column; position:absolute; top:70px; right:5%; background:white; padding:1rem; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); z-index:100; }
-
-/* Back Button */
-.back-btn { background:white; padding:1rem 5%; display:flex; align-items:center; gap:0.5rem; cursor:pointer; border:none; width:100%; text-align:left; font-size:1rem; color:#2542ff; transition:all 0.3s; }
-.back-btn:hover { background:#f8f9fa; }
-
-/* Main Container */
-.container { max-width:1400px; margin:0 auto; padding:2rem 5%; }
-
-/* Campus Header Card */
-.campus-header { background:white; border-radius:15px; padding:2rem; margin-bottom:2rem; box-shadow:0 2px 10px rgba(0,0,0,0.1); display:grid; grid-template-columns:auto 1fr auto; gap:2rem; align-items:start; position:relative; }
-.campus-logo { width:120px; height:120px; background:#f0f0f0; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; color:#999; text-align:center; overflow:hidden; }
-.campus-logo img { width:100%; height:100%; object-fit:cover; border-radius:10px; }
-.campus-info h1 { font-size:1.8rem; margin-bottom:0.5rem; color:#333; }
-.campus-subtitle { color:#666; margin-bottom:1.5rem; font-size:1rem; }
-.info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-.info-item { display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; }
-.info-icon { color:#2542ff; font-size:1.2rem; }
-.campus-map { width:300px; height:200px; background:#e9ecef; border-radius:10px; display:block; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
-.campus-map iframe { display:block; width:100%; height:100%; border:0; }
-
-/* Action Buttons */
-.action-buttons { display:flex; gap:1rem; margin-top:1.5rem; }
-.btn { padding:0.8rem 2rem; border-radius:8px; font-weight:600; cursor:pointer; transition:all 0.3s; border:none; font-size:0.95rem; }
-.btn-primary { background:#2542ff; color:white; }
-.btn-primary:hover { background:#1a32cc; }
-
-/* Content Grid */
-.content-grid { display:grid; grid-template-columns:2fr 1fr; gap:2rem; }
-.main-content { display:flex; flex-direction:column; gap:2rem; }
-.sidebar { display:flex; flex-direction:column; gap:2rem; }
-
-/* Section Card */
-.section-card { background:white; border-radius:15px; padding:2rem; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-.section-header { background:#2542ff; color:white; padding:0.8rem 1.5rem; margin:-2rem -2rem 1.5rem -2rem; border-radius:15px 15px 0 0; font-size:1.1rem; font-weight:600; }
-.contact-info { display:flex; flex-direction:column; gap:1rem; }
-.contact-item { display:flex; align-items:center; gap:0.8rem; padding:1rem; background:#f8f9fa; border-radius:8px; font-size:0.9rem; }
-.contact-icon { color:#2542ff; font-size:1.3rem; }
-
-/* Footer */
-footer { background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem; }
-.footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:2rem; }
-.footer-section h3 { margin-bottom:1rem; color:#2542ff; }
-.footer-section p, .footer-section a { color:#ccc; font-size:0.9rem; line-height:1.8; text-decoration:none; }
-.footer-section a:hover { color:#2542ff; }
-.footer-links { display:flex; flex-direction:column; gap:0.5rem; }
-.footer-bottom { text-align:center; margin-top:2rem; padding-top:2rem; border-top:1px solid #333; color:#999; font-size:0.9rem; }
-
-/* Responsive */
-@media (max-width:1024px) {
-    .content-grid { grid-template-columns:1fr; }
-    .campus-header { grid-template-columns:1fr; }
-    .campus-map { width:100%; }
-    .footer-content { grid-template-columns:1fr; }
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@media (max-width:768px) {
-    nav { display:none; }
-    .hamburger { display:flex; }
-    .info-grid { grid-template-columns:1fr; }
-    .action-buttons { flex-direction:column; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.logo:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.logo-text h1 {
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.logo-text p {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+nav a.active::after,
+nav a:hover::after {
+    width: 80%;
+}
+
+nav a.active,
+nav a:hover {
+    color: #667eea;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #667eea;
+    display: block;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.hamburger:hover span {
+    background: #764ba2;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 5%;
+}
+
+/* CAMPUS HEADER */
+.campus-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.campus-logo {
+    flex: 0 0 140px;
+}
+
+.campus-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.campus-logo img:hover {
+    transform: scale(1.05);
+}
+
+.campus-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.campus-info h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.campus-map {
+    flex: 0 0 450px;
+    height: 280px;
+}
+
+.campus-map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.9rem 1.8rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(245, 87, 108, 0.4);
+}
+
+.btn-outline {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* QUICK NAVIGATION */
+.quick-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.nav-btn {
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+}
+
+/* CONTENT */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    scroll-margin-top: 100px;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.section-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    margin: -2.5rem -2.5rem 2rem -2.5rem;
+    border-radius: 20px 20px 0 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* PROGRAMS GRID */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.program-category {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s;
+}
+
+.program-category:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+}
+
+.program-category h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.program-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.program-item {
+    color: #666;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.program-item:last-child {
+    border-bottom: none;
+}
+
+.program-subitem {
+    color: #888;
+    font-size: 0.9rem;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    position: relative;
+}
+
+.program-subitem::before {
+    content: "•";
+    position: absolute;
+    left: 0.5rem;
+    color: #667eea;
+}
+
+/* REQUIREMENTS & INFO BOX */
+.requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0.8rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.requirement-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(5px);
+}
+
+.requirement-item:before {
+    content: "✓";
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+}
+
+.info-box {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+}
+
+.info-box strong {
+    color: #667eea;
+}
+
+/* SCHOLARSHIP CARD */
+.scholarship-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+}
+
+.scholarship-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+.scholarship-card h4 {
+    color: #667eea;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.scholarship-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .campus-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .campus-map {
+        width: 100%;
+        height: 300px;
+        margin-top: 1rem;
+    }
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1025px) {
+    .campus-map {
+        margin-top: 65px; 
+    }
+}
+
+/* Mobile nav */
+nav.open {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 1rem;
+    position: absolute;
+    top: 80px;
+    right: 5%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .quick-nav {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+    header {
+        position: relative;
+    }
+
+    .action-buttons {
+        flex-wrap: wrap;
+    }
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
 }
 </style>
 </head>
 <body>
+
 <header>
     <div class="logo">
-        <div class="logo-icon">
-            <img src="../assets/images/finderlogo.png" alt="Campus Finder Logo">
-        </div>
+        <img src="../../assets/images/finderlogo.png" alt="Finder Logo">
         <div class="logo-text">
             <h1>Bataan Campus Finder</h1>
             <p>Campus Details</p>
         </div>
     </div>
 
-    <!-- Hamburger for small screens -->
+    <nav id="mobileNav">
+        <a href="../../index.html">HOME</a>
+        <a href="../../campus.html" class="active">ALL CAMPUSES</a>
+        <a href="../../about.html">ABOUT</a>
+        <a href="../../contact.html">CONTACT</a>
+    </nav>
+
     <div class="hamburger" id="hamburger">
         <span></span>
         <span></span>
         <span></span>
     </div>
-
-    <nav id="nav-menu">
-        <a href="../index.html">HOME</a>
-        <a href="../campus.html" class="active">ALL CAMPUSES</a>
-        <a href="../about.html">ABOUT</a>
-        <a href="../contact.html">CONTACT</a>
-    </nav>
 </header>
 
 <div class="container">
+    <!-- CAMPUS HEADER -->
     <div class="campus-header">
         <div class="campus-logo">
-            <img src="../assets/images/lipoco.png" alt="Lyceum-Pacific College Logo">
+            <img src="../../assets/images/lpc-logo.png" alt="Limay Polytechnic College Logo">
         </div>
         <div class="campus-info">
-            <h1>Limay PolyTechnic College</h1>
-            <p class="campus-subtitle">Main Campus</p>
-            <div class="info-grid">
-                <div class="info-item"><span class="info-icon">📍</span> Bataan, Bataan</div>
-                <div class="info-item"><span class="info-icon">📞</span> (047) 267-8901</div>
-                <div class="info-item"><span class="info-icon">🌐</span> www.lpc-bataan.edu.ph</div>
-                <div class="info-item"><span class="info-icon">✉️</span> info@lpc-bataan.edu.ph</div>
-            </div>
+            <h1>Limay Polytechnic College</h1>
+            <p style="color:#667eea; font-weight:600; margin-bottom:0.8rem; font-size:1.1rem;">Private Municipal College</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Description:</strong> Limay Polytechnic College is a private municipal college in Limay, Bataan. It originated from a local-government outreach program under the polytechnic outreach of a public university, with the aim to serve indigent students needing access to higher education. The school emphasizes not only academic competence but also values like service, integrity, and community responsiveness — preparing graduates to contribute to development in Limay, Bataan, and beyond.</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Mission:</strong> The college is committed to providing accessible and quality technical–vocational and higher education that develops competent, innovative, and service-oriented individuals.</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Vision:</strong> Limay Polytechnic College envisions a technically skilled, globally competitive, and values-driven workforce contributing to national development.</p>
             <div class="action-buttons">
-                <button class="btn btn-primary">LEARN MORE</button>
+                <a class="btn btn-primary" href="https://lpcbataan.com" target="_blank" rel="noopener">WEBSITE</a>
+                <a class="btn btn-secondary" href="https://www.facebook.com/share/16Z9ArA37h/?mibextid=wwXIfr" target="_blank" rel="noopener">FACEBOOK</a>
+                <a class="btn btn-outline" href="tel:+639127609628">PHONE</a>
+                <a class="btn btn-outline" href="mailto:lipoco.1997@gmail.com">EMAIL 1</a>
+                <a class="btn btn-outline" href="mailto:lpcrde21@gmail.com">EMAIL 2</a>
+                <a class="btn btn-outline" href="https://www.google.com/maps?q=Brgy.+Reformista,+Limay,+Philippines" target="_blank" rel="noopener">DIRECTIONS</a>
+                <a class="btn btn-outline" href="../../campus.html">ALL CAMPUSES</a>
             </div>
         </div>
-        <div class="campus-map"> Map Coming Soon </div>
+        
+        <div class="campus-map">
+            <iframe src="https://www.google.com/maps?q=Brgy.+Reformista,+Limay,+Philippines&output=embed"></iframe>
+        </div>
     </div>
 
-    <div class="content-grid">
-        <div class="main-content">
-            <!-- Overview -->
-            <div class="section-card">
-                <div class="section-header">OVERVIEW</div>
-                <p style="color: #666; line-height:1.6; margin-bottom:1rem;">
-                    Limay Polytechnic College is a leading educational institution in Bataan dedicated to providing quality higher education. The institution is committed to fostering academic excellence, student development, and community engagement.
-                </p>
-                <p style="color:#666; line-height:1.6;">
-                    With experienced faculty, modern facilities, and comprehensive programs, Lyceum-Pacific College offers students an excellent platform for personal and professional growth in today's competitive world.
-                </p>
-            </div>
+    <!-- Quick Navigation -->
+    <div class="quick-nav">
+        <a href="#academic-programs" class="nav-btn">Academic Programs</a>
+        <a href="#admission-requirements" class="nav-btn">Admission Requirements</a>
+        <a href="#tuition-fees" class="nav-btn">Tuition & Fees</a>
+        <a href="#scholarships" class="nav-btn">Scholarships</a>
+        <a href="#contact" class="nav-btn">Contact Information</a>
+    </div>
 
-            <!-- Academic Programs -->
-            <div class="section-card">
-                <div class="section-header">ACADEMIC PROGRAMS OFFERED</div>
-                <ul style="color:#666; line-height:1.6; padding-left:1.2rem;">
-                    <li>Computer Science</li>
-                    <li>Information Technology</li>
-                    <li>Business Administration</li>
-                    <li>Hotel and Restaurant Management</li>
-                    <li>Education</li>
-                    <li>Criminology</li>
-                    <li>Short Courses & Certification Programs</li>
-                </ul>
+    <div class="main-content">
+        <!-- Academic Programs -->
+        <div class="section-card" id="academic-programs">
+            <div class="section-header">ACADEMIC PROGRAMS</div>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                Limay Polytechnic College offers a diverse range of programs across education, business, accountancy, and technology. The college has expanded its offerings from secretarial courses to full degree programs, preparing students with both technical skills and strong values for global competitiveness.
+            </p>
+
+            <div class="programs-grid">
+                <div class="program-category">
+                    <h3>Education Department</h3>
+                    <div class="program-list">
+                        <div class="program-item">Bachelor in Elementary Education</div>
+                        <div class="program-item">Bachelor of Secondary Education</div>
+                        <div class="program-subitem">Major in English</div>
+                        <div class="program-subitem">Major in Filipino</div>
+                        <div class="program-subitem">Major in Mathematics</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Business & Accountancy</h3>
+                    <div class="program-list">
+                        <div class="program-item">BS Accountancy</div>
+                        <div class="program-item">BS Business Administration</div>
+                        <div class="program-subitem">Major in Financial Management</div>
+                        <div class="program-subitem">Major in Operation Management</div>
+                        <div class="program-subitem">Major in Marketing Management</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Technology Education Department</h3>
+                    <div class="program-list">
+                        <div class="program-item">Associate in Computer Technology</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="sidebar">
-            <div class="section-card">
-                <div class="section-header">CONTACT INFORMATION</div>
-                <div class="contact-info">
-                    <div class="contact-item"><span class="contact-icon">📞</span><div><strong>Phone</strong><br>(047) 267-8901</div></div>
-                    <div class="contact-item"><span class="contact-icon">✉️</span><div><strong>Email</strong><br>info@lpc-bataan.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">🌐</span><div><strong>Website</strong><br>www.lpc-bataan.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">📍</span><div><strong>Address</strong><br>Limay, Bataan</div></div>
+        <!-- Admission Requirements -->
+        <div class="section-card" id="admission-requirements">
+            <div class="section-header">ADMISSION REQUIREMENTS</div>
+            
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">For New Students:</h3>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">Form 138 and/or Form 137</div>
+                <div class="requirement-item">PSA Birth Certificate</div>
+                <div class="requirement-item">Good Moral Certificate</div>
+                <div class="requirement-item">Voter's ID of Guardian/Parent</div>
+                <div class="requirement-item">Passport Size Pictures</div>
+                <div class="requirement-item">Folder and Brown Envelope</div>
+            </div>
+
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">For Transferees:</h3>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">Honorable Dismissal</div>
+                <div class="requirement-item">Transfer Credentials from previous school</div>
+                <div class="requirement-item">TOR indicating copy of Limay Polytechnic College</div>
+                <div class="requirement-item">PSA Birth Certificate</div>
+            </div>
+
+            <div class="info-box">
+                <strong>Application Process:</strong> For more information about the admission process and application procedures, visit the official website at <a href="https://lpcbataan.com" style="color: #667eea; text-decoration: none; font-weight: 600;">lpcbataan.com</a> or contact the college directly via phone or email.
+            </div>
+        </div>
+
+        <!-- Scholarships -->
+        <div class="section-card" id="scholarships">
+            <div class="section-header">SCHOLARSHIPS</div>
+            
+            <div class="scholarship-card">
+                <h4>🎓 Free Higher Education</h4>
+                <div class="scholarship-details">
+                    <p><strong>Program:</strong> Universal Access to Quality Tertiary Education Act (UAQTEA) or RA 10931</p>
+                    <p><strong>Coverage:</strong> Limay Polytechnic College is a grantee of Free Higher Education, providing tuition-free education to qualified students under this program.</p>
+                    <p><strong>Eligibility:</strong> Students must meet the requirements set by the Commission on Higher Education (CHED) and the college to avail of this scholarship.</p>
                 </div>
+            </div>
+
+            <div class="info-box">
+                <strong>Additional Information:</strong> For specific details on scholarship qualifications, application procedures, and other financial assistance programs, please contact the college administration or visit their official website.
+            </div>
+        </div>
+
+        <!-- Tuition & Fees -->
+        <div class="section-card" id="tuition-fees">
+            <div class="section-header">TUITION & FEES</div>
+            
+            <div class="info-box" style="margin-bottom: 2rem;">
+                <strong>Free Higher Education:</strong> Limay Polytechnic College is a grantee of Free Higher Education under the Universal Access to Quality Tertiary Education Act (UAQTEA) or RA 10931. Qualified students can benefit from tuition-free education under this program.
+            </div>
+
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                For detailed information about tuition fees, miscellaneous fees, payment schedules, and other financial matters, please contact the college directly.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📞 Phone Contact</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        <a href="tel:+639127609628" style="color: #667eea; text-decoration: none; font-weight: 600;">0912-760-9628</a>
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">✉️ Email Inquiry</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        <a href="mailto:lipoco.1997@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">lipoco.1997@gmail.com</a><br>
+                        <a href="mailto:lpcrde21@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">lpcrde21@gmail.com</a>
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📍 Visit Campus</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        Brgy. Reformista, Limay, Philippines
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section-card" id="contact">
+            <div class="section-header">CONTACT INFORMATION</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">🌐 Website</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        <a href="https://lpcbataan.com" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none; font-weight: 600;">lpcbataan.com</a>
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📘 Facebook</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        <a href="https://www.facebook.com/share/16Z9ArA37h/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none; font-weight: 600;">Visit our Facebook Page</a>
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📍 Address</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        Brgy. Reformista, Limay, Bataan, Philippines
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📧 Email</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        <a href="mailto:lipoco.1997@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">lipoco.1997@gmail.com</a><br>
+                        <a href="mailto:lpcrde21@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">lpcrde21@gmail.com</a>
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📱 Phone</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        <a href="tel:09127609628" style="color: #667eea; text-decoration: none; font-weight: 600;">0912-760-9628</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 2rem;">
+                <strong>Visit Us:</strong> Limay Polytechnic College welcomes prospective students and their families. Visit our campus to experience our facilities, meet our faculty, and learn more about our programs. For campus tours and inquiries, please contact us in advance.
             </div>
         </div>
     </div>
 </div>
 
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>Bataan Campus Finder</h3>
-            <p>Your comprehensive guide to higher education institutions in Bataan. Discover programs, compare options, and find the perfect campus for your future.</p>
-        </div>
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <div class="footer-links">
-                <a href="../index.html">Home</a>
-                <a href="../campus.html">All Campuses</a>
-                <a href="../about.html">About Us</a>
-                <a href="../contact.html">Contact</a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h3>Need Help?</h3>
-            <p>Contact us for any inquiries about higher education in Bataan.</p>
-            <p style="margin-top:1rem;">Email: info@bataancampusfinder.com<br>Phone: (047) XXX-XXXX</p>
-        </div>
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+<footer style="background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px); color: white; padding: 2rem 5%; margin-top: 3rem;">
+    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+        <p style="color: #999; font-size: 0.9rem;">© 2024 Bataan Campus Finder. All rights reserved.</p>
+        <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">Information provided is for reference purposes. Please verify details with the respective institutions.</p>
     </div>
-    <div class="footer-bottom">© 2025 Bataan Campus Finder. All rights reserved. | Designed for Bataan Students</div>
 </footer>
 
-<script src="../assets/js/schools-data.js"></script>
 <script>
-// Hamburger toggle
 const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
+const navMenu = document.getElementById('mobileNav');
+
 hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+    navMenu.classList.toggle('open');
 });
 
-// Map embed script
-(function(){
-    document.querySelectorAll('.campus-header').forEach(el=>el.style.position='relative');
-    document.querySelectorAll('.campus-map').forEach(el=>{
-        el.style.overflow='hidden';
-        el.style.display='block';
-        el.style.boxShadow='0 1px 6px rgba(0,0,0,0.08)';
-        if(el.querySelector('iframe')) return;
-        var titleEl = document.querySelector('.campus-info h1') || document.querySelector('h1');
-        var q = titleEl ? titleEl.textContent.trim() : document.title;
-        var src = 'https://www.google.com/maps?q=' + encodeURIComponent(q + ', Bataan, Philippines') + '&output=embed';
-        el.innerHTML = '<iframe src="'+src+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
-        '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
+// Smooth scrolling for navigation buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
-})();
+    
+    // Back to top button functionality
+    window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 </script>
+
 </body>
+
+<script src="../assets/js/site-ui.js"></script>
+
 </html>

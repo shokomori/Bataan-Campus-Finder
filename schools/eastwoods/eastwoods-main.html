@@ -3,78 +3,525 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eastwoods Professional College - Main Campus</title>
+<title>Eastwoods Professional College - Balanga Campus Details</title>
 <style>
-* {margin:0; padding:0; box-sizing:border-box;}
-body {font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background:#f5f5f5; color:#333;}
-
-/* Header */
-header {display:flex; justify-content:space-between; align-items:center; padding:1rem 5%; background:white; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:relative; z-index:100;}
-.logo {display:flex; align-items:center; gap:10px;}
-.logo img {width:35px; height:35px; object-fit:contain;}
-.logo-text h1 {font-size:1.2rem; color:#2542ff;}
-.logo-text p {font-size:0.7rem; color:#666;}
-nav {display:flex; gap:2rem;}
-nav a {text-decoration:none; color:#333; font-weight:500; padding:0.5rem 1rem; transition:all 0.3s;}
-nav a:hover, nav a.active {color:#2542ff;}
-
-/* Hamburger */
-.hamburger {display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:200;}
-.hamburger span {width:25px; height:3px; background:#333; display:block;}
-nav.open {display:flex !important; flex-direction:column; gap:1rem; background:white; padding:1rem; position:absolute; top:60px; right:5%; box-shadow:0 2px 10px rgba(0,0,0,0.1); border-radius:8px; z-index:999;}
-
-/* Container */
-.container {max-width:1400px; margin:0 auto; padding:2rem 5%;}
-
-/* Campus Header */
-.campus-header {background:white; border-radius:15px; padding:2rem; margin-bottom:2rem; box-shadow:0 2px 10px rgba(0,0,0,0.1); display:grid; grid-template-columns:auto 1fr auto; gap:2rem; align-items:start;}
-.campus-logo {width:120px; height:120px; background:#f0f0f0; border-radius:10px; display:flex; align-items:center; justify-content:center; overflow:hidden;}
-.campus-logo img {width:100%; height:100%; object-fit:contain;}
-.campus-info h1 {font-size:1.8rem; margin-bottom:0.5rem; color:#333;}
-.campus-subtitle {color:#666; margin-bottom:1.5rem; font-size:1rem;}
-.info-grid {display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem;}
-.info-item {display:flex; align-items:center; gap:0.5rem; font-size:0.9rem;}
-.info-icon {color:#2542ff; font-size:1.2rem;}
-.action-buttons {display:flex; gap:1rem; margin-top:1.5rem;}
-.btn {padding:0.8rem 2rem; border-radius:8px; font-weight:600; cursor:pointer; transition:all 0.3s; border:none; font-size:0.95rem;}
-.btn-primary {background:#2542ff; color:white;}
-.btn-primary:hover {background:#1a32cc;}
-
-/* Content Grid */
-.content-grid {display:grid; grid-template-columns:2fr 1fr; gap:2rem; margin-bottom:2rem;}
-.main-content {display:flex; flex-direction:column; gap:2rem;}
-.sidebar {display:flex; flex-direction:column; gap:2rem;}
-
-/* Section Card */
-.section-card {background:white; border-radius:15px; padding:2rem; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
-.section-header {background:#2542ff; color:white; padding:0.8rem 1.5rem; margin:-2rem -2rem 1.5rem -2rem; border-radius:15px 15px 0 0; font-size:1.1rem; font-weight:600;}
-
-/* Contact Info */
-.contact-info {display:flex; flex-direction:column; gap:1rem;}
-.contact-item {display:flex; align-items:center; gap:0.8rem; padding:1rem; background:#f8f9fa; border-radius:8px; font-size:0.9rem;}
-.contact-icon {color:#2542ff; font-size:1.3rem;}
-
-/* Footer */
-footer {background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem; width:100%;}
-.footer-content {max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:2rem;}
-.footer-section h3 {margin-bottom:1rem; color:#2542ff;}
-.footer-section p, .footer-section a {color:#ccc; font-size:0.9rem; line-height:1.8; text-decoration:none;}
-.footer-section a:hover {color:#2542ff;}
-.footer-links {display:flex; flex-direction:column; gap:0.5rem;}
-.footer-bottom {text-align:center; margin-top:2rem; padding-top:2rem; border-top:1px solid #333; color:#999; font-size:0.9rem;}
-
-/* Responsive */
-@media (max-width:1024px) {
-    .content-grid {grid-template-columns:1fr;}
-    .campus-header {grid-template-columns:1fr;}
-    .campus-map {width:100%;}
-    .footer-content {grid-template-columns:1fr;}
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-@media (max-width:768px) {
-    nav {display:none;}
-    .hamburger {display:flex;}
-    .info-grid {grid-template-columns:1fr;}
-    .action-buttons {flex-direction:column;}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.logo:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.logo-text h1 {
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.logo-text p {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+nav a.active::after,
+nav a:hover::after {
+    width: 80%;
+}
+
+nav a.active,
+nav a:hover {
+    color: #667eea;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #667eea;
+    transition: transform 0.3s;
+}
+
+.hamburger:hover {
+    transform: scale(1.1);
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 5%;
+}
+
+/* CAMPUS HEADER */
+.campus-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.campus-logo {
+    flex: 0 0 140px;
+}
+
+.campus-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.campus-logo img:hover {
+    transform: scale(1.05);
+}
+
+.campus-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.campus-info h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.campus-map {
+    flex: 0 0 450px;
+    height: 280px;
+}
+
+.campus-map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.9rem 1.8rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(245, 87, 108, 0.4);
+}
+
+.btn-outline {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* QUICK NAVIGATION */
+.quick-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.nav-btn {
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+}
+
+/* CONTENT */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    scroll-margin-top: 100px;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.section-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    margin: -2.5rem -2.5rem 2rem -2.5rem;
+    border-radius: 20px 20px 0 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* REQUIREMENTS & INFO BOX */
+.requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0.8rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.requirement-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(5px);
+}
+
+.requirement-item:before {
+    content: "✓";
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 0.1rem;
+}
+
+.info-box {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+}
+
+.info-box strong {
+    color: #667eea;
+}
+
+/* LINKS */
+a {
+    transition: all 0.3s;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* FOOTER */
+footer {
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(20px);
+    color: white;
+    padding: 2rem 5%;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #667eea;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .campus-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .campus-map {
+        width: 100%;
+        height: 300px;
+        margin-top: 1rem;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    .quick-nav {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (min-width: 1025px) {
+    .campus-map {
+        margin-top: 65px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .quick-nav {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        right: 5%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        width: 220px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        border-radius: 15px;
+        padding: 1rem;
+        z-index: 999;
+    }
+    nav.open {
+        display: flex !important;
+    }
+    .hamburger {
+        display: block;
+    }
+    header {
+        position: relative;
+    }
+
+    .action-buttons {
+        flex-wrap: wrap;
+    }
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
 }
 </style>
 </head>
@@ -89,115 +536,222 @@ footer {background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem; width
         </div>
     </div>
 
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <nav id="nav-menu">
+    <nav id="mobileNav">
         <a href="../../index.html">HOME</a>
         <a href="../../campus.html" class="active">ALL CAMPUSES</a>
         <a href="../../about.html">ABOUT</a>
         <a href="../../contact.html">CONTACT</a>
     </nav>
+
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </header>
 
 <div class="container">
-    <!-- Header Card -->
+    <!-- CAMPUS HEADER -->
     <div class="campus-header">
-        <div class="campus-logo"><img src="../../assets/images/EASTWOODS.png" alt="Eastwoods Logo"></div>
-        <div class="campus-info">
-            <h1>Eastwoods Professional College</h1>
-            <p class="campus-subtitle">Main Campus</p>
-            <div class="info-grid">
-                <div class="info-item"><span class="info-icon">📍</span><span>Balanga City, Bataan</span></div>
-                <div class="info-item"><span class="info-icon">📞</span><span>(047) 666 7777</span></div>
-                <div class="info-item"><span class="info-icon">🌐</span><span>www.eastwoods.edu.ph</span></div>
-                <div class="info-item"><span class="info-icon">✉️</span><span>info@eastwoods.edu.ph</span></div>
-            </div>
-            <div class="action-buttons"><button class="btn btn-primary">LEARN MORE</button></div>
+        <div class="campus-logo">
+            <img src="../../assets/images/EASTWOODS.png" alt="Eastwoods Logo">
         </div>
-        <div class="campus-map">Map Loading...</div>
+        <div class="campus-info">
+            <h1>Eastwoods Professional College of Science and Technology</h1>
+            <p style="color:#667eea; font-weight:600; margin-bottom:0.8rem; font-size:1.1rem;">Balanga Campus</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Mission:</strong> To develop and offer high quality technical, health and higher education programs that would ensure employability and productivity of young men and women through proper value and principles as a means to achieve success with excellence for a better quality of life.</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Vision:</strong> A center of excellence in technical, vocational, health and higher education in Bataan, pursuing dynamic program offerings paralleled to global standards to uplift the socio-economic growth of the province.</p>
+            <div class="action-buttons">
+                <a class="btn btn-secondary" href="https://www.facebook.com/EPCST" target="_blank" rel="noopener">FACEBOOK</a>
+                <a class="btn btn-outline" href="mailto:eastwoodsprofessional@yahoo.com">EMAIL US</a>
+                <a class="btn btn-outline" href="tel:047-791-2791">CALL: 047-791-2791</a>
+                <a class="btn btn-outline" href="https://www.google.com/maps?q=Eastwoods+Professional+College,Ibayo,Balanga+City,Bataan" target="_blank" rel="noopener">DIRECTIONS</a>
+                <a class="btn btn-outline" href="eastwoods.html">ALL EASTWOODS CAMPUSES</a>
+            </div>
+        </div>
+        
+        <div class="campus-map">
+            <iframe src="https://www.google.com/maps?q=Eastwoods+Professional+College,Ibayo,Balanga+City,Bataan&output=embed"></iframe>
+        </div>
     </div>
 
-    <!-- Content Grid -->
-    <div class="content-grid">
-        <div class="main-content">
-            <div class="section-card">
-                <div class="section-header">OVERVIEW</div>
-                <p style="color:#666; line-height:1.6;">
-                    Eastwoods Professional College focuses on science and technology programs intended to equip students with applied technical competencies. The institution is committed to fostering academic excellence, student development, and community engagement.
-                </p>
+    <!-- Quick Navigation -->
+    <div class="quick-nav">
+        <a href="#academic-programs" class="nav-btn">Academic Programs</a>
+        <a href="#admission-requirements" class="nav-btn">Admission Requirements</a>
+        <a href="#tuition-fees" class="nav-btn">Tuition & Fees</a>
+        <a href="#scholarships" class="nav-btn">Scholarships</a>
+        <a href="#campus-locations" class="nav-btn">Campus Locations</a>
+    </div>
+
+    <div class="main-content">
+        <!-- Academic Programs -->
+        <div class="section-card" id="academic-programs">
+            <div class="section-header">ACADEMIC PROGRAMS</div>
+            
+            <h4 style="color: #667eea; font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">CHED Courses</h4>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">BS Computer Engineering</div>
+                <div class="requirement-item">BS Computer Science</div>
+                <div class="requirement-item">BS Hospitality Management</div>
+                <div class="requirement-item">BS Information Technology</div>
+                <div class="requirement-item">BS Computer Technology</div>
             </div>
 
-            <div class="section-card">
-                <div class="section-header">PROGRAMS OFFERED</div>
-                <ul style="color:#666; line-height:1.6; padding-left:1.2rem;">
-                    <li>Bachelor of Science in Information Technology (BSIT)</li>
-                    <li>Bachelor of Science in Computer Science (BSCS)</li>
-                    <li>Bachelor of Science in Electronics Engineering Technology (BSEET)</li>
-                    <li>Bachelor of Science in Mechanical Engineering Technology (BSMET)</li>
-                    <li>Bachelor of Science in Civil Engineering Technology (BSCET)</li>
-                    <li>Short Courses in Technical and Vocational Skills (Welding, Automotive, Electronics)</li>
-                </ul>
+            <h4 style="color: #667eea; font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">TESDA Courses</h4>
+            <div class="requirements-list">
+                <div class="requirement-item">Diploma in Hotel and Restaurant Technology</div>
+                <div class="requirement-item">Diploma in Travel and Tourism Management Technology</div>
+                <div class="requirement-item">Diploma in Computer Engineering Technology</div>
+                <div class="requirement-item">Diploma in Information Technology</div>
+                <div class="requirement-item">Diploma in Office Administration Technology</div>
+                <div class="requirement-item">Caregiving Program NCII</div>
             </div>
         </div>
 
-        <div class="sidebar">
-            <div class="section-card">
-                <div class="section-header">CONTACT INFORMATION</div>
-                <div class="contact-info">
-                    <div class="contact-item"><span class="contact-icon">📞</span><div><strong>Phone</strong><br>(047) 666 7777</div></div>
-                    <div class="contact-item"><span class="contact-icon">✉️</span><div><strong>Email</strong><br>info@eastwoods.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">🌐</span><div><strong>Website</strong><br>www.eastwoods.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">📍</span><div><strong>Address</strong><br>Balanga City, Bataan</div></div>
+        <!-- Admission Requirements -->
+        <div class="section-card" id="admission-requirements">
+            <div class="section-header">ADMISSION REQUIREMENTS</div>
+            
+            <h4 style="color: #667eea; font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">For Senior High School Graduates</h4>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">SF 9 (Form 138) - Original Copy</div>
+                <div class="requirement-item">SF 10 (Form 137) - Original Copy</div>
+                <div class="requirement-item">Good Moral Certificate - Original Copy</div>
+                <div class="requirement-item">PSA Birth Certificate - Photo Copy</div>
+            </div>
+
+            <h4 style="color: #667eea; font-size: 1.1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">For College Transferees & 2nd Coursers</h4>
+            <div class="requirements-list">
+                <div class="requirement-item">Transcript of Records/Certification of Grades - Original Copy</div>
+                <div class="requirement-item">Transfer Credential/Honorable Dismissal</div>
+                <div class="requirement-item">Good Moral Certificate - Original Copy</div>
+                <div class="requirement-item">PSA Birth Certificate - Photo Copy</div>
+            </div>
+
+            <div class="info-box" style="margin-top: 1.5rem;">
+                <strong>Important Note:</strong> All documents must be submitted during the enrollment period. Original copies will be verified and returned after processing.
+            </div>
+        </div>
+
+        <!-- Tuition & Fees -->
+        <div class="section-card" id="tuition-fees">
+            <div class="section-header">TUITION & FEES</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 0.8rem; font-size: 1.2rem;">CHED Courses</h3>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #667eea;">₱437</p>
+                    <p style="font-size: 0.9rem; color: #666;">per unit</p>
                 </div>
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 12px; border-left: 4px solid #764ba2;">
+                    <h3 style="color: #764ba2; margin-bottom: 0.8rem; font-size: 1.2rem;">TESDA Courses</h3>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #764ba2;">₱500</p>
+                    <p style="font-size: 0.9rem; color: #666;">per unit</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>Additional Fees:</strong> Miscellaneous fees, laboratory fees, and other charges may apply depending on the program. Contact the registrar's office for detailed fee breakdown.
+            </div>
+        </div>
+
+        <!-- Scholarships -->
+        <div class="section-card" id="scholarships">
+            <div class="section-header">SCHOLARSHIP & FINANCIAL AID</div>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                Eastwoods Professional College offers scholarship opportunities to deserving and qualified students to help them achieve their educational goals.
+            </p>
+
+            <div class="requirements-list">
+                <div class="requirement-item">Government Scholarship - Financial assistance from government agencies for qualified students</div>
+                <div class="requirement-item">Academic Scholarship - Merit-based scholarship for students with outstanding academic performance</div>
+            </div>
+
+            <div class="info-box" style="margin-top: 1.5rem;">
+                <strong>For More Information:</strong> Contact the school registrar or admissions office for specific scholarship requirements, eligibility criteria, and application procedures.
+            </div>
+        </div>
+
+        <!-- Campus Locations -->
+        <div class="section-card" id="campus-locations">
+            <div class="section-header">CAMPUS LOCATIONS</div>
+            
+            <div style="display: grid; gap: 1.5rem;">
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 0.8rem;">Building I</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: #666;">
+                        📍 Ibayo, City of Balanga, Bataan
+                    </p>
+                </div>
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 12px; border-left: 4px solid #764ba2;">
+                    <h3 style="color: #764ba2; margin-bottom: 0.8rem;">Building II</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: #666;">
+                        📍 Roman Super Hi-way, Bagong Silang, City of Balanga, Bataan
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 1.5rem;">
+                <strong>Contact Information:</strong><br>
+                Email: <a href="mailto:eastwoodsprofessional@yahoo.com" style="color: #667eea; text-decoration: none; font-weight: 600;">eastwoodsprofessional@yahoo.com</a><br>
+                Phone: 047-791-2791<br>
+                Facebook: <a href="https://www.facebook.com/EPCST" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600;">@EPCST</a>
             </div>
         </div>
     </div>
 </div>
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>Bataan Campus Finder</h3>
-            <p>Your comprehensive guide to higher education institutions in Bataan. Discover programs, compare options, and find the perfect campus for your future.</p>
-        </div>
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <div class="footer-links">
-                <a href="../../index.html">Home</a>
-                <a href="../../campus.html">All Campuses</a>
-                <a href="../../about.html">About Us</a>
-                <a href="../../contact.html">Contact</a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h3>Need Help?</h3>
-            <p>Contact us for inquiries about higher education in Bataan.</p>
-            <p style="margin-top:1rem;">Email: info@bataancampusfinder.com<br>Phone: (047) XXX-XXXX</p>
-        </div>
+<footer style="background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px); color: white; padding: 2rem 5%; margin-top: 3rem;">
+    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+        <p style="color: #999; font-size: 0.9rem;">© 2024 Bataan Campus Finder. All rights reserved.</p>
+        <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">Information provided is for reference purposes. Please verify details with the respective institutions.</p>
     </div>
-    <div class="footer-bottom">© 2025 Bataan Campus Finder. All rights reserved.</div>
 </footer>
 
 <script>
-// Hamburger Toggle
 const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-hamburger.addEventListener('click', ()=>{
+const navMenu = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('open');
 });
 
-// Google Maps Embed
-document.querySelectorAll('.campus-map').forEach(el=>{
-    const titleEl = document.querySelector('.campus-info h1') || document.querySelector('h1');
-    const q = titleEl ? titleEl.textContent.trim() : document.title;
-    const src = 'https://www.google.com/maps?q='+encodeURIComponent(q+', Bataan, Philippines')+'&output=embed';
-    el.innerHTML='<iframe src="'+src+'" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
+// Smooth scrolling for navigation buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Back to top button functionality
+    window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
 });
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 </script>
 
 </body>
+
+<script src="../../assets/js/site-ui.js"></script>
+
 </html>

@@ -3,286 +3,839 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAAP College - Campus Details</title>
+<title>Maritime Academy of Asia and the Pacific - Campus Details</title>
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: #f5f5f5; color: #333; }
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    /* Header */
-    header {
-        display: flex;
-        justify-content: space-between;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.logo:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.logo-text h1 {
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.logo-text p {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+nav a.active::after,
+nav a:hover::after {
+    width: 80%;
+}
+
+nav a.active,
+nav a:hover {
+    color: #667eea;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #667eea;
+    transition: transform 0.3s;
+}
+
+.hamburger:hover {
+    transform: scale(1.1);
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 5%;
+}
+
+/* CAMPUS HEADER */
+.campus-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.campus-logo {
+    flex: 0 0 140px;
+}
+
+.campus-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.campus-logo img:hover {
+    transform: scale(1.05);
+}
+
+.campus-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.campus-info h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.campus-map {
+    flex: 0 0 450px;
+    height: 280px;
+}
+
+.campus-map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.9rem 1.8rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(245, 87, 108, 0.4);
+}
+
+.btn-outline {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* QUICK NAVIGATION */
+.quick-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.nav-btn {
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+}
+
+/* CONTENT */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    scroll-margin-top: 100px;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.section-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    margin: -2.5rem -2.5rem 2rem -2.5rem;
+    border-radius: 20px 20px 0 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* PROGRAMS GRID */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.program-category {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s;
+}
+
+.program-category:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+}
+
+.program-category h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.program-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.program-item {
+    color: #666;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.program-item:last-child {
+    border-bottom: none;
+}
+
+/* REQUIREMENTS & INFO BOX */
+.requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0.8rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.requirement-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(5px);
+}
+
+.requirement-item:before {
+    content: "✓";
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+}
+
+.info-box {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+}
+
+.info-box strong {
+    color: #667eea;
+}
+
+.info-box ul {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.info-box li {
+    margin-bottom: 0.3rem;
+}
+
+/* BENEFIT CARD */
+.benefit-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+.benefit-card h4 {
+    color: #667eea;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: start;
+    gap: 0.6rem;
+}
+
+.benefit-item::before {
+    content: "✓";
+    color: #667eea;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+/* QUALIFICATION GRID */
+.qualification-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.qualification-item {
+    background: rgba(102, 126, 234, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 3px solid #667eea;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    transition: all 0.3s;
+}
+
+.qualification-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(5px);
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .campus-header {
+        flex-direction: column;
         align-items: center;
-        padding: 1rem 5%;
-        background: white;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .campus-map {
+        width: 100%;
+        height: 300px;
+        margin-top: 1rem;
+    }
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1025px) {
+    .campus-map {
+        margin-top: 65px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .quick-nav {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        right: 5%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        width: 220px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        border-radius: 15px;
+        padding: 1rem;
+        z-index: 999;
+    }
+    nav.open {
+        display: flex !important;
+    }
+    .hamburger {
+        display: block;
+    }
+    header {
         position: relative;
     }
 
-    .logo { display: flex; align-items: center; gap: 10px; }
-    .logo-icon { width: 40px; height: 40px; background: #2542ff; border-radius: 8px; }
-    .logo-text h1 { font-size: 1.2rem; color: #2542ff; }
-    .logo-text p { font-size: 0.7rem; color: #666; }
-
-    nav { display: flex; gap: 2rem; }
-    nav a { text-decoration: none; color: #333; font-weight: 500; padding: 0.5rem 1rem; transition: all 0.3s; }
-    nav a:hover, nav a.active { color: #2542ff; font-weight: 600; }
-
-    /* Hamburger */
-    .hamburger {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
+    .action-buttons {
+        flex-wrap: wrap;
     }
-    .hamburger div {
-        width: 25px;
-        height: 3px;
-        background: #2542ff;
-        border-radius: 2px;
-        transition: 0.3s;
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
     }
-
-    /* Mobile nav */
-    .nav-mobile {
-        display: none;
-        flex-direction: column;
-        gap: 1rem;
-        background: white;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        padding: 1rem 5%;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        z-index: 998;
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
     }
-
-    .nav-mobile a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        padding: 0.5rem 0;
-        transition: all 0.3s;
+    
+    .qualification-grid {
+        grid-template-columns: 1fr;
     }
-    .nav-mobile a:hover { color: #2542ff; font-weight: 600; }
-    .nav-mobile a.active { color: #2542ff; font-weight: 600; }
-
-    /* Back Button */
-    .back-btn { background: white; padding: 1rem 5%; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; border: none; width: 100%; text-align: left; font-size: 1rem; color: #2542ff; transition: all 0.3s; }
-    .back-btn:hover { background: #f8f9fa; }
-
-    /* Main Container */
-    .container { max-width: 1400px; margin: 0 auto; padding: 2rem 5%; }
-
-    /* Campus Header Card */
-    .campus-header {
-        background: white; border-radius: 15px; padding: 2rem; margin-bottom: 2rem;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: grid;
-        grid-template-columns: auto 1fr auto; gap: 2rem; align-items: start; position: relative;
-    }
-    .campus-logo { width: 120px; height: 120px; background: #f0f0f0; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .campus-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
-    .campus-info h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #333; }
-    .campus-subtitle { color: #666; margin-bottom: 1.5rem; font-size: 1rem; }
-
-    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .info-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
-    .info-icon { color: #2542ff; font-size: 1.2rem; }
-
-    .campus-map { width: 300px; height: 200px; background: #e9ecef; border-radius: 10px; display: block; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
-    .campus-map iframe { display: block; width: 100%; height: 100%; border: 0; }
-
-    /* Action Buttons */
-    .action-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
-    .btn { padding: 0.8rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; font-size: 0.95rem; }
-    .btn-primary { background: #2542ff; color: white; }
-    .btn-primary:hover { background: #1a32cc; }
-
-    /* Content Grid */
-    .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
-    .main-content { display: flex; flex-direction: column; gap: 2rem; }
-    .sidebar { display: flex; flex-direction: column; gap: 2rem; }
-
-    /* Section Card */
-    .section-card { background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .section-header { background: #2542ff; color: white; padding: 0.8rem 1.5rem; margin: -2rem -2rem 1.5rem -2rem; border-radius: 15px 15px 0 0; font-size: 1.1rem; font-weight: 600; }
-
-    /* Contact Info */
-    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-item { display: flex; align-items: center; gap: 0.8rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; font-size: 0.9rem; }
-    .contact-icon { color: #2542ff; font-size: 1.3rem; }
-
-    /* Footer */
-    footer { background: #1a1a1a; color: white; padding: 2rem 5%; margin-top: 3rem; }
-    .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; }
-    .footer-section h3 { margin-bottom: 1rem; color: #2542ff; }
-    .footer-section p, .footer-section a { color: #ccc; font-size: 0.9rem; line-height: 1.8; text-decoration: none; }
-    .footer-section a:hover { color: #2542ff; }
-    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
-    .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333; color: #999; font-size: 0.9rem; }
-
-    /* Responsive */
-    @media (max-width: 1024px) { 
-        .content-grid { grid-template-columns: 1fr; } 
-        .campus-header { grid-template-columns: 1fr; } 
-        .campus-map { width: 100%; } 
-        .footer-content { grid-template-columns: 1fr; } 
-    }
-
-    @media (max-width: 768px) {
-        nav { display: none; }
-        .hamburger { display: flex; }
-        .info-grid { grid-template-columns: 1fr; }
-        .action-buttons { flex-direction: column; }
-    }
+}
 </style>
 </head>
 <body>
 
 <header>
     <div class="logo">
-        <div class="logo-icon"></div>
+        <img src="../../assets/images/finderlogo.png" alt="Finder Logo">
         <div class="logo-text">
             <h1>Bataan Campus Finder</h1>
             <p>Campus Details</p>
         </div>
     </div>
 
-    <nav>
-        <a href="../index.html">HOME</a>
-        <a href="../campus.html" class="active">ALL CAMPUSES</a>
-        <a href="../about.html">ABOUT</a>
-        <a href="../contact.html">CONTACT</a>
+    <nav id="mobileNav">
+        <a href="../../index.html">HOME</a>
+        <a href="../../campus.html" class="active">ALL CAMPUSES</a>
+        <a href="../../about.html">ABOUT</a>
+        <a href="../../contact.html">CONTACT</a>
     </nav>
 
-    <!-- Hamburger -->
-    <div class="hamburger" id="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-
-    <!-- Mobile nav -->
-    <div class="nav-mobile" id="navMobile">
-        <a href="../index.html">HOME</a>
-        <a href="../campus.html" class="active">ALL CAMPUSES</a>
-        <a href="../about.html">ABOUT</a>
-        <a href="../contact.html">CONTACT</a>
-    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </header>
 
 <div class="container">
+    <!-- CAMPUS HEADER -->
     <div class="campus-header">
         <div class="campus-logo">
-            <img src="../assets/images/MAAP.jpg" alt="MAAP College Logo">
+            <img src="../../assets/images/maap-logo.png" alt="MAAP Logo">
         </div>
         <div class="campus-info">
-            <h1>MAAP College of Bataan</h1>
-            <p class="campus-subtitle">Main Campus</p>
-            <div class="info-grid">
-                <div class="info-item"><span class="info-icon">📍</span><span>Bataan, Bataan</span></div>
-                <div class="info-item"><span class="info-icon">📞</span><span>(047) 278-9012</span></div>
-                <div class="info-item"><span class="info-icon">🌐</span><span>www.maap-bataan.edu.ph</span></div>
-                <div class="info-item"><span class="info-icon">✉️</span><span>info@maap-bataan.edu.ph</span></div>
-            </div>
+            <h1>Maritime Academy of Asia and the Pacific</h1>
+            <p style="color:#667eea; font-weight:600; margin-bottom:0.8rem; font-size:1.1rem;">Premier Maritime Institution</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;">The Maritime Academy of Asia and the Pacific (MAAP) is a premier maritime institution dedicated to producing highly skilled and competent maritime professionals. Located at the strategic Kamaya Point in Mariveles, Bataan, MAAP provides world-class maritime education and training with modern facilities and equipment.</p>
             <div class="action-buttons">
-                <button class="btn btn-primary">LEARN MORE</button>
+                <a class="btn btn-primary" href="https://app.maap.edu.ph:1234/omas_v2/applicantreference.php" target="_blank" rel="noopener">APPLY ONLINE</a>
+                <a class="btn btn-secondary" href="https://www.facebook.com/groups/maapboardofadmission/?ref=share&mibextid=NSMWBT" target="_blank" rel="noopener">FACEBOOK</a>
+                <a class="btn btn-outline" href="tel:+639479960718">CONTACT (Mobile)</a>
+                <a class="btn btn-outline" href="tel:027849100">REGISTRAR</a>
+                <a class="btn btn-outline" href="mailto:info@maap.edu.ph">EMAIL</a>
+                <a class="btn btn-outline" href="https://www.google.com/maps?q=Kamaya+Point,+Barangay+Alas-asin,+Mariveles,+Bataan" target="_blank" rel="noopener">DIRECTIONS</a>
             </div>
         </div>
-        <div class="campus-map">Map Coming Soon</div>
+        
+        <div class="campus-map">
+            <iframe src="https://www.google.com/maps?q=Kamaya+Point,+Barangay+Alas-asin,+Mariveles,+Bataan&output=embed"></iframe>
+        </div>
     </div>
 
-    <div class="content-grid">
-        <div class="main-content">
-            <div class="section-card">
-                <div class="section-header">OVERVIEW</div>
-                <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">
-                    MAAP College is a leading educational institution in Bataan dedicated to providing quality higher education. The institution is committed to fostering academic excellence, student development, and community engagement.
-                </p>
-                <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">
-                    With experienced faculty, modern facilities, and comprehensive programs, MAAP College offers students an excellent platform for personal and professional growth in today's competitive world.
-                </p>
-            </div>
+    <!-- Quick Navigation -->
+    <div class="quick-nav">
+        <a href="#academic-programs" class="nav-btn">Academic Programs</a>
+        <a href="#admission-requirements" class="nav-btn">Admission Requirements</a>
+        <a href="#admission-procedure" class="nav-btn">Admission Procedure</a>
+        <a href="#scholarships" class="nav-btn">Scholarship Benefits</a>
+        <a href="#tuition-fees" class="nav-btn">Tuition & Fees</a>
+        <a href="#contact" class="nav-btn">Contact Information</a>
+    </div>
 
-            <div class="section-card">
-                <div class="section-header">PROGRAMS OFFERED</div>
-                <ul style="color:#666; line-height:1.6; padding-left:1.2rem;">
-                    <li>Bachelor of Science in Marine Transportation</li>
-                    <li>Bachelor of Science in Marine Engineering</li>
-                    <li>Maritime Studies</li>
-                    <li>Short Courses for Seafarers</li>
-                </ul>
-            </div>
-        </div>
+    <div class="main-content">
+        <!-- Academic Programs -->
+        <div class="section-card" id="academic-programs">
+            <div class="section-header">ACADEMIC PROGRAMS</div>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                MAAP offers specialized maritime programs designed to prepare students for successful careers in the global maritime industry. With modern equipment, in-house shipboard training, and partnerships with foreign shipping companies, MAAP ensures graduates are ready for gainful employment aboard modern vessels.
+            </p>
 
-        <div class="sidebar">
-            <div class="section-card">
-                <div class="section-header">CONTACT INFORMATION</div>
-                <div class="contact-info">
-                    <div class="contact-item"><span class="contact-icon">📞</span><div><strong>Phone</strong><br>(047) 278-9012</div></div>
-                    <div class="contact-item"><span class="contact-icon">✉️</span><div><strong>Email</strong><br>info@maap-bataan.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">🌐</span><div><strong>Website</strong><br>www.maap-bataan.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">📍</span><div><strong>Address</strong><br>Bataan, Bataan</div></div>
+            <div class="programs-grid">
+                <div class="program-category">
+                    <h3>Marine Transportation</h3>
+                    <div class="program-list">
+                        <div class="program-item">Bachelor of Science in Marine Transportation (BSMT)</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Marine Engineering</h3>
+                    <div class="program-list">
+                        <div class="program-item">Bachelor of Science in Marine Engineering (BSMarE)</div>
+                        <div class="program-item">Bachelor of Science in Marine Engineering and Electro-Technology (BSMEET)</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>Bataan Campus Finder</h3>
-            <p>Your comprehensive guide to higher education institutions in Bataan. Discover programs, compare options, and find the perfect campus for your future.</p>
-        </div>
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <div class="footer-links">
-                <a href="../index.html">Home</a>
-                <a href="../campus.html">All Campuses</a>
-                <a href="../about.html">About Us</a>
-                <a href="../contact.html">Contact</a>
+        <!-- Scholarship Benefits -->
+        <div class="section-card" id="scholarships">
+            <div class="section-header">SCHOLARSHIP BENEFITS</div>
+            
+            <div class="benefit-card">
+                <h4>🎓 Comprehensive Scholarship Package</h4>
+                <div class="benefit-list">
+                    <div class="benefit-item">Scholarship grant</div>
+                    <div class="benefit-item">Free board and lodging</div>
+                    <div class="benefit-item">Insured while enrolled in the Academy</div>
+                    <div class="benefit-item">In-house Shipboard Training</div>
+                    <div class="benefit-item">Personality, character, and leadership development through physical fitness, emotional literacy, NROTC and varied extra-curricular activities</div>
+                    <div class="benefit-item">Use of modern equipment and facilities</div>
+                    <div class="benefit-item">Gainful employment onboard modern vessels of foreign shipping companies</div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>Career Opportunities:</strong> MAAP graduates are highly sought after by international shipping companies and have access to employment opportunities aboard modern vessels worldwide. The academy's comprehensive training program ensures students are well-prepared for successful maritime careers.
             </div>
         </div>
-        <div class="footer-section">
-            <h3>Need Help?</h3>
-            <p>Contact us for any inquiries about higher education in Bataan.</p>
-            <p style="margin-top: 1rem;">Email: info@bataancampusfinder.com<br>Phone: (047) XXX-XXXX</p>
+
+        <!-- Admission Requirements -->
+        <div class="section-card" id="admission-requirements">
+            <div class="section-header">ADMISSION REQUIREMENTS</div>
+            
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">Documentary Requirements:</h3>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">Recent colored picture</div>
+                <div class="requirement-item">Copy of Birth Certificate</div>
+                <div class="requirement-item">Copy of Diploma, if graduate from Senior High School, or College</div>
+                <div class="requirement-item">Copy of Certification of Registration or Registration Form, if College Level</div>
+                <div class="requirement-item">Copy of Certificate of Enrollment that you are currently enrolled in Grade 12, if Senior High School graduating student</div>
+                <div class="requirement-item">Copy of School ID</div>
+                <div class="requirement-item">Copy of latest School Report Card with at least has a GPA of 83%</div>
+                <div class="requirement-item">Payment of non-refundable processing fee of Php 400.00 in cash on the day of the examination</div>
+            </div>
+
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">Qualification Requirements:</h3>
+            <div class="qualification-grid" style="margin-bottom: 2rem;">
+                <div class="qualification-item">Male or Female, Single</div>
+                <div class="qualification-item">Natural Born Filipino</div>
+                <div class="qualification-item">Physically fit</div>
+                <div class="qualification-item">Morally upright and has no derogatory record</div>
+                <div class="qualification-item">Born from 01-January-2003 to 31-December-2008</div>
+                <div class="qualification-item">College Level/Graduate OR Senior High School Graduate/Graduating Student</div>
+                <div class="qualification-item">Minimum height of 5 ft. 4 in. (162.5 cm) for MALE</div>
+                <div class="qualification-item">Minimum height of 5 ft. 2 in. (157.5 cm) for FEMALE</div>
+                <div class="qualification-item">Has a GPA of at least 83%</div>
+                <div class="qualification-item">Has never been officially admitted at MAAP</div>
+            </div>
+
+            <div class="info-box" style="margin-bottom: 2rem;">
+                <strong>Free College Entrance Examination (RA 12006):</strong>
+                <p style="margin-top: 0.5rem;">To avail of the Free Examination Act, students must:</p>
+                <ul>
+                    <li>Be a natural-born Filipino citizen</li>
+                    <li>Belong to the top 10% of their graduating class</li>
+                    <li>Come from a family with household income below the poverty threshold (as certified by DSWD and defined by NEDA)</li>
+                </ul>
+                <p style="margin-top: 0.8rem;"><strong>Required Documents:</strong></p>
+                <ul>
+                    <li>Certificate from Senior High School confirming top 10% class ranking</li>
+                    <li>Certified DSWD certificate stating the family income is below the poverty threshold</li>
+                </ul>
+                <p style="margin-top: 0.8rem; color: #f5576c; font-weight: 600;">Note: Failure to submit the required documents during admission will result in disqualification from the program.</p>
+            </div>
+
+            <div class="info-box">
+                <strong>Important Reminder:</strong> The National Merchant Marine Aptitude Test (NaMMAT) is not required during the MAAP Entrance Examination, which is the first phase of the admission process. However, applicants may be required to submit their NaMMAT score during the Interview Proper, the second phase of the evaluation process. For information on NaMMAT application procedures and requirements, please visit the CHED website at <a href="https://ched.gov.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">ched.gov.ph</a>
+            </div>
         </div>
-    </div>
-    <div class="footer-bottom">
-        © 2024 Bataan Campus Finder. All rights reserved. | Designed with ❤️ for Bataan Students
+
+        <!-- Admission Procedure -->
+        <div class="section-card" id="admission-procedure">
+            <div class="section-header">ADMISSION PROCEDURE</div>
+            
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">Online Application Process:</h3>
+            
+            <div class="info-box" style="margin-bottom: 1.5rem;">
+                <strong>Step 1: Online Application Form</strong>
+                <p style="margin-top: 0.5rem;">Visit the Online MAAP Midshipman Application Form at: <a href="https://app.maap.edu.ph:1234/omas_v2/applicantreference.php" style="color: #667eea; text-decoration: none; font-weight: 600;">app.maap.edu.ph:1234/omas_v2/applicantreference.php</a></p>
+            </div>
+
+            <div class="info-box" style="margin-bottom: 1.5rem;">
+                <strong>Guidelines for Uploading Documents:</strong>
+                <ul>
+                    <li>Files should be in JPG, JPEG or PNG format</li>
+                    <li>Each file should not exceed 500KB in size</li>
+                    <li>Image size should not exceed 1024 pixels in height and width</li>
+                    <li>Ensure that the wordings in your uploaded files are readable</li>
+                    <li>If your file is not available, upload an image saying "not available"</li>
+                    <li>If the document is not applicable, upload an image saying "not applicable"</li>
+                    <li>Do not use special characters in filenames (except for email address)</li>
+                </ul>
+            </div>
+
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">Application Steps:</h3>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">Upload your picture and application requirements online</div>
+                <div class="requirement-item">Receive notification of your application status through your email</div>
+                <div class="requirement-item">Receive a MAAP eTestPermit through email if qualified for the entrance examination</div>
+                <div class="requirement-item">Print your eTestPermit and present it on the day of the examination</div>
+            </div>
+            <!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+<footer style="background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px); color: white; padding: 2rem 5%; margin-top: 3rem;">
+    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+        <p style="color: #999; font-size: 0.9rem;">© 2024 Bataan Campus Finder. All rights reserved.</p>
+        <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">Information provided is for reference purposes. Please verify details with the respective institutions.</p>
     </div>
 </footer>
 
 <script>
-    // Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const navMobile = document.getElementById('navMobile');
-    hamburger.addEventListener('click', () => {
-        navMobile.style.display = navMobile.style.display === 'flex' ? 'none' : 'flex';
-    });
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+});
 
-    // Mobile nav active link toggle
-    navMobile.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navMobile.querySelectorAll('a').forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-            navMobile.style.display = 'none';
+// Smooth scrolling for navigation buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
     });
-
-    // Google Map embed
-    document.querySelectorAll('.campus-map').forEach(el=>{
-        if(el.querySelector('iframe')) return;
-        const titleEl = document.querySelector('.campus-info h1') || document.querySelector('h1');
-        const q = titleEl ? titleEl.textContent.trim() : document.title;
-        const src = 'https://www.google.com/maps?q=' + encodeURIComponent(q + ', Bataan, Philippines') + '&output=embed';
-        el.innerHTML = '<iframe src="'+src+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
-        '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
+    
+    // Back to top button functionality
+    window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
     });
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 </script>
 
 </body>
+
+<script src="../assets/js/site-ui.js"></script>
+
 </html>

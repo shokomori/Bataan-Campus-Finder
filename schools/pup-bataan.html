@@ -19,7 +19,7 @@ nav { display:flex; gap:2rem; }
 nav a { text-decoration:none; color:#333; font-weight:500; padding:0.5rem 1rem; transition:all 0.3s; }
 nav a:hover, nav a.active { color:#2542ff; }
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-.hamburger div { width:25px; height:3px; background:#333; transition:all 0.3s; }
+.hamburger span { width:25px; height:3px; background:#333; transition:all 0.3s; }
 
 /* Container */
 .container { max-width:1400px; margin:2rem auto; padding:0 5%; }
@@ -81,7 +81,8 @@ footer { background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem; }
 }
 
 @media (max-width:768px) {
-    nav { display:none; }
+    nav { display:none; position:absolute; top:60px; right:5%; background:white; backdrop-filter:blur(10px); flex-direction:column; gap:1rem; padding:1rem; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.1); width:200px; z-index:999; }
+    nav.open { display:flex !important; }
     .hamburger { display:flex; }
     .info-grid { grid-template-columns:1fr; }
     .action-buttons { flex-direction:column; }
@@ -95,13 +96,14 @@ footer { background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem; }
         <div class="logo-icon"><img src="../assets/images/finderlogo.png" alt="Campus Finder Logo"></div>
         <div class="logo-text"><h1>Bataan Campus Finder</h1><p>Campus Details</p></div>
     </div>
-    <nav>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <nav id="mobileNav">
         <a href="../index.html">HOME</a>
         <a href="../campus.html" class="active">ALL CAMPUSES</a>
         <a href="../about.html">ABOUT</a>
         <a href="../contact.html">CONTACT</a>
     </nav>
-    <div class="hamburger" onclick="toggleMenu(this)"><div></div><div></div><div></div></div>
+    
 </header>
 
 <div class="container">
@@ -172,11 +174,16 @@ footer { background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem; }
 </footer>
 
 <script>
-function toggleMenu(menu) {
-    const nav = document.querySelector('nav');
-    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-}
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('mobileNav');
+
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+});
 </script>
 
 </body>
+
+<script src="../assets/js/site-ui.js"></script>
+
 </html>

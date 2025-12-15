@@ -3,257 +3,835 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ACLC Bataan - Campus Details</title>
+<title>ACLC College Balanga - Campus Details</title>
 <style>
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background:#f5f5f5; color:#333; }
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* Header */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* HEADER */
 header {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:1rem 5%;
-    background:white;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    position:relative;
-    z-index:1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-.logo { display:flex; align-items:center; gap:10px; }
-.logo-icon { width:40px; height:40px; background:#2542ff; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-.logo-icon img { width:100%; height:100%; object-fit:contain; }
-.logo-text h1 { font-size:1.2rem; color:#2542ff; }
-.logo-text p { font-size:0.7rem; color:#666; }
 
-/* Desktop nav */
-nav.desktop-nav { display:flex; gap:2rem; }
-nav.desktop-nav a { text-decoration:none; color:#333; font-weight:500; padding:0.5rem 1rem; transition:all 0.3s; }
-nav.desktop-nav a:hover, nav.desktop-nav a.active { color:#2542ff; }
-
-/* Hamburger for mobile */
-.hamburger { display:none; flex-direction:column; gap:4px; cursor:pointer; z-index:1001; }
-.hamburger div { width:25px; height:3px; background:#2542ff; }
-
-/* Mobile nav */
-nav.mobile-nav {
-    display:none;
-    flex-direction:column;
-    gap:1rem;
-    position:absolute;
-    top:100%;
-    right:5%;
-    background:white;
-    padding:1rem 2rem;
-    border-radius:0 0 8px 8px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.2);
-    width:200px;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
-nav.mobile-nav.show { display:flex; }
-nav.mobile-nav a { text-decoration:none; color:#333; font-weight:500; }
 
-/* Main container */
-.container { max-width:1400px; margin:0 auto; padding:2rem 5%; }
+.logo img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s;
+}
 
-/* Campus Header */
+.logo:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.logo-text h1 {
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.logo-text p {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+nav a.active::after,
+nav a:hover::after {
+    width: 80%;
+}
+
+nav a.active,
+nav a:hover {
+    color: #667eea;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #667eea;
+    transition: transform 0.3s;
+}
+
+.hamburger:hover {
+    transform: scale(1.1);
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 5%;
+}
+
+/* CAMPUS HEADER */
 .campus-header {
-    background:white;
-    border-radius:15px;
-    padding:2rem;
-    margin-bottom:2rem;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    display:grid;
-    grid-template-columns:auto 1fr auto;
-    gap:2rem;
-    align-items:start;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
-.campus-logo { width:120px; height:120px; background:#f0f0f0; border-radius:10px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-.campus-logo img { width:100%; height:100%; object-fit:contain; border-radius:10px; }
-.campus-info h1 { font-size:1.8rem; margin-bottom:0.5rem; color:#333; }
-.campus-subtitle { color:#666; margin-bottom:1.5rem; font-size:1rem; }
 
-/* Info grid */
-.info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-.info-item { display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; }
-.info-icon { color:#2542ff; font-size:1.2rem; }
+.campus-logo {
+    flex: 0 0 140px;
+}
 
-/* Map */
-.campus-map { width:300px; height:200px; background:#e9ecef; border-radius:10px; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
-.campus-map iframe { width:100%; height:100%; border:0; }
+.campus-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
 
-/* Buttons */
-.action-buttons { display:flex; gap:1rem; margin-top:1.5rem; }
-.btn { padding:0.8rem 2rem; border-radius:8px; font-weight:600; cursor:pointer; transition:all 0.3s; border:none; font-size:0.95rem; }
-.btn-primary { background:#2542ff; color:white; }
-.btn-primary:hover { background:#1a32cc; }
+.campus-logo img:hover {
+    transform: scale(1.05);
+}
 
-/* Content grid */
-.content-grid { display:grid; grid-template-columns:2fr 1fr; gap:2rem; }
-.main-content { display:flex; flex-direction:column; gap:2rem; }
-.sidebar { display:flex; flex-direction:column; gap:2rem; }
+.campus-info {
+    flex: 1;
+    min-width: 250px;
+}
 
-/* Section card */
-.section-card { background:white; border-radius:15px; padding:2rem; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-.section-header { background:#2542ff; color:white; padding:0.8rem 1.5rem; margin:-2rem -2rem 1.5rem -2rem; border-radius:15px 15px 0 0; font-size:1.1rem; font-weight:600; }
-.contact-info { display:flex; flex-direction:column; gap:1rem; }
-.contact-item { display:flex; align-items:center; gap:0.8rem; padding:1rem; background:#f8f9fa; border-radius:8px; font-size:0.9rem; }
-.contact-icon { color:#2542ff; font-size:1.3rem; }
+.campus-info h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
 
-/* Footer */
-footer { background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem; }
-.footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:2rem; }
-.footer-section h3 { margin-bottom:1rem; color:#2542ff; }
-.footer-section p, .footer-section a { color:#ccc; font-size:0.9rem; line-height:1.8; text-decoration:none; }
-.footer-section a:hover { color:#2542ff; }
-.footer-links { display:flex; flex-direction:column; gap:0.5rem; }
-.footer-bottom { text-align:center; margin-top:2rem; padding-top:2rem; border-top:1px solid #333; color:#999; font-size:0.9rem; }
+.campus-map {
+    flex: 0 0 450px;
+    height: 280px;
+}
 
-/* Responsive */
-@media (max-width:1024px) { .content-grid { grid-template-columns:1fr; } .campus-header { grid-template-columns:1fr; } .campus-map { width:100%; } .footer-content { grid-template-columns:1fr; } }
-@media (max-width:768px) { nav.desktop-nav { display:none; } .hamburger { display:flex; } .info-grid { grid-template-columns:1fr; } .action-buttons { flex-direction:column; } }
+.campus-map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.9rem 1.8rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(245, 87, 108, 0.4);
+}
+
+.btn-outline {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* QUICK NAVIGATION */
+.quick-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.nav-btn {
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+}
+
+/* CONTENT */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    scroll-margin-top: 100px;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.section-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    margin: -2.5rem -2.5rem 2rem -2.5rem;
+    border-radius: 20px 20px 0 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* REQUIREMENTS & INFO BOX */
+.requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0.8rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.requirement-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(5px);
+}
+
+.requirement-item:before {
+    content: "✓";
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 0.1rem;
+}
+
+.info-box {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+}
+
+.info-box strong {
+    color: #667eea;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.contact-item {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s;
+}
+
+.contact-item:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    transform: translateX(5px);
+}
+
+.contact-item h4 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.contact-item p, .contact-item a {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: #667eea;
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* FOOTER */
+footer {
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(20px);
+    color: white;
+    padding: 2rem 5%;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #667eea;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .campus-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .campus-map {
+        width: 100%;
+        height: 300px;
+        margin-top: 1rem;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    .quick-nav {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (min-width: 1025px) {
+    .campus-map {
+        margin-top: 65px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .quick-nav {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        right: 5%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        width: 220px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        border-radius: 15px;
+        padding: 1rem;
+        z-index: 999;
+    }
+    nav.open {
+        display: flex !important;
+    }
+    .hamburger {
+        display: block;
+    }
+    header {
+        position: relative;
+    }
+
+    .action-buttons {
+        flex-wrap: wrap;
+    }
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
 </style>
 </head>
 <body>
 
 <header>
     <div class="logo">
-        <div class="logo-icon">
-            <img src="../assets/images/finderlogo.png" alt="Bataan Campus Finder Logo">
-        </div>
+        <img src="../../assets/images/finderlogo.png" alt="Finder Logo">
         <div class="logo-text">
             <h1>Bataan Campus Finder</h1>
             <p>Campus Details</p>
         </div>
     </div>
 
-    <!-- Hamburger -->
-    <div class="hamburger" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="desktop-nav">
-        <a href="../index.html">HOME</a>
-        <a href="../campus.html" class="active">ALL CAMPUSES</a>
-        <a href="../about.html">ABOUT</a>
-        <a href="../contact.html">CONTACT</a>
+    <nav id="mobileNav">
+        <a href="../../index.html">HOME</a>
+        <a href="../../campus.html" class="active">ALL CAMPUSES</a>
+        <a href="../../about.html">ABOUT</a>
+        <a href="../../contact.html">CONTACT</a>
     </nav>
 
-    <nav class="mobile-nav">
-        <a href="../index.html">HOME</a>
-        <a href="../campus.html" class="active">ALL CAMPUSES</a>
-        <a href="../about.html">ABOUT</a>
-        <a href="../contact.html">CONTACT</a>
-    </nav>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </header>
 
 <div class="container">
-    <!-- Campus Header -->
+    <!-- CAMPUS HEADER -->
     <div class="campus-header">
         <div class="campus-logo">
-            <img src="../assets/images/ACLC.jpg" alt="ACLC Bataan Logo">
+            <img src="../../assets/images/aclc-logo.png" alt="ACLC Logo" onerror="this.src='https://via.placeholder.com/140x140?text=ACLC'">
         </div>
         <div class="campus-info">
-            <h1>AMA Computer Learning Center Bataan</h1>
-            <p class="campus-subtitle">Main Campus</p>
-            <div class="info-grid">
-                <div class="info-item"><span class="info-icon">📍</span><span>Bataan, Bataan</span></div>
-                <div class="info-item"><span class="info-icon">📞</span><span>(047) 312-3456</span></div>
-                <div class="info-item"><span class="info-icon">🌐</span><span>www.aclcbataan.edu.ph</span></div>
-                <div class="info-item"><span class="info-icon">✉️</span><span>info@aclc-bataan.edu.ph</span></div>
-            </div>
+            <h1>AMA Computer Learning Center</h1>
+            <p style="color:#667eea; font-weight:600; margin-bottom:0.8rem; font-size:1.1rem;">College of Balanga, Inc.</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Mission:</strong> To provide a holistic, relevant, quality and globally recognized IT-based education in all levels and disciplines with the objective of producing professionals and leaders responsive to the needs of Science and the international community cognizant of the welfare and benefits of its men and women thereby realizing their potential as productive members of the society for the honor and glory of God Almighty.</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Vision:</strong> To be the leader and dominant provider of relevant globally recognized information technology-based education and related services in the global market.</p>
             <div class="action-buttons">
-                <button class="btn btn-primary">LEARN MORE</button>
+                <a class="btn btn-primary" href="https://www.facebook.com/AMAako.ACLCBalanga/" target="_blank" rel="noopener">FACEBOOK</a>
+                <a class="btn btn-secondary" href="tel:+63472375273">CALL US</a>
+                <a class="btn btn-outline" href="https://docs.google.com/forms/d/e/1FAIpQLSdfpvrul0QTN1-YKey6bmHGXr4EQwCeKV2RxdxdFXjefDzxrA/viewform" target="_blank" rel="noopener">APPLY NOW</a>
+                <a class="btn btn-outline" href="mailto:aclcbalanga.admission@gmail.com">EMAIL ADMISSIONS</a>
+                <a class="btn btn-outline" href="https://www.google.com/maps?q=Denissa+Bldg.,+Banzon+St.+Brgy.+Ibayo,+Balanga+City,+Bataan" target="_blank" rel="noopener">DIRECTIONS</a>
             </div>
         </div>
-        <div class="campus-map" id="campusMap">
-            Map Loading...
+        
+        <div class="campus-map">
+            <iframe src="https://www.google.com/maps?q=Denissa+Bldg.,+Banzon+St.+Brgy.+Ibayo,+Balanga+City,+Bataan&output=embed"></iframe>
         </div>
     </div>
 
-    <!-- Content Grid -->
-    <div class="content-grid">
-        <div class="main-content">
-            <!-- Overview -->
-            <div class="section-card">
-                <div class="section-header">OVERVIEW</div>
-                <p style="color:#666; line-height:1.6; margin-bottom:1rem;">
-                    ACLC Bataan is a leading educational institution in Bataan dedicated to providing quality higher education. The institution is committed to fostering academic excellence, student development, and community engagement.
-                </p>
-                <p style="color:#666; line-height:1.6;">
-                    With experienced faculty, modern facilities, and comprehensive programs, ACLC Bataan offers students an excellent platform for personal and professional growth in today's competitive world.
-                </p>
-            </div>
+    <!-- Quick Navigation -->
+    <div class="quick-nav">
+        <a href="#about" class="nav-btn">About ACLC</a>
+        <a href="#contact" class="nav-btn">Contact Information</a>
+        <a href="#academic-programs" class="nav-btn">Academic Programs</a>
+        <a href="#tuition-fees" class="nav-btn">Tuition & Fees</a>
+        <a href="#scholarships" class="nav-btn">Scholarships</a>
+        <a href="#admission-requirements" class="nav-btn">Admission Requirements</a>
+        <a href="#application-process" class="nav-btn">Application Process</a>
+    </div>
 
-            <!-- Academic Programs -->
-            <div class="section-card">
-                <div class="section-header">ACADEMIC PROGRAMS</div>
-                <ul style="color:#666; line-height:1.6; margin-left:1.5rem;">
-                    <li>Computer Programming</li>
-                    <li>Web Development</li>
-                    <li>Network Administration</li>
-                    <li>Office Administration</li>
-                    <li>Multimedia Design</li>
-                </ul>
+    <div class="main-content">
+        <!-- About ACLC -->
+        <div class="section-card" id="about">
+            <div class="section-header">ABOUT ACLC BALANGA</div>
+            <p style="color: #666; line-height: 1.7; margin-bottom: 1.5rem;">
+                ACLC College is a member of the AMA Education System and is one of the leading computer schools in the country. With a curriculum that is based on the requirements of the actual industry, ACLC College aims to produce highly competent graduates, especially in the field of IT and other fields that require knowledge in today's technology.
+            </p>
+            <div class="info-box">
+                <p><strong>Part of AMA Education System:</strong> ACLC College is backed by one of the Philippines' most respected educational networks, ensuring quality education and industry-relevant training.</p>
             </div>
         </div>
 
-        <!-- Sidebar Contact -->
-        <div class="sidebar">
-            <div class="section-card">
-                <div class="section-header">CONTACT INFORMATION</div>
-                <div class="contact-info">
-                    <div class="contact-item"><span class="contact-icon">📞</span><div><strong>Phone</strong><br>(047) 312-3456</div></div>
-                    <div class="contact-item"><span class="contact-icon">✉️</span><div><strong>Email</strong><br>info@aclc-bataan.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">🌐</span><div><strong>Website</strong><br>www.aclcbataan.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">📍</span><div><strong>Address</strong><br>Bataan, Bataan</div></div>
+        <!-- Contact Information -->
+        <div class="section-card" id="contact">
+            <div class="section-header">CONTACT INFORMATION</div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h4>📧 Email Address</h4>
+                    <a href="mailto:aclcbalanga.admission@gmail.com">aclcbalanga.admission@gmail.com</a>
                 </div>
+                <div class="contact-item">
+                    <h4>📱 Phone Numbers</h4>
+                    <p>(047) 237-5273<br>0917-592-1306</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📍 Location</h4>
+                    <p>Denissa Bldg., Banzon St. Brgy. Ibayo, Balanga City, Bataan</p>
+                </div>
+                <div class="contact-item">
+                    <h4>👥 Social Media</h4>
+                    <a href="https://www.facebook.com/AMAako.ACLCBalanga/" target="_blank">Facebook Page</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academic Programs -->
+        <div class="section-card" id="academic-programs">
+            <div class="section-header">ACADEMIC PROGRAMS</div>
+            
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">Bachelor's Degree Programs (4-Year Course)</h3>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item"><strong>BS Information Technology</strong></div>
+                <div class="requirement-item"><strong>BS Business Administration</strong> - Major in Human Resource Management</div>
+                <div class="requirement-item"><strong>BS Computer Engineering</strong></div>
+            </div>
+
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">2-Year Course</h3>
+            <div class="requirements-list">
+                <div class="requirement-item"><strong>Associate in Computer Technology</strong></div>
+            </div>
+
+            <div class="info-box" style="margin-top: 1.5rem;">
+                <strong>Industry-Focused Curriculum:</strong> All programs are designed based on actual industry requirements to ensure graduates are highly competent and job-ready.
+            </div>
+        </div>
+
+        <!-- Tuition & Fees -->
+        <div class="section-card" id="tuition-fees">
+            <div class="section-header">TUITION & FEES</div>
+            <h3 style="color: #667eea; margin-bottom: 1rem;">Affordable Education</h3>
+            <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: #666; line-height: 1.7;">
+                ACLC College of Balanga offers one of the most affordable tuition rates in the region, making quality IT education accessible to more students.
+            </p>
+            
+            <div class="info-box">
+                <h4 style="color: #667eea; margin-bottom: 0.8rem; font-size: 1rem;">Discounted Rates</h4>
+                <p style="font-size: 1.1rem; font-weight: 600; color: #667eea; margin-bottom: 0.5rem;">As low as ₱350 per Academic Unit</p>
+                <p style="margin-top: 1rem;"><strong>Note:</strong> Tuition fees may vary depending on the program. For the most accurate and up-to-date information about fees and payment schedules, please contact the admissions office directly or visit the campus.</p>
+            </div>
+        </div>
+
+        <!-- Scholarships -->
+        <div class="section-card" id="scholarships">
+            <div class="section-header">SCHOLARSHIP & FINANCIAL AID</div>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                ACLC College of Balanga provides scholarship opportunities to help deserving students achieve their educational goals.
+            </p>
+
+            <h4 style="color: #667eea; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">Available Scholarships</h4>
+            <div class="requirements-list" style="margin-bottom: 1.5rem;">
+                <div class="requirement-item">Academic Scholarships</div>
+            </div>
+
+            <div class="info-box">
+                <strong>For More Information:</strong> Please contact the admissions office at <a href="mailto:aclcbalanga.admission@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">aclcbalanga.admission@gmail.com</a> or call (047) 237-5273 for complete details about scholarship requirements, eligibility criteria, and application procedures.
+            </div>
+        </div>
+
+        <!-- Admission Requirements -->
+        <div class="section-card" id="admission-requirements">
+            <div class="section-header">ADMISSION REQUIREMENTS</div>
+            
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">For New Students (Freshmen)</h3>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">1x1 Picture (2 pieces)</div>
+                <div class="requirement-item">2x2 Picture (2 pieces)</div>
+                <div class="requirement-item">Photocopy of PSA-issued Birth Certificate</div>
+                <div class="requirement-item">2 pieces Long Brown Envelope</div>
+                <div class="requirement-item">1 piece Long Folder (White)</div>
+            </div>
+
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">For Transferees</h3>
+            <div class="requirements-list">
+                <div class="requirement-item">Good Moral Certificate</div>
+                <div class="requirement-item">Honorable Dismissal</div>
+                <div class="requirement-item">TOR Copy for ACLC</div>
+                <div class="requirement-item">All requirements for new students (listed above)</div>
+            </div>
+
+            <div class="info-box" style="margin-top: 1.5rem;">
+                <strong>Important Note:</strong> Please ensure all documents are complete and properly prepared before submission. For questions about specific requirements, contact the admissions office.
+            </div>
+        </div>
+
+        <!-- Application Process -->
+        <div class="section-card" id="application-process">
+            <div class="section-header">APPLICATION PROCESS</div>
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 0.5rem;">1. Fill Out Online Application Form</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: #666; margin-bottom: 1rem;">
+                        Complete the ACLC Balanga online application form to begin your enrollment process.
+                    </p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfpvrul0QTN1-YKey6bmHGXr4EQwCeKV2RxdxdFXjefDzxrA/viewform" 
+                       target="_blank" 
+                       class="btn btn-primary" 
+                       style="display: inline-block; margin-top: 0.5rem;">
+                        📝 Apply Online Now
+                    </a>
+                </div>
+                
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 0.5rem;">2. Prepare Required Documents</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: #666;">
+                        Gather all necessary documents as listed in the admission requirements section. Make sure all photocopies are clear and complete.
+                    </p>
+                </div>
+                
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 0.5rem;">3. Submit Requirements</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: #666;">
+                        Visit the ACLC Balanga campus at Denissa Bldg., Banzon St. Brgy. Ibayo, Balanga City, Bataan to submit your complete requirements to the admissions office.
+                    </p>
+                </div>
+                
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 0.5rem;">4. Assessment and Interview</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: #666;">
+                        The admissions office will review your application and may schedule an interview. They will also assess your qualifications and provide guidance on your chosen program.
+                    </p>
+                </div>
+                
+                <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 0.5rem;">5. Enrollment</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: #666;">
+                        Once accepted, complete the enrollment process by paying the necessary fees and finalizing your class schedule. Welcome to ACLC College of Balanga!
+                    </p>
+                </div>
+            </div>
+            
+            <div class="info-box" style="margin-top: 1.5rem;">
+                <strong>Need Help?</strong> For any questions or assistance with the application process, contact us at <a href="mailto:aclcbalanga.admission@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">aclcbalanga.admission@gmail.com</a> or call (047) 237-5273 / 0917-592-1306.
             </div>
         </div>
     </div>
 </div>
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
-<!-- Footer -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>Bataan Campus Finder</h3>
-            <p>Your comprehensive guide to higher education institutions in Bataan. Discover programs, compare options, and find the perfect campus for your future.</p>
-        </div>
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <div class="footer-links">
-                <a href="../index.html">Home</a>
-                <a href="../campus.html">All Campuses</a>
-                <a href="../about.html">About Us</a>
-                <a href="../contact.html">Contact</a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h3>Need Help?</h3>
-            <p>Contact us for any inquiries about higher education in Bataan.</p>
-            <p style="margin-top:1rem;">Email: info@bataancampusfinder.com<br>Phone: (047) XXX-XXXX</p>
-        </div>
+<footer style="background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px); color: white; padding: 2rem 5%; margin-top: 3rem;">
+    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+        <p style="color: #999; font-size: 0.9rem;">© 2024 Bataan Campus Finder. All rights reserved.</p>
+        <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">Information provided is for reference purposes. Please verify details with the respective institutions.</p>
     </div>
-    <div class="footer-bottom">© 2025 Bataan Campus Finder. All rights reserved. | Designed for Bataan Students</div>
 </footer>
 
 <script>
-function toggleMenu() {
-    document.querySelector('.mobile-nav').classList.toggle('show');
-}
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+});
 
-// Auto-load Google Map
-(function(){
-    const mapContainer = document.getElementById('campusMap');
-    const campusName = document.querySelector('.campus-info h1').textContent;
-    const src = 'https://www.google.com/maps?q=' + encodeURIComponent(campusName + ', Bataan, Philippines') + '&output=embed';
-    mapContainer.innerHTML = '<iframe src="'+src+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
-        '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If the map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(campusName+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a>.</p>';
-})();
+// Smooth scrolling for navigation buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Back to top button functionality
+    window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 </script>
 
+
+<script src="../assets/js/site-ui.js"></script>
+
 </body>
+</html>
 </html>

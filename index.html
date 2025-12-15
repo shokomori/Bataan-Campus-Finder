@@ -6,82 +6,461 @@
 <title>Bataan Campus Finder - Discover Your Path to Higher Education</title>
 <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; color: #333; overflow-x: hidden;}
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; 
+        color: #333; 
+        overflow-x: hidden;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
 
     /* Header */
-    header {display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;}
-    .logo {display: flex; align-items: center; gap: 10px;}
-    .logo-icon {width: 40px; height: 40px; background: #2542ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;}
+    header {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 1.5rem 5%; 
+        background: rgba(255, 255, 255, 0.95); 
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 30px rgba(0,0,0,0.1); 
+        position: sticky; 
+        top: 0; 
+        z-index: 1000;
+    }
+    .logo {display: flex; align-items: center; gap: 12px;}
+    .logo-icon {
+        width: 40px; 
+        height: 40px; 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+        border-radius: 10px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        transition: transform 0.3s;
+    }
+    .logo-icon:hover {transform: scale(1.1) rotate(5deg);}
     .logo-icon img {width: 100%; height: 100%; object-fit: contain;}
-    .logo-text h1 {font-size: 1.2rem; color: #2542ff;}
-    .logo-text p {font-size: 0.7rem; color: #666;}
+    .logo-text h1 {
+        font-size: 1.3rem; 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+    }
+    .logo-text p {font-size: 0.75rem; color: #666; margin-top: 2px;}
     nav {display: flex; gap: 2rem;}
-    nav a {text-decoration: none; color: #333; font-weight: 500; padding: 0.5rem 1rem; transition: all 0.3s; border-bottom: 2px solid transparent;}
-    nav a:hover, nav a.active {color: #2542ff; border-bottom-color: #2542ff;}
+    nav a {
+        text-decoration: none; 
+        color: #333; 
+        font-weight: 600; 
+        padding: 0.5rem 1rem; 
+        transition: all 0.3s; 
+        position: relative;
+    }
+    nav a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transition: all 0.3s;
+        transform: translateX(-50%);
+    }
+    nav a.active::after,
+    nav a:hover::after {
+        width: 80%;
+    }
+    nav a:hover, nav a.active {color: #667eea;}
 
     /* Hamburger */
-    .hamburger {display: none; flex-direction: column; gap: 5px; cursor: pointer;}
-    .hamburger span {width: 25px; height: 3px; background: #333; display: block; border-radius: 2px;}
+    .hamburger {
+        display: none; 
+        flex-direction: column; 
+        gap: 5px; 
+        cursor: pointer;
+    }
+    .hamburger span {
+        width: 25px; 
+        height: 3px; 
+        background: #667eea; 
+        display: block; 
+        border-radius: 2px;
+        transition: all 0.3s;
+    }
 
     /* Hero Section */
-    .hero {background: linear-gradient(135deg, #2542ff 0%, #1a32cc 100%); color: white; padding: 4rem 5%; text-align: center;}
-    .hero h2 {font-size: 2.5rem; margin-bottom: 1rem; animation: fadeInDown 0.8s ease-out;}
-    .hero p {font-size: 1.1rem; margin-bottom: 3rem; opacity: 0.95; max-width: 800px; margin-left: auto; margin-right: auto; animation: fadeInUp 0.8s ease-out 0.2s both;}
+    .hero {
+        background: transparent;
+        color: white; 
+        padding: 5rem 5% 4rem; 
+        text-align: center;
+    }
+    .hero h2 {
+        font-size: 3rem; 
+        margin-bottom: 1.5rem; 
+        animation: fadeInDown 0.8s ease-out;
+        font-weight: 700;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .hero p {
+        font-size: 1.2rem; 
+        margin-bottom: 3rem; 
+        opacity: 0.95; 
+        max-width: 800px; 
+        margin-left: auto; 
+        margin-right: auto; 
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+        line-height: 1.8;
+    }
 
     /* Stats Cards */
-    .stats-cards {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto; animation: fadeInUp 0.8s ease-out 0.4s both;}
-    .stat-card {background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 2rem; border-radius: 15px; transition: all 0.3s; cursor: pointer; border: 2px solid rgba(255,255,255,0.2);}
-    .stat-card:nth-child(1) {background: rgba(128,128,128,0.8);}
-    .stat-card:nth-child(2) {background: rgba(32,178,170,0.8);}
-    .stat-card:nth-child(3) {background: rgba(147,112,219,0.8);}
-    .stat-card:hover {transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3);}
-    .stat-icon {font-size: 3rem; margin-bottom: 1rem; width: 60px; height: 60px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;}
-    .stat-icon img {width: 100%; height: 100%; object-fit: contain;}
-    .stat-card h3 {font-size: 1.8rem; margin-bottom: 0.5rem;}
-    .stat-card p {font-size: 0.9rem; opacity: 0.9;}
+    .stats-cards {
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        gap: 1.5rem; 
+        max-width: 800px; 
+        margin: 0 auto; 
+        animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+    .stat-card {
+        background: rgba(255,255,255,0.95); 
+        backdrop-filter: blur(20px);
+        padding: 1.5rem; 
+        border-radius: 15px; 
+        transition: all 0.3s; 
+        cursor: pointer; 
+        border: 1px solid rgba(255,255,255,0.5);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+    .stat-card:hover {
+        transform: translateY(-8px); 
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+    .stat-icon {
+        font-size: 2.5rem; 
+        width: 50px; 
+        height: 50px; 
+        margin: 0 auto 1rem; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    .stat-icon img {width: 60%; height: 60%; object-fit: contain; filter: brightness(0) invert(1);}
+    .stat-card h3 {
+        font-size: 1.6rem; 
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .stat-card p {font-size: 0.85rem; color: #666; line-height: 1.4;}
 
     /* Search Section */
-    .search-section {padding: 3rem 5%; background: #f8f9fa;}
-    .search-container {max-width: 900px; margin: 0 auto; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);}
-    .search-box {display: flex; align-items: center; background: #f1f3f5; padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem;}
-    .search-box input {flex: 1; border: none; background: none; font-size: 1rem; padding: 0.5rem; outline: none;}
-    .search-icon {color: #666; font-size: 1.2rem; margin-right: 0.5rem; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;}
+    .search-section {
+        padding: 4rem 5%; 
+        background: transparent;
+    }
+    .search-container {
+        max-width: 900px; 
+        margin: 0 auto; 
+        background: rgba(255,255,255,0.95); 
+        backdrop-filter: blur(20px);
+        padding: 2.5rem; 
+        border-radius: 20px; 
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        border: 1px solid rgba(255,255,255,0.5);
+    }
+    .search-box {
+        display: flex; 
+        align-items: center; 
+        background: rgba(102, 126, 234, 0.1); 
+        padding: 1.2rem; 
+        border-radius: 12px; 
+        margin-bottom: 1.5rem;
+        border: 2px solid transparent;
+        transition: all 0.3s;
+    }
+    .search-box:focus-within {
+        border-color: #667eea;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    }
+    .search-box input {
+        flex: 1; 
+        border: none; 
+        background: none; 
+        font-size: 1rem; 
+        padding: 0.5rem; 
+        outline: none;
+        color: #333;
+    }
+    .search-icon {
+        color: #667eea; 
+        font-size: 1.2rem; 
+        margin-right: 0.8rem; 
+        width: 24px; 
+        height: 24px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+    }
     .search-icon img {width: 100%; height: 100%; object-fit: contain;}
     .filters {display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;}
-    .filter-select {padding: 1rem; border: 1px solid #dee2e6; border-radius: 10px; font-size: 1rem; background: white; cursor: pointer; transition: all 0.3s;}
-    .filter-select:hover {border-color: #2542ff;}
+    .filter-select {
+        padding: 1.2rem; 
+        border: 2px solid rgba(102, 126, 234, 0.2); 
+        border-radius: 12px; 
+        font-size: 1rem; 
+        background: white; 
+        cursor: pointer; 
+        transition: all 0.3s;
+        font-weight: 500;
+        color: #333;
+    }
+    .filter-select:hover, .filter-select:focus {
+        border-color: #667eea;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+        outline: none;
+    }
 
     /* Institutions Section */
-    .institutions {padding: 3rem 5%; max-width: 1200px; margin: 0 auto;}
-    .institutions h2 {font-size: 2rem; margin-bottom: 2rem; color: #333;}
-    .institutions-grid {display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem;}
+    .institutions {
+        padding: 4rem 5%; 
+        max-width: 1400px; 
+        margin: 0 auto;
+    }
+    .institutions h2 {
+        font-size: 2.5rem; 
+        margin-bottom: 3rem; 
+        color: white;
+        text-align: center;
+        font-weight: 700;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .institutions-grid {
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+        gap: 2.5rem; 
+        margin-bottom: 3rem;
+    }
     
-    .institution-card {background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer; display: flex; flex-direction: column; height: 100%;}
-    .institution-card:hover {transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.15);}
-    .institution-image {width: 100%; height: 180px; background: #e9ecef; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;}
-    .institution-image img {width: 100%; height: 100%; object-fit: cover;}
-    .institution-logo {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 2; color: #6c757d; text-align: center; padding: 5px;}
+    .institution-card {
+        background: rgba(255,255,255,0.95); 
+        backdrop-filter: blur(20px);
+        border-radius: 20px; 
+        overflow: hidden; 
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15); 
+        transition: all 0.3s; 
+        cursor: pointer; 
+        display: flex; 
+        flex-direction: column; 
+        height: 100%;
+        border: 1px solid rgba(255,255,255,0.5);
+    }
+    .institution-card:hover {
+        transform: translateY(-8px); 
+        box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+    }
+    .institution-image {
+        width: 100%; 
+        height: 200px; 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+        position: relative; 
+        overflow: hidden; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+    }
+    .institution-image img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover;
+        opacity: 0.9;
+    }
+    .institution-logo {
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        width: 90px; 
+        height: 90px; 
+        background: white; 
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 0.75rem; 
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3); 
+        z-index: 2; 
+        color: #6c757d; 
+        text-align: center; 
+        padding: 5px;
+        border: 3px solid white;
+    }
     .institution-logo img {width: 100%; height: 100%; border-radius: 50%; object-fit: cover;}
-    .institution-badge {position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; color: #2542ff;}
-    .institution-content {padding: 1.5rem; display: flex; flex-direction: column; flex: 1;}
-    .institution-content h3 {font-size: 1.2rem; margin-bottom: 0.5rem; color: #333;}
-    .institution-code {color: #666; font-size: 0.9rem; margin-bottom: 1rem;}
-    .institution-details {display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;}
-    .detail-item {display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #666;}
-    .detail-icon {color: #2542ff; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;}
+    .institution-badge {
+        position: absolute; 
+        top: 15px; 
+        right: 15px; 
+        background: rgba(255,255,255,0.95); 
+        padding: 0.5rem 1rem; 
+        border-radius: 25px; 
+        font-size: 0.85rem; 
+        font-weight: 700; 
+        color: #667eea;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .institution-content {
+        padding: 2rem; 
+        display: flex; 
+        flex-direction: column; 
+        flex: 1;
+    }
+    .institution-content h3 {
+        font-size: 1.3rem; 
+        margin-bottom: 0.5rem; 
+        color: #333;
+        font-weight: 700;
+    }
+    .institution-code {
+        color: #667eea; 
+        font-size: 0.95rem; 
+        margin-bottom: 1.2rem;
+        font-weight: 600;
+    }
+    .institution-details {
+        display: flex; 
+        flex-direction: column; 
+        gap: 0.8rem; 
+        margin-bottom: 1.5rem;
+    }
+    .detail-item {
+        display: flex; 
+        align-items: center; 
+        gap: 0.8rem; 
+        font-size: 0.95rem; 
+        color: #666;
+        padding: 0.5rem;
+        background: rgba(102, 126, 234, 0.05);
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+    .detail-item:hover {
+        background: rgba(102, 126, 234, 0.1);
+        transform: translateX(5px);
+    }
+    .detail-icon {
+        color: #667eea; 
+        width: 24px; 
+        height: 24px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        flex-shrink: 0;
+    }
     .detail-icon img {width: 100%; height: 100%; object-fit: contain;}
-    .view-details-btn {width: 100%; padding: 0.8rem; background: #2542ff; color: white; border: none; border-radius: 10px; font-size: 1rem; font-weight: 600; text-align: center; display: inline-block; text-decoration: none; transition: all 0.3s; margin-top: auto;}
-    .view-details-btn:hover {background: #1a32cc; transform: scale(1.02);}
+    .view-details-btn {
+        width: 100%; 
+        padding: 1rem; 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+        color: white; 
+        border: none; 
+        border-radius: 12px; 
+        font-size: 1rem; 
+        font-weight: 600; 
+        text-align: center; 
+        display: inline-block; 
+        text-decoration: none; 
+        transition: all 0.3s; 
+        margin-top: auto;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    .view-details-btn:hover {
+        transform: translateY(-2px); 
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    }
 
     /* Start Exploring Button */
-    .explore-btn {display: block; max-width: 600px; margin: 3rem auto; padding: 1.2rem; background: #2542ff; color: white; text-align: center; text-decoration: none; border-radius: 10px; font-size: 1.2rem; font-weight: 600; transition: all 0.3s; box-shadow: 0 5px 20px rgba(37,66,255,0.3);}
-    .explore-btn:hover {background: #1a32cc; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,66,255,0.4);}
+    .explore-btn {
+        display: block; 
+        max-width: 600px; 
+        margin: 3rem auto; 
+        padding: 1.5rem; 
+        background: rgba(255,255,255,0.95); 
+        backdrop-filter: blur(20px);
+        color: #667eea; 
+        text-align: center; 
+        text-decoration: none; 
+        border-radius: 15px; 
+        font-size: 1.3rem; 
+        font-weight: 700; 
+        transition: all 0.3s; 
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        border: 2px solid rgba(255,255,255,0.5);
+    }
+    .explore-btn:hover {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        transform: translateY(-5px); 
+        box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+        z-index: 999;
+    }
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    .back-to-top:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    }
 
     /* Footer */
-    footer {background: #1a1a1a; color: white; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center;}
+    footer {
+        background: rgba(26, 26, 26, 0.95); 
+        backdrop-filter: blur(20px);
+        color: white; 
+        padding: 2rem 5%; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+    }
     .footer-links {display: flex; gap: 2rem;}
-    .footer-links a {color: white; text-decoration: none; transition: color 0.3s;}
-    .footer-links a:hover {color: #2542ff;}
+    .footer-links a {
+        color: white; 
+        text-decoration: none; 
+        transition: color 0.3s;
+        font-weight: 500;
+    }
+    .footer-links a:hover {color: #667eea;}
     .designed-by {font-size: 0.9rem; opacity: 0.8;}
 
     /* Animations */
@@ -90,12 +469,32 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-        nav {display: none; position: absolute; top: 70px; right: 5%; background: white; flex-direction: column; gap: 1rem; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+        nav {
+            display: none; 
+            position: absolute; 
+            top: 80px; 
+            right: 5%; 
+            background: rgba(255, 255, 255, 0.98); 
+            backdrop-filter: blur(20px);
+            flex-direction: column; 
+            gap: 1rem; 
+            padding: 1rem; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        nav.open {display: flex !important;}
         .hamburger {display: flex;}
-        .hero h2 {font-size: 1.8rem;}
+        .hero h2 {font-size: 2rem;}
+        .hero p {font-size: 1rem;}
         .stats-cards {grid-template-columns: 1fr;}
         .filters {grid-template-columns: 1fr;}
         .institutions-grid {grid-template-columns: 1fr;}
+        .back-to-top {
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+        }
     }
 </style>
 </head>
@@ -122,18 +521,18 @@
     <div class="stats-cards">
         <div class="stat-card">
             <div class="stat-icon"><img src="assets/images/locations.png" alt="Location Icon"></div>
-            <h3>21 Campuses</h3>
-            <p>Across Bataan Province</p>
+            <h3>21</h3>
+            <p>Campuses Across Bataan Province</p>
         </div>
         <div class="stat-card">
             <div class="stat-icon"><img src="assets/images/campuss.png" alt="Programs Icon"></div>
-            <h3>100+ Programs</h3>
-            <p>Undergraduate & Graduate</p>
+            <h3>100+</h3>
+            <p>Undergraduate & Graduate Programs</p>
         </div>
         <div class="stat-card">
             <div class="stat-icon"><img src="assets/images/educs.png" alt="Education Icon"></div>
-            <h3>Quality Education</h3>
-            <p>Accredited Institutions</p>
+            <h3>Quality</h3>
+            <p>Accredited Educational Institutions</p>
         </div>
     </div>
 </section>
@@ -166,7 +565,7 @@
     <h2>Higher Education Institutions</h2>
     <div class="institutions-grid" id="institutionsGrid">
 
-        <!-- Example Card -->
+        <!-- BPSU Card -->
         <div class="institution-card">
             <div class="institution-image">
                 <img src="assets/images/bannerbpsu.jpg" alt="BPSU Banner">
@@ -179,40 +578,130 @@
                 <div class="institution-details">
                     <div class="detail-item"><span class="detail-icon"><img src="assets/images/campus.png" alt="Campus Icon"></span><span>6 Campuses</span></div>
                     <div class="detail-item"><span class="detail-icon"><img src="assets/images/location.avif" alt="Location Icon"></span><span>Bataan</span></div>
-                    <div class="detail-item"><span class="detail-icon"><img src="assets/images/campus.jpg" alt="Programs Icon"></span><span>20 Programs Available</span></div>
+                    <div class="detail-item"><span class="detail-icon"><img src="assets/images/campus.jpg" alt="Programs Icon"></span><span>20+ Programs Available</span></div>
                     <div class="detail-item"><span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone Icon"></span><span>(047) 237-4438</span></div>
                 </div>
                 <a href="schools/bpsu/bpsu.html" class="view-details-btn">View Details</a>
             </div>
         </div>
 
-        <!-- PUP Card --> <div class="institution-card"> <div class="institution-image"> <img src="assets/images/bannerpup.jpg" alt="PUP Banner"> <div class="institution-logo"><img src="assets/images/PUP.jpg" alt="PUP Logo"></div> <span class="institution-badge">SUC</span> </div> <div class="institution-content"> <h3>Polytechnic University of the Philippines</h3> <p class="institution-code">PUP - Bataan</p> <div class="institution-details"> <div class="detail-item"><span class="detail-icon"><img src="assets/images/location.avif" alt="Location Icon"></span><span>Mariveles, Bataan</span></div> <div class="detail-item"><span class="detail-icon"><img src="assets/images/campus.jpg" alt="Programs Icon"></span><span>N Programs Available</span></div> <div class="detail-item"><span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone Icon"></span><span>(047) 237-4438</span></div> </div> <a href="schools/pup-bataan.html" class="view-details-btn">View Details</a> </div> </div> <!-- LPC Card --> <div class="institution-card"> <div class="institution-image"> <img src="assets/images/bannerlipoco.jpg" alt="LPC Banner"> <div class="institution-logo"><img src="assets/images/LIPOCO.png" alt="LPC Logo"></div> <span class="institution-badge">LUC</span> </div> <div class="institution-content"> <h3>Limay Polytechnic College</h3> <p class="institution-code">LPC</p> <div class="institution-details"> <div class="detail-item"><span class="detail-icon"><img src="assets/images/location.avif" alt="Location Icon"></span><span>Limay, Bataan</span></div> <div class="detail-item"><span class="detail-icon"><img src="assets/images/campus.jpg" alt="Programs Icon"></span><span>N Programs Available</span></div> <div class="detail-item"><span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone Icon"></span><span>(047) 237-4438</span></div> </div> <a href="schools/lpc.html" class="view-details-btn">View Details</a> </div> </div>
+        <!-- PUP Card -->
+        <div class="institution-card">
+            <div class="institution-image">
+                <img src="assets/images/bannerpup.jpg" alt="PUP Banner">
+                <div class="institution-logo"><img src="assets/images/PUP.jpg" alt="PUP Logo"></div>
+                <span class="institution-badge">SUC</span>
+            </div>
+            <div class="institution-content">
+                <h3>Polytechnic University of the Philippines</h3>
+                <p class="institution-code">PUP - Bataan</p>
+                <div class="institution-details">
+                    <div class="detail-item"><span class="detail-icon"><img src="assets/images/location.avif" alt="Location Icon"></span><span>Mariveles, Bataan</span></div>
+                    <div class="detail-item"><span class="detail-icon"><img src="assets/images/campus.jpg" alt="Programs Icon"></span><span>Multiple Programs Available</span></div>
+                    <div class="detail-item"><span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone Icon"></span><span>(047) 237-4438</span></div>
+                </div>
+                <a href="schools/pup-bataan.html" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+
+        <!-- LPC Card -->
+        <div class="institution-card">
+            <div class="institution-image">
+                <img src="assets/images/bannerlipoco.jpg" alt="LPC Banner">
+                <div class="institution-logo"><img src="assets/images/LIPOCO.png" alt="LPC Logo"></div>
+                <span class="institution-badge">LUC</span>
+            </div>
+            <div class="institution-content">
+                <h3>Limay Polytechnic College</h3>
+                <p class="institution-code">LPC</p>
+                <div class="institution-details">
+                    <div class="detail-item"><span class="detail-icon"><img src="assets/images/location.avif" alt="Location Icon"></span><span>Limay, Bataan</span></div>
+                    <div class="detail-item"><span class="detail-icon"><img src="assets/images/campus.jpg" alt="Programs Icon"></span><span>Various Programs Available</span></div>
+                    <div class="detail-item"><span class="detail-icon"><img src="assets/images/contact.jpg" alt="Phone Icon"></span><span>(047) 237-4438</span></div>
+                </div>
+                <a href="schools/lpc.html" class="view-details-btn">View Details</a>
+            </div>
+        </div>
 
     </div>
-    <a href="campus.html" class="explore-btn">Start Exploring</a>
+    <a href="campus.html" class="explore-btn">Start Exploring All Campuses</a>
 </section>
 
-<footer>
-    <div class="footer-links">
-        <a href="#terms">Terms & Support</a>
-        <a href="#privacy">Privacy Policy</a>
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+<footer style="background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px); color: white; padding: 2rem 5%; margin-top: 3rem;">
+    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+        <p style="color: #999; font-size: 0.9rem;">© 2024 Bataan Campus Finder. All rights reserved.</p>
+        <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">Information provided is for reference purposes. Please verify details with the respective institutions.</p>
     </div>
-    <div class="designed-by">Designed with ❤️ for Bataan Students</div>
 </footer>
 
 <script>
-    // Hamburger Toggle
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     hamburger.addEventListener('click', () => {
-        if(navMenu.style.display==='flex') navMenu.style.display='none';
-        else navMenu.style.display='flex';
+        navMenu.classList.toggle('open');
     });
     window.addEventListener('resize', () => {
-        if(window.innerWidth > 768) navMenu.style.display='flex';
-        else navMenu.style.display='none';
+        if(window.innerWidth > 768) {
+            navMenu.style.display='flex';
+        } else if(!navMenu.classList.contains('open')) {
+            navMenu.style.display='none';
+        }
     });
-</script>
 
+    // Back to top button functionality
+    window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const typeFilter = document.getElementById('typeFilter');
+    const locationFilter = document.getElementById('locationFilter');
+
+    searchInput.addEventListener('input', filterInstitutions);
+    typeFilter.addEventListener('change', filterInstitutions);
+    locationFilter.addEventListener('change', filterInstitutions);
+
+    function filterInstitutions() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const typeValue = typeFilter.value.toLowerCase();
+        const locationValue = locationFilter.value.toLowerCase();
+        const cards = document.querySelectorAll('.institution-card');
+
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const code = card.querySelector('.institution-code').textContent.toLowerCase();
+            const badge = card.querySelector('.institution-badge').textContent.toLowerCase();
+            const location = card.querySelector('.detail-item:nth-child(2)').textContent.toLowerCase();
+
+            const matchesSearch = title.includes(searchTerm) || code.includes(searchTerm);
+            const matchesType = typeValue === 'all types' || badge.includes(typeValue.substring(0, 3));
+            const matchesLocation = locationValue === 'all municipalities' || location.includes(locationValue);
+
+            if (matchesSearch && matchesType && matchesLocation) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+</body>
+</script>
+<script src="assets/js/site-ui.js"></script>
 </body>
 </html>

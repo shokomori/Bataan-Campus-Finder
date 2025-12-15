@@ -6,16 +6,22 @@
 <title>About - Bataan Campus Finder</title>
 <style>
 * {margin:0; padding:0; box-sizing:border-box;}
-body {font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; color:#333; background:#f8f9fa;}
+body {
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; 
+    color:#333; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
 
 /* Header */
 header {
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:1rem 5%;
-    background:white;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    padding:1.5rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow:0 4px 30px rgba(0,0,0,0.1);
     position:sticky;
     top:0;
     z-index:1000;
@@ -23,12 +29,33 @@ header {
 .logo {
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
 }
-.logo-icon {width:40px; height:40px; background:#2542ff; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+.logo-icon {
+    width:40px; 
+    height:40px; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    border-radius:10px; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    overflow:hidden;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: transform 0.3s;
+}
+.logo-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+}
 .logo-icon img {width:100%; height:100%; object-fit:contain;}
-.logo-text h1 {font-size:1.2rem; color:#2542ff;}
-.logo-text p {font-size:0.7rem; color:#666;}
+.logo-text h1 {
+    font-size:1.3rem; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+.logo-text p {font-size:0.75rem; color:#666; margin-top: 2px;}
 nav {
     display:flex;
     gap:2rem;
@@ -36,12 +63,27 @@ nav {
 nav a {
     text-decoration:none;
     color:#333;
-    font-weight:500;
+    font-weight:600;
     padding:0.5rem 1rem;
     transition:all 0.3s;
-    border-bottom:2px solid transparent;
+    position: relative;
 }
-nav a:hover, nav a.active {color:#2542ff; border-bottom-color:#2542ff;}
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+nav a.active::after,
+nav a:hover::after {
+    width: 80%;
+}
+nav a:hover, nav a.active {color:#667eea;}
 
 /* Hamburger */
 .hamburger {
@@ -51,42 +93,220 @@ nav a:hover, nav a.active {color:#2542ff; border-bottom-color:#2542ff;}
     cursor:pointer;
     z-index:200;
 }
-.hamburger span {width:25px; height:3px; background:#333; display:block;}
+.hamburger span {
+    width:25px; 
+    height:3px; 
+    background:#667eea; 
+    display:block;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
 
 /* Mobile nav open */
-nav.open {display:flex !important; flex-direction:column; gap:1rem; background:white; padding:1rem; position:absolute; top:60px; right:5%; box-shadow:0 2px 10px rgba(0,0,0,0.1); border-radius:8px;}
+nav.open {
+    display:flex !important; 
+    flex-direction:column; 
+    gap:1rem; 
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    padding:1rem; 
+    position:absolute; 
+    top:80px; 
+    right:5%; 
+    box-shadow:0 10px 40px rgba(0,0,0,0.2); 
+    border-radius:15px;
+}
 
 /* About Section */
-.about-section {padding:4rem 5%; max-width:1200px; margin:0 auto;}
-.about-hero {background:linear-gradient(135deg, #2542ff 0%, #1a32cc 100%); color:white; padding:4rem 3rem; border-radius:20px; box-shadow:0 10px 40px rgba(37,66,255,0.2); margin-bottom:3rem; position:relative; overflow:hidden;}
-.about-hero::before {content:''; position:absolute; top:-50%; right:-10%; width:500px; height:500px; background:rgba(255,255,255,0.05); border-radius:50%;}
-.about-hero::after {content:''; position:absolute; bottom:-30%; left:-5%; width:400px; height:400px; background:rgba(255,255,255,0.03); border-radius:50%;}
+.about-section {
+    padding:4rem 5%; 
+    max-width:1200px; 
+    margin:0 auto;
+}
+.about-hero {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    color:#333; 
+    padding:4rem 3rem; 
+    border-radius:20px; 
+    box-shadow:0 10px 40px rgba(0,0,0,0.15); 
+    margin-bottom:3rem; 
+    position:relative; 
+    overflow:hidden;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.about-hero:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+.about-hero::before {
+    content:''; 
+    position:absolute; 
+    top:-50%; 
+    right:-10%; 
+    width:500px; 
+    height:500px; 
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius:50%;
+}
+.about-hero::after {
+    content:''; 
+    position:absolute; 
+    bottom:-30%; 
+    left:-5%; 
+    width:400px; 
+    height:400px; 
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius:50%;
+}
 .about-hero-content {position:relative; z-index:2;}
-.about-hero h2 {font-size:2.5rem; margin-bottom:1.5rem; font-weight:700;}
-.about-hero p {font-size:1.15rem; line-height:1.8; margin-bottom:1.5rem; opacity:0.95;}
+.about-hero h2 {
+    font-size:2.5rem; 
+    margin-bottom:1.5rem; 
+    font-weight:700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.about-hero p {
+    font-size:1.15rem; 
+    line-height:1.8; 
+    margin-bottom:1.5rem; 
+    color: #555;
+}
 .about-hero p:last-child {margin-bottom:0;}
 
 /* Features */
-.features {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin-top:3rem; justify-items:center; text-align:center;}
-.feature-card {background:white; padding:2rem; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.08); transition:all 0.3s; border-top:4px solid #2542ff;}
-.feature-card:hover {transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.12);}
-.feature-icon {width:60px; height:60px; background:linear-gradient(135deg, #3045cc 0%, #767fac 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 1.5rem auto; color:white;}
-.feature-icon img {width:35px; height:35px; object-fit:contain;}
-.feature-card h3 {font-size:1.3rem; margin-bottom:0.8rem; color:#2542ff;}
-.feature-card p {color:#666; line-height:1.7; font-size:0.95rem;}
+.features {
+    display:grid; 
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); 
+    gap:2rem; 
+    margin-top:3rem;
+}
+.feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding:2.5rem; 
+    border-radius:20px; 
+    box-shadow:0 10px 40px rgba(0,0,0,0.15); 
+    transition:all 0.3s; 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+.feature-card:hover {
+    transform:translateY(-8px); 
+    box-shadow:0 15px 50px rgba(0,0,0,0.25);
+}
+.feature-icon {
+    width:70px; 
+    height:70px; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    border-radius:15px; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    font-size:1.8rem; 
+    margin:0 auto 1.5rem auto; 
+    color:white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+.feature-icon img {
+    width:40px; 
+    height:40px; 
+    object-fit:contain;
+    filter: brightness(0) invert(1);
+}
+.feature-card h3 {
+    font-size:1.4rem; 
+    margin-bottom:1rem; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+.feature-card p {
+    color:#666; 
+    line-height:1.7; 
+    font-size:0.95rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
 
 /* Footer */
-footer {background:#1a1a1a; color:white; padding:1.5rem 5%; display:flex; justify-content:space-between; align-items:center; margin-top:4rem;}
+footer {
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(20px);
+    color:white; 
+    padding:2rem 5%; 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    margin-top:4rem;
+}
 .footer-links {display:flex; gap:2rem;}
-.footer-links a {color:white; text-decoration:none; transition: color 0.3s; font-size:0.9rem;}
-.footer-links a:hover {color:#2542ff;}
+.footer-links a {
+    color:white; 
+    text-decoration:none; 
+    transition: color 0.3s; 
+    font-size:0.9rem;
+    font-weight: 500;
+}
+.footer-links a:hover {color:#667eea;}
 .designed-by {font-size:0.9rem; opacity:0.8;}
 
 /* Responsive */
 @media(max-width:768px){
-    nav {display:none; position:absolute; right:5%; top:60px;}
+    nav {display:none;}
+    nav.open {display:flex !important;}
     .hamburger {display:flex;}
     .features {grid-template-columns:1fr;}
+    .about-hero {padding: 2.5rem 2rem;}
+    .about-hero h2 {font-size: 2rem;}
+    .about-hero p {font-size: 1rem;}
+    footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
 }
 </style>
 </head>
@@ -99,7 +319,7 @@ footer {background:#1a1a1a; color:white; padding:1.5rem 5%; display:flex; justif
         </div>
         <div class="logo-text">
             <h1>Bataan Campus Finder</h1>
-            <p>Campus Info</p>
+            <p>Discover Your Path to Higher Education in Bataan</p>
         </div>
     </div>
 
@@ -121,7 +341,13 @@ footer {background:#1a1a1a; color:white; padding:1.5rem 5%; display:flex; justif
     <div class="about-hero">
         <div class="about-hero-content">
             <h2>About Our Project</h2>
-            <p>The Higher Education Navigator Website is a student-developed project providing accessible, accurate, and up-to-date information about Higher Education Institutions (HEIs) in the Philippines.</p>
+            <p>The Higher Education Navigator Website is a student-developed project created by Grade 12 STEM students of Saint Catherine of Siena Academy of Samal, Inc.. This website aims to provide accessible, accurate, and up-to-date information about Higher Education Institutions (HEIs) in the Philippines. Through this platform, senior high school students can explore various colleges and universities, view their programs, admission requirements, scholarships, tuition fees, and contact information—all in one place.
+
+
+Our goal is to help students make informed decisions about their educational future and lessen the challenges of searching for reliable information online.
+
+</p>
+            <p>Our mission is to empower students and families with the knowledge they need to make informed decisions about their educational journey, helping them find the perfect campus that aligns with their goals and aspirations.</p>
         </div>
     </div>
 
@@ -144,6 +370,9 @@ footer {background:#1a1a1a; color:white; padding:1.5rem 5%; display:flex; justif
     </div>
 </section>
 
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
 <footer>
     <div class="footer-links">
         <a href="#terms">Terms & Support</a>
@@ -159,7 +388,27 @@ const navMenu = document.getElementById('nav-menu');
 hamburger.addEventListener('click', ()=>{
     navMenu.classList.toggle('open');
 });
+
+// Back to top button functionality
+window.addEventListener('scroll', function() {
+    const backToTop = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 </script>
 
 </body>
+
+<script src="assets/js/site-ui.js"></script>
+
 </html>
