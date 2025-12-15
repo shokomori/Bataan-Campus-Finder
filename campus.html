@@ -25,7 +25,7 @@
         box-shadow: 0 4px 30px rgba(0,0,0,0.1); 
         position: sticky; 
         top: 0; 
-        z-index: 1000;
+        z-index: 2000;
     }
     .logo {display: flex; align-items: center; gap: 12px;}
     .logo-icon {
@@ -720,73 +720,73 @@
     </div>
 </footer>
 <script>
-    // Hamburger Toggle
+document.addEventListener('DOMContentLoaded', function () {
+
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
-    hamburger.addEventListener('click', () => {
+
+    hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
         navMenu.classList.toggle('open');
     });
-    window.addEventListener('resize', () => {
-        if(window.innerWidth > 768) {
-            navMenu.style.display='flex';
-        } else if(!navMenu.classList.contains('open')) {
-            navMenu.style.display='none';
-        }
-    });
 
-    // Back to top button functionality
-    window.addEventListener('scroll', function() {
-        const backToTop = document.getElementById('backToTop');
-        if (window.pageYOffset > 300) {
-            backToTop.classList.add('show');
-        } else {
-            backToTop.classList.remove('show');
-        }
-    });
-
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    // Close menu when clicking a link
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
         });
-    }
+    });
 
-    // Search and filter functionality
+    // Close menu when clicking outside
+    document.addEventListener('click', function (e) {
+        if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+            navMenu.classList.remove('open');
+        }
+    });
+
+    /* BACK TO TOP */
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+
+    window.scrollToTop = function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    /* SEARCH & FILTER */
     const searchInput = document.getElementById('searchInput');
     const typeFilter = document.getElementById('typeFilter');
     const locationFilter = document.getElementById('locationFilter');
+
+    function filterInstitutions() {
+        const search = searchInput.value.toLowerCase();
+        const type = typeFilter.value.toLowerCase();
+        const location = locationFilter.value.toLowerCase();
+
+        document.querySelectorAll('.institution-card').forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const code = card.querySelector('.institution-code').textContent.toLowerCase();
+            const cardType = card.dataset.type.toLowerCase();
+            const cardLocation = card.dataset.location.toLowerCase();
+
+            const visible =
+                (title.includes(search) || code.includes(search)) &&
+                (type === '' || cardType === type) &&
+                (location === '' || cardLocation.includes(location));
+
+            card.style.display = visible ? 'flex' : 'none';
+        });
+    }
 
     searchInput.addEventListener('input', filterInstitutions);
     typeFilter.addEventListener('change', filterInstitutions);
     locationFilter.addEventListener('change', filterInstitutions);
 
-    function filterInstitutions() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const typeValue = typeFilter.value.toLowerCase();
-        const locationValue = locationFilter.value.toLowerCase();
-        const cards = document.querySelectorAll('.institution-card');
-
-        cards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const code = card.querySelector('.institution-code').textContent.toLowerCase();
-            const badge = card.querySelector('.institution-badge').textContent.toLowerCase();
-            const cardType = card.getAttribute('data-type').toLowerCase();
-            const cardLocation = card.getAttribute('data-location').toLowerCase();
-
-            const matchesSearch = title.includes(searchTerm) || code.includes(searchTerm);
-            const matchesType = typeValue === '' || cardType === typeValue;
-            const matchesLocation = locationValue === '' || cardLocation.includes(locationValue);
-
-            if (matchesSearch && matchesType && matchesLocation) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
+});
 </script>
 
-<script src="assets/js/site-ui.js"></script>
 
 </body>
 </html>

@@ -103,14 +103,31 @@ nav a:hover {
 /* HAMBURGER */
 .hamburger {
     display: none;
-    font-size: 1.8rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
     cursor: pointer;
-    color: #667eea;
-    transition: transform 0.3s;
 }
 
-.hamburger:hover {
-    transform: scale(1.1);
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #667eea;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+/* Animate hamburger into X when open */
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* CONTAINER */
@@ -503,24 +520,7 @@ footer {
         display: flex !important;
     }
     .hamburger {
-        display: block;
-    }
-    header {
-        position: relative;
-    }
-
-    .action-buttons {
-        flex-wrap: wrap;
-    }
-    .btn {
-        flex: 1 1 calc(50% - 0.5rem);
-    }
-    
-    .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
+        display: flex;
     }
 }
 </style>
@@ -543,7 +543,12 @@ footer {
         <a href="../../contact.html">CONTACT</a>
     </nav>
 
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </header>
 
 <div class="container">
@@ -714,7 +719,7 @@ footer {
 <!-- Back to Top Button -->
 <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
-<footer style="background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px); color: white; padding: 2rem 5%; margin-top: 3rem;">
+<footer>
     <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
         <p style="color: #999; font-size: 0.9rem;">© 2024 Bataan Campus Finder. All rights reserved.</p>
         <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">Information provided is for reference purposes. Please verify details with the respective institutions.</p>
@@ -722,10 +727,12 @@ footer {
 </footer>
 
 <script>
+// Hamburger toggle
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('mobileNav');
 hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('open');
+    hamburger.classList.toggle('open');
 });
 
 // Smooth scrolling for navigation buttons
@@ -744,11 +751,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Back to top button functionality
-    window.addEventListener('scroll', function() {
-        const backToTop = document.getElementById('backToTop');
-        if (window.pageYOffset > 300) {
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
             backToTop.classList.add('show');
         } else {
             backToTop.classList.remove('show');
@@ -757,15 +764,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 
 </body>
-
-<script src="../../assets/js/site-ui.js"></script>
-
 </html>

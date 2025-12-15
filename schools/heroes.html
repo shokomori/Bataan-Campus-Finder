@@ -5,13 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bataan Heroes College - Campus Details</title>
 <style>
-/* GLOBAL */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* GLOBAL STYLES */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -27,57 +22,34 @@ header {
     padding: 1.5rem 5%;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo img {
-    width: 40px;
-    height: auto;
-    transition: transform 0.3s;
-}
-
-.logo:hover img {
-    transform: scale(1.1) rotate(5deg);
-}
-
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo img { width: 40px; transition: transform 0.3s; }
+.logo:hover img { transform: scale(1.1) rotate(5deg); }
 .logo-text h1 {
     font-size: 1.3rem;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
     font-weight: 700;
 }
-
-.logo-text p {
-    font-size: 0.75rem;
-    color: #666;
-    margin-top: 2px;
-}
+.logo-text p { font-size: 0.75rem; color: #666; margin-top: 2px; }
 
 nav {
     display: flex;
     gap: 2rem;
 }
-
 nav a {
     text-decoration: none;
     color: #333;
     font-weight: 600;
     padding: 0.5rem 1rem;
-    transition: all 0.3s;
     position: relative;
+    transition: all 0.3s;
 }
-
 nav a::after {
     content: '';
     position: absolute;
@@ -89,105 +61,59 @@ nav a::after {
     transition: all 0.3s;
     transform: translateX(-50%);
 }
-
-nav a.active::after,
-nav a:hover::after {
-    width: 80%;
-}
-
-nav a.active,
-nav a:hover {
-    color: #667eea;
-}
+nav a.active::after, nav a:hover::after { width: 80%; }
+nav a.active, nav a:hover { color: #667eea; }
 
 /* HAMBURGER */
 .hamburger {
     display: none;
-    font-size: 1.8rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
     cursor: pointer;
-    color: #667eea;
-    transition: transform 0.3s;
 }
-
-.hamburger:hover {
-    transform: scale(1.1);
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #667eea;
+    border-radius: 2px;
+    transition: all 0.3s;
 }
 
 /* CONTAINER */
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 2.5rem 5%;
-}
+.container { max-width: 1400px; margin: 0 auto; padding: 2.5rem 5%; }
 
 /* CAMPUS HEADER */
 .campus-header {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(20px);
     border-radius: 20px;
     padding: 2.5rem;
     margin-bottom: 2rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     display: flex;
     gap: 2rem;
-    align-items: flex-start;
-    justify-content: space-between;
     flex-wrap: wrap;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255,255,255,0.5);
 }
-
-.campus-logo {
-    flex: 0 0 140px;
-}
-
-.campus-logo img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.campus-logo img:hover {
-    transform: scale(1.05);
-}
-
-.campus-info {
-    flex: 1;
-    min-width: 250px;
-}
-
+.campus-logo { flex: 0 0 140px; }
+.campus-logo img { width: 100%; border-radius: 15px; transition: transform 0.3s; }
+.campus-logo img:hover { transform: scale(1.05); }
+.campus-info { flex: 1; min-width: 250px; }
 .campus-info h1 {
     font-size: 2rem;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.8rem;
     font-weight: 700;
+    margin-bottom: 0.8rem;
 }
-
-.campus-map {
-    flex: 0 0 450px;
-    height: 280px;
-}
-
-.campus-map iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    border: 0;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
+.campus-map { flex: 0 0 450px; height: 280px; }
+.campus-map iframe { width: 100%; height: 100%; border-radius: 15px; border: 0; }
 
 /* BUTTONS */
-.action-buttons {
-    display: flex;
-    gap: 0.6rem;
-    margin-top: 1.2rem;
-    flex-wrap: wrap;
-}
-
+.action-buttons { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem; }
 .btn {
     padding: 0.9rem 1.8rem;
     border-radius: 12px;
@@ -196,392 +122,117 @@ nav a:hover {
     transition: all 0.3s;
     border: none;
     font-size: 0.9rem;
-    white-space: nowrap;
-    flex: 1 1 auto;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-decoration: none;
-    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+.btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(102,126,234,0.4); }
+.btn-secondary { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+.btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(245,87,108,0.4); }
+.btn-outline { background: white; color: #667eea; border: 2px solid #667eea; }
+.btn-outline:hover { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-color: transparent; transform: translateY(-2px); }
 
-.btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
-}
-
-.btn-secondary {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    color: white;
-}
-
-.btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(245, 87, 108, 0.4);
-}
-
-.btn-outline {
-    background: white;
-    color: #667eea;
-    border: 2px solid #667eea;
-}
-
-.btn-outline:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: transparent;
-    transform: translateY(-2px);
-}
-
-/* QUICK NAVIGATION */
+/* QUICK NAV */
 .quick-nav {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    background: rgba(255, 255, 255, 0.95);
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap:1rem;
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(20px);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    margin-bottom: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding:2rem;
+    border-radius:20px;
+    margin-bottom:2rem;
 }
-
 .nav-btn {
-    padding: 1.2rem 1.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
+    padding:1.2rem 1.5rem;
+    background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-weight:600;
+    text-decoration:none;
+    text-align:center;
     transition: all 0.3s;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
     position: relative;
-    overflow: hidden;
     cursor: pointer;
+    overflow: hidden;
 }
-
 .nav-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
+    content:'';
+    position:absolute;
+    top:0; left:-100%;
+    width:100%; height:100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s;
+    transition:left 0.5s;
 }
-
-.nav-btn:hover::before {
-    left: 100%;
-}
-
-.nav-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
-}
+.nav-btn:hover::before { left:100%; }
+.nav-btn:hover { transform: translateY(-3px); box-shadow:0 8px 30px rgba(102,126,234,0.5); }
 
 /* CONTENT */
-.main-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
+.main-content { display:flex; flex-direction:column; gap:2rem; }
 .section-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-    scroll-margin-top: 100px;
+    border-radius:20px;
+    padding:2.5rem;
+    border:1px solid rgba(255,255,255,0.5);
+    transition: transform 0.3s;
 }
-
-.section-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-}
-
+.section-card:hover { transform: translateY(-5px); }
 .section-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1rem 2rem;
-    margin: -2.5rem -2.5rem 2rem -2.5rem;
-    border-radius: 20px 20px 0 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    color:white;
+    padding:1rem 2rem;
+    margin:-2.5rem -2.5rem 2rem -2.5rem;
+    border-radius:20px 20px 0 0;
+    font-size:1.2rem;
+    font-weight:700;
 }
 
 /* PROGRAMS GRID */
 .programs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap:1.5rem;
+    margin-top:1.5rem;
 }
+.program-category { background: rgba(102,126,234,0.05); border-radius:12px; padding:1.5rem; border-left:4px solid #667eea; transition:all 0.3s; }
+.program-category:hover { transform: translateX(5px); box-shadow:0 5px 20px rgba(102,126,234,0.15); }
+.program-category h3 { color:#667eea; margin-bottom:1rem; }
+.program-list { display:flex; flex-direction:column; gap:0.6rem; }
+.program-item { color:#666; font-size:0.95rem; border-bottom:1px solid rgba(102,126,234,0.1); padding:0.5rem 0; }
+.program-item:last-child { border-bottom:none; }
 
-.program-category {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-    border-radius: 12px;
-    padding: 1.5rem;
-    border-left: 4px solid #667eea;
-    transition: all 0.3s;
-}
+/* REQUIREMENTS */
+.requirements-list { display:flex; flex-direction:column; gap:1rem; }
+.requirement-item { display:flex; align-items:start; gap:0.8rem; font-size:0.95rem; line-height:1.6; padding:0.8rem; background: rgba(102,126,234,0.05); border-radius:10px; transition:all 0.3s; }
+.requirement-item:hover { background: rgba(102,126,234,0.1); transform: translateX(5px); }
+.requirement-item:before { content:"✓"; color:#667eea; font-weight:bold; font-size:1.2rem; flex-shrink:0; }
 
-.program-category:hover {
-    transform: translateX(5px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
-}
-
-.program-category h3 {
-    color: #667eea;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.program-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-}
-
-.program-item {
-    color: #666;
-    font-size: 0.95rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-}
-
-.program-item:last-child {
-    border-bottom: none;
-}
-
-/* REQUIREMENTS & INFO BOX */
-.requirements-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.requirement-item {
-    display: flex;
-    align-items: start;
-    gap: 0.8rem;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    padding: 0.8rem;
-    background: rgba(102, 126, 234, 0.05);
-    border-radius: 10px;
-    transition: all 0.3s;
-}
-
-.requirement-item:hover {
-    background: rgba(102, 126, 234, 0.1);
-    transform: translateX(5px);
-}
-
-.requirement-item:before {
-    content: "✓";
-    color: #667eea;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-top: 0.1rem;
-    flex-shrink: 0;
-}
-
-.info-box {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-    border-left: 4px solid #667eea;
-    padding: 1.5rem;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
-}
-
-.info-box strong {
-    color: #667eea;
-}
-
-/* SCHOLARSHIP CARD */
-.scholarship-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid #667eea;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: all 0.3s;
-}
-
-.scholarship-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
-}
-
-.scholarship-card h4 {
-    color: #667eea;
-    margin-bottom: 0.8rem;
-    font-size: 1.1rem;
-}
-
-.scholarship-details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
+/* INFO BOX */
+.info-box { background: rgba(102,126,234,0.1); border-left:4px solid #667eea; padding:1.5rem; border-radius:12px; font-size:0.95rem; line-height:1.7; }
 
 /* TUITION TABLE */
-.tuition-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
+.tuition-table { width:100%; border-collapse:collapse; margin-top:1.5rem; background:white; border-radius:12px; overflow:hidden; }
+.tuition-table th, .tuition-table td { padding:1rem 1.5rem; text-align:left; border-bottom:1px solid rgba(102,126,234,0.1); }
+.tuition-table th { background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:white; font-weight:600; }
 
-.tuition-table th,
-.tuition-table td {
-    padding: 1rem 1.5rem;
-    text-align: left;
-    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-}
-
-.tuition-table th {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-weight: 600;
-}
-
-.tuition-table tr:last-child td {
-    border-bottom: none;
-}
-
-.tuition-table tr:hover {
-    background: rgba(102, 126, 234, 0.05);
-}
-
-/* BACK TO TOP BUTTON */
+/* BACK TO TOP */
 .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
-    z-index: 999;
+    position: fixed; bottom: 30px; right:30px; width:50px; height:50px;
+    background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    color:white; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem; cursor:pointer; box-shadow:0 4px 15px rgba(102,126,234,0.4); opacity:0; visibility:hidden; transition:all 0.3s; z-index:999;
 }
-
-.back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.back-to-top:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-}
+.back-to-top.show { opacity:1; visibility:visible; }
+.back-to-top:hover { transform: translateY(-5px); box-shadow:0 8px 25px rgba(102,126,234,0.6); }
 
 /* RESPONSIVE */
-@media (max-width: 1024px) {
-    .campus-header {
-        flex-direction: column;
-        align-items: center;
-    }
-    .campus-map {
-        width: 100%;
-        height: 300px;
-        margin-top: 1rem;
-    }
-    .programs-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (min-width: 1025px) {
-    .campus-map {
-        margin-top: 65px; 
-    }
-}
-
-@media (max-width: 768px) {
-    .quick-nav {
-        grid-template-columns: 1fr;
-    }
-    
-    nav {
-        display: none;
-        position: absolute;
-        top: 80px;
-        right: 5%;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        width: 220px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        border-radius: 15px;
-        padding: 1rem;
-        z-index: 999;
-    }
-    nav.open {
-        display: flex !important;
-    }
-    .hamburger {
-        display: block;
-    }
-    header {
-        position: relative;
-    }
-
-    .action-buttons {
-        flex-wrap: wrap;
-    }
-    .btn {
-        flex: 1 1 calc(50% - 0.5rem);
-    }
-    
-    .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
-    }
-
-    .tuition-table {
-        font-size: 0.85rem;
-    }
-
-    .tuition-table th,
-    .tuition-table td {
-        padding: 0.8rem 1rem;
-    }
+@media(max-width:768px){
+    nav { display:none; position:absolute; top:80px; right:5%; background:rgba(255,255,255,0.98); flex-direction:column; width:220px; padding:1rem; border-radius:15px; box-shadow:0 10px 40px rgba(0,0,0,0.2); }
+    nav.open { display:flex !important; }
+    .hamburger { display:flex; }
 }
 </style>
 </head>
@@ -589,20 +240,15 @@ nav a:hover {
 
 <header>
     <div class="logo">
-        <img src="../../assets/images/finderlogo.png" alt="Finder Logo">
-        <div class="logo-text">
-            <h1>Bataan Campus Finder</h1>
-            <p>Campus Details</p>
-        </div>
+        <img src="../assets/images/finderlogo.png" alt="Finder Logo">
+        <div class="logo-text"><h1>Bataan Campus Finder</h1><p>Campus Details</p></div>
     </div>
-
     <nav id="mobileNav">
-        <a href="../../index.html">HOME</a>
-        <a href="../../campus.html" class="active">ALL CAMPUSES</a>
-        <a href="../../about.html">ABOUT</a>
-        <a href="../../contact.html">CONTACT</a>
+        <a href="../index.html">HOME</a>
+        <a href="../campus.html" class="active">ALL CAMPUSES</a>
+        <a href="../about.html">ABOUT</a>
+        <a href="../contact.html">CONTACT</a>
     </nav>
-
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </header>
 
@@ -610,27 +256,26 @@ nav a:hover {
     <!-- CAMPUS HEADER -->
     <div class="campus-header">
         <div class="campus-logo">
-            <img src="../../assets/images/heroes-logo.png" alt="Heroes College Logo">
+            <img src="../assets/images/HEROES.jfif" alt="Heroes College Logo">
         </div>
         <div class="campus-info">
             <h1>Bataan Heroes Memorial College</h1>
-            <p style="color:#667eea; font-weight:600; margin-bottom:0.8rem; font-size:1.1rem;">Established 1979</p>
-            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Mission:</strong> To provide holistic education that develops intellectual competence, character formation, and social awareness through quality instruction and community involvement.</p>
-            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Vision:</strong> A center of academic excellence committed to producing morally upright, globally competitive, and socially responsible graduates.</p>
+            <p style="color:#667eea; font-weight:600;">Established 1979</p>
+            <p><strong>Mission:</strong> Holistic education...</p>
+            <p><strong>Vision:</strong> Center of academic excellence...</p>
             <div class="action-buttons">
-                <a class="btn btn-secondary" href="https://www.facebook.com/Heroes1979" target="_blank" rel="noopener">FACEBOOK</a>
+                <a class="btn btn-secondary" href="https://www.facebook.com/Heroes1979" target="_blank">FACEBOOK</a>
                 <a class="btn btn-outline" href="tel:09310163051">CALL US</a>
                 <a class="btn btn-outline" href="mailto:information@heroes1979.edu.ph">EMAIL US</a>
-                <a class="btn btn-outline" href="https://www.google.com/maps?q=Roman+Super+Highway,+Brgy.+Tenejero,+Balanga+City,+2100,+Bataan" target="_blank" rel="noopener">DIRECTIONS</a>
+                <a class="btn btn-outline" href="https://www.google.com/maps?q=Roman+Super+Highway,+Brgy.+Tenejero,+Balanga+City,+2100,+Bataan" target="_blank">DIRECTIONS</a>
             </div>
         </div>
-        
-        <div class="campus-map">
+        <div class="main-content">
             <iframe src="https://www.google.com/maps?q=Roman+Super+Highway,+Brgy.+Tenejero,+Balanga+City,+2100,+Bataan&output=embed"></iframe>
         </div>
     </div>
 
-    <!-- Quick Navigation -->
+    <!-- QUICK NAV -->
     <div class="quick-nav">
         <a href="#academic-programs" class="nav-btn">Academic Programs</a>
         <a href="#admission-requirements" class="nav-btn">Admission Requirements</a>
@@ -639,317 +284,296 @@ nav a:hover {
         <a href="#contact" class="nav-btn">Contact Information</a>
     </div>
 
-    <div class="main-content">
-        <!-- Academic Programs -->
-        <div class="section-card" id="academic-programs">
-            <div class="section-header">ACADEMIC PROGRAMS</div>
-            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
-                Bataan Heroes Memorial College offers a diverse range of academic programs designed to develop well-rounded professionals across various disciplines. As a monument to the heroes of Bataan in World War II, BHMC instills values of courage, endurance, patriotism, and the indomitability of the Filipino spirit in all its students.
-            </p>
+    <!-- MAIN CONTENT (Programs, Requirements, Tuition, Scholarships, Contact) -->
+    <!-- MAIN CONTENT (Programs, Requirements, Tuition, Scholarships, Contact) -->
+<div class="main-content">
+    <!-- Academic Programs -->
+    <div class="section-card" id="academic-programs">
+        <div class="section-header">ACADEMIC PROGRAMS</div>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+            Bataan Heroes Memorial College offers a diverse range of academic programs designed to develop well-rounded professionals across various disciplines. As a monument to the heroes of Bataan in World War II, BHMC instills values of courage, endurance, patriotism, and the indomitability of the Filipino spirit in all its students.
+        </p>
 
-            <div class="programs-grid">
-                <div class="program-category">
-                    <h3>Criminal Justice Education</h3>
-                    <div class="program-list">
-                        <div class="program-item">BS Criminology</div>
-                    </div>
-                </div>
-
-                <div class="program-category">
-                    <h3>Engineering & Architecture</h3>
-                    <div class="program-list">
-                        <div class="program-item">BS Architecture</div>
-                        <div class="program-item">BS Civil Engineering</div>
-                        <div class="program-item">BS Electrical Engineering</div>
-                        <div class="program-item">BS Electronics Engineering</div>
-                        <div class="program-item">BS Mechanical Engineering</div>
-                    </div>
-                </div>
-
-                <div class="program-category">
-                    <h3>Business & Technology</h3>
-                    <div class="program-list">
-                        <div class="program-item">BS Accountancy</div>
-                        <div class="program-item">BS Accounting Information System</div>
-                        <div class="program-item">BS Entrepreneurship with Specialization in Tourism Management</div>
-                        <div class="program-item">BS Computer Engineering</div>
-                        <div class="program-item">BS Information Technology</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Admission Requirements -->
-        <div class="section-card" id="admission-requirements">
-            <div class="section-header">ADMISSION REQUIREMENTS & QUALIFICATIONS</div>
-            
-            <div class="info-box" style="margin-bottom: 2rem;">
-                <strong>Open Admission Policy:</strong> Bataan Heroes Memorial College welcomes all students with an inclusive admission approach. No entrance exam, no grade requirements, no bridging program, no physical requirements (such as height), and no age requirements. Any Senior High School strand or track is accepted in any college program.
-            </div>
-
-            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">Required Documents:</h3>
-            <div class="requirements-list">
-                <div class="requirement-item">Copy of PSA Birth Certificate</div>
-                <div class="requirement-item">Original Grade 12 Report Card</div>
-                <div class="requirement-item">Original Certificate of Good Moral Character</div>
-                <div class="requirement-item">5 pieces 2x2 ID pictures</div>
-                <div class="requirement-item">2 Long Brown Envelopes</div>
-            </div>
-
-            <div class="info-box" style="margin-top: 2rem;">
-                <strong>Contact the Admissions Office:</strong> For more details about the admission process and requirements, contact the Admissions Office at <a href="mailto:information@heroes1979.edu.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">information@heroes1979.edu.ph</a> or call <strong>0931 016 3051</strong>.
-            </div>
-        </div>
-
-        <!-- Tuition & Fees -->
-        <div class="section-card" id="tuition-fees">
-            <div class="section-header">TUITION & FEES</div>
-            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
-                Bataan Heroes Memorial College offers affordable tuition rates across all programs. The following are estimated tuition fees per semester:
-            </p>
-
-            <table class="tuition-table">
-                <thead>
-                    <tr>
-                        <th>Program</th>
-                        <th>Tuition Fee (per semester)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Engineering Programs</td>
-                        <td>₱20,000 - ₱24,000</td>
-                    </tr>
-                    <tr>
-                        <td>Architecture</td>
-                        <td>₱20,000 - ₱22,000</td>
-                    </tr>
-                    <tr>
-                        <td>Accounting Programs</td>
-                        <td>₱15,000 - ₱17,000</td>
-                    </tr>
-                    <tr>
-                        <td>Entrepreneurship</td>
-                        <td>₱14,000 - ₱16,000</td>
-                    </tr>
-                    <tr>
-                        <td>Computer Programs</td>
-                        <td>₱19,000 - ₱23,000</td>
-                    </tr>
-                    <tr>
-                        <td>Criminology</td>
-                        <td>₱18,000 - ₱21,000</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="info-box" style="margin-top: 2rem;">
-                <strong>Note:</strong> Fees are subject to change. Additional miscellaneous fees may apply. Please contact the school administration for the most current fee structure and payment terms.
-            </div>
-        </div>
-
-        <!-- Scholarships -->
-        <div class="section-card" id="scholarships">
-            <div class="section-header">SCHOLARSHIP & FINANCIAL AID</div>
-            <p style="color: #666; line-height: 1.6; margin-bottom: 2rem;">
-                Bataan Heroes Memorial College offers comprehensive scholarship programs to support deserving students throughout their academic journey. From entrance scholarships to awards for outstanding academic performance and leadership, BHMC is committed to making quality education accessible.
-            </p>
-
-            <h3 style="color: #667eea; margin-bottom: 1.5rem; font-size: 1.2rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">Academic Scholarships</h3>
-
-            <div class="scholarship-card">
-                <h4>Academic Merit Scholarship</h4>
-                <div class="scholarship-details">
-                    <p><strong>With Highest Honors (Grade 12 graduation):</strong> 100% tuition fee discount for the 1st semester of 1st year</p>
-                    <p><strong>With High Honors (Grade 12 graduation):</strong> 50% tuition fee discount for the 1st semester of 1st year</p>
-                    <p><strong>How to Apply:</strong> Through the Admissions Office</p>
+        <div class="programs-grid">
+            <div class="program-category">
+                <h3>Criminal Justice Education</h3>
+                <div class="program-list">
+                    <div class="program-item">BS Criminology</div>
                 </div>
             </div>
 
-            <div class="scholarship-card">
-                <h4>Laureana S. Rosales Scholarship for Outstanding Students</h4>
-                <div class="scholarship-details">
-                    <p><strong>Coverage:</strong> 100% tuition and miscellaneous fee discount</p>
-                    <p><strong>Eligibility:</strong> Students who top the scholarship exam</p>
-                    <p><strong>Open to:</strong> Incoming freshmen</p>
-                    <p><strong>Requirements:</strong> Maintaining GWA of 2.0 with no failing grade</p>
-                    <p><strong>Renewable:</strong> Every semester</p>
-                    <p><strong>How to Apply:</strong> Through the Admissions Office</p>
+            <div class="program-category">
+                <h3>Engineering & Architecture</h3>
+                <div class="program-list">
+                    <div class="program-item">BS Architecture</div>
+                    <div class="program-item">BS Civil Engineering</div>
+                    <div class="program-item">BS Electrical Engineering</div>
+                    <div class="program-item">BS Electronics Engineering</div>
+                    <div class="program-item">BS Mechanical Engineering</div>
                 </div>
             </div>
 
-            <div class="scholarship-card">
-                <h4>Sesenio S. Rosales Scholarship for Civil Engineering Students</h4>
-                <div class="scholarship-details">
-                    <p><strong>Coverage:</strong> 100% tuition and miscellaneous fee</p>
-                    <p><strong>Eligibility:</strong> CE students who top the scholarship exam</p>
-                    <p><strong>Open to:</strong> Incoming freshmen</p>
-                    <p><strong>Requirements:</strong> Must have no failing grade</p>
-                    <p><strong>Renewable:</strong> Every semester</p>
-                    <p><strong>How to Apply:</strong> Through the Admissions Office</p>
+            <div class="program-category">
+                <h3>Business & Technology</h3>
+                <div class="program-list">
+                    <div class="program-item">BS Accountancy</div>
+                    <div class="program-item">BS Accounting Information System</div>
+                    <div class="program-item">BS Entrepreneurship with Specialization in Tourism Management</div>
+                    <div class="program-item">BS Computer Engineering</div>
+                    <div class="program-item">BS Information Technology</div>
                 </div>
-            </div>
-
-            <div class="scholarship-card">
-                <h4>Entrance Scholarship</h4>
-                <div class="scholarship-details">
-                    <p><strong>Coverage:</strong> 25-100% tuition fee discount for the 1st semester of 1st year</p>
-                    <p><strong>Eligibility:</strong> Students who pass the scholarship exam</p>
-                    <p><strong>How to Apply:</strong> Through the Admissions Office</p>
-                </div>
-            </div>
-
-            <div class="scholarship-card">
-                <h4>Academic Scholarship for Continuing Students</h4>
-                <div class="scholarship-details">
-                    <p><strong>Coverage:</strong> 100% tuition fee discount</p>
-                    <p><strong>Requirements:</strong> GWA of 1.25 (93%) or higher, with no grade lower than 1.50 (90%)</p>
-                    <p><strong>How to Apply:</strong> Through the Office of the Director for Academics</p>
-                </div>
-            </div>
-
-            <h3 style="color: #667eea; margin-top: 2.5rem; margin-bottom: 1.5rem; font-size: 1.2rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">Special Scholarships</h3>
-
-            <div class="scholarship-card">
-                <h4>Working Student Scholarship (Stay-in)</h4>
-                <div class="scholarship-details">
-                    <p><strong>Coverage:</strong> 100% tuition and miscellaneous fee discount with monthly stipend</p>
-                    <p><strong>Additional Benefit:</strong> Free board and lodging</p>
-                    <p><strong>Open to:</strong> Incoming freshmen</p>
-                </div>
-            </div>
-
-            <div class="scholarship-card">
-                <h4>Technical Assistance Group Scholarship</h4>
-                <div class="scholarship-details">
-                    <p><strong>Coverage:</strong> 100% tuition and miscellaneous fee discount with monthly allowance</p>
-                    <p><strong>Open to:</strong> 2nd and 3rd year students</p>
-                    <p><strong>How to Apply:</strong> Through the Office of Student Affairs</p>
-                </div>
-            </div>
-
-            <h3 style="color: #667eea; margin-top: 2.5rem; margin-bottom: 1.5rem; font-size: 1.2rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">Student Organization Scholarships</h3>
-
-            <div class="scholarship-card">
-                <h4>Leadership & Service Scholarships</h4>
-                <div class="scholarship-details">
-                    <p><strong>Student Government:</strong> Supreme Student Government officers and Governors of each department</p>
-                    <p><strong>Student Publication:</strong> Editor-in-Chief, Editors, and Section Heads</p>
-                    <p><strong>Performing Arts:</strong> President</p>
-                    <p><strong>Sports:</strong> To be announced</p>
-                </div>
-            </div>
-
-            <h3 style="color: #667eea; margin-top: 2.5rem; margin-bottom: 1.5rem; font-size: 1.2rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">Government & Private Scholarships</h3>
-
-            <div class="requirements-list">
-                <div class="requirement-item"><strong>Iskolar ng Bataan</strong> - Provincial government scholarship program</div>
-                <div class="requirement-item"><strong>CHED Tulong Dunong</strong> - Commission on Higher Education assistance</div>
-                <div class="requirement-item"><strong>Tertiary Education Subsidy</strong> - Financial aid for qualified students</div>
-                <div class="requirement-item"><strong>Government Scholarships</strong> - Various national and local government programs</div>
-                <div class="requirement-item"><strong>Private Scholarships</strong> - Opportunities from partner organizations and foundations</div>
-            </div>
-
-            <div class="info-box" style="margin-top: 2rem;">
-                <strong>For More Information:</strong> For complete details about scholarship requirements, eligibility criteria, and application procedures, contact the Admissions Office at <a href="mailto:information@heroes1979.edu.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">information@heroes1979.edu.ph</a> or visit the campus at Roman Super Highway, Brgy. Tenejero, Balanga City, Bataan.
-            </div>
-        </div>
-
-        <!-- Contact Information -->
-        <div class="section-card" id="contact">
-            <div class="section-header">CONTACT INFORMATION</div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 1rem;">📧 Email</h4>
-                    <p style="color: #666; line-height: 1.8;">
-                        <a href="mailto:information@heroes1979.edu.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">information@heroes1979.edu.ph</a>
-                    </p>
-                </div>
-
-                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 1rem;">📱 Phone</h4>
-                    <p style="color: #666; line-height: 1.8;">
-                        <a href="tel:09310163051" style="color: #667eea; text-decoration: none; font-weight: 600;">0931 016 3051</a>
-                    </p>
-                </div>
-
-                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 1rem;">📘 Facebook</h4>
-                    <p style="color: #666; line-height: 1.8;">
-                        <a href="https://www.facebook.com/Heroes1979" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none; font-weight: 600;">facebook.com/Heroes1979</a>
-                    </p>
-                </div>
-
-                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 1rem;">📍 Address</h4>
-                    <p style="color: #666; line-height: 1.8;">
-                        Roman Super Highway, Brgy. Tenejero, Balanga City, 2100, Bataan
-                    </p>
-                </div>
-            </div>
-
-            <div class="info-box" style="margin-top: 2rem;">
-                <strong>Visit Us:</strong> Bataan Heroes Memorial College welcomes prospective students and their families. Visit our campus to experience our facilities, meet our faculty, and learn more about our programs. For campus tours and inquiries, please contact us in advance.
             </div>
         </div>
     </div>
+
+    <!-- Admission Requirements -->
+    <div class="section-card" id="admission-requirements">
+        <div class="section-header">ADMISSION REQUIREMENTS & QUALIFICATIONS</div>
+        
+        <div class="info-box" style="margin-bottom: 2rem;">
+            <strong>Open Admission Policy:</strong> Bataan Heroes Memorial College welcomes all students with an inclusive admission approach. No entrance exam, no grade requirements, no bridging program, no physical requirements (such as height), and no age requirements. Any Senior High School strand or track is accepted in any college program.
+        </div>
+
+        <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">Required Documents:</h3>
+        <div class="requirements-list">
+            <div class="requirement-item">Copy of PSA Birth Certificate</div>
+            <div class="requirement-item">Original Grade 12 Report Card</div>
+            <div class="requirement-item">Original Certificate of Good Moral Character</div>
+            <div class="requirement-item">5 pieces 2x2 ID pictures</div>
+            <div class="requirement-item">2 Long Brown Envelopes</div>
+        </div>
+
+        <div class="info-box" style="margin-top: 2rem;">
+            <strong>Contact the Admissions Office:</strong> For more details about the admission process and requirements, contact the Admissions Office at <a href="mailto:information@heroes1979.edu.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">information@heroes1979.edu.ph</a> or call <strong>0931 016 3051</strong>.
+        </div>
+    </div>
+
+    <!-- Tuition & Fees -->
+    <div class="section-card" id="tuition-fees">
+        <div class="section-header">TUITION & FEES</div>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+            Bataan Heroes Memorial College offers affordable tuition rates across all programs. The following are estimated tuition fees per semester:
+        </p>
+
+        <table class="tuition-table">
+            <thead>
+                <tr>
+                    <th>Program</th>
+                    <th>Tuition Fee (per semester)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Engineering Programs</td>
+                    <td>₱20,000 - ₱24,000</td>
+                </tr>
+                <tr>
+                    <td>Architecture</td>
+                    <td>₱20,000 - ₱22,000</td>
+                </tr>
+                <tr>
+                    <td>Accounting Programs</td>
+                    <td>₱15,000 - ₱17,000</td>
+                </tr>
+                <tr>
+                    <td>Entrepreneurship</td>
+                    <td>₱14,000 - ₱16,000</td>
+                </tr>
+                <tr>
+                    <td>Computer Programs</td>
+                    <td>₱19,000 - ₱23,000</td>
+                </tr>
+                <tr>
+                    <td>Criminology</td>
+                    <td>₱18,000 - ₱21,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box" style="margin-top: 2rem;">
+            <strong>Note:</strong> Fees are subject to change. Additional miscellaneous fees may apply. Please contact the school administration for the most current fee structure and payment terms.
+        </div>
+    </div>
+
+    <!-- Scholarships -->
+    <div class="section-card" id="scholarships">
+        <div class="section-header">SCHOLARSHIP & FINANCIAL AID</div>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 2rem;">
+            Bataan Heroes Memorial College offers comprehensive scholarship programs to support deserving students throughout their academic journey. From entrance scholarships to awards for outstanding academic performance and leadership, BHMC is committed to making quality education accessible.
+        </p>
+
+        <h3 style="color: #667eea; margin-bottom: 1.5rem; font-size: 1.2rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">Academic Scholarships</h3>
+
+        <div class="scholarship-card">
+            <h4>Academic Merit Scholarship</h4>
+            <div class="scholarship-details">
+                <p><strong>With Highest Honors (Grade 12 graduation):</strong> 100% tuition fee discount for the 1st semester of 1st year</p>
+                <p><strong>With High Honors (Grade 12 graduation):</strong> 50% tuition fee discount for the 1st semester of 1st year</p>
+                <p><strong>How to Apply:</strong> Through the Admissions Office</p>
+            </div>
+        </div>
+
+        <div class="scholarship-card">
+            <h4>Laureana S. Rosales Scholarship for Outstanding Students</h4>
+            <div class="scholarship-details">
+                <p><strong>Coverage:</strong> 100% tuition and miscellaneous fee discount</p>
+                <p><strong>Eligibility:</strong> Students who top the scholarship exam</p>
+                <p><strong>Open to:</strong> Incoming freshmen</p>
+                <p><strong>Requirements:</strong> Maintaining GWA of 2.0 with no failing grade</p>
+                <p><strong>Renewable:</strong> Every semester</p>
+                <p><strong>How to Apply:</strong> Through the Admissions Office</p>
+            </div>
+        </div>
+
+        <div class="scholarship-card">
+            <h4>Sesenio S. Rosales Scholarship for Civil Engineering Students</h4>
+            <div class="scholarship-details">
+                <p><strong>Coverage:</strong> 100% tuition and miscellaneous fee</p>
+                <p><strong>Eligibility:</strong> CE students who top the scholarship exam</p>
+                <p><strong>Open to:</strong> Incoming freshmen</p>
+                <p><strong>Requirements:</strong> Must have no failing grade</p>
+                <p><strong>Renewable:</strong> Every semester</p>
+                <p><strong>How to Apply:</strong> Through the Admissions Office</p>
+            </div>
+        </div>
+
+        <div class="scholarship-card">
+            <h4>Entrance Scholarship</h4>
+            <div class="scholarship-details">
+                <p><strong>Coverage:</strong> 25-100% tuition fee discount for the 1st semester of 1st year</p>
+                <p><strong>Eligibility:</strong> Students who pass the scholarship exam</p>
+                <p><strong>How to Apply:</strong> Through the Admissions Office</p>
+            </div>
+        </div>
+
+        <div class="scholarship-card">
+            <h4>Academic Scholarship for Continuing Students</h4>
+            <div class="scholarship-details">
+                <p><strong>Coverage:</strong> 100% tuition fee discount</p>
+                <p><strong>Requirements:</strong> GWA of 1.25 (93%) or higher, with no grade lower than 1.50 (90%)</p>
+                <p><strong>How to Apply:</strong> Through the Office of the Director for Academics</p>
+            </div>
+        </div>
+
+        <h3 style="color: #667eea; margin-top: 2.5rem; margin-bottom: 1.5rem; font-size: 1.2rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">Special Scholarships</h3>
+
+        <div class="scholarship-card">
+            <h4>Working Student Scholarship (Stay-in)</h4>
+            <div class="scholarship-details">
+                <p><strong>Coverage:</strong> 100% tuition and miscellaneous fee discount with monthly stipend</p>
+                <p><strong>Additional Benefit:</strong> Free board and lodging</p>
+                <p><strong>Open to:</strong> Incoming freshmen</p>
+            </div>
+        </div>
+
+        <div class="scholarship-card">
+            <h4>Technical Assistance Group Scholarship</h4>
+            <div class="scholarship-details">
+                <p><strong>Coverage:</strong> 100% tuition and miscellaneous fee discount with monthly allowance</p>
+                <p><strong>Open to:</strong> 2nd and 3rd year students</p>
+                <p><strong>How to Apply:</strong> Through the Office of Student Affairs</p>
+            </div>
+        </div>
+
+        <h3 style="color: #667eea; margin-top: 2.5rem; margin-bottom: 1.5rem; font-size: 1.2rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">Student Organization Scholarships</h3>
+
+        <div class="scholarship-card">
+            <h4>Leadership & Service Scholarships</h4>
+            <div class="scholarship-details">
+                <p><strong>Student Government:</strong> Supreme Student Government officers and Governors of each department</p>
+                <p><strong>Student Publication:</strong> Editor-in-Chief, Editors, and Section Heads</p>
+                <p><strong>Performing Arts:</strong> President</p>
+                <p><strong>Sports:</strong> To be announced</p>
+            </div>
+        </div>
+
+        <h3 style="color: #667eea; margin-top: 2.5rem; margin-bottom: 1.5rem; font-size: 1.2rem; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">Government & Private Scholarships</h3>
+
+        <div class="requirements-list">
+            <div class="requirement-item"><strong>Iskolar ng Bataan</strong> - Provincial government scholarship program</div>
+            <div class="requirement-item"><strong>CHED Tulong Dunong</strong> - Commission on Higher Education assistance</div>
+            <div class="requirement-item"><strong>Tertiary Education Subsidy</strong> - Financial aid for qualified students</div>
+            <div class="requirement-item"><strong>Government Scholarships</strong> - Various national and local government programs</div>
+            <div class="requirement-item"><strong>Private Scholarships</strong> - Opportunities from partner organizations and foundations</div>
+        </div>
+
+        <div class="info-box" style="margin-top: 2rem;">
+            <strong>For More Information:</strong> For complete details about scholarship requirements, eligibility criteria, and application procedures, contact the Admissions Office at <a href="mailto:information@heroes1979.edu.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">information@heroes1979.edu.ph</a> or visit the campus at Roman Super Highway, Brgy. Tenejero, Balanga City, Bataan.
+        </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="section-card" id="contact">
+        <div class="section-header">CONTACT INFORMATION</div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                <h4 style="color: #667eea; margin-bottom: 1rem;">📧 Email</h4>
+                <p style="color: #666; line-height: 1.8;">
+                    <a href="mailto:information@heroes1979.edu.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">information@heroes1979.edu.ph</a>
+                </p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                <h4 style="color: #667eea; margin-bottom: 1rem;">📱 Phone</h4>
+                <p style="color: #666; line-height: 1.8;">
+                    <a href="tel:09310163051" style="color: #667eea; text-decoration: none; font-weight: 600;">0931 016 3051</a>
+                </p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                <h4 style="color: #667eea; margin-bottom: 1rem;">📘 Facebook</h4>
+                <p style="color: #666; line-height: 1.8;">
+                    <a href="https://www.facebook.com/Heroes1979" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none; font-weight: 600;">facebook.com/Heroes1979</a>
+                </p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                <h4 style="color: #667eea; margin-bottom: 1rem;">📍 Address</h4>
+                <p style="color: #666; line-height: 1.8;">
+                    Roman Super Highway, Brgy. Tenejero, Balanga City, 2100, Bataan
+                </p>
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 2rem;">
+            <strong>Visit Us:</strong> Bataan Heroes Memorial College welcomes prospective students and their families. Visit our campus to experience our facilities, meet our faculty, and learn more about our programs. For campus tours and inquiries, please contact us in advance.
+        </div>
+    </div>
 </div>
-<!-- Back to Top Button -->
+
+
 <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
 
-<footer style="background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px); color: white; padding: 2rem 5%; margin-top: 3rem;">
-    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
-        <p style="color: #999; font-size: 0.9rem;">© 2024 Bataan Campus Finder. All rights reserved.</p>
-        <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">Information provided is for reference purposes. Please verify details with the respective institutions.</p>
+<footer style="background: rgba(26,26,26,0.95); color:white; padding:2rem 5%; margin-top:3rem;">
+    <div style="max-width:1400px; margin:0 auto; text-align:center;">
+        <p style="color:#999;">© 2024 Bataan Campus Finder. All rights reserved.</p>
+        <p style="color:#666; margin-top:0.5rem;">Please verify details with the institutions.</p>
     </div>
 </footer>
 
 <script>
+// Hamburger toggle
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('mobileNav');
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('open');
-});
+hamburger.addEventListener('click', () => navMenu.classList.toggle('open'));
 
-// Smooth scrolling for navigation buttons
-document.addEventListener('DOMContentLoaded', function() {
-    const navButtons = document.querySelectorAll('.nav-btn');
-    navButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-    
-    // Back to top button functionality
-    window.addEventListener('scroll', function() {
-        const backToTop = document.getElementById('backToTop');
-        if (window.pageYOffset > 300) {
-            backToTop.classList.add('show');
-        } else {
-            backToTop.classList.remove('show');
-        }
+// Smooth scroll
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(btn.getAttribute('href')).scrollIntoView({behavior:'smooth'});
     });
 });
 
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
+// Back to top
+window.addEventListener('scroll', () => {
+    const btn = document.getElementById('backToTop');
+    if(window.pageYOffset > 300) btn.classList.add('show');
+    else btn.classList.remove('show');
+});
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
 </script>
 
 </body>
-
-<script src="../assets/js/site-ui.js"></script>
-
 </html>
