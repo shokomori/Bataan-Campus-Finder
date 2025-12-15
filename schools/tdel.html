@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Polytechnic University of the Philippines - Bataan Campus</title>
+<title>Tomas Del Rosario College - Campus Details</title>
 <style>
 /* GLOBAL */
 * {
@@ -376,10 +376,10 @@ nav a:hover {
     border-bottom: none;
 }
 
-.program-note {
-    color: #999;
+.program-subitem {
+    color: #888;
     font-size: 0.85rem;
-    font-style: italic;
+    padding-left: 1rem;
     margin-top: 0.3rem;
 }
 
@@ -430,6 +430,16 @@ nav a:hover {
     color: #667eea;
 }
 
+.info-box a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.info-box a:hover {
+    text-decoration: underline;
+}
+
 /* SCHOLARSHIP CARD */
 .scholarship-card {
     background: white;
@@ -456,6 +466,33 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* DISCOUNT CARD */
+.discount-card {
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #f5576c;
+    transition: all 0.3s;
+}
+
+.discount-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.15);
+}
+
+.discount-card h4 {
+    color: #f5576c;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+}
+
+.discount-card p {
     color: #666;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -566,6 +603,7 @@ nav.open {
 
 <header>
     <div class="logo">
+        <img src="../assets/images/finderlogo.png" alt="Finder Logo">
         <div class="logo-text">
             <h1>Bataan Campus Finder</h1>
             <p>Campus Details</p>
@@ -589,28 +627,27 @@ nav.open {
 <div class="container">
     <!-- CAMPUS HEADER -->
     <div class="campus-header">
+        <div class="campus-logo">
+            <img src="../assets/images/TRC.png" alt="TRC Logo">
+        </div>
         <div class="campus-info">
-            <h1>Polytechnic University of the Philippines</h1>
-            <p style="color:#667eea; font-weight:600; margin-bottom:0.8rem; font-size:1.1rem;">Mariveles, Bataan Campus - First PUP Campus in Northern Luzon</p>
-            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Mission:</strong> Advance an Inclusive, Equitable, and Globally Relevant Polytechnic Education Towards National Development</p>
-            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Vision:</strong> A leading comprehensive Polytechnic University in Asia</p>
-            <p style="color:#666; line-height:1.6; margin-bottom:1rem;">Being the First Campus of PUP in Northern Luzon, with its high-caliber faculty and dedicated staff, Mariveles, Bataan Campus commits to supporting the Top Management in the attainment of its vision and objectives and be always of service to its clientele, the Skolars ng Bayan and the public in general.</p>
+            <h1>Tomas Del Rosario College</h1>
+            <p style="color:#667eea; font-weight:600; margin-bottom:0.8rem; font-size:1.1rem;">PACU-COA Level II Accredited Private School</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Description:</strong> Established in 1950, Tomas del Rosario College is a private, non-sectarian educational institution in Balanga, Bataan. As the only PACU-COA Level II accredited private school in Bataan, TRC offers various programs in nursing, accounting, management, marketing, banking, education, and computer science. The institution prides itself on molding students academically, morally, and socially, preparing them for service in business, profession, and government with emphasis on truth and goodness.</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Mission:</strong> Tomas Del Rosario College aims to produce God-fearing and well-rounded learners who are academically and properly prepared to take higher level of education.</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;"><strong>Vision:</strong> Truth and goodness in man and for all others through education.</p>
             <div class="action-buttons">
-                <a class="btn btn-primary" href="https://iapply.pup.edu.ph" target="_blank" rel="noopener">REGISTER HERE</a>
-                <a class="btn btn-primary" href="https://www.pup.edu.ph/iapply/pupcet" target="_blank" rel="noopener">PUPCET INFO</a>
-                <a class="btn btn-secondary" href="https://www.facebook.com/PUPBataanOfficialPage" target="_blank" rel="noopener">FACEBOOK</a>
-                <a class="btn btn-secondary" href="https://www.facebook.com/p/PUP-Bataan-Admission-and-Registration-Office-100064125665369" target="_blank" rel="noopener">ADMISSION FB</a>
-                <a class="btn btn-outline" href="https://www.pup.edu.ph/" target="_blank" rel="noopener">OFFICIAL WEBSITE</a>
-                <a class="btn btn-outline" href="tel:09957660605">CALL (0995) 766-0605</a>
-                <a class="btn btn-outline" href="tel:0479357018">CALL (047) 935-7018</a>
-                <a class="btn btn-outline" href="mailto:admission.bataan@pup.edu.ph">EMAIL ADMISSION</a>
-                <a class="btn btn-outline" href="mailto:registrar.bataan@pup.edu.ph">EMAIL REGISTRAR</a>
-                <a class="btn btn-outline" href="https://www.google.com/maps?q=Elliptical+Road,+Freeport+Area+of+Bataan,+Mariveles,+2106+Bataan" target="_blank" rel="noopener">DIRECTIONS</a>
+                <a class="btn btn-primary" href="http://www.trc.edu.ph" target="_blank" rel="noopener">ADMISSION</a>
+                <a class="btn btn-secondary" href="https://www.facebook.com/share/1GZ7mmDdNQ/" target="_blank" rel="noopener">FACEBOOK</a>
+                <a class="btn btn-outline" href="tel:+6347237311">PHONE</a>
+                <a class="btn btn-outline" href="tel:+639628049049">MOBILE</a>
+                <a class="btn btn-outline" href="mailto:tomasdelrosariocollege@yahoo.com">EMAIL</a>
+                <a class="btn btn-outline" href="https://www.google.com/maps?q=Magsaysay+St.,+Capitol+Drive,+San+Jose,+Balanga+City,+Bataan" target="_blank" rel="noopener">DIRECTIONS</a>
             </div>
         </div>
         
         <div class="campus-map">
-            <iframe src="https://www.google.com/maps?q=Elliptical+Road,+Freeport+Area+of+Bataan,+Mariveles,+2106+Bataan&output=embed"></iframe>
+            <iframe src="https://www.google.com/maps?q=Magsaysay+St.,+Capitol+Drive,+San+Jose,+Balanga+City,+Bataan&output=embed"></iframe>
         </div>
     </div>
 
@@ -619,7 +656,7 @@ nav.open {
         <a href="#academic-programs" class="nav-btn">Academic Programs</a>
         <a href="#admission-requirements" class="nav-btn">Admission Requirements</a>
         <a href="#tuition-fees" class="nav-btn">Tuition & Fees</a>
-        <a href="#scholarships" class="nav-btn">Scholarships</a>
+        <a href="#scholarships" class="nav-btn">Scholarships & Discounts</a>
         <a href="#contact" class="nav-btn">Contact Information</a>
     </div>
 
@@ -627,81 +664,48 @@ nav.open {
         <!-- Academic Programs -->
         <div class="section-card" id="academic-programs">
             <div class="section-header">ACADEMIC PROGRAMS</div>
-            
-            <h3 style="color: #667eea; margin-bottom: 1.5rem; font-size: 1.3rem;">Baccalaureate Degree Programs</h3>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                Tomas Del Rosario College offers comprehensive programs from graduate studies to undergraduate degrees, along with professional courses and review programs. As the only PACU-COA Level II accredited private school in Bataan, TRC maintains high standards of academic excellence.
+            </p>
+
             <div class="programs-grid">
                 <div class="program-category">
-                    <h3>Business & Accounting</h3>
+                    <h3>Graduate School Department</h3>
                     <div class="program-list">
-                        <div class="program-item">
-                            BS Accountancy (BSA)
-                            <div class="program-note">Strand: ABM only - no bridging subject</div>
-                        </div>
-                        <div class="program-item">
-                            BS Business Administration Major in Human Resource Management (BSBA-HRM)
-                            <div class="program-note">Strand: ABM/(other tracks w/ bridging subject)</div>
-                        </div>
-                        <div class="program-item">
-                            BS Entrepreneurship (BSENT)
-                            <div class="program-note">Strand: ABM/(other tracks w/ bridging subject)</div>
-                        </div>
-                        <div class="program-item">
-                            BS Management Accounting (BSMA)
-                            <div class="program-note">Strand: ABM only - no bridging subject</div>
-                        </div>
+                        <div class="program-item">Master of Arts in Education</div>
+                        <div class="program-subitem">• Major in Educational Management</div>
                     </div>
                 </div>
 
                 <div class="program-category">
-                    <h3>Engineering & Technology</h3>
+                    <h3>College Department</h3>
                     <div class="program-list">
-                        <div class="program-item">
-                            BS Industrial Engineering (BSIE)
-                            <div class="program-note">Strand: STEM/(other tracks w/ bridging subject)</div>
+                        <div class="program-item">BS Accountancy</div>
+                        <div class="program-item">BS Business Administration
+                            <div class="program-subitem">• Major in Marketing Management</div>
+                            <div class="program-subitem">• Major in Operations Management</div>
                         </div>
-                        <div class="program-item">
-                            BS Information Technology (BSIT)
-                            <div class="program-note">Strand: STEM/TVL-ICT only - no bridging subject</div>
-                        </div>
+                        <div class="program-item">BS Computer Science</div>
+                        <div class="program-item">Bachelor of Early Childhood Education</div>
+                        <div class="program-item">Bachelor of Elementary Education (General)</div>
                     </div>
                 </div>
 
                 <div class="program-category">
-                    <h3>Education</h3>
+                    <h3>Other Programs</h3>
                     <div class="program-list">
-                        <div class="program-item">
-                            Bachelor of Elementary Education (BEED)
-                            <div class="program-note">All strands are applicable</div>
+                        <div class="program-item">Professional Education Course
+                            <div class="program-subitem">• For Non-Education Graduates</div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3 style="color: #667eea; margin: 2.5rem 0 1.5rem 0; font-size: 1.3rem;">3-Year Ladderized Diploma Courses</h3>
-            <div class="programs-grid">
-                <div class="program-category">
-                    <h3>Technology Programs</h3>
-                    <div class="program-list">
-                        <div class="program-item">
-                            Diploma in Information Technology (DICT)
-                            <div class="program-note">All strands are applicable</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="program-category">
-                    <h3>Business Programs</h3>
-                    <div class="program-list">
-                        <div class="program-item">
-                            Diploma in Office Management Technology (DOMT)
-                            <div class="program-note">Strand: ABM/GAS/(other tracks w/ bridging subject)</div>
-                        </div>
+                        <div class="program-item">College Entrance Examination Review (CEER)</div>
+                        <div class="program-item">Summer Class</div>
+                        <div class="program-item">Licensure Examination for Teachers (LET) Review</div>
                     </div>
                 </div>
             </div>
 
             <div class="info-box" style="margin-top: 2rem;">
-                <strong>Application Procedures and Guidelines:</strong> For complete information about the admission process, entrance examination, and application procedures, please visit <a href="https://www.pup.edu.ph/iapply/pupcet" style="color: #667eea; text-decoration: none; font-weight: 600;">www.pup.edu.ph/iapply/pupcet</a>
+                <strong>For More Information:</strong> Visit the admission page at <a href="http://www.trc.edu.ph" target="_blank" rel="noopener">www.trc.edu.ph</a> to learn more about program details, curriculum, and enrollment procedures.
             </div>
         </div>
 
@@ -709,94 +713,102 @@ nav.open {
         <div class="section-card" id="admission-requirements">
             <div class="section-header">ADMISSION REQUIREMENTS</div>
             
-            <div class="info-box" style="margin-bottom: 2rem;">
-                <h3 style="color: #667eea; font-size: 1.2rem; margin-bottom: 1rem;">📝 Step 1: Pass the PUPCET</h3>
-                <p style="color: #666; line-height: 1.8;">
-                    All applicants must pass the <strong>PUP College Entrance Exam Test (PUPCET)</strong> before proceeding with enrollment. Register and get more information at <a href="https://www.pup.edu.ph/iapply/pupcet" style="color: #667eea; text-decoration: none; font-weight: 600;">www.pup.edu.ph/iapply/pupcet</a>
-                </p>
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">For K to 12 and College:</h3>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">Report Card / Transcript of Record</div>
+                <div class="requirement-item">Good Moral Character Certificate</div>
+                <div class="requirement-item">Birth Certificate (Photocopy)</div>
             </div>
 
-            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">Confirmation Requirements (After Passing PUPCET):</h3>
-            <div class="requirements-list">
-                <div class="requirement-item">Original copy only of GRADE 12 CARD with school dry seal</div>
-                <div class="requirement-item">Original or certified true copy of GRADE 11 CARD with school dry seal</div>
-                <div class="requirement-item">Original or certified true copy of GRADE 10 CARD with school dry seal</div>
-                <div class="requirement-item">Form 137-A</div>
-                <div class="requirement-item">Certificate of Live Birth from PSA</div>
-                <div class="requirement-item">Certification of Good Moral Character with school dry seal</div>
-                <div class="requirement-item">Medical Clearance from PUP Medical Clinic</div>
-                <div class="requirement-item">Two (2) pcs of 2x2 inches colored picture with white background and with the applicant's name on the photo</div>
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">For Graduate Studies:</h3>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">Transcript of Record / Transfer Credentials</div>
+                <div class="requirement-item">Proof of PRC LET PASSER (e.g. PRC ID)</div>
+                <div class="requirement-item">Birth Certificate (if Female and Married: Photocopy of Marriage Certificate)</div>
             </div>
 
-            <div class="info-box" style="margin-top: 2rem;">
-                <strong>Online Registration:</strong> To start your application process, register online at <a href="https://iapply.pup.edu.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">iapply.pup.edu.ph</a>. For questions and assistance, contact the Admission Office at admission.bataan@pup.edu.ph or the Registrar at registrar.bataan@pup.edu.ph.
+            <div class="info-box">
+                <strong>Application Process:</strong> Visit the admission link at <a href="http://www.trc.edu.ph" target="_blank" rel="noopener">www.trc.edu.ph</a> to begin your application. For specific questions about the admission process, please contact the registrar's office or send an email inquiry.
             </div>
         </div>
 
         <!-- Tuition & Fees -->
         <div class="section-card" id="tuition-fees">
             <div class="section-header">TUITION & FEES</div>
-            
-            <div class="info-box" style="margin-bottom: 2rem;">
-                <h3 style="color: #4caf50; font-size: 1.3rem; margin-bottom: 1rem;">🎓 Republic Act 10931 - FREE HIGHER EDUCATION</h3>
-                <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
-                    Under <strong>Republic Act 10931 (Universal Access to Quality Tertiary Education Act)</strong>, qualified students at PUP Bataan enjoy <strong>FREE TUITION</strong> in all undergraduate programs.
-                </p>
-                <p style="color: #666; line-height: 1.8;">
-                    This landmark law ensures that quality tertiary education is accessible to all Filipino students, removing financial barriers and opening doors to higher education opportunities.
-                </p>
-            </div>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                For detailed and up-to-date information about tuition fees, payment schedules, and other financial matters, please contact the Registrar's Office directly or send an email inquiry.
+            </p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
                 <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 1rem;">📞 Contact Numbers</h4>
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📞 Contact Registrar</h4>
                     <p style="color: #666; line-height: 1.8;">
-                        (0995) 766-0605<br>
-                        (047) 935-7018
+                        Phone: <a href="tel:+6347237311" style="color: #667eea; text-decoration: none; font-weight: 600;">(047) 237 3115</a><br>
+                        Mobile: <a href="tel:+639628049049" style="color: #667eea; text-decoration: none; font-weight: 600;">0962-804-9049</a>
                     </p>
                 </div>
 
                 <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 1rem;">✉️ Email Addresses</h4>
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">✉️ Email Inquiry</h4>
                     <p style="color: #666; line-height: 1.8;">
-                        <a href="mailto:admission.bataan@pup.edu.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">admission.bataan@pup.edu.ph</a><br>
-                        <a href="mailto:registrar.bataan@pup.edu.ph" style="color: #667eea; text-decoration: none; font-weight: 600;">registrar.bataan@pup.edu.ph</a>
+                        <a href="mailto:tomasdelrosariocollege@yahoo.com" style="color: #667eea; text-decoration: none; font-weight: 600;">tomasdelrosariocollege@yahoo.com</a>
                     </p>
                 </div>
 
                 <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 1rem;">📍 Campus Location</h4>
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📍 Visit Campus</h4>
                     <p style="color: #666; line-height: 1.8;">
-                        Elliptical Road<br>
-                        Freeport Area of Bataan<br>
-                        Mariveles, 2106 Bataan
+                        Magsaysay St., Capitol Drive<br>
+                        San Jose, Balanga City, Bataan
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Scholarships -->
+        <!-- Scholarships & Discounts -->
         <div class="section-card" id="scholarships">
-            <div class="section-header">SCHOLARSHIPS</div>
+            <div class="section-header">SCHOLARSHIPS & DISCOUNTS</div>
+
+            <h3 style="color: #667eea; margin-bottom: 1.5rem; font-size: 1.2rem;">Scholarship Programs:</h3>
             
             <div class="scholarship-card">
-                <h4>🎓 Republic Act 10931 - Universal Access to Quality Tertiary Education</h4>
+                <h4>🎓 TRC Paaral sa Kababayan Scholarship Program</h4>
                 <div class="scholarship-details">
-                    <p><strong>Coverage:</strong> FREE TUITION for all undergraduate students in State Universities and Colleges (SUCs)</p>
-                    <p><strong>Eligibility:</strong> All qualified Filipino students enrolled in undergraduate programs at PUP Bataan</p>
-                    <p><strong>Benefits:</strong></p>
-                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                        <li>Free tuition fees</li>
-                        <li>Access to quality tertiary education</li>
-                        <li>Equal opportunities for higher education</li>
-                        <li>Support for Skolars ng Bayan</li>
-                    </ul>
-                    <p style="margin-top: 1rem;"><strong>About the Law:</strong> Republic Act 10931, also known as the Universal Access to Quality Tertiary Education Act, was enacted to provide free tuition and other school fees in State Universities and Colleges (SUCs), Local Universities and Colleges (LUCs), and State-run Technical-Vocational Institutions (TVIs). This landmark legislation ensures that no Filipino student is deprived of quality tertiary education due to financial constraints.</p>
+                    <p><strong>Eligible:</strong> Incoming College Students</p>
+                    <p>A scholarship program designed to support local students in pursuing higher education at TRC.</p>
                 </div>
             </div>
 
+            <div class="scholarship-card">
+                <h4>💼 TRC Student Assistant Program</h4>
+                <div class="scholarship-details">
+                    <p><strong>Eligible:</strong> Incoming College Students</p>
+                    <p>Work-study program that provides financial assistance while gaining valuable work experience on campus.</p>
+                </div>
+            </div>
+
+            <h3 style="color: #f5576c; margin-top: 2rem; margin-bottom: 1.5rem; font-size: 1.2rem;">Available Discounts:</h3>
+
+            <div class="discount-card">
+                <h4>🏆 Entrance Academic Discount</h4>
+                <p><strong>Eligible:</strong> Incoming Grade 7 and 1st Year College Students</p>
+                <p>Academic excellence discount for incoming students who demonstrate outstanding scholastic achievement.</p>
+            </div>
+
+            <div class="discount-card">
+                <h4>⭐ Academic Discount</h4>
+                <p><strong>Eligible:</strong> Old students ranked 1st and 2nd per Grade level</p>
+                <p>Recognition and reward for continuing students who maintain top academic standing in their respective grade levels.</p>
+            </div>
+
+            <div class="discount-card">
+                <h4>🎓 TRC Alumni Discount</h4>
+                <p><strong>Eligible:</strong> Incoming College and Graduate School Students</p>
+                <p>Special discount for TRC alumni continuing their education at the college or graduate school level.</p>
+            </div>
+
             <div class="info-box" style="margin-top: 2rem;">
-                <strong>Additional Financial Assistance:</strong> PUP Bataan may also offer other scholarship programs and financial assistance opportunities. For the most current information about available scholarships and grants, please contact the Office of Student Services or visit the official PUP website at <a href="https://www.pup.edu.ph/" style="color: #667eea; text-decoration: none; font-weight: 600;">www.pup.edu.ph</a>
+                <strong>Important Note:</strong> Application requirements and specific criteria apply to avail scholarships, vouchers, and discounts. Please contact the admissions office or visit <a href="http://www.trc.edu.ph" target="_blank" rel="noopener">www.trc.edu.ph</a> for detailed information about eligibility requirements, application procedures, and deadlines.
             </div>
         </div>
 
@@ -804,68 +816,41 @@ nav.open {
         <div class="section-card" id="contact">
             <div class="section-header">CONTACT INFORMATION</div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">📞 Phone Numbers</h3>
-                    <div style="color: #666; line-height: 2;">
-                        <p><strong>Main Line:</strong> (0995) 766-0605</p>
-                        <p><strong>Office:</strong> (047) 935-7018</p>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">✉️ Email Addresses</h3>
-                    <div style="color: #666; line-height: 2;">
-                        <p><strong>Admission:</strong><br>
-                        <a href="mailto:admission.bataan@pup.edu.ph" style="color: #667eea; text-decoration: none;">admission.bataan@pup.edu.ph</a></p>
-                        <p><strong>Registrar:</strong><br>
-                        <a href="mailto:registrar.bataan@pup.edu.ph" style="color: #667eea; text-decoration: none;">registrar.bataan@pup.edu.ph</a></p>
-                        <p><strong>Contact Person:</strong><br>
-                        <a href="mailto:ctsebastian@pup.edu.ph" style="color: #667eea; text-decoration: none;">ctsebastian@pup.edu.ph</a></p>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">📍 Campus Location</h3>
-                    <div style="color: #666; line-height: 2;">
-                        <p>Elliptical Road<br>
-                        Freeport Area of Bataan<br>
-                        Mariveles, 2106 Bataan</p>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">🌐 Online Resources</h3>
-                    <div style="color: #666; line-height: 2;">
-                        <p><strong>Official Website:</strong><br>
-                        <a href="https://www.pup.edu.ph/" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none;">www.pup.edu.ph</a></p>
-                        <p><strong>Registration Portal:</strong><br>
-                        <a href="https://iapply.pup.edu.ph" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none;">iapply.pup.edu.ph</a></p>
-                        <p><strong>PUPCET Information:</strong><br>
-                        <a href="https://www.pup.edu.ph/iapply/pupcet" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none;">www.pup.edu.ph/iapply/pupcet</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <h3 style="color: #667eea; margin: 2.5rem 0 1rem 0; font-size: 1.1rem;">🌐 Social Media</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 0.8rem;">Official Facebook Page</h4>
-                    <p style="color: #666;">
-                        <a href="https://www.facebook.com/PUPBataanOfficialPage" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none; font-weight: 600;">facebook.com/PUPBataanOfficialPage</a>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📞 Phone Numbers</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        Landline: <a href="tel:+6347237311" style="color: #667eea; text-decoration: none; font-weight: 600;">(047) 237 3115</a><br>
+                        Mobile: <a href="tel:+639628049049" style="color: #667eea; text-decoration: none; font-weight: 600;">0962-804-9049</a>
                     </p>
                 </div>
 
-                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
-                    <h4 style="color: #667eea; margin-bottom: 0.8rem;">Admission & Registration Office</h4>
-                    <p style="color: #666;">
-                        <a href="https://www.facebook.com/p/PUP-Bataan-Admission-and-Registration-Office-100064125665369" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none; font-weight: 600;">PUP Bataan Admission Office</a>
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">✉️ Email Address</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        <a href="mailto:tomasdelrosariocollege@yahoo.com" style="color: #667eea; text-decoration: none; font-weight: 600;">tomasdelrosariocollege@yahoo.com</a>
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📍 Campus Location</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        Magsaysay St., Capitol Drive<br>
+                        San Jose, Balanga City, Bataan 2100
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">🌐 Online Presence</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        Website: <a href="http://www.trc.edu.ph" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none; font-weight: 600;">www.trc.edu.ph</a><br>
+                        Facebook: <a href="https://www.facebook.com/share/1GZ7mmDdNQ/" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none; font-weight: 600;">Visit our page</a>
                     </p>
                 </div>
             </div>
 
-            <div class="info-box" style="margin-top: 2rem;">
-                <strong>Campus Visits:</strong> Polytechnic University of the Philippines - Bataan Campus welcomes prospective students and their families. As the First PUP Campus in Northern Luzon, we invite you to visit our campus to experience our facilities, meet our high-caliber faculty and dedicated staff, and learn more about how we serve the Skolars ng Bayan. For campus tours and inquiries, please contact us in advance.
+            <div class="info-box">
+                <strong>Visit Us:</strong> Tomas Del Rosario College welcomes prospective students and their families. Visit our campus to experience our facilities, meet our faculty, and learn more about our programs. For campus tours and inquiries, please contact us in advance through any of our official channels above.
             </div>
         </div>
     </div>
@@ -926,4 +911,5 @@ function scrollToTop() {
 </script>
 
 </body>
+
 </html>

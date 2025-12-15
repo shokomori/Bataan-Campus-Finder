@@ -3,229 +3,1024 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCBT - Campus Details</title>
+<title>Microcity College of Business and Technology INC.</title>
 <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background:#f5f5f5; color:#333; }
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    /* Header */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.logo:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.logo-text h1 {
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.logo-text p {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+nav a.active::after,
+nav a:hover::after {
+    width: 80%;
+}
+
+nav a.active,
+nav a:hover {
+    color: #667eea;
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #667eea;
+    display: block;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.hamburger:hover span {
+    background: #764ba2;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 5%;
+}
+
+/* CAMPUS HEADER */
+.campus-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.campus-logo {
+    flex: 0 0 140px;
+}
+
+.campus-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.campus-logo img:hover {
+    transform: scale(1.05);
+}
+
+.campus-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.campus-info h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.campus-map {
+    flex: 0 0 450px;
+    height: 280px;
+}
+
+.campus-map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.9rem 1.8rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(245, 87, 108, 0.4);
+}
+
+.btn-outline {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* QUICK NAVIGATION */
+.quick-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.nav-btn {
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+}
+
+/* CONTENT */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    scroll-margin-top: 100px;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.section-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    margin: -2.5rem -2.5rem 2rem -2.5rem;
+    border-radius: 20px 20px 0 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* PROGRAMS GRID */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.program-category {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s;
+}
+
+.program-category:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+}
+
+.program-category h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.program-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.program-item {
+    color: #666;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.program-item:last-child {
+    border-bottom: none;
+}
+
+/* REQUIREMENTS & INFO BOX */
+.requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0.8rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.requirement-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(5px);
+}
+
+.requirement-item:before {
+    content: "✓";
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+}
+
+.info-box {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+}
+
+.info-box strong {
+    color: #667eea;
+}
+
+/* SCHOLARSHIP CARD */
+.scholarship-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+}
+
+.scholarship-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+.scholarship-card h4 {
+    color: #667eea;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.scholarship-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* DISCOUNT CARD */
+.discount-card {
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #f5576c;
+    transition: all 0.3s;
+}
+
+.discount-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.15);
+}
+
+.discount-card h4 {
+    color: #f5576c;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+}
+
+.discount-card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* BENEFIT BOX */
+.benefit-box {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(139, 195, 74, 0.1) 100%);
+    border-left: 4px solid #4caf50;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.1);
+}
+
+.benefit-box h4 {
+    color: #4caf50;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.benefit-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.benefit-box li {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.benefit-box li:before {
+    content: "★";
+    color: #4caf50;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .campus-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .campus-map {
+        width: 100%;
+        height: 300px;
+        margin-top: 1rem;
+    }
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1025px) {
+    .campus-map {
+        margin-top: 65px; 
+    }
+}
+
+/* Mobile nav */
+nav.open {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 1rem;
+    position: absolute;
+    top: 80px;
+    right: 5%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .quick-nav {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
     header {
-        display:flex; justify-content:space-between; align-items:center;
-        padding:1rem 5%; background:white; box-shadow:0 2px 10px rgba(0,0,0,0.1); position:relative;
+        position: relative;
     }
 
-    .logo { display:flex; align-items:center; gap:10px; }
-    .logo img { width:50px; height:50px; object-fit:contain; border-radius:8px; }
-    .logo-text h1 { font-size:1.2rem; color:#2542ff; }
-    .logo-text p { font-size:0.7rem; color:#666; }
-
-    nav { display:flex; gap:2rem; }
-    nav a { text-decoration:none; color:#333; font-weight:500; padding:0.5rem 1rem; transition:all 0.3s; }
-    nav a:hover, nav a.active { color:#2542ff; }
-
-    /* Hamburger */
-    .hamburger { display:none; width:30px; height:30px; flex-direction:column; justify-content:center; align-items:center; cursor:pointer; }
-    .hamburger div { width:20px; height:3px; background:#2542ff; border-radius:2px; margin:3px 0; transition:0.3s; }
-
-    /* Mobile nav */
-    .nav-mobile { display:none; flex-direction:column; gap:1rem; background:white; position:absolute; top:100%; right:5%; width:150px; padding:1rem; box-shadow:0 2px 10px rgba(0,0,0,0.1); border-radius:8px; z-index:998; }
-    .nav-mobile a { text-decoration:none; color:#333; font-weight:500; padding:0.5rem 0; transition:0.3s; }
-    .nav-mobile a.active, .nav-mobile a.bold-blue { font-weight:bold; color:#2542ff; }
-
-    /* Container */
-    .container { max-width:1400px; margin:0 auto; padding:2rem 5%; }
-
-    .campus-header { background:white; border-radius:15px; padding:2rem; margin-bottom:2rem; box-shadow:0 2px 10px rgba(0,0,0,0.1); display:grid; grid-template-columns:auto 1fr auto; gap:2rem; align-items:start; position:relative; }
-    .campus-logo { width:120px; height:120px; border-radius:10px; overflow:hidden; }
-    .campus-logo img { width:100%; height:100%; object-fit:cover; display:block; }
-
-    .campus-info h1 { font-size:1.8rem; margin-bottom:0.5rem; color:#333; }
-    .campus-subtitle { color:#666; margin-bottom:1.5rem; font-size:1rem; }
-
-    .info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-    .info-item { display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; }
-    .info-icon { color:#2542ff; font-size:1.2rem; }
-
-    .campus-map { width:300px; height:200px; background:#e9ecef; border-radius:10px; display:block; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,0.08); }
-    .campus-map iframe { width:100%; height:100%; border:0; }
-
-    .action-buttons { display:flex; gap:1rem; margin-top:1.5rem; }
-    .btn { padding:0.8rem 2rem; border-radius:8px; font-weight:600; cursor:pointer; transition:all 0.3s; border:none; font-size:0.95rem; }
-    .btn-primary { background:#2542ff; color:white; }
-    .btn-primary:hover { background:#1a32cc; }
-
-    .content-grid { display:grid; grid-template-columns:2fr 1fr; gap:2rem; }
-    .main-content, .sidebar { display:flex; flex-direction:column; gap:2rem; }
-
-    .section-card { background:white; border-radius:15px; padding:2rem; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-    .section-header { background:#2542ff; color:white; padding:0.8rem 1.5rem; margin:-2rem -2rem 1.5rem -2rem; border-radius:15px 15px 0 0; font-size:1.1rem; font-weight:600; }
-
-    .contact-info { display:flex; flex-direction:column; gap:1rem; }
-    .contact-item { display:flex; align-items:center; gap:0.8rem; padding:1rem; background:#f8f9fa; border-radius:8px; font-size:0.9rem; }
-    .contact-icon { color:#2542ff; font-size:1.3rem; }
-
-    footer { background:#1a1a1a; color:white; padding:2rem 5%; margin-top:3rem; }
-    .footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:2rem; }
-    .footer-section h3 { margin-bottom:1rem; color:#2542ff; }
-    .footer-section p, .footer-section a { color:#ccc; font-size:0.9rem; line-height:1.8; text-decoration:none; }
-    .footer-section a:hover { color:#2542ff; }
-    .footer-links { display:flex; flex-direction:column; gap:0.5rem; }
-    .footer-bottom { text-align:center; margin-top:2rem; padding-top:2rem; border-top:1px solid #333; color:#999; font-size:0.9rem; }
-
-    @media(max-width:1024px){ .content-grid{grid-template-columns:1fr;} .campus-header{grid-template-columns:1fr;} .campus-map{width:100%;} .footer-content{grid-template-columns:1fr;} }
-    @media(max-width:768px){
-        nav{display:none;}
-        .nav-mobile.open{display:flex !important;}
-        .hamburger{display:flex;}
-        .info-grid{grid-template-columns:1fr;}
-        .action-buttons{flex-direction:column;}
+    .action-buttons {
+        flex-wrap: wrap;
     }
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
 </style>
 </head>
 <body>
 
 <header>
     <div class="logo">
-        <img src="../assets/images/finderlogo.png" alt="Bataan Finder Logo">
         <div class="logo-text">
             <h1>Bataan Campus Finder</h1>
             <p>Campus Details</p>
         </div>
     </div>
 
-    <!-- Desktop Nav -->
-    <nav>
+    <nav id="mobileNav">
         <a href="../index.html">HOME</a>
         <a href="../campus.html" class="active">ALL CAMPUSES</a>
         <a href="../about.html">ABOUT</a>
         <a href="../contact.html">CONTACT</a>
     </nav>
 
-    <!-- Hamburger -->
     <div class="hamburger" id="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-
-    <!-- Mobile nav -->
-    <div class="nav-mobile" id="navMobile">
-        <a href="../index.html">HOME</a>
-        <a href="../campus.html" class="active">ALL CAMPUSES</a>
-        <a href="../about.html">ABOUT</a>
-        <a href="../contact.html">CONTACT</a>
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 </header>
 
 <div class="container">
+    <!-- CAMPUS HEADER -->
     <div class="campus-header">
-        <div class="campus-logo">
-            <img src="../assets/images/MICROCITY.jfif" alt="MICROCITY Logo">
-        </div>
         <div class="campus-info">
-            <h1>Microcity College of Business and Technology</h1>
-            <p class="campus-subtitle">Main Campus</p>
-            <div class="info-grid">
-                <div class="info-item"><span class="info-icon">📍</span><span>Bataan, Bataan</span></div>
-                <div class="info-item"><span class="info-icon">📞</span><span>(047) 289-0123</span></div>
-                <div class="info-item"><span class="info-icon">🌐</span><span>www.mcbt.edu.ph</span></div>
-                <div class="info-item"><span class="info-icon">✉️</span><span>info@mcbt.edu.ph</span></div>
-            </div>
+            <h1>Microcity College of Business and Technology INC.</h1>
+            <p style="color:#667eea; font-weight:600; margin-bottom:0.8rem; font-size:1.1rem;">Leading Institution in Technology & Hospitality Education</p>
+            <p style="color:#666; line-height:1.6; margin-bottom:1rem;">Microcity College of Business and Technology offers comprehensive programs in technology, hospitality, and business education with a commitment to providing quality education and professional development for students in Bataan.</p>
             <div class="action-buttons">
-                <button class="btn btn-primary">LEARN MORE</button>
+                <a class="btn btn-secondary" href="https://www.facebook.com/microcity.balanga" target="_blank" rel="noopener">FACEBOOK</a>
+                <a class="btn btn-outline" href="tel:04772750786">CALL (047) 275-0786</a>
+                <a class="btn btn-outline" href="tel:09811865703">CALL (0981) 186-5703</a>
+                <a class="btn btn-outline" href="tel:09673794940">CALL (0967) 379-4940</a>
+                <a class="btn btn-outline" href="mailto:mcbtregistrar@gmail.com">EMAIL REGISTRAR</a>
+                <a class="btn btn-outline" href="mailto:microcitycomputercollege@yahoo.com">EMAIL COLLEGE</a>
+                <a class="btn btn-outline" href="https://www.google.com/maps?q=Narra+St.,+Capitol+Drive+Tenejero,+City+of+Balanga,+Bataan" target="_blank" rel="noopener">DIRECTIONS</a>
             </div>
         </div>
-        <div class="campus-map">Map Coming Soon</div>
+        
+        <div class="campus-map">
+            <iframe src="https://www.google.com/maps?q=Narra+St.,+Capitol+Drive+Tenejero,+City+of+Balanga,+Bataan&output=embed"></iframe>
+        </div>
     </div>
 
-    <div class="content-grid">
-        <div class="main-content">
-            <div class="section-card">
-                <div class="section-header">OVERVIEW</div>
-                <p style="color:#666; line-height:1.6; margin-bottom:1rem;">
-                    MCBT is a leading educational institution in Bataan dedicated to providing quality higher education. The institution is committed to fostering academic excellence, student development, and community engagement.
-                </p>
-                <p style="color:#666; line-height:1.6; margin-bottom:1rem;">
-                    With experienced faculty, modern facilities, and comprehensive programs, MCBT offers students an excellent platform for personal and professional growth in today's competitive world.
-                </p>
+    <!-- Quick Navigation -->
+    <div class="quick-nav">
+        <a href="#academic-programs" class="nav-btn">Academic Programs</a>
+        <a href="#short-courses" class="nav-btn">Short Courses</a>
+        <a href="#admission-requirements" class="nav-btn">Admission Requirements</a>
+        <a href="#tuition-fees" class="nav-btn">Tuition & Fees</a>
+        <a href="#scholarships" class="nav-btn">Scholarships & Discounts</a>
+        <a href="#contact" class="nav-btn">Contact Information</a>
+    </div>
+
+    <div class="main-content">
+        <!-- Academic Programs -->
+        <div class="section-card" id="academic-programs">
+            <div class="section-header">ACADEMIC PROGRAMS</div>
+            
+            <h3 style="color: #667eea; margin-bottom: 1.5rem; font-size: 1.3rem;">3-Year Diploma Programs</h3>
+            <div class="programs-grid">
+                <div class="program-category">
+                    <h3>Tourism Technology</h3>
+                    <div class="program-list">
+                        <div class="program-item">Leading to BS Tourism Management</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Hospitality Technology</h3>
+                    <div class="program-list">
+                        <div class="program-item">Leading to BS in Hospitality Management</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Computer Science Technology</h3>
+                    <div class="program-list">
+                        <div class="program-item">Leading to BS in Computer Science</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Computer Engineering Technology</h3>
+                    <div class="program-list">
+                        <div class="program-item">Leading to BS Computer Engineering</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="section-card">
-                <div class="section-header">PROGRAMS OFFERED</div>
-                <ul style="color:#666; line-height:1.6; padding-left:1.2rem;">
-                    <li>Bachelor of Science in Business Administration</li>
-                    <li>Bachelor of Science in Information Technology</li>
-                    <li>Associate in Computer Technology</li>
-                    <li>Short Courses in Entrepreneurship</li>
+            <h3 style="color: #667eea; margin: 2.5rem 0 1.5rem 0; font-size: 1.3rem;">CHED Courses Offered</h3>
+            <div class="programs-grid">
+                <div class="program-category">
+                    <h3>Engineering Programs</h3>
+                    <div class="program-list">
+                        <div class="program-item">BS Computer Engineering</div>
+                        <div class="program-item">BS Computer Science</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Tourism & Hospitality</h3>
+                    <div class="program-list">
+                        <div class="program-item">BS Tourism Management</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Short Courses -->
+        <div class="section-card" id="short-courses">
+            <div class="section-header">SHORT COURSES (NC II)</div>
+            
+            <div class="programs-grid">
+                <div class="program-category">
+                    <h3>Technology & Design</h3>
+                    <div class="program-list">
+                        <div class="program-item">Animation NC II</div>
+                        <div class="program-item">Computer Systems Servicing NC II</div>
+                        <div class="program-item">Visual Graphics Design NC II</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Food Service</h3>
+                    <div class="program-list">
+                        <div class="program-item">Bread and Pastry Production NC II</div>
+                        <div class="program-item">Cookery NC II</div>
+                        <div class="program-item">Food and Beverage Services NC II</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Hospitality Services</h3>
+                    <div class="program-list">
+                        <div class="program-item">Front Office Services NC II</div>
+                        <div class="program-item">Housekeeping NC II</div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <h3>Business Services</h3>
+                    <div class="program-list">
+                        <div class="program-item">Contact Center Services NC II</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefit-box">
+                <h4>🎓 Learning Benefits</h4>
+                <ul>
+                    <li>Free Training Cost</li>
+                    <li>Free Assessment Fee</li>
+                    <li>Training Support Fund</li>
+                    <li>Daily Allowance (₱100)</li>
+                    <li>Book Allowance (₱5,000/semester)</li>
                 </ul>
             </div>
         </div>
 
-        <div class="sidebar">
-            <div class="section-card">
-                <div class="section-header">CONTACT INFORMATION</div>
-                <div class="contact-info">
-                    <div class="contact-item"><span class="contact-icon">📞</span><div><strong>Phone</strong><br>(047) 289-0123</div></div>
-                    <div class="contact-item"><span class="contact-icon">✉️</span><div><strong>Email</strong><br>info@mcbt.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">🌐</span><div><strong>Website</strong><br>www.mcbt.edu.ph</div></div>
-                    <div class="contact-item"><span class="contact-icon">📍</span><div><strong>Address</strong><br>Bataan, Bataan</div></div>
+        <!-- Admission Requirements -->
+        <div class="section-card" id="admission-requirements">
+            <div class="section-header">ADMISSION REQUIREMENTS</div>
+            
+            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.2rem;">General Requirements:</h3>
+            <div class="requirements-list" style="margin-bottom: 2rem;">
+                <div class="requirement-item">At least 18 years old and a high school graduate</div>
+                <div class="requirement-item">SHS Card / Form 137 / Photocopy of PSA</div>
+                <div class="requirement-item">PSA Birth Certificate (photocopy)</div>
+                <div class="requirement-item">Certificate of Indigency from DSWD & Barangay</div>
+                <div class="requirement-item">Good Moral Character certificate</div>
+                <div class="requirement-item">Photocopy of Diploma / TOR / Form 137</div>
+                <div class="requirement-item">1x1 pictures (4 copies)</div>
+                <div class="requirement-item">Passport size pictures (4 copies)</div>
+            </div>
+
+            <div class="info-box">
+                <strong>Application Process:</strong> For complete details about the admission process and specific program requirements, please contact the Registrar's Office directly or send an email inquiry to mcbtregistrar@gmail.com or microcitycomputercollege@yahoo.com.
+            </div>
+        </div>
+
+        <!-- Tuition & Fees -->
+        <div class="section-card" id="tuition-fees">
+            <div class="section-header">TUITION & FEES</div>
+            
+            <div class="info-box" style="margin-bottom: 2rem;">
+                <h3 style="color: #4caf50; font-size: 1.3rem; margin-bottom: 1rem;">💰 FREE TUITION FEE PROGRAM</h3>
+                <p style="color: #666; line-height: 1.8; font-size: 1rem;">
+                    Microcity College offers <strong>FREE tuition fees</strong> for qualified students, along with allowances and insurance coverage. This comprehensive financial support ensures that quality education is accessible to all students.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📞 Contact Registrar</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        (047) 275-0786<br>
+                        (0981) 186-5703<br>
+                        (0967) 379-4940
+                    </p>
                 </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">✉️ Email Inquiry</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        <a href="mailto:mcbtregistrar@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">mcbtregistrar@gmail.com</a><br>
+                        <a href="mailto:microcitycomputercollege@yahoo.com" style="color: #667eea; text-decoration: none; font-weight: 600;">microcitycomputercollege@yahoo.com</a>
+                    </p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                    <h4 style="color: #667eea; margin-bottom: 1rem;">📍 Visit Campus</h4>
+                    <p style="color: #666; line-height: 1.8;">
+                        Narra St., Capitol Drive Tenejero<br>
+                        City of Balanga, Bataan
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scholarships & Discounts -->
+        <div class="section-card" id="scholarships">
+            <div class="section-header">SCHOLARSHIPS & DISCOUNTS</div>
+            
+            <h3 style="color: #667eea; margin-bottom: 1.5rem; font-size: 1.3rem;">Available Scholarships</h3>
+            
+            <div class="scholarship-card">
+                <h4>🎓 Academic Scholarships</h4>
+                <div class="scholarship-details">
+                    <p>Merit-based scholarships for students with outstanding academic performance.</p>
+                </div>
+            </div>
+
+            <div class="scholarship-card">
+                <h4>🏛️ CHED Student Financial Assistance Programs</h4>
+                <div class="scholarship-details">
+                    <p>Government-funded financial assistance programs administered by the Commission on Higher Education.</p>
+                </div>
+            </div>
+
+            <div class="scholarship-card">
+                <h4>🏫 Iskolar ng Bataan</h4>
+                <div class="scholarship-details">
+                    <p>Provincial scholarship program for qualified residents of Bataan.</p>
+                </div>
+            </div>
+
+            <div class="scholarship-card">
+                <h4>🎯 MGE Scholarship Program</h4>
+                <div class="scholarship-details">
+                    <p>Special scholarship program providing educational support to deserving students.</p>
+                </div>
+            </div>
+
+            <div class="scholarship-card">
+                <h4>📚 Tertiary Education Subsidy (TES)</h4>
+                <div class="scholarship-details">
+                    <p>Government subsidy program for tertiary education students from low-income families.</p>
+                </div>
+            </div>
+
+            <div class="scholarship-card">
+                <h4>📖 Tulong Dunong Program (TDP)</h4>
+                <div class="scholarship-details">
+                    <p>Educational assistance program providing financial support for student learners.</p>
+                </div>
+            </div>
+
+            <div class="scholarship-card">
+                <h4>⚽ Varsity Scholarship</h4>
+                <div class="scholarship-details">
+                    <p>Athletic scholarships for student-athletes representing the institution in sports competitions.</p>
+                </div>
+            </div>
+
+            <h3 style="color: #f5576c; margin: 2.5rem 0 1.5rem 0; font-size: 1.3rem;">Available Discounts</h3>
+
+            <div class="discount-card">
+                <h4>🎓 Alumni Discount</h4>
+                <p>Special tuition discount for children of Microcity College alumni.</p>
+            </div>
+
+            <div class="discount-card">
+                <h4>👨‍👩‍👧‍👦 Sibling Discount</h4>
+                <p>Reduced tuition fees for families with multiple students enrolled at Microcity College.</p>
+            </div>
+
+            <div class="discount-card">
+                <h4>🎖️ Tuition Fee Discount for AFP and PNP Servicemen</h4>
+                <p>Special discount program for members of the Armed Forces of the Philippines and Philippine National Police, and their dependents.</p>
+            </div>
+
+            <div class="info-box" style="margin-top: 2rem;">
+                <strong>Application Information:</strong> For detailed information about scholarship requirements, application procedures, and discount qualifications, please contact the Registrar's Office or visit the campus for a personal consultation.
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section-card" id="contact">
+            <div class="section-header">CONTACT INFORMATION</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">📞 Phone Numbers</h3>
+                    <div style="color: #666; line-height: 2;">
+                        <p><strong>Main Line:</strong> (047) 275-0786</p>
+                        <p><strong>Mobile:</strong> (0981) 186-5703</p>
+                        <p><strong>Mobile:</strong> (0967) 379-4940</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">✉️ Email Addresses</h3>
+                    <div style="color: #666; line-height: 2;">
+                        <p><strong>Registrar:</strong><br>
+                        <a href="mailto:mcbtregistrar@gmail.com" style="color: #667eea; text-decoration: none;">mcbtregistrar@gmail.com</a></p>
+                        <p><strong>College:</strong><br>
+                        <a href="mailto:microcitycomputercollege@yahoo.com" style="color: #667eea; text-decoration: none;">microcitycomputercollege@yahoo.com</a></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">📍 Campus Location</h3>
+                    <div style="color: #666; line-height: 2;">
+                        <p>Narra St., Capitol Drive Tenejero<br>
+                        City of Balanga, Bataan</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.1rem;">🌐 Social Media</h3>
+                    <div style="color: #666; line-height: 2;">
+                        <p><strong>Facebook:</strong><br>
+                        <a href="https://www.facebook.com/microcity.balanga" target="_blank" rel="noopener" style="color: #667eea; text-decoration: none;">facebook.com/microcity.balanga</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 2rem;">
+                <strong>Campus Visits:</strong> Microcity College of Business and Technology welcomes prospective students and their families. Visit our campus to tour our facilities, meet our faculty, and learn more about our programs. For campus tours and inquiries, please contact us in advance.
             </div>
         </div>
     </div>
 </div>
 
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>Bataan Campus Finder</h3>
-            <p>Your comprehensive guide to higher education institutions in Bataan. Discover programs, compare options, and find the perfect campus for your future.</p>
-        </div>
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <div class="footer-links">
-                <a href="../index.html">Home</a>
-                <a href="../campus.html">All Campuses</a>
-                <a href="../about.html">About Us</a>
-                <a href="../contact.html">Contact</a>
-            </div>
-        </div>
-        <div class="footer-section">
-            <h3>Need Help?</h3>
-            <p>Contact us for any inquiries about higher education in Bataan.</p>
-            <p style="margin-top:1rem;">Email: info@bataancampusfinder.com<br>Phone: (047) XXX-XXXX</p>
-        </div>
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+<footer style="background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(20px); color: white; padding: 2rem 5%; margin-top: 3rem;">
+    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+        <p style="color: #999; font-size: 0.9rem;">© 2024 Bataan Campus Finder. All rights reserved.</p>
+        <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">Information provided is for reference purposes. Please verify details with the respective institutions.</p>
     </div>
-    <div class="footer-bottom">© 2024 Bataan Campus Finder. All rights reserved.</div>
 </footer>
 
 <script>
-    // Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const navMobile = document.getElementById('navMobile');
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('mobileNav');
 
-    hamburger.addEventListener('click', () => {
-        if(navMobile.style.display === 'flex') {
-            navMobile.style.display = 'none';
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+});
+
+// Smooth scrolling for navigation buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Back to top button functionality
+    window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
         } else {
-            navMobile.style.display = 'flex';
-            navMobile.querySelectorAll('a').forEach(a=>{a.classList.add('bold-blue');});
+            backToTop.classList.remove('show');
         }
     });
+});
 
-    // Dynamic Google map
-    document.querySelectorAll('.campus-map').forEach(el=>{
-        if(el.querySelector('iframe')) return;
-        var titleEl = document.querySelector('.campus-info h1') || document.querySelector('h1');
-        var q = titleEl ? titleEl.textContent.trim() : document.title;
-        var src = 'https://www.google.com/maps?q=' + encodeURIComponent(q + ', Bataan, Philippines') + '&output=embed';
-        el.innerHTML = '<iframe src="'+src+'" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' +
-            '<p style="font-size:0.85rem;color:#666;margin-top:0.5rem;">If map does not load, <a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' Bataan, Philippines')+'" style="color:#2542ff;">open in Google Maps</a></p>';
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
+}
 </script>
 
 </body>
-
-<script src="../assets/js/site-ui.js"></script>
-
 </html>
