@@ -1,0 +1,29 @@
+/* Shared site stylesheet (background + small helpers) */
+:root{
+    --bg-overlay-start: rgba(102,126,234,0.55);
+    --bg-overlay-end: rgba(118,75,162,0.55);
+}
+
+html,body{height:100%;}
+
+body{
+    /* Layered background: semi-opaque gradient overlay above the image */
+    background-color: #667eea; /* fallback */
+    background-image: linear-gradient(var(--bg-overlay-start), var(--bg-overlay-end)), url('../images/444.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Mobile performance: avoid fixed backgrounds on small screens */
+@media (max-width: 768px){
+    body{
+        background-attachment: scroll;
+        background-position: top center;
+    }
+}
+
+/* Keep main content readable when pages add translucent cards */
+.site-content{position:relative; z-index:1}
