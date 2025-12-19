@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../assets/css/site.css">
 <title>BPSU Orani Campus - Campus Details</title>
 <style>
+    body {
+        background: transparent;
+    }
 /* GLOBAL */
 * {
     margin: 0;
@@ -14,7 +18,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: transparent;
     color: #333;
     min-height: 100vh;
 }
@@ -241,6 +245,57 @@ nav a:hover {
     color: white;
     border-color: transparent;
     transform: translateY(-2px);
+}
+
+/* QUICK NAVIGATION */
+.quick-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.nav-btn {
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
 }
 
 /* CONTENT GRID */
@@ -584,10 +639,20 @@ nav.open {
             <iframe src="https://www.google.com/maps?q=Bataan+Peninsula+State+University+Orani+Campus,Orani,Bataan&output=embed"></iframe>
         </div>
     </div>
+
+    <!-- Quick Navigation -->
+    <div class="quick-nav">
+        <a href="#academic-programs" class="nav-btn">Academic Programs</a>
+        <a href="#admission-requirements" class="nav-btn">Admission Requirements</a>
+        <a href="#tuition-fees" class="nav-btn">Tuition & Fees</a>
+        <a href="#scholarships" class="nav-btn">Scholarships</a>
+        <a href="#application-process" class="nav-btn">Application Process</a>
+    </div>
+
 <div class="content-grid">
             <div class="main-content">
                 <!-- Academic Programs -->
-                <div class="section-card">
+                <div class="section-card" id="academic-programs">
                     <div class="section-header">ACADEMIC PROGRAMS</div>
                     <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
                         The BPSU Orani Campus serves as a distinct campus of the University, delivering instruction, research, extension, and production mandates to support education and community development in Orani and surrounding areas.
@@ -611,7 +676,7 @@ nav.open {
                 </div>
 
                 <!-- Admission Requirements -->
-                <div class="section-card">
+                <div class="section-card" id="admission-requirements">
                     <div class="section-header">ADMISSION REQUIREMENTS</div>
                     <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
                         Prospective students should visit the official BPSU admission page for complete and updated admission requirements and procedures:
@@ -627,7 +692,7 @@ nav.open {
                 </div>
 
                 <!-- Tuition & Fees -->
-                <div class="section-card">
+                <div class="section-card" id="tuition-fees">
                     <div class="section-header">TUITION & FEES</div>
                     <h3 style="color: #2542ff; margin-bottom: 1rem;">Republic Act No. 10931 - Free Tertiary Education</h3>
                     <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #666;">
@@ -655,7 +720,7 @@ nav.open {
                 </div>
 
                 <!-- Scholarships -->
-                <div class="section-card">
+                <div class="section-card" id="scholarships">
                     <div class="section-header">SCHOLARSHIP & FINANCIAL AID</div>
                     <p style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
                         BPSU offers a wide variety of scholarship programs to support deserving and qualified students. These include SUC-funded scholarships, private scholarships from partner organizations, and government-sponsored programs.
@@ -731,7 +796,7 @@ nav.open {
                 </div>
 
                 <!-- Application Process -->
-                <div class="section-card">
+                <div class="section-card" id="application-process">
                     <div class="section-header">APPLICATION PROCESS</div>
                     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                         <div>

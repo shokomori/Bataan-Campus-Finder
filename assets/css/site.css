@@ -9,11 +9,12 @@ html,body{height:100%;}
 body{
     /* Layered background: semi-opaque gradient overlay above the image */
     background-color: #667eea; /* fallback */
-    background-image: linear-gradient(var(--bg-overlay-start), var(--bg-overlay-end)), url('../images/444.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* force the wallpaper + gradient for all pages; use !important so inline page styles won't override */
+    background-image: linear-gradient(var(--bg-overlay-start), var(--bg-overlay-end)), url('../images/website wallpaper.jpg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
     min-height: 100vh;
 }
 

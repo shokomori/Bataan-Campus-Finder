@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../assets/css/site.css">
 <title>Bataan Peninsula State University - Bataan Campus Finder</title>
 <style>
 /* General */
@@ -11,7 +12,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; 
     color:#333; 
     overflow-x: hidden;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: transparent;
     min-height: 100vh;
 }
 
@@ -462,10 +463,33 @@ footer {
         background: rgba(255, 255, 255, 0.98); 
         backdrop-filter: blur(20px);
         flex-direction:column; 
-        gap:1rem; 
-        padding:1rem; 
+        gap:0.5rem; 
+        padding:1.5rem; 
         border-radius:15px; 
         box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        border: 2px solid rgba(102, 126, 234, 0.2);
+        min-width: 220px;
+        z-index: 1001;
+        animation: slideDown 0.3s ease-out;
+    }
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    nav a {
+        padding: 0.8rem 1.2rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+    }
+    nav a:hover {
+        background: rgba(102, 126, 234, 0.1);
+        border-left-color: #667eea;
+        transform: translateX(5px);
+    }
+    nav a.active {
+        background: rgba(102, 126, 234, 0.15);
+        border-left-color: #667eea;
     }
     nav.open { display:flex !important; }
     .hamburger { display:flex; }
@@ -538,7 +562,7 @@ footer {
             <div class="contact-item-content"><a href="mailto:admission_central@bpsu.edu.ph">admission_central@bpsu.edu.ph</a></div>
         </div>
         <div class="contact-item">
-            <div class="contact-item-header"><div class="contact-item-icon"><img src="../../assets/images/contact.jpg" alt="Phone"></div><strong>Contact Number:</strong></div>
+            <div class="contact-item-header"><div class="contact-item-icon"><img src="../../assets/images/contact.png" alt="Phone"></div><strong>Contact Number:</strong></div>
             <div class="contact-item-content">0960 568 3448</div>
         </div>
         <div class="contact-item">
@@ -560,32 +584,32 @@ footer {
     <div class="campuses-grid">
         <div class="campus-card">
             <h4>Bataan Peninsula State University</h4><h5>Main Campus</h5>
-            <div class="campus-location"><img src="../../assets/images/location.avif" alt="Location"><span>Capitol Compound, Tenejero, City of Balanga, Bataan 2100</span></div>
+            <div class="campus-location"><img src="../../assets/images/location.png" alt="Location"><span>Capitol Compound, Tenejero, City of Balanga, Bataan 2100</span></div>
             <button class="view-details-btn" onclick="window.location.href='bpsu-main.html'">View Details</button>
         </div>
         <div class="campus-card">
             <h4>Bataan Peninsula State University</h4><h5>Abucay Campus</h5>
-            <div class="campus-location"><img src="../../assets/images/location.avif" alt="Location"><span>Bangkal, Abucay, Bataan, 2114</span></div>
+            <div class="campus-location"><img src="../../assets/images/location.png" alt="Location"><span>Bangkal, Abucay, Bataan, 2114</span></div>
             <button class="view-details-btn" onclick="window.location.href='bpsu-abucay.html'">View Details</button>
         </div>
         <div class="campus-card">
             <h4>Bataan Peninsula State University</h4><h5>Bagac Campus</h5>
-            <div class="campus-location"><img src="../../assets/images/location.avif" alt="Location"><span>Bagumbayan, Bagac, Bataan 2107</span></div>
+            <div class="campus-location"><img src="../../assets/images/location.png" alt="Location"><span>Bagumbayan, Bagac, Bataan 2107</span></div>
             <button class="view-details-btn" onclick="window.location.href='bpsu-bagac.html'">View Details</button>
         </div>
         <div class="campus-card">
             <h4>Bataan Peninsula State University</h4><h5>Balanga Campus</h5>
-            <div class="campus-location"><img src="../../assets/images/location.avif" alt="Location"><span>Balanga, Bataan 2106</span></div>
+            <div class="campus-location"><img src="../../assets/images/location.png" alt="Location"><span>Balanga, Bataan 2106</span></div>
             <button class="view-details-btn" onclick="window.location.href='bpsu-balanga.html'">View Details</button>
         </div>
         <div class="campus-card">
             <h4>Bataan Peninsula State University</h4><h5>Orani Campus</h5>
-            <div class="campus-location"><img src="../../assets/images/location.avif" alt="Location"><span>Orani, Bataan 2117</span></div>
+            <div class="campus-location"><img src="../../assets/images/location.png" alt="Location"><span>Orani, Bataan 2117</span></div>
             <button class="view-details-btn" onclick="window.location.href='bpsu-orani.html'">View Details</button>
         </div>
         <div class="campus-card">
             <h4>Bataan Peninsula State University</h4><h5>Dinalupihan Campus</h5>
-            <div class="campus-location"><img src="../../assets/images/location.avif" alt="Location"><span>Dinalupihan, Bataan 2107</span></div>
+            <div class="campus-location"><img src="../../assets/images/location.png" alt="Location"><span>Dinalupihan, Bataan 2107</span></div>
             <button class="view-details-btn" onclick="window.location.href='bpsu-dinalupihan.html'">View Details</button>
         </div>
     </div>
