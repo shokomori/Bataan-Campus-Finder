@@ -325,6 +325,19 @@ nav a:hover {
     box-shadow: 0 15px 50px rgba(0,0,0,0.2);
 }
 
+/* Programs layout */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 1.5rem;
+}
+.program-college { background: rgba(245,247,255,0.85); border:1px solid rgba(102,126,234,0.06); padding:1rem; border-radius:10px; }
+.program-college h5 { margin:0 0 .6rem 0; color:#333; font-weight:700; }
+.program-list { margin:0; padding-left:1.1rem; color:#444; }
+.program-item { padding:0.18rem 0; transition: all 0.15s ease; }
+.program-item:hover { background: rgba(102,126,234,0.06); transform: translateX(4px); }
+@media (max-width:768px){ .programs-grid{ grid-template-columns:1fr; } }
+
 .section-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -589,7 +602,7 @@ nav.open {
                 <a class="btn btn-outline" href="mailto:bc_admission@bpsu.edu.ph">EMAIL ADMISSIONS</a>
                 <a class="btn btn-outline" href="mailto:public_affairs@bpsu.edu.ph">EMAIL PUBLIC AFFAIRS</a>
                 <a class="btn btn-outline" href="https://www.google.com/maps?q=BPSU%20Balanga%20Campus%2C%20Don%20Manuel%20Banzon%20Ave%2C%20Poblacion%2C%20Balanga%2C%20Bataan" target="_blank" rel="noopener">DIRECTIONS</a>
-                <!-- ACADEMIC PROGRAMS removed per request -->
+                <a class="btn btn-outline" href="#academic-programs">ACADEMIC PROGRAMS</a>
                 <a class="btn btn-outline" href="https://drive.google.com/file/d/18gu7SZvP9h9ZlHq_lsHCRxs8Mq-xrEz-/view" target="_blank" rel="noopener">BROCHURE</a>
                 <a class="btn btn-outline" href="bpsu.html">ALL BPSU CAMPUSES</a>
             </div>
@@ -609,7 +622,43 @@ nav.open {
     </div>
 
     <div class="main-content">
-        
+
+        <!-- Academic Programs -->
+        <div class="section-card" id="academic-programs">
+            <div class="section-header">ACADEMIC PROGRAMS — Balanga Campus</div>
+            <div class="programs-grid">
+                <div class="program-college">
+                    <h5>College of Business and Accountancy</h5>
+                    <ul class="program-list">
+                        <li class="program-item">BS Accountancy</li>
+                        <li class="program-item">BS Business Administration — Human Resource Management; Marketing Management; Operations Management</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>College of Education</h5>
+                    <ul class="program-list">
+                        <li class="program-item">Bachelor of Culture &amp; Arts Education</li>
+                        <li class="program-item">BECE (Early Childhood Education)</li>
+                        <li class="program-item">BEEd (Elementary Education)</li>
+                        <li class="program-item">BSEd (Secondary Education) — English; Filipino; Mathematics; Science; Social Studies; Values Education</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>College of Social &amp; Behavioral Sciences</h5>
+                    <ul class="program-list">
+                        <li class="program-item">BA Psychology</li>
+                        <li class="program-item">BS Psychology</li>
+                        <li class="program-item">Bachelor in Human Services</li>
+                        <li class="program-item">BS Social Work</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>Institute of Public Administration &amp; Governance</h5>
+                    <ul class="program-list"><li class="program-item">BS Public Administration</li></ul>
+                </div>
+            </div>
+        </div>
+
         <!-- Tuition & Fees -->
         <div class="section-card" id="tuition-fees">
             <div class="section-header">TUITION & FEES</div>

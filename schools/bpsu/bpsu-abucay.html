@@ -318,6 +318,15 @@ nav a:hover {
     box-shadow: 0 15px 50px rgba(0,0,0,0.2);
 }
 
+/* Programs layout */
+.programs-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:1rem 1.5rem; }
+.program-college { background: rgba(245,247,255,0.85); border:1px solid rgba(102,126,234,0.06); padding:1rem; border-radius:10px; }
+.program-college h5 { margin:0 0 .6rem 0; color:#333; font-weight:700; }
+.program-list { margin:0; padding-left:1.1rem; color:#444; }
+.program-item { padding:0.18rem 0; transition: all 0.15s ease; }
+.program-item:hover { background: rgba(102,126,234,0.06); transform: translateX(4px); }
+@media (max-width:768px){ .programs-grid{ grid-template-columns:1fr; } }
+
 .section-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -582,8 +591,8 @@ nav.open {
                 <a class="btn btn-outline" href="mailto:ac_admission@bpsu.edu.ph">EMAIL ADMISSIONS</a>
                 <a class="btn btn-outline" href="mailto:public_affairs@bpsu.edu.ph">EMAIL PUBLIC AFFAIRS</a>
                 <a class="btn btn-outline" href="https://www.google.com/maps?q=Bataan%20Peninsula%20State%20University%20Abucay%2C%20Bangkal%2C%20Abucay%2C%20Bataan" target="_blank" rel="noopener">DIRECTIONS</a>
-                <!-- ACADEMIC PROGRAMS removed per request -->
                 <a class="btn btn-outline" href="https://drive.google.com/file/d/18gu7SZvP9h9ZlHq_lsHCRxs8Mq-xrEz-/view" target="_blank" rel="noopener">BROCHURE</a>
+                    <a class="btn btn-outline" href="#academic-programs">ACADEMIC PROGRAMS</a>
                 <a class="btn btn-outline" href="bpsu.html">ALL BPSU CAMPUSES</a>
             </div>
         </div>
@@ -603,6 +612,30 @@ nav.open {
 
     <div class="main-content">
         
+
+        <!-- Academic Programs -->
+        <div class="section-card" id="academic-programs">
+            <div class="section-header">ACADEMIC PROGRAMS — Abucay Campus</div>
+            <div class="programs-grid">
+                <div class="program-college">
+                    <h5>College of Agriculture &amp; Fisheries</h5>
+                    <ul class="program-list">
+                        <li class="program-item">BS Agriculture</li>
+                        <li class="program-item">BS Agribusiness</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>College of Education</h5>
+                    <ul class="program-list">
+                        <li class="program-item">Bachelor of Technical-Vocational Teacher Education — Agricultural Crops Production; Animal Production</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>Institute of Agricultural &amp; Biosystems Engineering</h5>
+                    <ul class="program-list"><li class="program-item">BS Agricultural and Biosystems Engineering</li></ul>
+                </div>
+            </div>
+        </div>
 
         <!-- Tuition & Fees -->
         <div class="section-card" id="tuition-fees">

@@ -309,6 +309,32 @@ nav a:hover {
     box-shadow: 0 15px 50px rgba(0,0,0,0.2);
 }
 
+/* Programs layout */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 1.5rem;
+}
+.program-college {
+    background: rgba(245,247,255,0.85);
+    border: 1px solid rgba(102,126,234,0.06);
+    padding: 1rem;
+    border-radius: 10px;
+}
+.program-college h5 {
+    margin: 0 0 0.6rem 0;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.program-list { margin: 0; padding-left: 1.1rem; color:#444; }
+.program-item { padding: 0.18rem 0; transition: all 0.15s ease; }
+.program-item:hover { background: rgba(102,126,234,0.06); transform: translateX(4px); }
+
+@media (max-width: 768px) {
+    .programs-grid { grid-template-columns: 1fr; }
+}
+
 .section-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -563,7 +589,8 @@ footer {
                 <button class="btn btn-outline" onclick="window.open('mailto:ac_admission@bpsu.edu.ph')">EMAIL ADMISSIONS</button>
                 <button class="btn btn-outline" onclick="window.open('mailto:public_affairs@bpsu.edu.ph')">EMAIL PUBLIC AFFAIRS</button>
                 <button class="btn btn-outline" onclick="alert('Visit: Bangkal, Abucay, Bataan, 2114')">DIRECTIONS</button>
-                <button class="btn btn-outline" onclick="window.open('https://www.bpsu.edu.ph/index.php/about-academics')">ACADEMIC PROGRAMS</button>
+                    <button class="btn btn-outline" onclick="window.open('https://www.bpsu.edu.ph/index.php/about-academics')">ACADEMIC PROGRAMS (UNIV)</button>
+                    <a class="btn btn-outline" href="#academic-programs">ACADEMIC PROGRAMS</a>
                 <button class="btn btn-outline" onclick="window.open('https://drive.google.com/file/d/18gu7SZvP9h9ZlHq_lsHCRxs8Mq-xrEz-/view')">BROCHURE</button>
             </div>
         </div>
@@ -581,8 +608,82 @@ footer {
         <a href="#application-process" class="nav-btn">Application Process</a>
     </div>
 
+
+
+        
+
+        <!-- Tuition & Fees -->
     <div class="main-content">
 
+        <!-- Academic Programs -->
+        <div class="section-card" id="academic-programs">
+            <div class="section-header">ACADEMIC PROGRAMS — Main Campus</div>
+            <div class="info-box" style="margin-bottom:1rem;">Programs listed below are specific to the BPSU Main Campus (Tenejero, Balanga City). For university-wide listings visit the official BPSU site.</div>
+            <div class="programs-grid">
+                <div class="program-college">
+                    <h5>College of Allied Health Sciences</h5>
+                    <ul class="program-list">
+                        <li class="program-item">BS Midwifery</li>
+                        <li class="program-item">BS Nursing</li>
+                        <li class="program-item">BS Public Health (Population Health)</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>College of Arts and Sciences</h5>
+                    <ul class="program-list"><li class="program-item">BA Communication</li></ul>
+                </div>
+                <div class="program-college">
+                    <h5>College of Business and Accountancy</h5>
+                    <ul class="program-list">
+                        <li class="program-item">BS Hospitality Management</li>
+                        <li class="program-item">BS Tourism Management</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>College of Engineering and Architecture</h5>
+                    <ul class="program-list">
+                        <li class="program-item">BS Architecture</li>
+                        <li class="program-item">BS Civil Engineering</li>
+                        <li class="program-item">BS Computer Engineering</li>
+                        <li class="program-item">BS Electrical Engineering</li>
+                        <li class="program-item">BS Electronics Engineering</li>
+                        <li class="program-item">BS Industrial Engineering</li>
+                        <li class="program-item">BS Mechanical Engineering</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>College of Computer Studies</h5>
+                    <ul class="program-list">
+                        <li class="program-item">BS Computer Science</li>
+                        <li class="program-item">BS Data Science</li>
+                        <li class="program-item">BS Entertainment &amp; Multimedia Computing — Digital Animation Technology; Game Development</li>
+                        <li class="program-item">BS Information Technology</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>College of Technology</h5>
+                    <ul class="program-list">
+                        <li class="program-item">BS Industrial Technology (various majors)</li>
+                        <li class="program-item">Bachelor of Technical-Vocational Teacher Education (various majors)</li>
+                    </ul>
+                </div>
+                <div class="program-college">
+                    <h5>Graduate School (Main Campus)</h5>
+                    <ul class="program-list">
+                        <li class="program-item">Doctor of Education (Educational Management)</li>
+                        <li class="program-item">MA Education (multiple majors)</li>
+                        <li class="program-item">MA Nursing (Administration &amp; Supervision)</li>
+                        <li class="program-item">MA Counseling</li>
+                        <li class="program-item">Master of Business Administration</li>
+                        <li class="program-item">Master of Public Administration</li>
+                        <li class="program-item">Master in Physical Education &amp; Sports</li>
+                        <li class="program-item">Master in Engineering Management</li>
+                        <li class="program-item">Master in Information Technology</li>
+                        <li class="program-item">Certificate in Professional Teaching</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         
 
